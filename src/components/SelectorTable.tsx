@@ -5,6 +5,14 @@ import { selectorCategories } from '@/data/selectorData';
 import SelectorExample from './SelectorExample';
 import { SelectorCategory } from '@/types/selectors';
 import { Badge } from '@/components/ui/badge';
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
 
 interface SelectorTableProps {
   expandedCategories: Record<string, boolean>;
@@ -52,8 +60,8 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
   }, [activeSelectorId, expandedCategories, toggleCategory]);
 
   const renderCategoryHeader = (category: SelectorCategory) => (
-    <tr key={`${category.id}-header`}>
-      <td colSpan={6} className="p-0">
+    <TableRow key={`${category.id}-header`} className="category-row">
+      <TableCell colSpan={4} className="p-0">
         <div 
           className="category-header"
           onClick={() => toggleCategory(category.id)}
@@ -65,65 +73,70 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
           )}
           <span className="font-medium">{category.name}</span>
         </div>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 
   return (
-    <div className="overflow-x-auto">
-      <table className="selector-table">
-        <thead>
-          <tr>
-            <th>Selector</th>
-            <th>Parameters</th>
-            <th>Example</th>
-            <th>Description</th>
-            <th>Supported Platforms</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="w-full overflow-auto">
+      <Table className="w-full border-collapse">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Selector</TableHead>
+            <TableHead>Parameters</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead>Supported Platforms</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {selectorCategories.map(category => (
             <React.Fragment key={category.id}>
               {renderCategoryHeader(category)}
               
               {expandedCategories[category.id] && category.selectors.map(selector => (
-                <tr 
-                  key={selector.id}
-                  id={selector.id}
-                  ref={el => selectorRefs.current[selector.id] = el}
-                  className="transition-colors duration-300"
-                >
-                  <td>
-                    <div className="font-mono font-medium text-primary">
-                      {selector.name}
-                    </div>
-                  </td>
-                  <td>
-                    <div className="font-mono text-sm">
-                      {selector.parameters}
-                    </div>
-                  </td>
-                  <td className="w-1/3">
-                    <SelectorExample selector={selector} />
-                  </td>
-                  <td>
-                    <p>{selector.description}</p>
-                  </td>
-                  <td>
-                    <div className="flex flex-wrap gap-1">
-                      {selector.platforms.map((platform, i) => (
-                        <Badge key={i} variant="outline">
-                          {platform}
-                        </Badge>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
+                <React.Fragment key={selector.id}>
+                  <TableRow 
+                    id={selector.id}
+                    ref={el => selectorRefs.current[selector.id] = el}
+                    className="transition-colors duration-300"
+                  >
+                    <TableCell className="align-top">
+                      <div className="font-mono font-medium text-primary">
+                        {selector.name}
+                      </div>
+                    </TableCell>
+                    <TableCell className="align-top">
+                      <div className="font-mono text-sm whitespace-pre-wrap">
+                        {selector.parameters}
+                      </div>
+                    </TableCell>
+                    <TableCell className="align-top">
+                      <p className="whitespace-pre-wrap">{selector.description}</p>
+                    </TableCell>
+                    <TableCell className="align-top">
+                      <div className="flex flex-wrap gap-1">
+                        {selector.platforms.map((platform, i) => (
+                          <Badge key={i} variant="outline">
+                            {platform}
+                          </Badge>
+                        ))}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="example-row">
+                    <TableCell colSpan={4} className="px-4 pt-0 pb-4">
+                      <div className="mt-2">
+                        <h4 className="text-sm font-medium mb-2">Example</h4>
+                        <SelectorExample selector={selector} />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                </React.Fragment>
               ))}
             </React.Fragment>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

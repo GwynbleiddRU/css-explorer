@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssSelector } from '@/types/selectors';
 import { cn } from '@/lib/utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface SelectorExampleProps {
   selector: CssSelector;
@@ -17,24 +18,31 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   }, [selector]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-      <div>
-        <h4 className="text-sm font-semibold mb-2">HTML</h4>
-        <pre className="code-block">{selector.example.html}</pre>
-        
-        <h4 className="text-sm font-semibold mt-4 mb-2">CSS</h4>
-        <pre className="code-block">{selector.example.css}</pre>
-      </div>
-      
-      <div>
-        <h4 className="text-sm font-semibold mb-2">Live Example</h4>
-        <div className="example-container">
-          <div
-            className="rendered-example min-h-[150px]"
+    <div className="border rounded-md overflow-hidden bg-white">
+      <Tabs defaultValue="preview" className="w-full">
+        <TabsList className="p-1 bg-muted/20">
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+        <TabsContent value="preview" className="p-4">
+          <div 
+            className="rendered-example min-h-[100px] flex items-center justify-center"
             dangerouslySetInnerHTML={{ __html: renderedHtml }}
           />
-        </div>
-      </div>
+        </TabsContent>
+        <TabsContent value="code" className="border-t">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+            <div>
+              <h5 className="text-xs font-semibold mb-1">HTML</h5>
+              <pre className="text-xs bg-gray-50 rounded p-2 overflow-x-auto">{selector.example.html}</pre>
+            </div>
+            <div>
+              <h5 className="text-xs font-semibold mb-1">CSS</h5>
+              <pre className="text-xs bg-gray-50 rounded p-2 overflow-x-auto">{selector.example.css}</pre>
+            </div>
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

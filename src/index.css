@@ -99,27 +99,20 @@
   }
   
   .example-container {
-    @apply border rounded-xl p-4 bg-white shadow-sm;
+    @apply border rounded-md p-4 bg-white;
   }
   
   .table-of-contents {
     @apply p-6 rounded-xl border shadow-sm;
   }
   
-  .selector-table {
-    @apply w-full border-collapse;
-  }
-  
-  .selector-table th {
-    @apply p-4 text-left border-b;
-  }
-  
-  .selector-table td {
-    @apply p-4 border-b;
-  }
-  
   .category-header {
-    @apply bg-muted cursor-pointer p-3 rounded-lg my-2 flex items-center hover:bg-muted/70 transition-colors;
+    @apply bg-muted/50 cursor-pointer p-3 rounded-lg my-2 flex items-center hover:bg-muted/70 transition-colors;
+  }
+
+  /* Example row styling */
+  .example-row {
+    @apply bg-slate-50/50;
   }
 }
 
@@ -129,23 +122,9 @@
 }
 
 /* Table responsiveness fixes */
-.selector-table {
-  min-width: 100%;
-  table-layout: fixed;
-}
-
-/* Ensure proper content wrapping in table cells */
-.property-row td {
+.property-row td, .selector-row td {
   max-width: 300px;
   vertical-align: top;
-}
-
-.property-row td:first-child {
-  width: 120px;
-}
-
-.property-row td:nth-child(2) {
-  width: 150px;
 }
 
 .preview-container {
@@ -153,6 +132,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+/* Fix for tabs switching */
+[data-state="inactive"] {
+  display: none;
+}
+
+[data-state="active"] {
+  display: block;
 }
 
 /* Mobile optimizations */
@@ -170,22 +159,14 @@
     @apply p-4;
   }
   
-  .property-row td {
+  .property-row td,
+  .selector-row td {
     max-width: none;
     @apply break-words;
   }
-  
-  .property-row td:first-child,
-  .property-row td:nth-child(2) {
-    width: auto;
-  }
 }
 
-/* Ensure table doesn't overflow on mobile */
-@media (max-width: 640px) {
-  .selector-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+/* Ensure tables don't overflow on mobile */
+.w-full.overflow-auto {
+  -webkit-overflow-scrolling: touch;
 }

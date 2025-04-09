@@ -53,13 +53,6 @@ const Index = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold mb-4">CSS Selector Explorer</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          A comprehensive reference guide for CSS selectors with interactive examples
-        </p>
-      </header>
-
       <SearchBar onSelectSelector={handleSelectSelector} />
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
