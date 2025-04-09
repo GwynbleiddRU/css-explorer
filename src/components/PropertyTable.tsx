@@ -5,6 +5,14 @@ import { propertyCategories } from '@/data/propertyData';
 import PropertyExample from './PropertyExample';
 import { PropertyCategory } from '@/types/properties';
 import { Badge } from '@/components/ui/badge';
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;
@@ -52,8 +60,8 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
   }, [activePropertyId, expandedCategories, toggleCategory]);
 
   const renderCategoryHeader = (category: PropertyCategory) => (
-    <tr key={`${category.id}-header`}>
-      <td colSpan={6} className="p-0">
+    <TableRow key={`${category.id}-header`} className="category-row">
+      <TableCell colSpan={5} className="p-0">
         <div 
           className="category-header"
           onClick={() => toggleCategory(category.id)}
@@ -65,51 +73,51 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
           )}
           <span className="font-medium">{category.name}</span>
         </div>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 
   return (
-    <div className="overflow-x-auto">
-      <table className="selector-table">
-        <thead>
-          <tr>
-            <th>Property</th>
-            <th>Syntax</th>
-            <th>Example</th>
-            <th>Description</th>
-            <th>Browser Support</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="w-full overflow-auto">
+      <Table className="selector-table w-full border-collapse">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Property</TableHead>
+            <TableHead>Syntax</TableHead>
+            <TableHead>Example</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead>Browser Support</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {propertyCategories.map(category => (
             <React.Fragment key={category.id}>
               {renderCategoryHeader(category)}
               
               {expandedCategories[category.id] && category.properties.map(property => (
-                <tr 
+                <TableRow 
                   key={property.id}
                   id={property.id}
                   ref={el => propertyRefs.current[property.id] = el}
-                  className="transition-colors duration-300"
+                  className="property-row transition-colors duration-300"
                 >
-                  <td>
+                  <TableCell className="align-top">
                     <div className="font-mono font-medium text-primary">
                       {property.name}
                     </div>
-                  </td>
-                  <td>
-                    <div className="font-mono text-sm">
+                  </TableCell>
+                  <TableCell className="align-top">
+                    <div className="font-mono text-sm whitespace-pre-wrap">
                       {property.syntax}
                     </div>
-                  </td>
-                  <td className="w-1/3">
+                  </TableCell>
+                  <TableCell className="align-top">
                     <PropertyExample property={property} />
-                  </td>
-                  <td>
-                    <p>{property.description}</p>
-                  </td>
-                  <td>
+                  </TableCell>
+                  <TableCell className="align-top">
+                    <p className="whitespace-pre-wrap">{property.description}</p>
+                  </TableCell>
+                  <TableCell className="align-top">
                     <div className="flex flex-wrap gap-1">
                       {property.browsers.map((browser, i) => (
                         <Badge key={i} variant="outline">
@@ -117,13 +125,13 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                         </Badge>
                       ))}
                     </div>
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
             </React.Fragment>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

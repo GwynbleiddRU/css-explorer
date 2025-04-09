@@ -128,6 +128,33 @@
   @apply p-2 bg-gray-50 rounded border border-gray-100;
 }
 
+/* Table responsiveness fixes */
+.selector-table {
+  min-width: 100%;
+  table-layout: fixed;
+}
+
+/* Ensure proper content wrapping in table cells */
+.property-row td {
+  max-width: 300px;
+  vertical-align: top;
+}
+
+.property-row td:first-child {
+  width: 120px;
+}
+
+.property-row td:nth-child(2) {
+  width: 150px;
+}
+
+.preview-container {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .selector-table th,
@@ -141,5 +168,24 @@
   
   .table-of-contents {
     @apply p-4;
+  }
+  
+  .property-row td {
+    max-width: none;
+    @apply break-words;
+  }
+  
+  .property-row td:first-child,
+  .property-row td:nth-child(2) {
+    width: auto;
+  }
+}
+
+/* Ensure table doesn't overflow on mobile */
+@media (max-width: 640px) {
+  .selector-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }
