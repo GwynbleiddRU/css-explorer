@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { CssProperty } from '@/types/properties';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -8,14 +8,12 @@ interface PropertyExampleProps {
 }
 
 const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
-  const [activeTab, setActiveTab] = useState<string>('preview');
-
   return (
     <div className="border rounded-md overflow-hidden bg-white">
       <Tabs defaultValue="preview" className="w-full">
         <TabsList className="p-1 bg-muted/20">
-          <TabsTrigger value="preview" onClick={() => setActiveTab('preview')}>Preview</TabsTrigger>
-          <TabsTrigger value="code" onClick={() => setActiveTab('code')}>Code</TabsTrigger>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="p-4">
           <div 

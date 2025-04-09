@@ -136,12 +136,18 @@
 }
 
 /* Fix for tabs switching */
-[data-state="inactive"] {
+.tabs-content[data-state="inactive"] {
   display: none;
 }
 
-[data-state="active"] {
+.tabs-content[data-state="active"] {
   display: block;
+}
+
+/* Make sure tabs content is visible */
+[role="tabpanel"] {
+  visibility: visible !important;
+  display: block !important;
 }
 
 /* Mobile optimizations */
@@ -169,4 +175,13 @@
 /* Ensure tables don't overflow on mobile */
 .w-full.overflow-auto {
   -webkit-overflow-scrolling: touch;
+}
+
+/* Fix radix tabs display issues */
+[data-state="inactive"] {
+  display: none;
+}
+
+[data-state="active"] {
+  display: block;
 }

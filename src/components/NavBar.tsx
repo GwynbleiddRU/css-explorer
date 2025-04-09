@@ -1,9 +1,8 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
@@ -19,29 +18,30 @@ const NavBar = () => {
     return location.pathname === path;
   };
 
+  // Fixed the navigation menu to not use nested <a> tags
   const NavLinks = () => (
-    <>
-      <NavigationMenuItem>
-        <Link to="/properties">
-          <NavigationMenuLink className={cn(
-            navigationMenuTriggerStyle(),
-            isActive('/properties') && 'bg-accent text-accent-foreground'
-          )}>
-            CSS Properties
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <Link to="/selectors">
-          <NavigationMenuLink className={cn(
-            navigationMenuTriggerStyle(),
-            isActive('/selectors') && 'bg-accent text-accent-foreground'
-          )}>
-            CSS Selectors
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-    </>
+    <div className="flex items-center space-x-1">
+      <Link to="/properties">
+        <div className={cn(
+          "px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium",
+          isActive('/properties') 
+            ? "bg-accent text-accent-foreground" 
+            : "hover:bg-accent/80 hover:text-accent-foreground"
+        )}>
+          CSS Properties
+        </div>
+      </Link>
+      <Link to="/selectors">
+        <div className={cn(
+          "px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium",
+          isActive('/selectors') 
+            ? "bg-accent text-accent-foreground" 
+            : "hover:bg-accent/80 hover:text-accent-foreground"
+        )}>
+          CSS Selectors
+        </div>
+      </Link>
+    </div>
   );
 
   return (
@@ -53,13 +53,7 @@ const NavBar = () => {
           </Link>
 
           {/* Desktop navigation */}
-          {!isMobile && (
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavLinks />
-              </NavigationMenuList>
-            </NavigationMenu>
-          )}
+          {!isMobile && <NavLinks />}
         </div>
 
         {/* Mobile navigation */}

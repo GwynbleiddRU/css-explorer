@@ -96,10 +96,9 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
               {expandedCategories[category.id] && category.properties.map(property => (
                 <React.Fragment key={property.id}>
                   <TableRow 
-                    key={property.id}
                     id={property.id}
                     ref={el => propertyRefs.current[property.id] = el}
-                    className="property-row transition-colors duration-300"
+                    className="transition-colors duration-300"
                   >
                     <TableCell className="align-top">
                       <div className="font-mono font-medium text-primary">

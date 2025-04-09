@@ -1,7 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CssSelector } from '@/types/selectors';
-import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface SelectorExampleProps {
@@ -9,14 +8,6 @@ interface SelectorExampleProps {
 }
 
 const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
-  const [renderedHtml, setRenderedHtml] = useState<string>('');
-
-  useEffect(() => {
-    // Combine CSS and HTML for the live example
-    const styleTag = `<style>${selector.example.css}</style>`;
-    setRenderedHtml(styleTag + selector.example.html);
-  }, [selector]);
-
   return (
     <div className="border rounded-md overflow-hidden bg-white">
       <Tabs defaultValue="preview" className="w-full">
@@ -26,8 +17,10 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
         </TabsList>
         <TabsContent value="preview" className="p-4">
           <div 
-            className="rendered-example min-h-[100px] flex items-center justify-center"
-            dangerouslySetInnerHTML={{ __html: renderedHtml }}
+            className="preview-container min-h-[100px] flex items-center justify-center"
+            dangerouslySetInnerHTML={{ 
+              __html: `<style>${selector.example.css}</style>${selector.example.html}` 
+            }}
           />
         </TabsContent>
         <TabsContent value="code" className="border-t">
