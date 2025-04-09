@@ -21,7 +21,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all elements on the page. Use with caution as it can impact performance when applied to large documents.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Basic Selectors"
       },
       {
         id: "type",
@@ -37,7 +38,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all elements that match the given node name.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Basic Selectors"
       },
       {
         id: "class",
@@ -54,7 +56,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all elements with the given class attribute.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Basic Selectors"
       },
       {
         id: "id",
@@ -70,7 +73,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects an element with the given ID. Should be unique within the document.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Basic Selectors"
       },
     ]
   },
@@ -97,7 +101,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all B elements that are descendants of an A element (not just direct children).",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Combinators"
       },
       {
         id: "child",
@@ -117,7 +122,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all B elements that are direct children of an A element.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Combinators"
       },
       {
         id: "adjacent-sibling",
@@ -133,7 +139,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects element B when it immediately follows element A and both share the same parent.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Combinators"
       },
       {
         id: "general-sibling",
@@ -150,7 +157,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects all B elements that follow an A element and share the same parent.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Combinators"
       }
     ]
   },
@@ -178,7 +186,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects an element when the user hovers over it with a pointing device.",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Pseudo-Classes"
       },
       {
         id: "active",
@@ -200,7 +209,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects an element when it is being activated by the user (e.g., clicked).",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Pseudo-Classes"
       },
       {
         id: "focus",
@@ -222,7 +232,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects an element when it has focus (e.g., form input when selected).",
-        platforms: ["All browsers"]
+        platforms: ["All browsers"],
+        category: "Pseudo-Classes"
       },
       {
         id: "nth-child",
@@ -246,7 +257,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects elements based on their position among siblings according to a pattern (e.g., odd, even, 3n, etc).",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Pseudo-Classes"
       }
     ]
   },
@@ -273,7 +285,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Creates a pseudo-element that is the first child of the selected element, often used with the content property.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Pseudo-Elements"
       },
       {
         id: "after",
@@ -292,7 +305,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Creates a pseudo-element that is the last child of the selected element, often used with the content property.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Pseudo-Elements"
       },
       {
         id: "first-letter",
@@ -310,7 +324,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects the first letter of the specified element.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Pseudo-Elements"
       },
       {
         id: "first-line",
@@ -330,7 +345,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects the first line of the specified element.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Pseudo-Elements"
       }
     ]
   },
@@ -351,7 +367,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects elements with the specified attribute, regardless of its value.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Attribute Selectors"
       },
       {
         id: "attr-equals",
@@ -366,7 +383,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects elements where the attribute value exactly matches the specified value.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Attribute Selectors"
       },
       {
         id: "attr-contains",
@@ -383,7 +401,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects elements where the attribute value contains the specified substring.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Attribute Selectors"
       },
       {
         id: "attr-begins",
@@ -412,7 +431,8 @@ export const selectorCategories: SelectorCategory[] = [
 }`
         },
         description: "Selects elements where the attribute value begins with the specified substring.",
-        platforms: ["All modern browsers"]
+        platforms: ["All modern browsers"],
+        category: "Attribute Selectors"
       }
     ]
   }
