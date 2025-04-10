@@ -110,6 +110,8 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
                   body {
                     padding: 16px;
                     font-family: system-ui, sans-serif;
+                    background-color: white;
+                    color: black;
                   }
                   ${property.example.css}
                 </style>
