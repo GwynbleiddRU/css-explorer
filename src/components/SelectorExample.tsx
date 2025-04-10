@@ -1,7 +1,5 @@
-
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { CssSelector } from '@/types/selectors';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useTranslation } from 'react-i18next';
 
 interface SelectorExampleProps {
@@ -10,63 +8,118 @@ interface SelectorExampleProps {
 
 const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState('preview');
+  const isDarkMode = document.documentElement.classList.contains('dark');
+
+  const formattedHtml = useMemo(() => {
+    if (!selector.example.html) return '';
+    return selector.example.html
+      .replace(/<(div|p|h[1-6]|ul|ol|li|table|tr|td|section|article|header|footer|nav|form|fieldset)([^>]*)>/gi, '\n<$1$2>')
+      .replace(/<(img|input|br|hr|span|a|strong|em|b|i|small|code)([^>]*?)\/?\s*>/gi, '<$1$2>')
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .join('\n')
+      .replace(/^/gm, '  ');
+  }, [selector.example.html]);
+
+  const formattedCss = useMemo(() => {
+    if (!selector.example.css) return '';
+    return selector.example.css
+      .replace(/\s*{\s*/g, ' {\n  ')
+      .replace(/;\s*/g, ';\n  ')
+      .replace(/\s*}\s*/g, '\n}')
+      .replace(/\n  \n/g, '\n')
+      .replace(/\n  }/g, '\n}');
+  }, [selector.example.css]);
 
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
-      <Tabs defaultValue="preview" className="w-full">
-        <TabsList className="p-1 bg-muted/20 w-full flex">
-          <TabsTrigger value="preview" className="flex-1">{t('general.preview')}</TabsTrigger>
-          <TabsTrigger value="code" className="flex-1">{t('general.code')}</TabsTrigger>
-        </TabsList>
-        <TabsContent value="preview" className="p-4">
-          <iframe 
-            className="preview-iframe min-h-[100px] w-full border-0"
+      <div className="flex border-b">
+        <button
+          onClick={() => setActiveTab('preview')}
+          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
+            activeTab === 'preview' 
+              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+          }`}
+        >
+          {t('general.preview')}
+        </button>
+        <button
+          onClick={() => setActiveTab('code')}
+          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
+            activeTab === 'code' 
+              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+          }`}
+        >
+          {t('general.code')}
+        </button>
+      </div>
+
+      {activeTab === 'preview' && (
+        <div className="p-4">
+          <iframe
+            className="preview-iframe w-full min-h-[100px] border rounded"
             srcDoc={`
               <!DOCTYPE html>
-              <html>
-                <head>
-                  <style>
-                    /* Reset styles to prevent leaking styles from the parent document */
-                    html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, code, img, ol, ul, li {
-                      margin: 0;
-                      padding: 0;
-                      border: 0;
-                      font-size: 100%;
-                      font: inherit;
-                      vertical-align: baseline;
-                      box-sizing: border-box;
-                    }
-                    body {
-                      padding: 16px;
-                      font-family: system-ui, -apple-system, sans-serif;
-                    }
-                    /* Example specific CSS */
-                    ${selector.example.css}
-                  </style>
-                </head>
-                <body>
-                  <div class="preview-container" style="min-height: 80px; display: flex; align-items: center; justify-content: center;">
-                    ${selector.example.html}
-                  </div>
-                </body>
+              <html lang="en">
+              <head>
+                <style>
+                  body {
+                    padding: 16px;
+                    font-family: system-ui, sans-serif;
+                  }
+                  ${selector.example.css}
+                </style>
+              </head>
+              <body>
+                ${selector.example.html}
+              </body>
               </html>
             `}
-            title="Selector Example Preview"
           />
-        </TabsContent>
-        <TabsContent value="code" className="border-t">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-            <div>
-              <h5 className="text-xs font-semibold mb-1">{t('general.html')}</h5>
-              <pre className="text-xs bg-gray-50 dark:bg-gray-900 rounded p-2 overflow-x-auto">{selector.example.html}</pre>
+        </div>
+      )}
+
+      {activeTab === 'code' && (
+        <div className="p-4 space-y-4 max-w-full">
+          {/* HTML */}
+          <div className="code-editor-block w-full">
+            <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
+              <span className="font-medium">{t('general.html')}</span>
+              <div className="flex space-x-1">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
             </div>
-            <div>
-              <h5 className="text-xs font-semibold mb-1">{t('general.css')}</h5>
-              <pre className="text-xs bg-gray-50 dark:bg-gray-900 rounded p-2 overflow-x-auto">{selector.example.css}</pre>
+            <div className="relative bg-gray-900 rounded-b w-full">
+              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
+                <code>{formattedHtml}</code>
+              </pre>
             </div>
           </div>
-        </TabsContent>
-      </Tabs>
+
+          {/* CSS */}
+          <div className="code-editor-block w-full">
+            <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
+              <span className="font-medium">{t('general.css')}</span>
+              <div className="flex space-x-1">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+            </div>
+            <div className="relative bg-gray-900 rounded-b w-full">
+              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
+                <code>{formattedCss}</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
