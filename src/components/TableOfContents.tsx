@@ -2,7 +2,7 @@
 import React from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { selectorCategories } from '@/data/selectorData';
-import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface TableOfContentsProps {
   expandedCategories: Record<string, boolean>;
@@ -15,9 +15,11 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
   toggleCategory,
   onSelectSelector
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="table-of-contents mb-8">
-      <h2 className="text-xl font-bold mb-4">Table of Contents</h2>
+      <h2 className="text-xl font-bold mb-4">{t('general.tableOfContents')}</h2>
       <div className="space-y-2">
         {selectorCategories.map(category => (
           <div key={category.id} className="space-y-1">

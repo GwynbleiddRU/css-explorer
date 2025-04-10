@@ -2,6 +2,7 @@
 import React from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { propertyCategories } from '@/data/propertyData';
+import { useTranslation } from 'react-i18next';
 
 interface PropertyTableOfContentsProps {
   expandedCategories: Record<string, boolean>;
@@ -14,9 +15,11 @@ const PropertyTableOfContents: React.FC<PropertyTableOfContentsProps> = ({
   toggleCategory,
   onSelectProperty
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="table-of-contents bg-card">
-      <h2 className="text-lg font-medium mb-4">Table of Contents</h2>
+      <h2 className="text-lg font-medium mb-4">{t('general.tableOfContents')}</h2>
       <ul className="space-y-2">
         {propertyCategories.map(category => (
           <li key={category.id} className="mb-2">

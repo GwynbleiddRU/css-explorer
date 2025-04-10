@@ -14,9 +14,9 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
       <Tabs defaultValue="preview" className="w-full">
-        <TabsList className="p-1 bg-muted/20">
-          <TabsTrigger value="preview">{t('general.preview')}</TabsTrigger>
-          <TabsTrigger value="code">{t('general.code')}</TabsTrigger>
+        <TabsList className="p-1 bg-muted/20 w-full flex">
+          <TabsTrigger value="preview" className="flex-1">{t('general.preview')}</TabsTrigger>
+          <TabsTrigger value="code" className="flex-1">{t('general.code')}</TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="p-4">
           <iframe 

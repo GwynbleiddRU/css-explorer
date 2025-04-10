@@ -15,14 +15,20 @@
     "browserSupport": "Поддержка браузеров",
     "selector": "Селектор",
     "parameters": "Параметры",
-    "supportedPlatforms": "Поддерживаемые платформы"
+    "supportedPlatforms": "Поддерживаемые платформы",
+    "tableOfContents": "Содержание"
   },
   "navbar": {
     "switchToDarkMode": "Переключиться на темный режим",
     "switchToLightMode": "Переключиться на светлый режим",
-    "toggleMenu": "Переключить меню"
+    "toggleMenu": "Переключить меню",
+    "language": "Язык"
   },
   "footer": {
     "copyright": "© {{year}} CSS Обозреватель"
+  },
+  "search": {
+    "cssProperties": "Поиск CSS свойств...",
+    "cssSelectors": "Поиск CSS селекторов..."
   }
 }

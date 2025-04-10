@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { useTranslation } from 'react-i18next';
 
 interface PropertySearchBarProps {
   onSelectProperty: (propertyId: string) => void;
@@ -14,6 +15,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -73,7 +75,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
         <Input
           ref={inputRef}
           type="text"
-          placeholder="Search CSS properties..."
+          placeholder={t('search.cssProperties')}
           className="pl-10 w-full"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -87,9 +89,9 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
       </div>
       
       {isDropdownOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white shadow-lg rounded-md border border-border overflow-hidden">
+        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 shadow-lg rounded-md border border-border overflow-hidden">
           <ul className="py-1">
-            {filteredProperties.map((property, index) => (
+            {filteredProperties.map((property) => (
               <li
                 key={property.id}
                 className="px-4 py-2 hover:bg-muted cursor-pointer flex justify-between"

@@ -15,14 +15,20 @@
     "browserSupport": "Browser Support",
     "selector": "Selector",
     "parameters": "Parameters",
-    "supportedPlatforms": "Supported Platforms"
+    "supportedPlatforms": "Supported Platforms",
+    "tableOfContents": "Table of Contents"
   },
   "navbar": {
     "switchToDarkMode": "Switch to dark mode",
     "switchToLightMode": "Switch to light mode",
-    "toggleMenu": "Toggle menu"
+    "toggleMenu": "Toggle menu",
+    "language": "Language"
   },
   "footer": {
     "copyright": "© {{year}} CSS Explorer"
+  },
+  "search": {
+    "cssProperties": "Search CSS properties...",
+    "cssSelectors": "Search CSS selectors..."
   }
 }

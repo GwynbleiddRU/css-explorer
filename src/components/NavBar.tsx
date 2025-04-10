@@ -12,6 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 
 interface NavBarProps {
@@ -84,6 +85,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
+              <DropdownMenuLabel>{t('navbar.language')}</DropdownMenuLabel>
               <DropdownMenuItem 
                 onClick={() => changeLanguage('en')} 
                 className={cn(language === 'en' && "bg-accent")}
