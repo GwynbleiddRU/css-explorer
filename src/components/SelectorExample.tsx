@@ -2,18 +2,21 @@
 import React from 'react';
 import { CssSelector } from '@/types/selectors';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useTranslation } from 'react-i18next';
 
 interface SelectorExampleProps {
   selector: CssSelector;
 }
 
 const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
+  const { t } = useTranslation();
+
   return (
-    <div className="border rounded-md overflow-hidden bg-white">
+    <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
       <Tabs defaultValue="preview" className="w-full">
         <TabsList className="p-1 bg-muted/20">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
+          <TabsTrigger value="preview">{t('general.preview')}</TabsTrigger>
+          <TabsTrigger value="code">{t('general.code')}</TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="p-4">
           <iframe 
@@ -22,7 +25,24 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
               <!DOCTYPE html>
               <html>
                 <head>
-                  <style>${selector.example.css}</style>
+                  <style>
+                    /* Reset styles to prevent leaking styles from the parent document */
+                    html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, code, img, ol, ul, li {
+                      margin: 0;
+                      padding: 0;
+                      border: 0;
+                      font-size: 100%;
+                      font: inherit;
+                      vertical-align: baseline;
+                      box-sizing: border-box;
+                    }
+                    body {
+                      padding: 16px;
+                      font-family: system-ui, -apple-system, sans-serif;
+                    }
+                    /* Example specific CSS */
+                    ${selector.example.css}
+                  </style>
                 </head>
                 <body>
                   <div class="preview-container" style="min-height: 80px; display: flex; align-items: center; justify-content: center;">
@@ -37,12 +57,12 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
         <TabsContent value="code" className="border-t">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
             <div>
-              <h5 className="text-xs font-semibold mb-1">HTML</h5>
-              <pre className="text-xs bg-gray-50 rounded p-2 overflow-x-auto">{selector.example.html}</pre>
+              <h5 className="text-xs font-semibold mb-1">{t('general.html')}</h5>
+              <pre className="text-xs bg-gray-50 dark:bg-gray-900 rounded p-2 overflow-x-auto">{selector.example.html}</pre>
             </div>
             <div>
-              <h5 className="text-xs font-semibold mb-1">CSS</h5>
-              <pre className="text-xs bg-gray-50 rounded p-2 overflow-x-auto">{selector.example.css}</pre>
+              <h5 className="text-xs font-semibold mb-1">{t('general.css')}</h5>
+              <pre className="text-xs bg-gray-50 dark:bg-gray-900 rounded p-2 overflow-x-auto">{selector.example.css}</pre>
             </div>
           </div>
         </TabsContent>

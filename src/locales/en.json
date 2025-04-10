@@ -1,0 +1,28 @@
+
+{
+  "general": {
+    "cssExplorer": "CSS Explorer",
+    "cssProperties": "CSS Properties",
+    "cssSelectors": "CSS Selectors",
+    "example": "Example",
+    "preview": "Preview",
+    "code": "Code",
+    "html": "HTML",
+    "css": "CSS",
+    "property": "Property",
+    "syntax": "Syntax",
+    "description": "Description",
+    "browserSupport": "Browser Support",
+    "selector": "Selector",
+    "parameters": "Parameters",
+    "supportedPlatforms": "Supported Platforms"
+  },
+  "navbar": {
+    "switchToDarkMode": "Switch to dark mode",
+    "switchToLightMode": "Switch to light mode",
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "copyright": "© {{year}} CSS Explorer"
+  }
+}

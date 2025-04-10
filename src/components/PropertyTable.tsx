@@ -4,7 +4,6 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertyExample from './PropertyExample';
 import { PropertyCategory } from '@/types/properties';
-import { Badge } from '@/components/ui/badge';
 import { 
   Table,
   TableBody,
@@ -13,6 +12,8 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { useTranslation } from 'react-i18next';
+import BrowserIcon from './BrowserIcon';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;
@@ -26,6 +27,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
   activePropertyId
 }) => {
   const propertyRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (activePropertyId && propertyRefs.current[activePropertyId]) {
@@ -82,10 +84,10 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
       <Table className="w-full border-collapse">
         <TableHeader>
           <TableRow>
-            <TableHead>Property</TableHead>
-            <TableHead>Syntax</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Browser Support</TableHead>
+            <TableHead>{t('general.property')}</TableHead>
+            <TableHead>{t('general.syntax')}</TableHead>
+            <TableHead>{t('general.description')}</TableHead>
+            <TableHead>{t('general.browserSupport')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -114,11 +116,9 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                       <p className="whitespace-pre-wrap">{property.description}</p>
                     </TableCell>
                     <TableCell className="align-top">
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2">
                         {property.browsers.map((browser, i) => (
-                          <Badge key={i} variant="outline">
-                            {browser}
-                          </Badge>
+                          <BrowserIcon key={i} browser={browser} />
                         ))}
                       </div>
                     </TableCell>
@@ -126,7 +126,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                   <TableRow className="example-row">
                     <TableCell colSpan={4} className="px-4 pt-0 pb-4">
                       <div className="mt-2">
-                        <h4 className="text-sm font-medium mb-2">Example</h4>
+                        <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
                         <PropertyExample property={property} />
                       </div>
                     </TableCell>

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { useEffect } from "react";
+import './i18n';
 
 const queryClient = new QueryClient();
 

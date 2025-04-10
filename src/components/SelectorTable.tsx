@@ -4,7 +4,6 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { selectorCategories } from '@/data/selectorData';
 import SelectorExample from './SelectorExample';
 import { SelectorCategory } from '@/types/selectors';
-import { Badge } from '@/components/ui/badge';
 import { 
   Table,
   TableBody,
@@ -13,6 +12,8 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { useTranslation } from 'react-i18next';
+import BrowserIcon from './BrowserIcon';
 
 interface SelectorTableProps {
   expandedCategories: Record<string, boolean>;
@@ -26,6 +27,7 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
   activeSelectorId
 }) => {
   const selectorRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (activeSelectorId && selectorRefs.current[activeSelectorId]) {
@@ -82,10 +84,10 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
       <Table className="w-full border-collapse">
         <TableHeader>
           <TableRow>
-            <TableHead>Selector</TableHead>
-            <TableHead>Parameters</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Supported Platforms</TableHead>
+            <TableHead>{t('general.selector')}</TableHead>
+            <TableHead>{t('general.parameters')}</TableHead>
+            <TableHead>{t('general.description')}</TableHead>
+            <TableHead>{t('general.supportedPlatforms')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -114,11 +116,9 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
                       <p className="whitespace-pre-wrap">{selector.description}</p>
                     </TableCell>
                     <TableCell className="align-top">
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2">
                         {selector.platforms.map((platform, i) => (
-                          <Badge key={i} variant="outline">
-                            {platform}
-                          </Badge>
+                          <BrowserIcon key={i} browser={platform} />
                         ))}
                       </div>
                     </TableCell>
@@ -126,7 +126,7 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
                   <TableRow className="example-row">
                     <TableCell colSpan={4} className="px-4 pt-0 pb-4">
                       <div className="mt-2">
-                        <h4 className="text-sm font-medium mb-2">Example</h4>
+                        <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
                         <SelectorExample selector={selector} />
                       </div>
                     </TableCell>

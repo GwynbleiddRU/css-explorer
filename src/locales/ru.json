@@ -1,0 +1,28 @@
+
+{
+  "general": {
+    "cssExplorer": "CSS Обозреватель",
+    "cssProperties": "CSS Свойства",
+    "cssSelectors": "CSS Селекторы",
+    "example": "Пример",
+    "preview": "Предпросмотр",
+    "code": "Код",
+    "html": "HTML",
+    "css": "CSS",
+    "property": "Свойство",
+    "syntax": "Синтаксис",
+    "description": "Описание",
+    "browserSupport": "Поддержка браузеров",
+    "selector": "Селектор",
+    "parameters": "Параметры",
+    "supportedPlatforms": "Поддерживаемые платформы"
+  },
+  "navbar": {
+    "switchToDarkMode": "Переключиться на темный режим",
+    "switchToLightMode": "Переключиться на светлый режим",
+    "toggleMenu": "Переключить меню"
+  },
+  "footer": {
+    "copyright": "© {{year}} CSS Обозреватель"
+  }
+}
