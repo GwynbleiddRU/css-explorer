@@ -16,11 +16,22 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="p-4">
-          <div 
-            className="preview-container min-h-[100px] flex items-center justify-center"
-            dangerouslySetInnerHTML={{ 
-              __html: `<style>${selector.example.css}</style>${selector.example.html}` 
-            }}
+          <iframe 
+            className="preview-iframe min-h-[100px] w-full border-0"
+            srcDoc={`
+              <!DOCTYPE html>
+              <html>
+                <head>
+                  <style>${selector.example.css}</style>
+                </head>
+                <body>
+                  <div class="preview-container" style="min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                    ${selector.example.html}
+                  </div>
+                </body>
+              </html>
+            `}
+            title="Selector Example Preview"
           />
         </TabsContent>
         <TabsContent value="code" className="border-t">

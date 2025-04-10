@@ -99,7 +99,7 @@
   }
   
   .example-container {
-    @apply border rounded-md p-4 bg-white;
+    @apply border rounded-md p-4 bg-white dark:bg-gray-800;
   }
   
   .table-of-contents {
@@ -112,13 +112,13 @@
 
   /* Example row styling */
   .example-row {
-    @apply bg-slate-50/50;
+    @apply bg-slate-50/50 dark:bg-slate-800/50;
   }
 }
 
 /* Modern styling for code blocks */
 .code-block pre {
-  @apply p-2 bg-gray-50 rounded border border-gray-100;
+  @apply p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-100 dark:border-gray-700;
 }
 
 /* Table responsiveness fixes */
@@ -127,12 +127,11 @@
   vertical-align: top;
 }
 
-.preview-container {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+/* Use iframe for preview to isolate styles */
+.preview-iframe {
+  min-height: 120px;
+  width: 100%;
+  border: none;
 }
 
 /* Fix for tabs switching */
@@ -184,4 +183,17 @@
 
 [data-state="active"] {
   display: block;
+}
+
+/* Dark mode adjustments */
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark pre {
+  @apply bg-gray-900 border-gray-700;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-gray-900;
 }

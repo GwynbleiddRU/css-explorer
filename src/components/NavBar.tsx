@@ -2,12 +2,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu } from 'lucide-react';
+import { Menu, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 
-const NavBar = () => {
+interface NavBarProps {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme }) => {
   const location = useLocation();
   const isMobile = useIsMobile();
 
@@ -18,7 +23,6 @@ const NavBar = () => {
     return location.pathname === path;
   };
 
-  // Fixed the navigation menu to not use nested <a> tags
   const NavLinks = () => (
     <div className="flex items-center space-x-1">
       <Link to="/properties">
@@ -56,42 +60,55 @@ const NavBar = () => {
           {!isMobile && <NavLinks />}
         </div>
 
-        {/* Mobile navigation */}
-        {isMobile && (
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <SheetHeader>
-                <SheetTitle>CSS Explorer</SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col gap-4 mt-6">
-                <Link 
-                  to="/properties" 
-                  className={cn(
-                    "px-4 py-2 rounded-md transition-colors",
-                    isActive('/properties') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
-                  )}
-                >
-                  CSS Properties
-                </Link>
-                <Link 
-                  to="/selectors" 
-                  className={cn(
-                    "px-4 py-2 rounded-md transition-colors",
-                    isActive('/selectors') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
-                  )}
-                >
-                  CSS Selectors
-                </Link>
-              </div>
-            </SheetContent>
-          </Sheet>
-        )}
+        <div className="flex items-center space-x-2">
+          {/* Theme Toggle Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="rounded-full"
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </Button>
+
+          {/* Mobile navigation */}
+          {isMobile && (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <SheetHeader>
+                  <SheetTitle>CSS Explorer</SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-4 mt-6">
+                  <Link 
+                    to="/properties" 
+                    className={cn(
+                      "px-4 py-2 rounded-md transition-colors",
+                      isActive('/properties') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
+                    )}
+                  >
+                    CSS Properties
+                  </Link>
+                  <Link 
+                    to="/selectors" 
+                    className={cn(
+                      "px-4 py-2 rounded-md transition-colors",
+                      isActive('/selectors') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
+                    )}
+                  >
+                    CSS Selectors
+                  </Link>
+                </div>
+              </SheetContent>
+            </Sheet>
+          )}
+        </div>
       </div>
     </header>
   );
