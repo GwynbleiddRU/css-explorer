@@ -30,7 +30,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
   visibilitySettings
 }) => {
   const propertyRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
 
   useEffect(() => {
     if (activePropertyId && propertyRefs.current[activePropertyId]) {
@@ -50,6 +50,16 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
     }
   }, [activePropertyId]);
 
+  // Get translated description or fall back to English
+  const getDescription = (propertyId: string, description: string) => {
+    const translatedDescription = t(`${propertyId}`, {
+      ns: 'propertyDescriptions',
+      defaultValue: ''
+    });
+    
+    return translatedDescription || description;
+  };
+
   const renderCategoryHeader = (category: PropertyCategory) => (
     <TableRow key={`${category.id}-header`} className="category-row">
       <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="p-0">
@@ -62,7 +72,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
           ) : (
             <ChevronRight className="h-4 w-4 mr-2" />
           )}
-          <span className="font-medium">{category.name}</span>
+          <span className="font-medium">{t(`categories.${category.id}`, { defaultValue: category.name })}</span>
         </div>
       </TableCell>
     </TableRow>
@@ -104,7 +114,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                       </div>
                     </TableCell>
                     <TableCell className="align-top">
-                      <p className="whitespace-pre-wrap">{property.description}</p>
+                      <p className="whitespace-pre-wrap">{getDescription(property.id, property.description)}</p>
                     </TableCell>
                     {visibilitySettings.showSupport && (
                       <TableCell className="align-top">

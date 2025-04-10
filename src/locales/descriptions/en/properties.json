@@ -1,0 +1,8 @@
+
+{
+  "font-family": "Specifies the font family for text.",
+  "font-size": "Specifies the size of the font.",
+  "font-weight": "Specifies the weight of a font.",
+  "color": "Sets the color of text.",
+  "background-color": "Sets the background color of an element."
+}

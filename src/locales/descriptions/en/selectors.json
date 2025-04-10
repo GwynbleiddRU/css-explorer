@@ -1,0 +1,7 @@
+
+{
+  "element": "Selects all elements with the given tag name.",
+  "class": "Selects all elements with the given class.",
+  "id": "Selects an element with the given ID.",
+  "universal": "Selects all elements."
+}

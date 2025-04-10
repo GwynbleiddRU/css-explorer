@@ -27,7 +27,10 @@
     "search": "Поиск",
     "showHide": "Показать/Скрыть",
     "property": "Свойство",
-    "selector": "Селектор"
+    "selector": "Селектор",
+    "cssProperties": "Свойства CSS",
+    "cssSelectors": "Селекторы CSS",
+    "cssExplorer": "CSS Справочник"
   },
   "search": {
     "searchSelectors": "Поиск CSS селекторов...",
@@ -38,5 +41,24 @@
     "notFound": "Страница не найдена",
     "notFoundMessage": "Извините, запрашиваемая страница не существует.",
     "goBack": "Вернуться назад"
+  },
+  "categories": {
+    "layout": "Компоновка",
+    "typography": "Типографика",
+    "color": "Цвет",
+    "background": "Фон",
+    "border": "Граница",
+    "effects": "Эффекты",
+    "basic": "Базовые селекторы",
+    "combinators": "Комбинаторы",
+    "pseudo-classes": "Псевдоклассы",
+    "pseudo-elements": "Псевдоэлементы",
+    "attribute": "Селекторы атрибутов"
+  },
+  "navbar": {
+    "language": "Язык",
+    "switchToDarkMode": "Переключить на тёмную тему",
+    "switchToLightMode": "Переключить на светлую тему",
+    "toggleMenu": "Переключить меню"
   }
 }

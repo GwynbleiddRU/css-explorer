@@ -27,7 +27,10 @@
     "search": "Search",
     "showHide": "Show/Hide",
     "property": "Property",
-    "selector": "Selector"
+    "selector": "Selector",
+    "cssProperties": "CSS Properties",
+    "cssSelectors": "CSS Selectors",
+    "cssExplorer": "CSS Explorer"
   },
   "search": {
     "searchSelectors": "Search CSS Selectors...",
@@ -38,5 +41,24 @@
     "notFound": "Page Not Found",
     "notFoundMessage": "Sorry, the page you are looking for does not exist.",
     "goBack": "Go Back"
+  },
+  "categories": {
+    "layout": "Layout",
+    "typography": "Typography",
+    "color": "Color",
+    "background": "Background",
+    "border": "Border",
+    "effects": "Effects",
+    "basic": "Basic Selectors",
+    "combinators": "Combinators",
+    "pseudo-classes": "Pseudo-classes",
+    "pseudo-elements": "Pseudo-elements",
+    "attribute": "Attribute Selectors"
+  },
+  "navbar": {
+    "language": "Language",
+    "switchToDarkMode": "Switch to Dark Mode",
+    "switchToLightMode": "Switch to Light Mode",
+    "toggleMenu": "Toggle Menu"
   }
 }

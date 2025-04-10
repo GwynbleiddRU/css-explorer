@@ -43,7 +43,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
             ? "bg-accent text-accent-foreground" 
             : "hover:bg-accent/80 hover:text-accent-foreground"
         )}>
-          {t('general.cssProperties')}
+          {t('general.properties')}
         </div>
       </Link>
       <Link to="/selectors">
@@ -53,7 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
             ? "bg-accent text-accent-foreground" 
             : "hover:bg-accent/80 hover:text-accent-foreground"
         )}>
-          {t('general.cssSelectors')}
+          {t('general.selectors')}
         </div>
       </Link>
     </div>
@@ -64,7 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="font-bold text-xl">
-            {t('general.cssExplorer')}
+            {t('general.title')}
           </Link>
 
           {/* Desktop navigation */}
@@ -79,24 +79,24 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
                 variant="ghost"
                 size="icon"
                 className="rounded-full"
-                aria-label="Switch language"
+                aria-label={t('general.language')}
               >
                 <Globe className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>{t('navbar.language')}</DropdownMenuLabel>
+              <DropdownMenuLabel>{t('general.language')}</DropdownMenuLabel>
               <DropdownMenuItem 
                 onClick={() => changeLanguage('en')} 
                 className={cn(language === 'en' && "bg-accent")}
               >
-                English
+                {t('general.english')}
               </DropdownMenuItem>
               <DropdownMenuItem 
                 onClick={() => changeLanguage('ru')} 
                 className={cn(language === 'ru' && "bg-accent")}
               >
-                Русский
+                {t('general.russian')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -107,7 +107,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
             size="icon"
             onClick={toggleTheme}
             className="rounded-full"
-            aria-label={theme === 'light' ? t('navbar.switchToDarkMode') : t('navbar.switchToLightMode')}
+            aria-label={theme === 'light' ? t('general.darkMode') : t('general.lightMode')}
           >
             {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
           </Button>
@@ -118,12 +118,12 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
-                  <span className="sr-only">{t('navbar.toggleMenu')}</span>
+                  <span className="sr-only">{t('general.showHide')}</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
                 <SheetHeader>
-                  <SheetTitle>{t('general.cssExplorer')}</SheetTitle>
+                  <SheetTitle>{t('general.title')}</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-4 mt-6">
                   <Link 
@@ -133,7 +133,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
                       isActive('/properties') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
                     )}
                   >
-                    {t('general.cssProperties')}
+                    {t('general.properties')}
                   </Link>
                   <Link 
                     to="/selectors" 
@@ -142,7 +142,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
                       isActive('/selectors') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
                     )}
                   >
-                    {t('general.cssSelectors')}
+                    {t('general.selectors')}
                   </Link>
                 </div>
               </SheetContent>

@@ -30,7 +30,7 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
   visibilitySettings
 }) => {
   const selectorRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
-  const { t } = useTranslation();
+  const { t } = useTranslation(['translation', 'selectorDescriptions']);
 
   useEffect(() => {
     if (activeSelectorId && selectorRefs.current[activeSelectorId]) {
@@ -50,6 +50,16 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
     }
   }, [activeSelectorId]);
 
+  // Get translated description or fall back to English
+  const getDescription = (selectorId: string, description: string) => {
+    const translatedDescription = t(`${selectorId}`, {
+      ns: 'selectorDescriptions',
+      defaultValue: ''
+    });
+    
+    return translatedDescription || description;
+  };
+
   const renderCategoryHeader = (category: SelectorCategory) => (
     <TableRow key={`${category.id}-header`} className="category-row">
       <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="p-0">
@@ -62,7 +72,7 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
           ) : (
             <ChevronRight className="h-4 w-4 mr-2" />
           )}
-          <span className="font-medium">{category.name}</span>
+          <span className="font-medium">{t(`categories.${category.id}`, { defaultValue: category.name })}</span>
         </div>
       </TableCell>
     </TableRow>
@@ -104,7 +114,7 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
                       </div>
                     </TableCell>
                     <TableCell className="align-top">
-                      <p className="whitespace-pre-wrap">{selector.description}</p>
+                      <p className="whitespace-pre-wrap">{getDescription(selector.id, selector.description)}</p>
                     </TableCell>
                     {visibilitySettings.showSupport && (
                       <TableCell className="align-top">

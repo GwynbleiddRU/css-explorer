@@ -90,12 +90,6 @@ const Properties = () => {
     <div className="container mx-auto py-8 px-4">
       <PropertySearchBar onSelectProperty={handleSelectProperty} />
       
-      <SectionVisibilityControls 
-        settings={visibilitySettings}
-        onChange={setVisibilitySettings}
-        supportLabel={t('general.browserSupport')}
-      />
-
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-1">
           <PropertyTableOfContents 
@@ -106,6 +100,12 @@ const Properties = () => {
         </div>
         
         <div className="lg:col-span-3">
+          <SectionVisibilityControls 
+            settings={visibilitySettings}
+            onChange={setVisibilitySettings}
+            supportLabel={t('general.browserSupport')}
+          />
+          
           <PropertyTable 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}

@@ -31,6 +31,7 @@ const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({
           id="show-examples" 
           checked={settings.showExamples}
           onCheckedChange={(checked) => onChange({...settings, showExamples: checked})}
+          defaultChecked={settings.showExamples}
         />
         <Label htmlFor="show-examples">{t('general.examples')}</Label>
       </div>
@@ -40,6 +41,7 @@ const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({
           id="show-support" 
           checked={settings.showSupport}
           onCheckedChange={(checked) => onChange({...settings, showSupport: checked})}
+          defaultChecked={settings.showSupport}
         />
         <Label htmlFor="show-support">{supportLabel}</Label>
       </div>
