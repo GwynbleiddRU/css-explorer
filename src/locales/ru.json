@@ -1,34 +1,42 @@
 
 {
   "general": {
-    "cssExplorer": "CSS Обозреватель",
-    "cssProperties": "CSS Свойства",
-    "cssSelectors": "CSS Селекторы",
-    "example": "Пример",
-    "preview": "Предпросмотр",
+    "title": "Шпаргалка по CSS",
+    "description": "Полное руководство по CSS",
+    "selectors": "Селекторы",
+    "properties": "Свойства",
+    "examples": "Примеры",
+    "preview": "Превью",
     "code": "Код",
     "html": "HTML",
     "css": "CSS",
-    "property": "Свойство",
+    "parameter": "Параметр",
+    "parameters": "Параметры",
     "syntax": "Синтаксис",
     "description": "Описание",
-    "browserSupport": "Поддержка браузеров",
-    "selector": "Селектор",
-    "parameters": "Параметры",
+    "example": "Пример",
+    "tableOfContents": "Содержание",
+    "theme": "Тема",
+    "lightMode": "Светлая",
+    "darkMode": "Тёмная",
+    "language": "Язык",
+    "english": "Английский",
+    "russian": "Русский",
     "supportedPlatforms": "Поддерживаемые платформы",
-    "tableOfContents": "Содержание"
-  },
-  "navbar": {
-    "switchToDarkMode": "Переключиться на темный режим",
-    "switchToLightMode": "Переключиться на светлый режим",
-    "toggleMenu": "Переключить меню",
-    "language": "Язык"
-  },
-  "footer": {
-    "copyright": "© {{year}} CSS Обозреватель"
+    "browserSupport": "Поддержка браузерами",
+    "search": "Поиск",
+    "showHide": "Показать/Скрыть",
+    "property": "Свойство",
+    "selector": "Селектор"
   },
   "search": {
-    "cssProperties": "Поиск CSS свойств...",
-    "cssSelectors": "Поиск CSS селекторов..."
+    "searchSelectors": "Поиск CSS селекторов...",
+    "searchProperties": "Поиск CSS свойств...",
+    "noResults": "Результаты не найдены"
+  },
+  "pages": {
+    "notFound": "Страница не найдена",
+    "notFoundMessage": "Извините, запрашиваемая страница не существует.",
+    "goBack": "Вернуться назад"
   }
 }

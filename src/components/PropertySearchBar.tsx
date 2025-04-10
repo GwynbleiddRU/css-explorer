@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { propertyCategories } from '@/data/propertyData';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { propertyCategories } from '@/data/propertyData';
 import { useTranslation } from 'react-i18next';
 
 interface PropertySearchBarProps {
@@ -10,55 +10,17 @@ interface PropertySearchBarProps {
 }
 
 const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProperties, setFilteredProperties] = useState<Array<{ id: string; name: string; category: string }>>([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<Array<{ id: string; name: string; description: string }>>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (searchTerm.length > 0) {
-      const results: Array<{ id: string; name: string; category: string }> = [];
-      
-      propertyCategories.forEach(category => {
-        category.properties.forEach(property => {
-          if (property.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-            results.push({
-              id: property.id,
-              name: property.name,
-              category: category.name
-            });
-          }
-        });
-      });
-      
-      setFilteredProperties(results);
-      setIsDropdownOpen(results.length > 0);
-    } else {
-      setFilteredProperties([]);
-      setIsDropdownOpen(false);
-    }
-  }, [searchTerm]);
-
-  const handlePropertySelect = (propertyId: string) => {
-    onSelectProperty(propertyId);
-    setSearchTerm('');
-    setIsDropdownOpen(false);
-    inputRef.current?.blur();
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && filteredProperties.length > 0) {
-      handlePropertySelect(filteredProperties[0].id);
-    }
-  };
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
+    // Close the dropdown when clicking outside
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
       }
     };
 
@@ -68,40 +30,72 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
     };
   }, []);
 
+  useEffect(() => {
+    if (query.trim() === '') {
+      setResults([]);
+      return;
+    }
+
+    const lowercaseQuery = query.toLowerCase();
+    const matchedProperties: Array<{ id: string; name: string; description: string }> = [];
+
+    propertyCategories.forEach(category => {
+      category.properties.forEach(property => {
+        if (
+          property.name.toLowerCase().includes(lowercaseQuery) ||
+          property.description.toLowerCase().includes(lowercaseQuery)
+        ) {
+          matchedProperties.push({
+            id: property.id,
+            name: property.name,
+            description: property.description
+          });
+        }
+      });
+    });
+
+    setResults(matchedProperties.slice(0, 10)); // Limit to top 10 results
+    setIsOpen(matchedProperties.length > 0);
+  }, [query]);
+
+  const handleSelect = (propertyId: string) => {
+    onSelectProperty(propertyId);
+    setQuery('');
+    setIsOpen(false);
+  };
+
   return (
-    <div className="relative w-full max-w-xl mx-auto mb-8" ref={dropdownRef}>
+    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto mb-8">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <Search className="h-4 w-4 text-muted-foreground" />
+        </div>
         <Input
-          ref={inputRef}
-          type="text"
-          placeholder={t('search.cssProperties')}
-          className="pl-10 w-full"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={handleKeyDown}
-          onFocus={() => {
-            if (filteredProperties.length > 0) {
-              setIsDropdownOpen(true);
-            }
-          }}
+          type="search"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onFocus={() => query.trim() !== '' && setIsOpen(true)}
+          className="pl-10 bg-background"
+          placeholder={t('search.searchProperties')}
         />
       </div>
-      
-      {isDropdownOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 shadow-lg rounded-md border border-border overflow-hidden">
-          <ul className="py-1">
-            {filteredProperties.map((property) => (
-              <li
+
+      {isOpen && results.length > 0 && (
+        <div className="absolute z-10 mt-1 w-full bg-background border rounded-md shadow-lg max-h-96 overflow-y-auto">
+          <div className="p-2">
+            {results.map(property => (
+              <div
                 key={property.id}
-                className="px-4 py-2 hover:bg-muted cursor-pointer flex justify-between"
-                onClick={() => handlePropertySelect(property.id)}
+                className="px-4 py-2 hover:bg-muted rounded-md cursor-pointer"
+                onClick={() => handleSelect(property.id)}
               >
-                <span className="font-mono">{property.name}</span>
-                <span className="text-muted-foreground text-sm">{property.category}</span>
-              </li>
+                <div className="font-medium">{property.name}</div>
+                <div className="text-sm text-muted-foreground line-clamp-1">
+                  {property.description}
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

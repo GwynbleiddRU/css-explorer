@@ -14,17 +14,20 @@ import {
 } from '@/components/ui/table';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
+import { VisibilitySettings } from './SectionVisibilityControls';
 
 interface SelectorTableProps {
   expandedCategories: Record<string, boolean>;
   toggleCategory: (categoryId: string) => void;
   activeSelectorId: string | null;
+  visibilitySettings: VisibilitySettings;
 }
 
 const SelectorTable: React.FC<SelectorTableProps> = ({ 
   expandedCategories, 
   toggleCategory,
-  activeSelectorId
+  activeSelectorId,
+  visibilitySettings
 }) => {
   const selectorRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
   const { t } = useTranslation();
@@ -47,23 +50,9 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
     }
   }, [activeSelectorId]);
 
-  // Find which category contains the active selector
-  useEffect(() => {
-    if (activeSelectorId) {
-      // Find the category that contains the active selector
-      const category = selectorCategories.find(cat => 
-        cat.selectors.some(sel => sel.id === activeSelectorId)
-      );
-      
-      if (category && !expandedCategories[category.id]) {
-        toggleCategory(category.id);
-      }
-    }
-  }, [activeSelectorId, expandedCategories, toggleCategory]);
-
   const renderCategoryHeader = (category: SelectorCategory) => (
     <TableRow key={`${category.id}-header`} className="category-row">
-      <TableCell colSpan={4} className="p-0">
+      <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="p-0">
         <div 
           className="category-header"
           onClick={() => toggleCategory(category.id)}
@@ -87,7 +76,9 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
             <TableHead>{t('general.selector')}</TableHead>
             <TableHead>{t('general.parameters')}</TableHead>
             <TableHead>{t('general.description')}</TableHead>
-            <TableHead>{t('general.supportedPlatforms')}</TableHead>
+            {visibilitySettings.showSupport && (
+              <TableHead>{t('general.supportedPlatforms')}</TableHead>
+            )}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -115,22 +106,27 @@ const SelectorTable: React.FC<SelectorTableProps> = ({
                     <TableCell className="align-top">
                       <p className="whitespace-pre-wrap">{selector.description}</p>
                     </TableCell>
-                    <TableCell className="align-top">
-                      <div className="flex flex-wrap gap-2">
-                        {selector.platforms.map((platform, i) => (
-                          <BrowserIcon key={i} browser={platform} />
-                        ))}
-                      </div>
-                    </TableCell>
+                    {visibilitySettings.showSupport && (
+                      <TableCell className="align-top">
+                        <div className="flex flex-wrap gap-2">
+                          {selector.platforms.map((platform, i) => (
+                            <BrowserIcon key={i} browser={platform} />
+                          ))}
+                        </div>
+                      </TableCell>
+                    )}
                   </TableRow>
-                  <TableRow className="example-row">
-                    <TableCell colSpan={4} className="px-4 pt-0 pb-4">
-                      <div className="mt-2">
-                        <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
-                        <SelectorExample selector={selector} />
-                      </div>
-                    </TableCell>
-                  </TableRow>
+                  
+                  {visibilitySettings.showExamples && (
+                    <TableRow className="example-row">
+                      <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="px-4 pt-0 pb-4">
+                        <div className="mt-2">
+                          <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
+                          <SelectorExample selector={selector} />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  )}
                 </React.Fragment>
               ))}
             </React.Fragment>

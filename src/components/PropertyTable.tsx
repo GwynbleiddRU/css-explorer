@@ -14,17 +14,20 @@ import {
 } from '@/components/ui/table';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
+import { VisibilitySettings } from './SectionVisibilityControls';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;
   toggleCategory: (categoryId: string) => void;
   activePropertyId: string | null;
+  visibilitySettings: VisibilitySettings;
 }
 
 const PropertyTable: React.FC<PropertyTableProps> = ({ 
   expandedCategories, 
   toggleCategory,
-  activePropertyId
+  activePropertyId,
+  visibilitySettings
 }) => {
   const propertyRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
   const { t } = useTranslation();
@@ -47,23 +50,9 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
     }
   }, [activePropertyId]);
 
-  // Find which category contains the active property
-  useEffect(() => {
-    if (activePropertyId) {
-      // Find the category that contains the active property
-      const category = propertyCategories.find(cat => 
-        cat.properties.some(prop => prop.id === activePropertyId)
-      );
-      
-      if (category && !expandedCategories[category.id]) {
-        toggleCategory(category.id);
-      }
-    }
-  }, [activePropertyId, expandedCategories, toggleCategory]);
-
   const renderCategoryHeader = (category: PropertyCategory) => (
     <TableRow key={`${category.id}-header`} className="category-row">
-      <TableCell colSpan={4} className="p-0">
+      <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="p-0">
         <div 
           className="category-header"
           onClick={() => toggleCategory(category.id)}
@@ -87,7 +76,9 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
             <TableHead>{t('general.property')}</TableHead>
             <TableHead>{t('general.syntax')}</TableHead>
             <TableHead>{t('general.description')}</TableHead>
-            <TableHead>{t('general.browserSupport')}</TableHead>
+            {visibilitySettings.showSupport && (
+              <TableHead>{t('general.browserSupport')}</TableHead>
+            )}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -115,22 +106,27 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                     <TableCell className="align-top">
                       <p className="whitespace-pre-wrap">{property.description}</p>
                     </TableCell>
-                    <TableCell className="align-top">
-                      <div className="flex flex-wrap gap-2">
-                        {property.browsers.map((browser, i) => (
-                          <BrowserIcon key={i} browser={browser} />
-                        ))}
-                      </div>
-                    </TableCell>
+                    {visibilitySettings.showSupport && (
+                      <TableCell className="align-top">
+                        <div className="flex flex-wrap gap-2">
+                          {property.browsers.map((browser, i) => (
+                            <BrowserIcon key={i} browser={browser} />
+                          ))}
+                        </div>
+                      </TableCell>
+                    )}
                   </TableRow>
-                  <TableRow className="example-row">
-                    <TableCell colSpan={4} className="px-4 pt-0 pb-4">
-                      <div className="mt-2">
-                        <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
-                        <PropertyExample property={property} />
-                      </div>
-                    </TableCell>
-                  </TableRow>
+                  
+                  {visibilitySettings.showExamples && (
+                    <TableRow className="example-row">
+                      <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="px-4 pt-0 pb-4">
+                        <div className="mt-2">
+                          <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
+                          <PropertyExample property={property} />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  )}
                 </React.Fragment>
               ))}
             </React.Fragment>

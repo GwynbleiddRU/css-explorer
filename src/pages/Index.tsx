@@ -2,13 +2,20 @@
 import React, { useState, useEffect } from 'react';
 import { selectorCategories } from '@/data/selectorData';
 import SearchBar from '@/components/SearchBar';
-import TableOfContents from '@/components/TableOfContents';
+import TableOfContents, { TOCItem } from '@/components/TableOfContents';
 import SelectorTable from '@/components/SelectorTable';
+import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
+import { useTranslation } from 'react-i18next';
 
 const Index = () => {
+  const { t } = useTranslation();
   // State for tracking expanded categories
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activeSelectorId, setActiveSelectorId] = useState<string | null>(null);
+  const [visibilitySettings, setVisibilitySettings] = useState<VisibilitySettings>({
+    showExamples: true,
+    showSupport: true
+  });
 
   // Initialize expanded categories from localStorage or defaults
   useEffect(() => {
@@ -23,6 +30,16 @@ const Index = () => {
     } else {
       initializeDefaultExpanded();
     }
+
+    // Load visibility settings
+    const savedVisibility = localStorage.getItem('selectorVisibilitySettings');
+    if (savedVisibility) {
+      try {
+        setVisibilitySettings(JSON.parse(savedVisibility));
+      } catch (e) {
+        console.error('Error parsing saved visibility settings:', e);
+      }
+    }
   }, []);
 
   // Save expanded state to localStorage whenever it changes
@@ -31,6 +48,11 @@ const Index = () => {
       localStorage.setItem('expandedCategories', JSON.stringify(expandedCategories));
     }
   }, [expandedCategories]);
+
+  // Save visibility settings
+  useEffect(() => {
+    localStorage.setItem('selectorVisibilitySettings', JSON.stringify(visibilitySettings));
+  }, [visibilitySettings]);
 
   const initializeDefaultExpanded = () => {
     const defaults: Record<string, boolean> = {};
@@ -49,18 +71,50 @@ const Index = () => {
 
   const handleSelectSelector = (selectorId: string) => {
     setActiveSelectorId(selectorId);
+    
+    // Find the category that contains this selector
+    const category = selectorCategories.find(cat => 
+      cat.selectors.some(sel => sel.id === selectorId)
+    );
+    
+    // Ensure the category is expanded
+    if (category && !expandedCategories[category.id]) {
+      setExpandedCategories(prev => ({
+        ...prev,
+        [category.id]: true
+      }));
+    }
   };
+
+  // Convert selectorCategories to the format expected by TableOfContents
+  const tocItems: TOCItem[] = selectorCategories.map(category => ({
+    id: category.id,
+    name: category.name,
+    children: category.selectors.map(selector => ({
+      id: selector.id,
+      name: selector.name,
+      parameters: selector.parameters
+    }))
+  }));
 
   return (
     <div className="container mx-auto py-8 px-4">
       <SearchBar onSelectSelector={handleSelectSelector} />
 
+      <SectionVisibilityControls 
+        settings={visibilitySettings}
+        onChange={setVisibilitySettings}
+        supportLabel={t('general.supportedPlatforms')}
+      />
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-1">
           <TableOfContents 
+            title={t('general.selectors')}
+            items={tocItems}
             expandedCategories={expandedCategories} 
             toggleCategory={toggleCategory}
-            onSelectSelector={handleSelectSelector}
+            onSelectItem={handleSelectSelector}
           />
         </div>
         
@@ -69,6 +123,7 @@ const Index = () => {
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
             activeSelectorId={activeSelectorId}
+            visibilitySettings={visibilitySettings}
           />
         </div>
       </div>

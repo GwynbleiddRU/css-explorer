@@ -1,34 +1,42 @@
 
 {
   "general": {
-    "cssExplorer": "CSS Explorer",
-    "cssProperties": "CSS Properties",
-    "cssSelectors": "CSS Selectors",
-    "example": "Example",
+    "title": "CSS Cheatsheet",
+    "description": "A comprehensive CSS reference guide",
+    "selectors": "Selectors",
+    "properties": "Properties",
+    "examples": "Examples",
     "preview": "Preview",
     "code": "Code",
     "html": "HTML",
     "css": "CSS",
-    "property": "Property",
+    "parameter": "Parameter",
+    "parameters": "Parameters",
     "syntax": "Syntax",
     "description": "Description",
-    "browserSupport": "Browser Support",
-    "selector": "Selector",
-    "parameters": "Parameters",
+    "example": "Example",
+    "tableOfContents": "Table of Contents",
+    "theme": "Theme",
+    "lightMode": "Light",
+    "darkMode": "Dark",
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian",
     "supportedPlatforms": "Supported Platforms",
-    "tableOfContents": "Table of Contents"
-  },
-  "navbar": {
-    "switchToDarkMode": "Switch to dark mode",
-    "switchToLightMode": "Switch to light mode",
-    "toggleMenu": "Toggle menu",
-    "language": "Language"
-  },
-  "footer": {
-    "copyright": "© {{year}} CSS Explorer"
+    "browserSupport": "Browser Support",
+    "search": "Search",
+    "showHide": "Show/Hide",
+    "property": "Property",
+    "selector": "Selector"
   },
   "search": {
-    "cssProperties": "Search CSS properties...",
-    "cssSelectors": "Search CSS selectors..."
+    "searchSelectors": "Search CSS Selectors...",
+    "searchProperties": "Search CSS Properties...",
+    "noResults": "No results found"
+  },
+  "pages": {
+    "notFound": "Page Not Found",
+    "notFoundMessage": "Sorry, the page you are looking for does not exist.",
+    "goBack": "Go Back"
   }
 }
