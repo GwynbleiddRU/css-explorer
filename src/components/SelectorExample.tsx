@@ -9,6 +9,7 @@ interface SelectorExampleProps {
 const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('preview');
+  const isDarkMode = document.documentElement.classList.contains('dark');
 
   const formattedHtml = useMemo(() => {
     if (!selector.example.html) return '';
@@ -69,8 +70,6 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
                   body {
                     padding: 16px;
                     font-family: system-ui, sans-serif;
-                    background-color: white;
-                    color: black;
                   }
                   ${selector.example.css}
                 </style>
