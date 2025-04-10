@@ -1,7 +1,22 @@
-
 {
-  "element": "Selects all elements with the given tag name.",
-  "class": "Selects all elements with the given class.",
-  "id": "Selects an element with the given ID.",
-  "universal": "Selects all elements."
+  "universal": "Selects all elements on the page. Use with caution as it can impact performance when applied to large documents.",
+  "type": "Selects all elements that match the given node name.",
+  "class": "Selects all elements with the given class attribute.",
+  "id": "Selects an element with the given ID. Should be unique within the document.",
+  "descendant": "Selects all B elements that are descendants of an A element (not just direct children).",
+  "child": "Selects all B elements that are direct children of an A element.",
+  "adjacent-sibling": "Selects element B when it immediately follows element A and both share the same parent.",
+  "general-sibling": "Selects all B elements that follow an A element and share the same parent.",
+  "hover": "Selects an element when the user hovers over it with a pointing device.",
+  "active": "Selects an element when it is being activated by the user (e.g., clicked).",
+  "focus": "Selects an element when it has focus (e.g., form input when selected).",
+  "nth-child": "Selects elements based on their position among siblings according to a pattern (e.g., odd, even, 3n, etc).",
+  "before": "Creates a pseudo-element that is the first child of the selected element, often used with the content property.",
+  "after": "Creates a pseudo-element that is the last child of the selected element, often used with the content property.",
+  "first-letter": "Selects the first letter of the specified element.",
+  "first-line": "Selects the first line of the specified element.",
+  "attr-exists": "Selects elements with the specified attribute, regardless of its value.",
+  "attr-equals": "Selects elements where the attribute value exactly matches the specified value.",
+  "attr-contains": "Selects elements where the attribute value contains the specified substring.",
+  "attr-begins": "Selects elements where the attribute value begins with the specified substring."
 }

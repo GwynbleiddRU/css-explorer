@@ -1,8 +1,16 @@
-
 {
   "font-family": "Specifies the font family for text.",
   "font-size": "Specifies the size of the font.",
   "font-weight": "Specifies the weight of a font.",
   "color": "Sets the color of text.",
-  "background-color": "Sets the background color of an element."
+  "background-color": "Sets the background color of an element.",
+  "display": "Specifies how an element is displayed on the page.",
+  "position": "Specifies the positioning method for an element.",
+  "float": "Specifies how an element should float.",
+  "width": "Sets the width of an element.",
+  "margin": "Sets the margin area on all four sides of an element.",
+  "padding": "Sets the padding area on all four sides of an element.",
+  "border": "A shorthand property for border-width, border-style and border-color.",
+  "border-radius": "Defines the radius of the element's corners.",
+  "background-image": "Sets one or more background images for an element."
 }
