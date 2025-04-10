@@ -101,12 +101,6 @@ const Index = () => {
     <div className="container mx-auto py-8 px-4">
       <SearchBar onSelectSelector={handleSelectSelector} />
 
-      <SectionVisibilityControls 
-        settings={visibilitySettings}
-        onChange={setVisibilitySettings}
-        supportLabel={t('general.supportedPlatforms')}
-      />
-
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-1">
           <TableOfContents 
@@ -119,6 +113,12 @@ const Index = () => {
         </div>
         
         <div className="lg:col-span-3">
+          <SectionVisibilityControls 
+            settings={visibilitySettings}
+            onChange={setVisibilitySettings}
+            supportLabel={t('general.supportedPlatforms')}
+          />
+
           <SelectorTable 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
