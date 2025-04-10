@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Chrome, Globe } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface BrowserIconProps {
   browser: string;
@@ -34,17 +34,15 @@ const BrowserIcon: React.FC<BrowserIconProps> = ({ browser }) => {
   };
 
   return (
-    <TooltipProvider>
-      <Tooltip delayDuration={300}>
-        <TooltipTrigger className="flex items-center gap-1">
-          {getBrowserIcon()}
-          {version && <span className="text-xs">{version}+</span>}
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{browser}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip delayDuration={300}>
+      <TooltipTrigger className="flex items-center gap-1">
+        {getBrowserIcon()}
+        {version && <span className="text-xs">{version}+</span>}
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{browser}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
