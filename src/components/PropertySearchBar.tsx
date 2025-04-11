@@ -14,7 +14,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
   const [results, setResults] = useState<Array<{ id: string; name: string; description: string }>>([]);
   const [isOpen, setIsOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
 
   useEffect(() => {
     // Close the dropdown when clicking outside
@@ -29,6 +29,15 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Get translated description
+  const getDescription = (propertyId: string, defaultDescription: string) => {
+    const translatedDescription = t(`${propertyId}`, {
+      ns: 'propertyDescriptions',
+      defaultValue: ''
+    });
+    return translatedDescription || defaultDescription;
+  };
 
   useEffect(() => {
     if (query.trim() === '') {
@@ -48,7 +57,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
           matchedProperties.push({
             id: property.id,
             name: property.name,
-            description: property.description
+            description: getDescription(property.id, property.description)
           });
         }
       });
@@ -56,7 +65,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
 
     setResults(matchedProperties.slice(0, 10)); // Limit to top 10 results
     setIsOpen(matchedProperties.length > 0);
-  }, [query]);
+  }, [query, i18n.language]);
 
   const handleSelect = (propertyId: string) => {
     onSelectProperty(propertyId);
@@ -65,7 +74,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSelectProperty 
   };
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto mb-8">
+    <div ref={searchRef} className="relative w-[90%] max-w-2xl mx-auto mb-8">
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <Search className="h-4 w-4 text-muted-foreground" />

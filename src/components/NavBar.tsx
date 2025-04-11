@@ -26,6 +26,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
   const location = useLocation();
   const isMobile = useIsMobile();
   const { t } = useTranslation();
+  const [open, setOpen] = React.useState(false);
 
   const isActive = (path: string) => {
     if (path === '/properties') {
@@ -34,9 +35,15 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
     return location.pathname === path;
   };
 
+  const handleNavigation = () => {
+    if (isMobile) {
+      setOpen(false);
+    }
+  };
+
   const NavLinks = () => (
     <div className="flex items-center space-x-1">
-      <Link to="/properties">
+      <Link to="/properties" onClick={handleNavigation}>
         <div className={cn(
           "px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium",
           isActive('/properties') 
@@ -46,7 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
           {t('general.properties')}
         </div>
       </Link>
-      <Link to="/selectors">
+      <Link to="/selectors" onClick={handleNavigation}>
         <div className={cn(
           "px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium",
           isActive('/selectors') 
@@ -114,7 +121,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
 
           {/* Mobile navigation */}
           {isMobile && (
-            <Sheet>
+            <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
@@ -132,6 +139,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
                       "px-4 py-2 rounded-md transition-colors",
                       isActive('/properties') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
                     )}
+                    onClick={handleNavigation}
                   >
                     {t('general.properties')}
                   </Link>
@@ -141,6 +149,7 @@ const NavBar: React.FC<NavBarProps> = ({ theme, toggleTheme, language, changeLan
                       "px-4 py-2 rounded-md transition-colors",
                       isActive('/selectors') ? "bg-accent text-accent-foreground" : "hover:bg-muted"
                     )}
+                    onClick={handleNavigation}
                   >
                     {t('general.selectors')}
                   </Link>
