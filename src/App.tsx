@@ -1,48 +1,43 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-import Properties from "./pages/Properties";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Layout from "./components/Layout";
-import { useEffect } from "react";
-import './i18n';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import './App.css';
+import Layout from './components/Layout';
+import Index from './pages/Index';
+import Properties from './pages/Properties';
+import PropertyDetails from './pages/PropertyDetails';
+import NotFound from './pages/NotFound';
 
-const queryClient = new QueryClient();
+// Analytics component for page views
+const PageViewTracker = () => {
+  const location = useLocation();
 
-const App = () => {
-  // Initialize theme from local storage or system preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Track page view
+    const path = location.pathname;
+    console.log('Page view:', path);
     
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
+    // You can add more sophisticated analytics here
+  }, [location]);
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <HashRouter>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/properties" replace />} />
-              <Route path="/properties" element={<Properties />} />
-              <Route path="/selectors" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </HashRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+  return null;
 };
+
+function App() {
+  return (
+    <Router basename="/css-explorer">
+      <PageViewTracker />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Index />} />
+          <Route path="properties" element={<Properties />} />
+          <Route path="properties/:propertyId" element={<PropertyDetails />} />
+          <Route path="selectors" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;
