@@ -4,11 +4,15 @@ import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
 import PropertyTableOfContents from '@/components/PropertyTableOfContents';
 import PropertyTable from '@/components/PropertyTable';
+import PropertyTableMobile from '@/components/PropertyTableMobile';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
 import { useTranslation } from 'react-i18next';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Properties = () => {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
+  
   // State for tracking expanded categories
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activePropertyId, setActivePropertyId] = useState<string | null>(null);
@@ -98,30 +102,47 @@ const Properties = () => {
       
       <PropertySearchBar onSelectProperty={handleSelectProperty} />
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
-        <div className="lg:col-span-1">
-          <PropertyTableOfContents 
-            expandedCategories={expandedCategories} 
-            toggleCategory={toggleCategory}
-            onSelectProperty={handleSelectProperty}
-          />
-        </div>
-        
-        <div className="lg:col-span-3">
+      {isMobile ? (
+        <div className="mt-6">
           <SectionVisibilityControls 
             settings={visibilitySettings}
             onChange={setVisibilitySettings}
             supportLabel={t('general.browserSupport')}
           />
           
-          <PropertyTable 
+          <PropertyTableMobile 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
             activePropertyId={activePropertyId}
             visibilitySettings={visibilitySettings}
           />
         </div>
-      </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
+          <div className="lg:col-span-1">
+            <PropertyTableOfContents 
+              expandedCategories={expandedCategories} 
+              toggleCategory={toggleCategory}
+              onSelectProperty={handleSelectProperty}
+            />
+          </div>
+          
+          <div className="lg:col-span-3">
+            <SectionVisibilityControls 
+              settings={visibilitySettings}
+              onChange={setVisibilitySettings}
+              supportLabel={t('general.browserSupport')}
+            />
+            
+            <PropertyTable 
+              expandedCategories={expandedCategories}
+              toggleCategory={toggleCategory}
+              activePropertyId={activePropertyId}
+              visibilitySettings={visibilitySettings}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

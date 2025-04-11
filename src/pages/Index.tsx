@@ -4,11 +4,15 @@ import { selectorCategories } from '@/data/selectorData';
 import SearchBar from '@/components/SearchBar';
 import TableOfContents, { TOCItem } from '@/components/TableOfContents';
 import SelectorTable from '@/components/SelectorTable';
+import SelectorTableMobile from '@/components/SelectorTableMobile';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
 import { useTranslation } from 'react-i18next';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
+  
   // State for tracking expanded categories
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activeSelectorId, setActiveSelectorId] = useState<string | null>(null);
@@ -99,34 +103,58 @@ const Index = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">{t('general.cssSelectors')}</h1>
+        <p className="text-muted-foreground max-w-3xl">
+          {t('general.description')} – {t('general.selectors')}
+        </p>
+      </div>
+      
       <SearchBar onSelectSelector={handleSelectSelector} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <div className="lg:col-span-1">
-          <TableOfContents 
-            title={t('general.selectors')}
-            items={tocItems}
-            expandedCategories={expandedCategories} 
-            toggleCategory={toggleCategory}
-            onSelectItem={handleSelectSelector}
-          />
-        </div>
-        
-        <div className="lg:col-span-3">
+      {isMobile ? (
+        <div className="mt-6">
           <SectionVisibilityControls 
             settings={visibilitySettings}
             onChange={setVisibilitySettings}
             supportLabel={t('general.supportedPlatforms')}
           />
 
-          <SelectorTable 
+          <SelectorTableMobile 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
             activeSelectorId={activeSelectorId}
             visibilitySettings={visibilitySettings}
           />
         </div>
-      </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
+          <div className="lg:col-span-1">
+            <TableOfContents 
+              title={t('general.selectors')}
+              items={tocItems}
+              expandedCategories={expandedCategories} 
+              toggleCategory={toggleCategory}
+              onSelectItem={handleSelectSelector}
+            />
+          </div>
+          
+          <div className="lg:col-span-3">
+            <SectionVisibilityControls 
+              settings={visibilitySettings}
+              onChange={setVisibilitySettings}
+              supportLabel={t('general.supportedPlatforms')}
+            />
+
+            <SelectorTable 
+              expandedCategories={expandedCategories}
+              toggleCategory={toggleCategory}
+              activeSelectorId={activeSelectorId}
+              visibilitySettings={visibilitySettings}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
