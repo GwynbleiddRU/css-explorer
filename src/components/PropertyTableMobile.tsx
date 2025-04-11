@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertyExample from './PropertyExample';
-import { PropertyCategory, Property } from '@/types/properties';
+import { PropertyCategory, CssProperty as Property } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';

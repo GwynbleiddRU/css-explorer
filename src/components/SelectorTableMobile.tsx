@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { selectorCategories } from '@/data/selectorData';
 import SelectorExample from './SelectorExample';
-import { SelectorCategory, Selector } from '@/types/selectors';
+import { SelectorCategory, CssSelector as Selector } from '@/types/selectors';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
