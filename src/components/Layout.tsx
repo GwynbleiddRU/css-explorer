@@ -44,8 +44,11 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <footer className="border-t py-6 bg-muted/30">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+        <div className="container text-center">
+          <p className="text-sm">made by Gwynbleidd with ❤️</p>
+          <p className="text-xs text-muted-foreground mt-1">
+            my github: <a href="https://github.com/GwynbleiddRU" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://github.com/GwynbleiddRU</a>
+          </p>
         </div>
       </footer>
     </div>
