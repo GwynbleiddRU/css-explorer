@@ -56,8 +56,9 @@ const Properties = () => {
 
   const initializeDefaultExpanded = () => {
     const defaults: Record<string, boolean> = {};
-    propertyCategories.forEach(category => {
-      defaults[category.id] = category.id === 'layout'; // Only expand layout by default
+    // Expand the first category by default (usually layout)
+    propertyCategories.forEach((category, index) => {
+      defaults[category.id] = index === 0;
     });
     setExpandedCategories(defaults);
   };
@@ -88,9 +89,16 @@ const Properties = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">{t('general.cssProperties')}</h1>
+        <p className="text-muted-foreground max-w-3xl">
+          {t('general.description')} – {t('general.properties')}
+        </p>
+      </div>
+      
       <PropertySearchBar onSelectProperty={handleSelectProperty} />
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
         <div className="lg:col-span-1">
           <PropertyTableOfContents 
             expandedCategories={expandedCategories} 
