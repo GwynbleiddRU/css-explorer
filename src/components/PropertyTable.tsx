@@ -15,6 +15,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
+import { Link } from 'react-router-dom';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;
@@ -104,9 +105,9 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                     className="transition-colors duration-300"
                   >
                     <TableCell className="align-top">
-                      <div className="font-mono font-medium text-primary">
+                      <Link to={`/properties/${property.id}`} className="font-mono font-medium text-primary hover:underline">
                         {property.name}
-                      </div>
+                      </Link>
                     </TableCell>
                     <TableCell className="align-top">
                       <div className="font-mono text-sm whitespace-pre-wrap">

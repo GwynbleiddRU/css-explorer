@@ -7,6 +7,7 @@ import { PropertyCategory, CssProperty as Property } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
+import { Link } from 'react-router-dom';
 
 interface PropertyTableMobileProps {
   expandedCategories: Record<string, boolean>;
@@ -75,7 +76,9 @@ const PropertyTableMobile: React.FC<PropertyTableMobileProps> = ({
       className="mb-6 p-4 border rounded-lg bg-card transition-colors duration-300"
     >
       <div className="font-mono font-medium text-primary text-lg mb-2">
-        {property.name}
+        <Link to={`/properties/${property.id}`} className="hover:underline">
+          {property.name}
+        </Link>
       </div>
       
       <div className="grid grid-cols-1 gap-3">

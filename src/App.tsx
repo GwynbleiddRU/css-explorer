@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Properties from "./pages/Properties";
+import PropertyDetails from "./pages/PropertyDetails";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
@@ -34,6 +35,7 @@ const App = () => {
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/properties" replace />} />
               <Route path="/properties" element={<Properties />} />
+              <Route path="/properties/:propertyId" element={<PropertyDetails />} />
               <Route path="/selectors" element={<Index />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

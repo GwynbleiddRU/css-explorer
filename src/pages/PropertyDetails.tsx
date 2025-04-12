@@ -1,0 +1,139 @@
+
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getPropertyDetailsById } from '@/data/propertyDetailsData';
+import { PropertyDetails as PropertyDetailsType } from '@/types/propertyValues';
+import { Button } from '@/components/ui/button';
+import BrowserIcon from '@/components/BrowserIcon';
+import { ArrowLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { propertyCategories } from '@/data/propertyData';
+import { CssProperty } from '@/types/properties';
+import PropertyExample from '@/components/PropertyExample';
+
+const PropertyDetails = () => {
+  const { propertyId } = useParams<{ propertyId: string }>();
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
+  
+  // Find the property in propertyCategories
+  const findPropertyInCategories = (): CssProperty | undefined => {
+    for (const category of propertyCategories) {
+      const property = category.properties.find(p => p.id === propertyId);
+      if (property) return property;
+    }
+    return undefined;
+  };
+
+  const property = propertyId ? findPropertyInCategories() : undefined;
+  const propertyDetails = propertyId ? getPropertyDetailsById(propertyId) : undefined;
+  
+  useEffect(() => {
+    // If property not found, redirect to properties page
+    if (propertyId && !property) {
+      navigate('/properties');
+    }
+  }, [propertyId, property, navigate]);
+
+  // Get translated description or fall back to English
+  const getDescription = (description: string) => {
+    const translatedDescription = t(`${propertyId}`, {
+      ns: 'propertyDescriptions',
+      defaultValue: ''
+    });
+    
+    return translatedDescription || description;
+  };
+
+  if (!property) {
+    return (
+      <div className="container mx-auto py-8 px-4">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">{t('general.propertyNotFound')}</h1>
+          <Button variant="outline" onClick={() => navigate('/properties')}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t('general.backToProperties')}
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto py-8 px-4">
+      <Button 
+        variant="outline" 
+        className="mb-6" 
+        onClick={() => navigate('/properties')}
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        {t('general.backToProperties')}
+      </Button>
+
+      <h1 className="text-3xl font-bold mb-4">
+        CSS {t('general.property')} {property.name}
+      </h1>
+      
+      <p className="text-lg mb-8">
+        {getDescription(property.description)}
+      </p>
+
+      <div className="space-y-8">
+        {/* CSS Syntax */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">CSS {t('general.syntax')}</h2>
+          <div className="bg-muted p-4 rounded-md font-mono whitespace-pre-wrap">
+            {propertyDetails?.syntax || property.syntax}
+          </div>
+        </section>
+
+        {/* Possible Values */}
+        {propertyDetails?.values && propertyDetails.values.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">{t('general.possibleValues')}</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left p-3 font-semibold">{t('general.value')}</th>
+                    <th className="text-left p-3 font-semibold">{t('general.description')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {propertyDetails.values.map((value, index) => (
+                    <tr key={index} className="border-b hover:bg-muted/50">
+                      <td className="p-3 font-mono">{value.value}</td>
+                      <td className="p-3">{value.description}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {/* Browser Support */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('general.browserSupport')}</h2>
+          <div className="flex flex-wrap gap-4">
+            {property.browsers.map((browser, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <BrowserIcon browser={browser} />
+                <span className="mt-2 text-sm">{browser}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Example */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('general.example')}</h2>
+          <p className="mb-4">{t('general.exampleDescription')}</p>
+          <PropertyExample property={property} />
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default PropertyDetails;
