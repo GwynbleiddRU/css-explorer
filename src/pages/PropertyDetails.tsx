@@ -56,14 +56,28 @@ const PropertyDetails = () => {
   };
 
   // Get translated value description or fall back to provided description
-  const getValueDescription = (value: string, description: string) => {
+  const getValueDescription = (value: string) => {
     const key = `${propertyId}.${value}`;
-    const translatedDescription = t(key, {
+    return t(key, {
       ns: 'propertyValues',
-      defaultValue: ''
+      defaultValue: value
     });
+  };
+
+  // Get all possible values for this property from the translation files
+  const getPossibleValues = (): {value: string, description: string}[] => {
+    if (!propertyId) return [];
     
-    return translatedDescription || description;
+    const valueEntries = Object.entries(t(`${propertyId}`, { 
+      ns: 'propertyValues', 
+      returnObjects: true,
+      defaultValue: {}
+    }));
+    
+    return valueEntries.map(([value, description]) => ({
+      value,
+      description: description as string
+    }));
   };
 
   if (!property) {
@@ -79,6 +93,8 @@ const PropertyDetails = () => {
       </div>
     );
   }
+
+  const possibleValues = getPossibleValues();
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -109,7 +125,7 @@ const PropertyDetails = () => {
         </section>
 
         {/* Possible Values */}
-        {propertyDetails?.values && propertyDetails.values.length > 0 && (
+        {possibleValues.length > 0 && (
           <section>
             <h2 className="text-2xl font-semibold mb-4">{t('general.possibleValues')}</h2>
             <div className="overflow-x-auto">
@@ -121,10 +137,10 @@ const PropertyDetails = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {propertyDetails.values.map((value, index) => (
+                  {possibleValues.map((value, index) => (
                     <TableRow key={index}>
                       <TableCell className="font-mono">{value.value}</TableCell>
-                      <TableCell>{getValueDescription(value.value, value.description)}</TableCell>
+                      <TableCell>{value.description}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
