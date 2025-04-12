@@ -1,0 +1,81 @@
+
+{
+  "font-weight": {
+    "normal": "Default value. Normal font weight.",
+    "bold": "Bold font weight.",
+    "bolder": "Bolder font weight than the parent element.",
+    "lighter": "Lighter font weight than the parent element.",
+    "100": "Sets a specific font weight - equivalent to 'thin'.",
+    "200": "Sets a specific font weight - equivalent to 'extra-light'.",
+    "300": "Sets a specific font weight - equivalent to 'light'.",
+    "400": "Sets a specific font weight - equivalent to 'normal'.",
+    "500": "Sets a specific font weight - equivalent to 'medium'.",
+    "600": "Sets a specific font weight - equivalent to 'semi-bold'.",
+    "700": "Sets a specific font weight - equivalent to 'bold'.",
+    "800": "Sets a specific font weight - equivalent to 'extra-bold'.",
+    "900": "Sets a specific font weight - equivalent to 'black'.",
+    "inherit": "Inherits this property from its parent element.",
+    "initial": "Sets this property to its default value."
+  },
+  "display": {
+    "inline": "Displays an element as an inline element (like <span>).",
+    "block": "Displays an element as a block element (like <p>).",
+    "contents": "Makes the container disappear, making the child elements children of the element's parent.",
+    "flex": "Displays an element as a block-level flex container.",
+    "grid": "Displays an element as a block-level grid container.",
+    "inline-block": "Displays an element as an inline-level block container.",
+    "inline-flex": "Displays an element as an inline-level flex container.",
+    "inline-grid": "Displays an element as an inline-level grid container.",
+    "inline-table": "The element is displayed as an inline-level table.",
+    "list-item": "The element behaves like a <li> element.",
+    "run-in": "Displays an element as either block or inline, depending on context.",
+    "table": "The element behaves like a <table> element.",
+    "table-caption": "The element behaves like a <caption> element.",
+    "table-column-group": "The element behaves like a <colgroup> element.",
+    "table-header-group": "The element behaves like a <thead> element.",
+    "table-footer-group": "The element behaves like a <tfoot> element.",
+    "table-row-group": "The element behaves like a <tbody> element.",
+    "table-cell": "The element behaves like a <td> element.",
+    "table-column": "The element behaves like a <col> element.",
+    "table-row": "The element behaves like a <tr> element.",
+    "none": "The element is completely removed.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "position": {
+    "static": "Default value. Elements are positioned according to the normal flow of the document.",
+    "relative": "The element is positioned relative to its normal position.",
+    "absolute": "The element is positioned relative to its closest positioned ancestor.",
+    "fixed": "The element is positioned relative to the browser window.",
+    "sticky": "The element is positioned based on the user's scroll position (hybrid of relative and fixed).",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "justify-content": {
+    "center": "Items are centered in the container.",
+    "flex-start": "Default value. Items are positioned at the beginning of the container.",
+    "flex-end": "Items are positioned at the end of the container.",
+    "space-between": "Items are positioned with space between the lines.",
+    "space-around": "Items are positioned with space before, between, and after the lines.",
+    "space-evenly": "Items are distributed so that the spacing between any two adjacent items is equal.",
+    "inherit": "Inherits this property from its parent element.",
+    "initial": "Sets this property to its default value."
+  },
+  "flex-direction": {
+    "row": "Default value. Items are displayed horizontally, as a row.",
+    "row-reverse": "Items are displayed horizontally, as a row, from right to left.",
+    "column": "Items are displayed vertically, as a column.",
+    "column-reverse": "Items are displayed vertically, as a column, from bottom to top.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "align-items": {
+    "stretch": "Default value. Items are stretched to fit the container.",
+    "center": "Items are positioned at the center of the container.",
+    "flex-start": "Items are positioned at the top of the container.",
+    "flex-end": "Items are positioned at the bottom of the container.",
+    "baseline": "Items are positioned at the baseline of the container.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  }
+}

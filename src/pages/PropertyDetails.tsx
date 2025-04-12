@@ -22,7 +22,7 @@ import {
 const PropertyDetails = () => {
   const { propertyId } = useParams<{ propertyId: string }>();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
+  const { t, i18n } = useTranslation(['translation', 'propertyDescriptions', 'propertyValues']);
   const [showExamples, setShowExamples] = useState(true);
   const [showSupport, setShowSupport] = useState(true);
   
@@ -49,6 +49,17 @@ const PropertyDetails = () => {
   const getDescription = (description: string) => {
     const translatedDescription = t(`${propertyId}`, {
       ns: 'propertyDescriptions',
+      defaultValue: ''
+    });
+    
+    return translatedDescription || description;
+  };
+
+  // Get translated value description or fall back to provided description
+  const getValueDescription = (value: string, description: string) => {
+    const key = `${propertyId}.${value}`;
+    const translatedDescription = t(key, {
+      ns: 'propertyValues',
       defaultValue: ''
     });
     
@@ -113,7 +124,7 @@ const PropertyDetails = () => {
                   {propertyDetails.values.map((value, index) => (
                     <TableRow key={index}>
                       <TableCell className="font-mono">{value.value}</TableCell>
-                      <TableCell>{value.description}</TableCell>
+                      <TableCell>{getValueDescription(value.value, value.description)}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
