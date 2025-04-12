@@ -26,7 +26,10 @@
     "preview": "Preview",
     "code": "Code",
     "html": "HTML",
-    "css": "CSS"
+    "css": "CSS",
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian"
   },
   "categories": {
     "layout": "Layout",
@@ -44,5 +47,10 @@
     "pseudo-classes": "Pseudo-classes",
     "pseudo-elements": "Pseudo-elements",
     "attribute": "Attribute Selectors"
-  }
+  },
+  "search": {
+     "searchSelectors": "Search CSS Selectors...",
+     "searchProperties": "Search CSS Properties...",
+     "noResults": "No results found"
+   }
 }

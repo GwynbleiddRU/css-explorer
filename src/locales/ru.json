@@ -26,7 +26,10 @@
     "preview": "Предпросмотр",
     "code": "Код",
     "html": "HTML",
-    "css": "CSS"
+    "css": "CSS",
+    "language": "Язык",
+    "english": "Английский",
+    "russian": "Русский"
   },
   "categories": {
     "layout": "Компоновка",
@@ -44,5 +47,10 @@
     "pseudo-classes": "Псевдоклассы",
     "pseudo-elements": "Псевдоэлементы",
     "attribute": "Селекторы атрибутов"
-  }
+  },
+  "search": {
+     "searchSelectors": "Поиск CSS селекторов...",
+     "searchProperties": "Поиск CSS свойств...",
+     "noResults": "Результаты не найдены"
+   }
 }
