@@ -89,9 +89,6 @@ export const propertyDetailsList: Record<string, PropertyDetails> = {
   "align-items": alignItemsDetails
 };
 
-// Newly added properties with essential examples will be loaded from the localization files
-// This avoids redundancy since the detailed information is now stored in those files
-
 // Function to get property details by ID
 export const getPropertyDetailsById = (id: string): PropertyDetails | undefined => {
   return propertyDetailsList[id];
