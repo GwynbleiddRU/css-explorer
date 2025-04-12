@@ -109,8 +109,8 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                         {property.name}
                       </Link>
                     </TableCell>
-                    <TableCell className="align-top">
-                      <div className="font-mono text-sm whitespace-pre-wrap">
+                    <TableCell className="align-top max-w-[260px] w-1/5">
+                      <div className="font-mono text-sm break-words whitespace-pre-wrap">
                         {property.syntax}
                       </div>
                     </TableCell>
