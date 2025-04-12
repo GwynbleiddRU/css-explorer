@@ -55,15 +55,6 @@ const PropertyDetails = () => {
     return translatedDescription || description;
   };
 
-  // Get translated value description or fall back to provided description
-  const getValueDescription = (value: string) => {
-    const key = `${propertyId}.${value}`;
-    return t(key, {
-      ns: 'propertyValues',
-      defaultValue: value
-    });
-  };
-
   // Get all possible values for this property from the translation files
   const getPossibleValues = (): {value: string, description: string}[] => {
     if (!propertyId) return [];

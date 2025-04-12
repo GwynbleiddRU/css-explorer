@@ -1,866 +1,7 @@
 
 {
-  "@font-face": {
-    "font-family": "Specifies a name that will be used as a font face value for font properties.",
-    "src": "Specifies the resource containing the font data.",
-    "font-stretch": "Specifies how the font should be stretched.",
-    "font-style": "Specifies the style of the font.",
-    "font-weight": "Specifies the weight of the font.",
-    "unicode-range": "Specifies the range of Unicode characters the font supports."
-  },
-  "@keyframes": {
-    "from": "Represents the starting state of the animation sequence.",
-    "to": "Represents the ending state of the animation sequence.",
-    "percentage": "Represents intermediate states of the animation sequence (e.g., 25%, 50%, 75%)."
-  },
-  "align-content": {
-    "stretch": "Default value. Lines stretch to take up the remaining space.",
-    "center": "Lines are packed toward the center of the container.",
-    "flex-start": "Lines are packed toward the start of the container.",
-    "flex-end": "Lines are packed toward the end of the container.",
-    "space-between": "Lines are evenly distributed with the first line at the start and the last line at the end.",
-    "space-around": "Lines are evenly distributed with equal space around each line.",
-    "space-evenly": "Lines are evenly distributed with equal space between them.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "align-items": {
-    "stretch": "Default value. Items are stretched to fit the container.",
-    "center": "Items are positioned at the center of the container.",
-    "flex-start": "Items are positioned at the top of the container.",
-    "flex-end": "Items are positioned at the bottom of the container.",
-    "baseline": "Items are positioned at the baseline of the container.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "align-self": {
-    "auto": "Default value. The element inherits its parent container's align-items property.",
-    "stretch": "The element is stretched to fit the container.",
-    "center": "The element is positioned at the center of the container.",
-    "flex-start": "The element is positioned at the top of the container.",
-    "flex-end": "The element is positioned at the bottom of the container.",
-    "baseline": "The element is positioned at the baseline of the container.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation": {
-    "name": "Specifies the name of the @keyframes animation.",
-    "duration": "Specifies how many seconds or milliseconds an animation takes to complete one cycle.",
-    "timing-function": "Specifies the speed curve of the animation.",
-    "delay": "Specifies a delay before the animation will start.",
-    "iteration-count": "Specifies how many times an animation should be played.",
-    "direction": "Specifies whether or not the animation should play in reverse on alternate cycles.",
-    "fill-mode": "Specifies what values are applied by the animation outside the time it is executing.",
-    "play-state": "Specifies whether the animation is running or paused.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-delay": {
-    "time": "Specifies the delay before the animation starts (e.g., 3s, 200ms).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-direction": {
-    "normal": "Default value. The animation is played as normal (forwards).",
-    "reverse": "The animation is played in reverse direction (backwards).",
-    "alternate": "The animation is played forwards first, then backwards.",
-    "alternate-reverse": "The animation is played backwards first, then forwards.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-duration": {
-    "time": "Specifies how many seconds or milliseconds an animation takes to complete one cycle (e.g., 3s, 200ms).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-fill-mode": {
-    "none": "Default value. Animation will not apply any styles to the element before or after it is executing.",
-    "forwards": "The element will retain the style values set by the last keyframe.",
-    "backwards": "The element will get the style values set by the first keyframe during the animation-delay period.",
-    "both": "The animation will follow the rules for both forwards and backwards.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-iteration-count": {
-    "number": "A number that defines how many times an animation should be played (e.g., 3).",
-    "infinite": "Specifies that the animation should be played infinite times.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-name": {
-    "keyframename": "Specifies the name of the @keyframes animation.",
-    "none": "Default value. No animation should be applied.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-play-state": {
-    "running": "Default value. The animation is running.",
-    "paused": "The animation is paused.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "animation-timing-function": {
-    "ease": "Default value. Specifies an animation with a slow start, then fast, then end slowly.",
-    "linear": "Specifies an animation with the same speed from start to end.",
-    "ease-in": "Specifies an animation with a slow start.",
-    "ease-out": "Specifies an animation with a slow end.",
-    "ease-in-out": "Specifies an animation with a slow start and end.",
-    "cubic-bezier(n,n,n,n)": "Defines a cubic-bezier curve for a custom timing function.",
-    "steps(n, start|end)": "Specifies a stepped timing function with n steps.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "backface-visibility": {
-    "visible": "Default value. The back face is visible when turned towards the user.",
-    "hidden": "The back face is not visible when turned towards the user.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background": {
-    "color": "Specifies the background color.",
-    "image": "Specifies one or more background images.",
-    "position": "Specifies the position of the background images.",
-    "size": "Specifies the size of the background images.",
-    "repeat": "Specifies how the background images are repeated.",
-    "origin": "Specifies where the background images are positioned.",
-    "clip": "Specifies the painting area of the background images.",
-    "attachment": "Specifies whether the background images are fixed or scroll with the page.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-attachment": {
-    "scroll": "Default value. The background image scrolls with the page.",
-    "fixed": "The background image stays fixed in place, even when scrolling.",
-    "local": "The background image scrolls with the element's contents.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-blend-mode": {
-    "normal": "Default value. The background image shows as normal.",
-    "multiply": "Multiplies the colors of the background image with the colors of the background color.",
-    "screen": "Multiplies the inverse of the colors of the background image with the inverse of the colors of the background color.",
-    "overlay": "Multiplies or screens the colors, depending on the background color.",
-    "darken": "Selects the darker of the background color and the background image.",
-    "lighten": "Selects the lighter of the background color and the background image.",
-    "color-dodge": "Brightens the background color to reflect the background image.",
-    "color-burn": "Darkens the background color to reflect the background image.",
-    "hard-light": "Multiplies or screens the colors, depending on the background image.",
-    "soft-light": "Darkens or lightens the colors, depending on the background image.",
-    "difference": "Subtracts the darker of the two colors from the lighter color.",
-    "exclusion": "Similar to difference, but with lower contrast.",
-    "hue": "Uses the hue of the background image with the saturation and luminosity of the background color.",
-    "saturation": "Uses the saturation of the background image with the hue and luminosity of the background color.",
-    "color": "Uses the hue and saturation of the background image with the luminosity of the background color.",
-    "luminosity": "Uses the luminosity of the background image with the hue and saturation of the background color.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-clip": {
-    "border-box": "Default value. The background extends to the outer edge of the border.",
-    "padding-box": "The background extends to the outer edge of the padding.",
-    "content-box": "The background is clipped to the content box.",
-    "text": "The background is clipped to the text.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-color": {
-    "color": "Specifies the background color (e.g., red, #F1F1F1, rgb(255,0,0)).",
-    "transparent": "Default value. The background color is transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-image": {
-    "url": "Specifies the URL of the image (e.g., url('image.jpg')).",
-    "none": "Default value. No background image is displayed.",
-    "linear-gradient": "Creates a linear gradient (e.g., linear-gradient(direction, color-stop1, color-stop2, ...)).",
-    "radial-gradient": "Creates a radial gradient (e.g., radial-gradient(shape size at position, color-stop1, color-stop2, ...)).",
-    "repeating-linear-gradient": "Creates a repeating linear gradient.",
-    "repeating-radial-gradient": "Creates a repeating radial gradient.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-origin": {
-    "padding-box": "Default value. The background is positioned relative to the padding box.",
-    "border-box": "The background is positioned relative to the border box.",
-    "content-box": "The background is positioned relative to the content box.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-position": {
-    "left top": "The background image is positioned at the top left of the element.",
-    "left center": "The background image is positioned at the center left of the element.",
-    "left bottom": "The background image is positioned at the bottom left of the element.",
-    "right top": "The background image is positioned at the top right of the element.",
-    "right center": "The background image is positioned at the center right of the element.",
-    "right bottom": "The background image is positioned at the bottom right of the element.",
-    "center top": "The background image is positioned at the top center of the element.",
-    "center center": "The background image is positioned at the center of the element.",
-    "center bottom": "The background image is positioned at the bottom center of the element.",
-    "x% y%": "The first value is the horizontal position and the second value is the vertical position.",
-    "xpos ypos": "The first value is the horizontal position and the second value is the vertical position.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "background-repeat": {
-    "repeat": "Default value. The background image is repeated both vertically and horizontally.",
-    "repeat-x": "The background image is repeated only horizontally.",
-    "repeat-y": "The background image is repeated only vertically.",
-    "no-repeat": "The background image is not repeated.",
-    "space": "The background image is repeated as much as possible without clipping. The images are spaced out equally.",
-    "round": "The background image is repeated and squished or stretched to fill the space.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "display": {
-    "inline": "Displays an element as an inline element (like <span>).",
-    "block": "Displays an element as a block element (like <p>).",
-    "contents": "Makes the container disappear, making the child elements children of the element's parent.",
-    "flex": "Displays an element as a block-level flex container.",
-    "grid": "Displays an element as a block-level grid container.",
-    "inline-block": "Displays an element as an inline-level block container.",
-    "inline-flex": "Displays an element as an inline-level flex container.",
-    "inline-grid": "Displays an element as an inline-level grid container.",
-    "inline-table": "The element is displayed as an inline-level table.",
-    "list-item": "The element behaves like a <li> element.",
-    "run-in": "Displays an element as either block or inline, depending on context.",
-    "table": "The element behaves like a <table> element.",
-    "table-caption": "The element behaves like a <caption> element.",
-    "table-column-group": "The element behaves like a <colgroup> element.",
-    "table-header-group": "The element behaves like a <thead> element.",
-    "table-footer-group": "The element behaves like a <tfoot> element.",
-    "table-row-group": "The element behaves like a <tbody> element.",
-    "table-cell": "The element behaves like a <td> element.",
-    "table-column": "The element behaves like a <col> element.",
-    "table-row": "The element behaves like a <tr> element.",
-    "none": "The element is completely removed.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "position": {
-    "static": "Default value. Elements are positioned according to the normal flow of the document.",
-    "relative": "The element is positioned relative to its normal position.",
-    "absolute": "The element is positioned relative to its closest positioned ancestor.",
-    "fixed": "The element is positioned relative to the browser window.",
-    "sticky": "The element is positioned based on the user's scroll position (hybrid of relative and fixed).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "justify-content": {
-    "center": "Items are centered in the container.",
-    "flex-start": "Default value. Items are positioned at the beginning of the container.",
-    "flex-end": "Items are positioned at the end of the container.",
-    "space-between": "Items are positioned with space between the lines.",
-    "space-around": "Items are positioned with space before, between, and after the lines.",
-    "space-evenly": "Items are distributed so that the spacing between any two adjacent items is equal.",
-    "inherit": "Inherits this property from its parent element.",
-    "initial": "Sets this property to its default value."
-  },
-    "background-size": {
-    "auto": "Default value. The background image is displayed in its original size.",
-    "length": "Sets the width and height of the background image (e.g., 50px 100px).",
-    "percentage": "Sets the width and height of the background image in percent of the parent element (e.g., 50% 100%).",
-    "cover": "Scales the background image to cover the entire container, even if it has to stretch or crop the image.",
-    "contain": "Scales the background image to fit inside the container, even if it results in empty space.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border": {
-    "border-width": "Specifies the width of the border (e.g., thin, medium, thick, or specific size like 1px).",
-    "border-style": "Specifies the style of the border (e.g., solid, dotted, dashed).",
-    "border-color": "Specifies the color of the border (e.g., red, #FF0000).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom": {
-    "border-bottom-width": "Specifies the width of the bottom border.",
-    "border-bottom-style": "Specifies the style of the bottom border.",
-    "border-bottom-color": "Specifies the color of the bottom border.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom-color": {
-    "color": "Specifies the color of the bottom border (e.g., red, #FF0000, rgb(255,0,0)).",
-    "transparent": "Specifies that the bottom border color should be transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom-left-radius": {
-    "length": "Defines the radius of the bottom-left corner (e.g., 10px).",
-    "percentage": "Defines the radius of the bottom-left corner in percent (e.g., 10%).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom-right-radius": {
-    "length": "Defines the radius of the bottom-right corner (e.g., 10px).",
-    "percentage": "Defines the radius of the bottom-right corner in percent (e.g., 10%).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom-style": {
-    "none": "Default value. Defines no border.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted border.",
-    "dashed": "Defines a dashed border.",
-    "solid": "Defines a solid border.",
-    "double": "Defines a double border.",
-    "groove": "Defines a 3D grooved border. The effect depends on the border-color value.",
-    "ridge": "Defines a 3D ridged border. The effect depends on the border-color value.",
-    "inset": "Defines a 3D inset border. The effect depends on the border-color value.",
-    "outset": "Defines a 3D outset border. The effect depends on the border-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-bottom-width": {
-    "medium": "Default value. Defines a medium border.",
-    "thin": "Defines a thin border.",
-    "thick": "Defines a thick border.",
-    "length": "Defines the width of the bottom border (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-collapse": {
-    "separate": "Default value. Borders are detached (standard HTML).",
-    "collapse": "Borders are collapsed into a single border where possible.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-color": {
-    "color": "Specifies the color of the four borders (e.g., red, #FF0000, rgb(255,0,0)).",
-    "transparent": "Specifies that the border color should be transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image": {
-    "border-image-source": "Specifies the path to the image to be used as a border.",
-    "border-image-slice": "Specifies how to slice the border image.",
-    "border-image-width": "Specifies the width of the border image.",
-    "border-image-outset": "Specifies the amount by which the border image area extends beyond the border box.",
-    "border-image-repeat": "Specifies whether the border image should be repeated, rounded or stretched.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image-outset": {
-    "length": "Specifies the amount by which the border image area extends beyond the border box (e.g., 1px, 2cm).",
-    "number": "The number is a factor of the border-width (e.g., 1, 2).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image-repeat": {
-    "stretch": "Default value. The image is stretched to fill the area.",
-    "repeat": "The image is tiled (repeated) to fill the area.",
-    "round": "The image is tiled (repeated) to fill the area. If it doesn't fit exactly, it is scaled to fit.",
-    "space": "The image is tiled (repeated) to fill the area. If it doesn't fit exactly, extra space is distributed around the tiles.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image-slice": {
-    "number": "The number represents pixels for raster images and coordinates for vector images (e.g., 30).",
-    "percentage": "The percentage is relative to the size of the image (e.g., 30%).",
-    "fill": "Causes the middle part of the border-image to be displayed.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image-source": {
-    "none": "Default value. No border image is used.",
-    "image": "The URL of the image to be used as a border (e.g., url('border.png')).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-image-width": {
-    "number": "Represents a multiple of the corresponding border-width (e.g., 3).",
-    "percentage": "Relative to the width/height of the border image area (e.g., 10%).",
-    "length": "Width in absolute units (e.g., 20px).",
-    "auto": "If specified, the width is the intrinsic width or height of the corresponding image slice.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-left": {
-    "border-left-width": "Specifies the width of the left border.",
-    "border-left-style": "Specifies the style of the left border.",
-    "border-left-color": "Specifies the color of the left border.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-left-color": {
-    "color": "Specifies the color of the left border (e.g., red, #FF0000, rgb(255,0,0)).",
-    "transparent": "Specifies that the left border color should be transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-left-style": {
-    "none": "Default value. Defines no border.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted border.",
-    "dashed": "Defines a dashed border.",
-    "solid": "Defines a solid border.",
-    "double": "Defines a double border.",
-    "groove": "Defines a 3D grooved border. The effect depends on the border-color value.",
-    "ridge": "Defines a 3D ridged border. The effect depends on the border-color value.",
-    "inset": "Defines a 3D inset border. The effect depends on the border-color value.",
-    "outset": "Defines a 3D outset border. The effect depends on the border-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-left-width": {
-    "medium": "Default value. Defines a medium border.",
-    "thin": "Defines a thin border.",
-    "thick": "Defines a thick border.",
-    "length": "Defines the width of the left border (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-radius": {
-    "length": "Defines the radius of the four corners (e.g., 10px).",
-    "percentage": "Defines the radius of the four corners in percent (e.g., 10%).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-right": {
-    "border-right-width": "Specifies the width of the right border.",
-    "border-right-style": "Specifies the style of the right border.",
-    "border-right-color": "Specifies the color of the right border.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-right-color": {
-    "color": "Specifies the color of the right border (e.g., red, #FF0000, rgb(255,0,0)).",
-    "transparent": "Specifies that the right border color should be transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-right-style": {
-    "none": "Default value. Defines no border.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted border.",
-    "dashed": "Defines a dashed border.",
-    "solid": "Defines a solid border.",
-    "double": "Defines a double border.",
-    "groove": "Defines a 3D grooved border. The effect depends on the border-color value.",
-    "ridge": "Defines a 3D ridged border. The effect depends on the border-color value.",
-    "inset": "Defines a 3D inset border. The effect depends on the border-color value.",
-    "outset": "Defines a 3D outset border. The effect depends on the border-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-right-width": {
-    "medium": "Default value. Defines a medium border.",
-    "thin": "Defines a thin border.",
-    "thick": "Defines a thick border.",
-    "length": "Defines the width of the right border (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-spacing": {
-    "length": "Defines the distance between adjacent cells (e.g., 2px, 0.5em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-style": {
-    "none": "Default value. Defines no border.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted border.",
-    "dashed": "Defines a dashed border.",
-    "solid": "Defines a solid border.",
-    "double": "Defines a double border.",
-    "groove": "Defines a 3D grooved border. The effect depends on the border-color value.",
-    "ridge": "Defines a 3D ridged border. The effect depends on the border-color value.",
-    "inset": "Defines a 3D inset border. The effect depends on the border-color value.",
-    "outset": "Defines a 3D outset border. The effect depends on the border-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top": {
-    "border-top-width": "Specifies the width of the top border.",
-    "border-top-style": "Specifies the style of the top border.",
-    "border-top-color": "Specifies the color of the top border.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top-color": {
-    "color": "Specifies the color of the top border (e.g., red, #FF0000, rgb(255,0,0)).",
-    "transparent": "Specifies that the top border color should be transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top-left-radius": {
-    "length": "Defines the radius of the top-left corner (e.g., 10px).",
-    "percentage": "Defines the radius of the top-left corner in percent (e.g., 10%).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top-right-radius": {
-    "length": "Defines the radius of the top-right corner (e.g., 10px).",
-    "percentage": "Defines the radius of the top-right corner in percent (e.g., 10%).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top-style": {
-    "none": "Default value. Defines no border.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted border.",
-    "dashed": "Defines a dashed border.",
-    "solid": "Defines a solid border.",
-    "double": "Defines a double border.",
-    "groove": "Defines a 3D grooved border. The effect depends on the border-color value.",
-    "ridge": "Defines a 3D ridged border. The effect depends on the border-color value.",
-    "inset": "Defines a 3D inset border. The effect depends on the border-color value.",
-    "outset": "Defines a 3D outset border. The effect depends on the border-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-top-width": {
-    "medium": "Default value. Defines a medium border.",
-    "thin": "Defines a thin border.",
-    "thick": "Defines a thick border.",
-    "length": "Defines the width of the top border (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "border-width": {
-    "medium": "Default value. Defines a medium border.",
-    "thin": "Defines a thin border.",
-    "thick": "Defines a thick border.",
-    "length": "Defines the width of the border (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "bottom": {
-    "auto": "Default value. The browser calculates the bottom position.",
-    "length": "Specifies the bottom position in px, cm, etc. Negative values are allowed.",
-    "percentage": "Specifies the bottom position in percent of the containing element. Negative values are allowed.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "box-shadow": {
-    "none": "Default value. No shadow is displayed.",
-    "h-offset": "Required. The horizontal offset of the shadow. A positive value puts the shadow on the right side of the box, a negative value puts the shadow on the left side of the box.",
-    "v-offset": "Required. The vertical offset of the shadow. A positive value puts the shadow below the box, a negative value puts the shadow above the box.",
-    "blur": "Optional. The blur radius. The higher the number, the more blurred the shadow will be.",
-    "spread": "Optional. The spread radius. A positive value increases the size of the shadow, a negative value decreases the size of the shadow.",
-    "color": "Optional. The color of the shadow. The default value is the text color.",
-    "inset": "Optional. Changes the shadow from an outer shadow (outset) to an inner shadow.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "box-sizing": {
-    "content-box": "Default value. The width and height properties include only the content. Border and padding are not included.",
-    "border-box": "The width and height properties include content, padding and border.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "caption-side": {
-    "top": "Default value. The caption is placed above the table.",
-    "bottom": "The caption is placed below the table.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "clear": {
-    "none": "Default value. Allows floating elements on both sides.",
-    "left": "No floating elements allowed on the left side.",
-    "right": "No floating elements allowed on the right side.",
-    "both": "No floating elements allowed on either the left or the right side.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "clip": {
-    "auto": "Default value. No clipping will be applied.",
-    "shape": "Specifies a clipping shape. Only rectangle is supported: rect (top, right, bottom, left).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "color": {
-    "color": "Specifies the text color (e.g., red, #FF0000, rgb(255,0,0)).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-count": {
-    "auto": "Default value. The number of columns will be determined by other properties like column-width.",
-    "number": "Defines the number of columns an element should be divided into (e.g., 3).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-fill": {
-    "balance": "Default value. Columns are filled equally.",
-    "auto": "Columns are filled sequentially.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-gap": {
-    "normal": "Default value. Specifies a normal gap between columns (1em).",
-    "length": "Specifies the gap between columns (e.g., 30px, 2em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-rule": {
-    "column-rule-width": "Specifies the width of the rule between columns.",
-    "column-rule-style": "Specifies the style of the rule between columns.",
-    "column-rule-color": "Specifies the color of the rule between columns.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-rule-color": {
-    "color": "Specifies the color of the rule between columns (e.g., red, #FF0000, rgb(255,0,0)).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-rule-style": {
-    "none": "Default value. No rule is displayed.",
-    "hidden": "Same as none, except in border conflict resolution for table elements.",
-    "dotted": "Defines a dotted rule.",
-    "dashed": "Defines a dashed rule.",
-    "solid": "Defines a solid rule.",
-    "double": "Defines a double rule.",
-    "groove": "Defines a 3D grooved rule. The effect depends on the column-rule-color value.",
-    "ridge": "Defines a 3D ridged rule. The effect depends on the column-rule-color value.",
-    "inset": "Defines a 3D inset rule. The effect depends on the column-rule-color value.",
-    "outset": "Defines a 3D outset rule. The effect depends on the column-rule-color value.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-rule-width": {
-    "medium": "Default value. Defines a medium rule.",
-    "thin": "Defines a thin rule.",
-    "thick": "Defines a thick rule.",
-    "length": "Defines the width of the rule (e.g., 1px, 0.1em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-span": {
-    "none": "Default value. The element does not span across any columns.",
-    "all": "The element spans across all columns.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "column-width": {
-    "auto": "Default value. The column width will be determined by the browser.",
-    "length": "Specifies the width of the columns (e.g., 100px, 10em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "columns": {
-    "column-width": "Specifies the width of the columns.",
-    "column-count": "Specifies the number of columns an element should be divided into.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "content": {
-    "normal": "Default value. Sets the content to its normal behavior.",
-    "none": "Sets the content to nothing.",
-    "counter": "Sets the content as a counter (e.g., counter(name)).",
-    "attr(attribute)": "Sets the content as the value of an attribute of the element.",
-    "string": "Sets the content to the specified string.",
-    "open-quote": "Sets the content to an opening quotation mark.",
-    "close-quote": "Sets the content to a closing quotation mark.",
-    "no-open-quote": "Removes the opening quotation mark from the content.",
-    "no-close-quote": "Removes the closing quotation mark from the content.",
-    "url(url)": "Sets the content to an external resource (e.g., an image).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "counter-increment": {
-    "none": "Default value. No counter is incremented.",
-    "id": "The ID of the counter to increment.",
-    "number": "The increment value (e.g., 1, 2, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "counter-reset": {
-    "none": "Default value. No counter is reset.",
-    "id": "The ID of the counter to reset.",
-    "number": "The value to reset the counter to (e.g., 0, 1, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "cursor": {
-    "alias": "The cursor indicates an alias or shortcut is to be created.",
-    "all-scroll": "The cursor indicates that something can be scrolled in any direction.",
-    "auto": "Default value. The browser sets a cursor.",
-    "cell": "The cursor indicates that a cell or set of cells may be selected.",
-    "context-menu": "The cursor indicates that a context-menu is available.",
-    "col-resize": "The cursor indicates that the column can be resized horizontally.",
-    "copy": "The cursor indicates something is to be copied.",
-    "crosshair": "The cursor is a crosshair.",
-    "default": "The default cursor, typically an arrow.",
-    "e-resize": "The cursor indicates that an edge of a box is to be moved right.",
-    "ew-resize": "The cursor indicates a bidirectional resize cursor (east-west).",
-    "grab": "The cursor indicates that something can be grabbed.",
-    "grabbing": "The cursor indicates that something is being grabbed.",
-    "help": "The cursor indicates that help is available.",
-    "move": "The cursor indicates something is to be moved.",
-    "n-resize": "The cursor indicates that an edge of a box is to be moved up.",
-    "ne-resize": "The cursor indicates that an edge of a box is to be moved up and right.",
-    "nesw-resize": "The cursor indicates a bidirectional resize cursor (northeast-southwest).",
-    "ns-resize": "The cursor indicates a bidirectional resize cursor (north-south).",
-    "nw-resize": "The cursor indicates that an edge of a box is to be moved up and left.",
-    "nwse-resize": "The cursor indicates a bidirectional resize cursor (northwest-southeast).",
-    "no-drop": "The cursor indicates that the dragged item cannot be dropped here.",
-    "not-allowed": "The cursor indicates that the requested action will not be executed.",
-    "pointer": "The cursor is a pointer indicating a link.",
-    "progress": "The cursor indicates that the program is busy but the user can still interact with it.",
-    "row-resize": "The cursor indicates that the row can be resized vertically.",
-    "s-resize": "The cursor indicates that an edge of a box is to be moved down.",
-    "se-resize": "The cursor indicates that an edge of a box is to be moved down and right.",
-    "sw-resize": "The cursor indicates that an edge of a box is to be moved down and left.",
-    "text": "The cursor indicates text that may be selected.",
-    "url(url)": "A custom cursor (e.g., url('cursor.png')).",
-    "w-resize": "The cursor indicates that an edge of a box is to be moved left.",
-    "wait": "The cursor indicates that the program is busy.",
-    "zoom-in": "The cursor indicates that something can be zoomed in.",
-    "zoom-out": "The cursor indicates that something can be zoomed out.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "direction": {
-    "ltr": "Default value. Text direction is left-to-right.",
-    "rtl": "Text direction is right-to-left.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "empty-cells": {
-    "show": "Default value. Borders and backgrounds are displayed.",
-    "hide": "Borders and backgrounds are not displayed.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "filter": {
-    "none": "Default value. No filter effects are applied.",
-    "blur()": "Applies a blur effect to the element (e.g., blur(5px)).",
-    "brightness()": "Adjusts the brightness of the element (e.g., brightness(200%)).",
-    "contrast()": "Adjusts the contrast of the element (e.g., contrast(200%)).",
-    "drop-shadow()": "Applies a drop shadow effect to the element (e.g., drop-shadow(8px 8px 10px gray)).",
-    "grayscale()": "Converts the element to grayscale (e.g., grayscale(100%)).",
-    "hue-rotate()": "Applies a hue rotation on the element (e.g., hue-rotate(90deg)).",
-    "invert()": "Inverts the colors of the element (e.g., invert(100%)).",
-    "opacity()": "Sets the opacity of the element (e.g., opacity(50%)).",
-    "saturate()": "Saturates the element (e.g., saturate(200%)).",
-    "sepia()": "Converts the element to sepia (e.g., sepia(100%)).",
-    "url()": "Uses a filter from an SVG file (e.g., url('filters.svg#filter-id')).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex": {
-    "flex-grow": "Specifies how much the item will grow relative to the rest of the flexible items.",
-    "flex-shrink": "Specifies how much the item will shrink relative to the rest of the flexible items.",
-    "flex-basis": "Specifies the initial length of a flexible item.",
-    "auto": "Same as 1 1 auto.",
-    "initial": "Same as 0 1 auto. Sets this property to its default value.",
-    "none": "Same as 0 0 auto.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-basis": {
-    "auto": "Default value. The length is equal to the length of the flexible item. If the item has no length, the length will be according to its content.",
-    "length": "A length unit, such as px, em, rem, etc. (e.g., 20px, 5em).",
-    "percentage": "A percentage of the parent element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-direction": {
-    "row": "Default value. Items are displayed horizontally, as a row.",
-    "row-reverse": "Items are displayed horizontally, as a row, from right to left.",
-    "column": "Items are displayed vertically, as a column.",
-    "column-reverse": "Items are displayed vertically, as a column, from bottom to top.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-flow": {
-    "flex-direction": "Specifies the direction of the flexible items.",
-    "flex-wrap": "Specifies whether the flexible items should wrap or not.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-grow": {
-    "number": "A number specifying how much the item will grow relative to the rest of the flexible items (e.g., 0, 1, 2, etc.).",
-    "initial": "Sets this property to its default value (0).",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-shrink": {
-    "number": "A number specifying how much the item will shrink relative to the rest of the flexible items (e.g., 0, 1, 2, etc.).",
-    "initial": "Sets this property to its default value (1).",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "flex-wrap": {
-    "nowrap": "Default value. Flexible items will not wrap.",
-    "wrap": "Flexible items will wrap if necessary.",
-    "wrap-reverse": "Flexible items will wrap if necessary, in reverse order.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "float": {
-    "none": "Default value. The element does not float.",
-    "left": "The element floats to the left.",
-    "right": "The element floats to the right.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font": {
-    "font-style": "Specifies the font style (e.g., normal, italic, oblique).",
-    "font-variant": "Specifies the font variant (e.g., normal, small-caps).",
-    "font-weight": "Specifies the font weight (e.g., normal, bold, 900).",
-    "font-size": "Specifies the font size (e.g., 12px, 1em, 80%).",
-    "line-height": "Specifies the line height (e.g., normal, 1.5, 200%).",
-    "font-family": "Specifies the font family (e.g., 'Arial', 'Helvetica', sans-serif).",
-    "caption": "Uses the font settings for caption elements.",
-    "icon": "Uses the font settings for icon labels.",
-    "menu": "Uses the font settings for dropdown menus.",
-    "message-box": "Uses the font settings for dialog boxes.",
-    "small-caption": "Uses the font settings for small caption elements.",
-    "status-bar": "Uses the font settings for status bars.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-family": {
-    "family-name": "Specifies a font family name (e.g., 'Times New Roman', Arial).",
-    "generic-family": "Specifies a generic font family name (e.g., serif, sans-serif, monospace, cursive, fantasy).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-size": {
-    "medium": "Default value. Sets the font size to a medium size.",
-    "xx-small": "Sets the font size to an xx-small size.",
-    "x-small": "Sets the font size to an x-small size.",
-    "small": "Sets the font size to a small size.",
-    "large": "Sets the font size to a large size.",
-    "x-large": "Sets the font size to an x-large size.",
-    "xx-large": "Sets the font size to an xx-large size.",
-    "smaller": "Sets the font size to a smaller size than the parent element.",
-    "larger": "Sets the font size to a larger size than the parent element.",
-    "length": "Sets the font size to a fixed size in px, cm, etc.",
-    "percentage": "Sets the font size to a percentage of the parent element's font size.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-size-adjust": {
-    "none": "Default value. No adjustment is made to the font size.",
-    "number": "Defines the aspect value to be used (e.g., 0.5).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-stretch": {
-    "normal": "Default value. The text is displayed normally.",
-    "ultra-condensed": "Makes the text as condensed as possible.",
-    "extra-condensed": "Makes the text more condensed than condensed.",
-    "condensed": "Makes the text more condensed than semi-condensed.",
-    "semi-condensed": "Makes the text more condensed than normal.",
-    "semi-expanded": "Makes the text more expanded than normal.",
-    "expanded": "Makes the text more expanded than semi-expanded.",
-    "extra-expanded": "Makes the text more expanded than expanded.",
-    "ultra-expanded": "Makes the text as expanded as possible.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-style": {
-    "normal": "Default value. The text is shown normally.",
-    "italic": "The text is shown in italics.",
-    "oblique": "The text is 'leaning' (oblique is very similar to italic, but less supported).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "font-variant": {
-    "normal": "Default value. The text is shown normally.",
-    "small-caps": "The text is displayed in small capitals.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
+  "font-family": "Specifies the font family for text.",
+  "font-size": "Specifies the size of the font.",
   "font-weight": {
     "normal": "Default value. Normal font weight.",
     "bold": "Bold font weight.",
@@ -875,593 +16,244 @@
     "700": "Sets a specific font weight - equivalent to 'bold'.",
     "800": "Sets a specific font weight - equivalent to 'extra-bold'.",
     "900": "Sets a specific font weight - equivalent to 'black'.",
+    "inherit": "Inherits the font weight from the parent element.",
+    "initial": "Sets the default value."
+  },
+  "color": "Sets the color of text.",
+  "background-color": "Sets the background color of an element.",
+  "display": {
+    "inline": "Displays an element as an inline element (like <span>).",
+    "block": "Displays an element as a block element (like <p>).",
+    "contents": "Makes the container disappear, making the child elements children of the parent.",
+    "flex": "Displays an element as a block-level flex container.",
+    "grid": "Displays an element as a block-level grid container.",
+    "inline-block": "Displays an element as an inline-level block container.",
+    "inline-flex": "Displays an element as an inline-level flex container.",
+    "inline-grid": "Displays an element as an inline-level grid container.",
+    "inline-table": "The element is displayed as an inline-level table.",
+    "list-item": "Let the element behave like a <li> element.",
+    "run-in": "Displays an element as either block or inline, depending on context.",
+    "table": "Let the element behave like a <table> element.",
+    "table-caption": "Let the element behave like a <caption> element.",
+    "table-column-group": "Let the element behave like a <colgroup> element.",
+    "table-header-group": "Let the element behave like a <thead> element.",
+    "table-footer-group": "Let the element behave like a <tfoot> element.",
+    "table-row-group": "Let the element behave like a <tbody> element.",
+    "table-cell": "Let the element behave like a <td> element.",
+    "table-column": "Let the element behave like a <col> element.",
+    "table-row": "Let the element behave like a <tr> element.",
+    "none": "The element is not displayed and does not take up space on the page.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "position": {
+    "static": "Default value. Elements render in order, as they appear in the document flow.",
+    "relative": "The element is positioned relative to its normal position.",
+    "absolute": "The element is positioned relative to its first positioned (not static) ancestor element.",
+    "fixed": "The element is positioned relative to the browser window and doesn't move during scrolling.",
+    "sticky": "The element is positioned based on the user's scroll position (hybrid of relative and fixed).",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "float": "Specifies how an element should float.",
+  "width": "Sets the width of an element.",
+  "margin": "Sets the margin area on all four sides of an element.",
+  "padding": "Sets the padding area on all four sides of an element.",
+  "border": "A shorthand property for border-width, border-style and border-color.",
+  "border-radius": "Defines the radius of the element's corners.",
+  "background-image": "Sets one or more background images for an element.",
+  "clear": "Specifies which sides of an element where other floating elements are not allowed.",
+  "z-index": "Specifies the stack order of an element.",
+  "top": "Specifies the top position of a positioned element.",
+  "right": "Specifies the right position of a positioned element.",
+  "bottom": "Specifies the bottom position of a positioned element.",
+  "left": "Specifies the left position of a positioned element.",
+  "height": "Sets the height of an element.",
+  "min-width": "Sets the minimum width of an element.",
+  "max-width": "Sets the maximum width of an element.",
+  "min-height": "Sets the minimum height of an element.",
+  "max-height": "Sets the maximum height of an element.",
+  "margin-top": "Sets the top margin of an element.",
+  "margin-right": "Sets the right margin of an element.",
+  "margin-bottom": "Sets the bottom margin of an element.",
+  "margin-left": "Sets the left margin of an element.",
+  "padding-top": "Sets the top padding of an element.",
+  "padding-right": "Sets the right padding of an element.",
+  "padding-bottom": "Sets the bottom padding of an element.",
+  "padding-left": "Sets the left padding of an element.",
+  "box-sizing": "Defines how the width and height of an element are calculated.",
+  "font-style": "Specifies the font style for text.",
+  "font-variant": "Specifies whether or not a text should be displayed in a small-caps font.",
+  "line-height": "Sets the line height.",
+  "text-align": "Specifies the horizontal alignment of text in an element.",
+  "text-transform": "Controls the capitalization of text.",
+  "text-decoration": "Specifies the decoration added to text.",
+  "letter-spacing": "Increases or decreases the space between characters in a text.",
+  "word-spacing": "Increases or decreases the white space between words.",
+  "background": "A shorthand property for setting all background properties in one declaration.",
+  "background-repeat": "Sets how a background image will be repeated.",
+  "background-position": "Sets the starting position of a background image.",
+  "background-size": "Specifies the size of the background images.",
+  "background-attachment": "Sets whether a background image scrolls with the rest of the page, or is fixed.",
+  "border-width": "Sets the width of an element's four borders.",
+  "border-style": "Sets the style of an element's four borders.",
+  "border-color": "Sets the color of an element's four borders.",
+  "display-flex": "Specifies the type of box used for an HTML element with flex layout.",
+  "flex-direction": {
+    "row": "Default value. The flexible items are displayed horizontally, as a row.",
+    "row-reverse": "Same as row, but in reverse order.",
+    "column": "The flexible items are displayed vertically, as a column.",
+    "column-reverse": "Same as column, but in reverse order.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "flex-wrap": "Specifies whether the flexible items should wrap or not.",
+  "flex-flow": "A shorthand property for flex-direction and flex-wrap.",
+  "justify-content": {
+    "center": "Items are centered along the flex container's main axis.",
+    "flex-start": "Default value. Items are positioned at the beginning of the container.",
+    "flex-end": "Items are positioned at the end of the container.",
+    "space-between": "Items are evenly distributed in the line; first item is on the start line, last item on the end line.",
+    "space-around": "Items are evenly distributed with equal space around them.",
+    "space-evenly": "Items are distributed so that the spacing between any two adjacent items is equal.",
     "inherit": "Inherits this property from its parent element.",
     "initial": "Sets this property to its default value."
   },
-  "hanging-punctuation": {
-    "none": "Default value. No hanging punctuation is used.",
-    "first": "Hang the first punctuation character at the start of the first line.",
-    "last": "Hang the last punctuation character at the end of the last line.",
-    "allow-end": "Allow a punctuation character to hang at the end of a line.",
-    "force-end": "Force a punctuation character to hang at the end of a line.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "height": {
-    "auto": "Default value. The browser calculates the height.",
-    "length": "Defines the height in px, cm, etc.",
-    "percentage": "Defines the height as a percentage of the containing block.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "hyphens": {
-    "none": "Words are not broken at line breaks, even if characters inside the words suggest line break points.",
-    "manual": "Words are broken for line breaks only where characters inside the word suggest line break opportunities.",
-    "auto": "Words may be broken at appropriate hyphenation points, determined by characters inside the word or by a dictionary lookup.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "left": {
-    "auto": "Default value. The browser calculates the left position.",
-    "length": "Specifies the left position in px, cm, etc. Negative values are allowed.",
-    "percentage": "Specifies the left position in percent of the containing element. Negative values are allowed.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "letter-spacing": {
-    "normal": "Default value. No extra space between characters.",
-    "length": "Defines extra space between characters (e.g., 2px, 0.5em).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "line-height": {
-    "normal": "Default value. Depends on the browser, but it is usually about 1.2.",
-    "number": "A number that will be multiplied with the current font size to set the line height.",
-    "length": "A fixed line height in px, pt, cm, etc.",
-    "percentage": "A line height in percent of the current font size.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "list-style": {
-    "list-style-type": "Specifies the type of list-item marker.",
-    "list-style-position": "Specifies where to place the list-item marker.",
-    "list-style-image": "Specifies an image as the list-item marker.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "list-style-image": {
-    "none": "Default value. No image will be used as the list-item marker.",
-    "url": "The path to the image to be used as a list-item marker (e.g., url('arrow.png')).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "list-style-position": {
-    "outside": "Default value. The bullet points will be outside the list item.",
-    "inside": "The bullet points will be inside the list item.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "list-style-type": {
-    "disc": "Default value. The marker is a filled circle.",
-    "armenian": "The marker is traditional Armenian numbering.",
-    "circle": "The marker is a circle.",
-    "cjk-ideographic": "The marker is plain ideographic numbers.",
-    "decimal": "The marker is a number.",
-    "decimal-leading-zero": "The marker is a number with leading zeros (01, 02, 03, etc.).",
-    "georgian": "The marker is traditional Georgian numbering.",
-    "hebrew": "The marker is traditional Hebrew numbering.",
-    "hiragana": "The marker is traditional Hiragana numbering.",
-    "hiragana-iroha": "The marker is traditional Hiragana iroha numbering.",
-    "katakana": "The marker is traditional Katakana numbering.",
-    "katakana-iroha": "The marker is traditional Katakana iroha numbering.",
-    "lower-alpha": "The marker is lowercase letters (a, b, c, d, etc.).",
-    "lower-greek": "The marker is lowercase Greek letters.",
-    "lower-latin": "The marker is lowercase letters (a, b, c, d, etc.).",
-    "lower-roman": "The marker is lowercase Roman numerals (i, ii, iii, iv, v, etc.).",
-    "none": "No marker is shown.",
-    "square": "The marker is a square.",
-    "upper-alpha": "The marker is uppercase letters (A, B, C, D, etc.).",
-    "upper-greek": "The marker is uppercase Greek letters.",
-    "upper-latin": "The marker is uppercase letters (A, B, C, D, etc.).",
-    "upper-roman": "The marker is uppercase Roman numerals (I, II, III, IV, V, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "margin": {
-    "length": "Specifies a fixed margin in px, pt, cm, etc.",
-    "percentage": "Specifies a margin in percent of the width of the containing element.",
-    "auto": "The browser calculates the margin.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "margin-bottom": {
-    "length": "Specifies a fixed bottom margin in px, pt, cm, etc.",
-    "percentage": "Specifies a bottom margin in percent of the width of the containing element.",
-    "auto": "The browser calculates the bottom margin.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "margin-left": {
-    "length": "Specifies a fixed left margin in px, pt, cm, etc.",
-    "percentage": "Specifies a left margin in percent of the width of the containing element.",
-    "auto": "The browser calculates the left margin.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "margin-right": {
-    "length": "Specifies a fixed right margin in px, pt, cm, etc.",
-    "percentage": "Specifies a right margin in percent of the width of the containing element.",
-    "auto": "The browser calculates the right margin.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "margin-top": {
-    "length": "Specifies a fixed top margin in px, pt, cm, etc.",
-    "percentage": "Specifies a top margin in percent of the width of the containing element.",
-    "auto": "The browser calculates the top margin.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "max-height": {
-    "none": "Default value. No maximum height.",
-    "length": "Defines the maximum height in px, cm, etc.",
-    "percentage": "Defines the maximum height in percent of the containing block.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "max-width": {
-    "none": "Default value. No maximum width.",
-    "length": "Defines the maximum width in px, cm, etc.",
-    "percentage": "Defines the maximum width in percent of the containing block.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "min-height": {
-    "length": "Defines the minimum height in px, cm, etc.",
-    "percentage": "Defines the minimum height in percent of the containing block.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "min-width": {
-    "length": "Defines the minimum width in px, cm, etc.",
-    "percentage": "Defines the minimum width in percent of the containing block.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "opacity": {
-    "number": "Specifies the opacity. A number from 0.0 (fully transparent) to 1.0 (fully opaque).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "order": {
-    "number": "Specifies the order of a flexible item relative to the rest of the flexible items (e.g., 0, 1, 2, etc.).",
-    "initial": "Sets this property to its default value (0).",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "orphans": {
-    "number": "Specifies the minimum number of lines that must be left at the bottom of a page when a page break occurs (e.g., 2, 3, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "outline": {
-    "outline-width": "Specifies the width of the outline.",
-    "outline-style": "Specifies the style of the outline.",
-    "outline-color": "Specifies the color of the outline.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "outline-color": {
-    "color": "Sets the color of the outline (can use color names, hex values, RGB, etc.).",
-    "invert": "Performs a color inversion of the outline (ensures outline is visible regardless of background).",
-    "transparent": "Makes the outline transparent.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "outline-offset": {
-    "<length>": "Specifies the space between the outline and the edge of the element (can use px, em, rem, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "outline-style": {
-    "none": "No outline is displayed.",
-    "hidden": "Same as 'none'.",
-    "dotted": "Defines a dotted outline.",
-    "dashed": "Defines a dashed outline.",
-    "solid": "Defines a solid outline.",
-    "double": "Defines a double outline.",
-    "groove": "Defines a grooved outline (appears 3D).",
-    "ridge": "Defines a ridged outline (appears 3D).",
-    "inset": "Defines an inset outline (appears 3D).",
-    "outset": "Defines an outset outline (appears 3D).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "outline-width": {
-    "thin": "Sets a thin outline.",
-    "medium": "Sets a medium outline (default).",
-    "thick": "Sets a thick outline.",
-    "<length>": "Sets the width using a specific length value (px, em, rem, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "overflow": {
-    "visible": "Content overflows the element's box (default).",
-    "hidden": "Content that overflows is clipped and not visible.",
-    "scroll": "Content that overflows is clipped, but scrollbars are always shown.",
-    "auto": "Content that overflows is clipped, and scrollbars appear only when necessary.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "overflow-wrap": {
-    "normal": "Words break only at allowed break points (default).",
-    "break-word": "Words will break at arbitrary points if necessary to prevent overflow.",
-    "anywhere": "Similar to break-word but with different behavior for line measurement and overflow-wrap.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "overflow-x": {
-    "visible": "Horizontal content overflows the element's box (default).",
-    "hidden": "Horizontal content that overflows is clipped and not visible.",
-    "scroll": "Horizontal content that overflows is clipped, but scrollbar is always shown.",
-    "auto": "Horizontal content that overflows is clipped, and scrollbar appears only when necessary.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "overflow-y": {
-    "visible": "Vertical content overflows the element's box (default).",
-    "hidden": "Vertical content that overflows is clipped and not visible.",
-    "scroll": "Vertical content that overflows is clipped, but scrollbar is always shown.",
-    "auto": "Vertical content that overflows is clipped, and scrollbar appears only when necessary.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "padding": {
-    "<length>": "Specifies padding using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies padding as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "padding-bottom": {
-    "<length>": "Specifies the bottom padding using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the bottom padding as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "padding-left": {
-    "<length>": "Specifies the left padding using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the left padding as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "padding-right": {
-    "<length>": "Specifies the right padding using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the right padding as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "padding-top": {
-    "<length>": "Specifies the top padding using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the top padding as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "page-break-after": {
-    "auto": "Default. Automatic page breaks.",
-    "always": "Always insert a page break after the element.",
-    "avoid": "Avoid a page break after the element if possible.",
-    "left": "Insert page breaks after the element until a left page is reached.",
-    "right": "Insert page breaks after the element until a right page is reached.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "page-break-before": {
-    "auto": "Default. Automatic page breaks.",
-    "always": "Always insert a page break before the element.",
-    "avoid": "Avoid a page break before the element if possible.",
-    "left": "Insert page breaks before the element until a left page is reached.",
-    "right": "Insert page breaks before the element until a right page is reached.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "page-break-inside": {
-    "auto": "Default. Automatic page breaks.",
-    "avoid": "Avoid a page break inside the element if possible.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "perspective": {
-    "none": "No perspective.",
-    "<length>": "Defines the distance between the z=0 plane and the user (px, em, etc.) for 3D transforms.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "perspective-origin": {
-    "<position>": "Defines the position at which the viewer is looking (combinations of left, center, right, top, bottom, lengths, or percentages).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "quotes": {
-    "none": "No quotation marks are displayed.",
-    "<string>": "Sets the quotation marks to be used (provides pairs of opening/closing quotes).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "resize": {
-    "none": "User cannot resize the element.",
-    "both": "User can resize the element both horizontally and vertically.",
-    "horizontal": "User can resize the element horizontally.",
-    "vertical": "User can resize the element vertically.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "right": {
-    "auto": "The browser calculates the right position.",
-    "<length>": "Specifies the position using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the position as a percentage of the containing element's width.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "tab-size": {
-    "<integer>": "Specifies the width of tab characters as a number of characters.",
-    "<length>": "Specifies the width of tab characters using a length value (px, em, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "table-layout": {
-    "auto": "Default. The column width is determined by the widest unbreakable content in the cells.",
-    "fixed": "Table and column widths are set by the widths of table and col elements or by the width of the first row of cells.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-align": {
-    "left": "Content is aligned to the left.",
-    "right": "Content is aligned to the right.",
-    "center": "Content is centered.",
-    "justify": "Content is stretched to fit the width of the container.",
-    "start": "Aligns content to the start of the container (depends on text direction).",
-    "end": "Aligns content to the end of the container (depends on text direction).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-align-last": {
-    "auto": "Default. The last line is aligned according to the value of text-align.",
-    "left": "The last line is left-aligned.",
-    "right": "The last line is right-aligned.",
-    "center": "The last line is centered.",
-    "justify": "The last line is justified.",
-    "start": "The last line is aligned to the start (depends on text direction).",
-    "end": "The last line is aligned to the end (depends on text direction).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-decoration": {
-    "none": "No decoration is added to the text.",
-    "underline": "Text has a line under it.",
-    "overline": "Text has a line over it.",
-    "line-through": "Text has a line through it (strikethrough).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-decoration-color": {
-    "<color>": "Sets the color of the text decoration (can use color names, hex values, RGB, etc.).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-decoration-line": {
-    "none": "No decoration line is added to the text.",
-    "underline": "Text has a line under it.",
-    "overline": "Text has a line over it.",
-    "line-through": "Text has a line through it (strikethrough).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-decoration-style": {
-    "solid": "The decoration is a single line (default).",
-    "double": "The decoration is a double line.",
-    "dotted": "The decoration is a dotted line.",
-    "dashed": "The decoration is a dashed line.",
-    "wavy": "The decoration is a wavy line.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-indent": {
-    "<length>": "Indents text by a specified length (px, em, rem, etc.).",
-    "<percentage>": "Indents text by a percentage of the width of the containing element.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-justify": {
-    "auto": "Browser determines the justification algorithm.",
-    "inter-word": "Justifies text by adjusting space between words only.",
-    "inter-character": "Justifies text by adjusting space between characters.",
-    "none": "No justification is applied.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-overflow": {
-    "clip": "Default. Text is clipped and not accessible.",
-    "ellipsis": "Renders an ellipsis ('...') to represent clipped text.",
-    "<string>": "Renders the given string to represent clipped text.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-shadow": {
-    "none": "No shadow is displayed.",
-    "<shadow>": "Specifies the shadow effect (h-shadow v-shadow blur-radius color).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "text-transform": {
-    "none": "No transformation. Text renders as it is.",
-    "capitalize": "Transforms the first character of each word to uppercase.",
-    "uppercase": "Transforms all characters to uppercase.",
-    "lowercase": "Transforms all characters to lowercase.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "top": {
-    "auto": "The browser calculates the top position.",
-    "<length>": "Specifies the position using a length value (px, em, rem, etc.).",
-    "<percentage>": "Specifies the position as a percentage of the containing element's height.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transform": {
-    "none": "No transformation is applied.",
-    "matrix()": "Defines a 2D transformation using a matrix of six values.",
-    "matrix3d()": "Defines a 3D transformation using a 4x4 matrix of 16 values.",
-    "translate()": "Defines a 2D translation.",
-    "translate3d()": "Defines a 3D translation.",
-    "translateX()": "Defines a translation along the X-axis.",
-    "translateY()": "Defines a translation along the Y-axis.",
-    "translateZ()": "Defines a translation along the Z-axis.",
-    "scale()": "Defines a 2D scale transformation.",
-    "scale3d()": "Defines a 3D scale transformation.",
-    "scaleX()": "Defines a scale transformation along the X-axis.",
-    "scaleY()": "Defines a scale transformation along the Y-axis.",
-    "scaleZ()": "Defines a scale transformation along the Z-axis.",
-    "rotate()": "Defines a 2D rotation.",
-    "rotate3d()": "Defines a 3D rotation.",
-    "rotateX()": "Defines a rotation around the X-axis.",
-    "rotateY()": "Defines a rotation around the Y-axis.",
-    "rotateZ()": "Defines a rotation around the Z-axis.",
-    "skew()": "Defines a 2D skew transformation along the X- and Y-axes.",
-    "skewX()": "Defines a skew transformation along the X-axis.",
-    "skewY()": "Defines a skew transformation along the Y-axis.",
-    "perspective()": "Defines a perspective view for a 3D transformed element.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transform-origin": {
-    "<position>": "Defines the origin of transformation (combinations of left, center, right, top, bottom, lengths, or percentages).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transform-style": {
-    "flat": "Child elements do not preserve their 3D position (default).",
-    "preserve-3d": "Child elements preserve their 3D position.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transition": {
-    "<transition-property>": "Specifies the CSS property the transition effect is for.",
-    "<transition-duration>": "Specifies the duration of the transition effect.",
-    "<transition-timing-function>": "Specifies the speed curve of the transition effect.",
-    "<transition-delay>": "Specifies when the transition effect will start.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transition-delay": {
-    "<time>": "Specifies the delay before the transition starts (s or ms).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transition-duration": {
-    "<time>": "Specifies the duration of the transition effect (s or ms).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transition-property": {
-    "none": "No property will transition.",
-    "all": "All properties will transition (default).",
-    "<property>": "Specific property name(s) that will transition.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "transition-timing-function": {
-    "ease": "Default. Slow start, then fast, then slow end.",
-    "linear": "Same speed from start to end.",
-    "ease-in": "Slow start, then fast end.",
-    "ease-out": "Fast start, then slow end.",
-    "ease-in-out": "Slow start and end, fast in the middle.",
-    "step-start": "Equivalent to steps(1, start).",
-    "step-end": "Equivalent to steps(1, end).",
-    "steps()": "Displays the transition in equal steps.",
-    "cubic-bezier()": "Custom timing function defined by a cubic-bezier curve.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "unicode-bidi": {
-    "normal": "Does not open an additional level of embedding.",
-    "embed": "Opens an additional level of embedding.",
-    "bidi-override": "Creates an override for inline elements.",
-    "isolate": "The element is isolated from its siblings.",
-    "isolate-override": "Combines the isolate and override values.",
-    "plaintext": "The element is formatted according to the Unicode Bidirectional Algorithm.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "vertical-align": {
-    "baseline": "Aligns the baseline of the element with the baseline of the parent (default).",
-    "sub": "Aligns the element as subscript.",
-    "super": "Aligns the element as superscript.",
-    "text-top": "Aligns the top of the element with the top of the parent's font.",
-    "text-bottom": "Aligns the bottom of the element with the bottom of the parent's font.",
-    "middle": "Aligns the middle of the element with the middle of lowercase letters in the parent.",
-    "top": "Aligns the top of the element with the top of the tallest element on the line.",
-    "bottom": "Aligns the bottom of the element with the bottom of the lowest element on the line.",
-    "<length>": "Raises or lowers the element by the specified length.",
-    "<percentage>": "Raises or lowers the element by the specified percentage of the line-height property.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "visibility": {
-    "visible": "Default. The element is visible.",
-    "hidden": "The element is hidden (but still takes up space).",
-    "collapse": "For table rows, columns, column groups, and row groups: removes the element while preserving table layout.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "white-space": {
-    "normal": "Default. Sequences of whitespace are collapsed into a single whitespace. Text wraps as needed.",
-    "nowrap": "Sequences of whitespace are collapsed into a single whitespace. Text will not wrap.",
-    "pre": "Whitespace is preserved. Text only wraps on line breaks.",
-    "pre-wrap": "Whitespace is preserved. Text wraps as needed and on line breaks.",
-    "pre-line": "Sequences of whitespace are collapsed. Text wraps as needed and on line breaks.",
-    "break-spaces": "Like pre-wrap but also creates a line break at spaces.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "widows": {
-    "<integer>": "Specifies the minimum number of lines of a paragraph that must be left at the top of a page.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "width": {
-    "<length>": "Defines the width using a fixed value (px, em, rem, etc.).",
-    "<percentage>": "Defines the width as a percentage of the containing block.",
-    "auto": "The browser calculates the width.",
-    "max-content": "The intrinsic preferred width.",
-    "min-content": "The intrinsic minimum width.",
-    "fit-content": "The length (or percentage) is capped at the max-content size but never smaller than min-content.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "word-break": {
-    "normal": "Default. Uses default line break rules.",
-    "break-all": "Words may break between any two letters.",
-    "keep-all": "Word breaks should not be used for Chinese/Japanese/Korean text.",
-    "break-word": "Similar to break-all, but tries to avoid breaking inside words.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "word-spacing": {
-    "normal": "Default. Defines normal spacing between words.",
-    "<length>": "Defines additional space between words (px, em, rem, etc.).",
-    "<percentage>": "Defines additional space as a percentage of the font-size.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "word-wrap": {
-    "normal": "Default. Words break only at allowed break points.",
-    "break-word": "Allows long words to be broken and wrap onto the next line.",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  },
-  "z-index": {
-    "auto": "Default. Elements are stacked in order of appearance.",
-    "<integer>": "Sets the stack order of the element (elements with higher values appear on top).",
-    "initial": "Sets this property to its default value.",
-    "inherit": "Inherits this property from its parent element."
-  }
+  "align-items": {
+    "stretch": "Default value. Items are stretched to fit the container.",
+    "center": "Items are positioned at the center of the container.",
+    "flex-start": "Items are positioned at the beginning of the container.",
+    "flex-end": "Items are positioned at the end of the container.",
+    "baseline": "Items are positioned at the baseline of the container.",
+    "initial": "Sets this property to its default value.",
+    "inherit": "Inherits this property from its parent element."
+  },
+  "align-content": "Aligns a flex container's lines within the flex container when there is extra space on the cross-axis.",
+  "flex": "A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties.",
+  "flex-grow": "Specifies how much a flex item will grow relative to the rest of the flex items.",
+  "flex-shrink": "Specifies how much a flex item will shrink relative to the rest of the flex items.",
+  "flex-basis": "Specifies the initial length of a flex item.",
+  "align-self": "Specifies the alignment for a specific flex item inside a flex container.",
+  "order": "Specifies the order of a flex item relative to the rest of the flex items inside the same container.",
+  "display-grid": "Specifies the type of box used for an HTML element with grid layout.",
+  "grid-template-columns": "Specifies the size of the columns, and how many columns in a grid layout.",
+  "grid-template-rows": "Specifies the size of the rows, and how many rows in a grid layout.",
+  "grid-template-areas": "Specifies how to display columns and rows, using named grid items.",
+  "grid-template": "A shorthand property for the grid-template-rows, grid-template-columns and grid-template-areas properties.",
+  "grid-column-gap": "Specifies the gap between the columns in a grid layout.",
+  "grid-row-gap": "Specifies the gap between the rows in a grid layout.",
+  "transition": "A shorthand property for setting the four transition properties into a single property.",
+  "transition-property": "Specifies the name of the CSS property the transition effect is for.",
+  "transition-duration": "Specifies how many seconds or milliseconds a transition effect takes to complete.",
+  "transition-timing-function": "Specifies the speed curve of the transition effect.",
+  "animation": "A shorthand property for all the animation properties.",
+  "animation-name": "Specifies a name for the @keyframes animation.",
+  "animation-duration": "Specifies how many seconds or milliseconds an animation takes to complete one cycle.",
+  "keyframes": "Specifies the animation code for a CSS animation.",
+  "@font-face": "A rule that allows websites to download and use fonts other than the \"web-safe\" fonts.",
+  "@keyframes": "Specifies the animation code.",
+  "animation-delay": "Specifies when the animation will start.",
+  "animation-direction": "Specifies whether the animation should play in reverse on alternate cycles.",
+  "animation-fill-mode": "Specifies what values are applied by the animation outside the time it is executing.",
+  "animation-iteration-count": "Specifies the number of times an animation should be played.",
+  "animation-play-state": "Specifies whether the animation is running or paused.",
+  "background-blend-mode": "Specifies the blending mode of each background layer (color/image).",
+  "background-clip": "Specifies how far the background (color or image) should extend within an element.",
+  "background-origin": "Specifies the origin position of a background image.",
+  "border-bottom": "A shorthand property for border-bottom-width, border-bottom-style and border-bottom-color.",
+  "border-bottom-color": "Sets the color of the bottom border.",
+  "border-bottom-left-radius": "Defines the radius of the border of the bottom-left corner.",
+  "border-bottom-right-radius": "Defines the radius of the border of the bottom-right corner.",
+  "border-bottom-style": "Sets the style of the bottom border.",
+  "border-bottom-width": "Sets the width of the bottom border.",
+  "border-collapse": "Sets whether table borders should collapse into a single border or be separated.",
+  "border-image": "A shorthand property for all the border-image-* properties.",
+  "border-image-outset": "Specifies the amount by which the border image area extends beyond the border box.",
+  "border-image-repeat": "Specifies whether the border image should be repeated, rounded or stretched.",
+  "border-image-slice": "Specifies how to slice the border image.",
+  "border-image-source": "Specifies the path to the image to be used as a border.",
+  "border-image-width": "Specifies the width of the border image.",
+  "border-left": "A shorthand property for all the border-left-* properties.",
+  "border-left-color": "Sets the color of the left border.",
+  "border-left-style": "Sets the style of the left border.",
+  "border-left-width": "Sets the width of the left border.",
+  "border-right": "A shorthand property for all the border-right-* properties.",
+  "border-right-color": "Sets the color of the right border.",
+  "border-right-style": "Sets the style of the right border.",
+  "border-right-width": "Sets the width of the right border.",
+  "border-spacing": "Sets the distance between the borders of adjacent cells.",
+  "border-top": "A shorthand property for border-top-width, border-top-style and border-top-color.",
+  "border-top-color": "Sets the color of the top border.",
+  "border-top-left-radius": "Defines the radius of the border of the top-left corner.",
+  "border-top-right-radius": "Defines the radius of the border of the top-right corner.",
+  "border-top-style": "Sets the style of the top border.",
+  "border-top-width": "Sets the width of the top border.",
+  "box-shadow": "Attaches one or more shadows to an element.",
+  "caption-side": "Specifies the placement of a table caption.",
+  "clip": "Clips an absolutely positioned element.",
+  "column-count": "Specifies the number of columns an element should be divided into.",
+  "column-fill": "Specifies how to fill columns, balanced or not.",
+  "column-gap": "Specifies the gap between the columns.",
+  "column-rule": "A shorthand property for all the column-rule-* properties.",
+  "column-rule-color": "Specifies the color of the rule between columns.",
+  "column-rule-style": "Specifies the style of the rule between columns.",
+  "column-rule-width": "Specifies the width of the rule between columns.",
+  "column-span": "Specifies how many columns an element should span across.",
+  "column-width": "Specifies the column width.",
+  "columns": "A shorthand property for column-width and column-count.",
+  "content": "Used with the :before and :after pseudo-elements, to insert generated content.",
+  "counter-increment": "Increases or decreases the value of one or more CSS counters.",
+  "counter-reset": "Creates or resets one or more CSS counters.",
+  "cursor": "Specifies the mouse cursor to be displayed when pointing over an element.",
+  "direction": "Specifies the text direction/writing direction.",
+  "empty-cells": "Specifies whether or not to display borders and background on empty cells in a table.",
+  "filter": "Defines effects (e.g. blurring or color shifting) on an element before the element is displayed.",
+  "font": "A shorthand property for the font-style, font-variant, font-weight, font-size/line-height, and the font-family properties.",
+  "font-size-adjust": "Preserves the readability of text when font fallback occurs.",
+  "font-stretch": "Selects a normal, condensed, or expanded face from a font family.",
+  "hanging-punctuation": "Specifies whether a punctuation character may be placed outside the line box.",
+  "hyphens": "Sets how to split words to improve the layout of paragraphs.",
+  "list-style": "A shorthand property for all the list-style-* properties.",
+  "list-style-image": "Specifies an image as the list-item marker.",
+  "list-style-position": "Specifies the position of the list-item markers (bullet points).",
+  "list-style-type": "Specifies the type of list-item marker.",
+  "opacity": "Sets the opacity level for an element.",
+  "orphans": "Sets the minimum number of lines that must be left at the bottom of a page when a page break occurs inside an element.",
+  "outline": "A shorthand property for the outline-width, outline-style, and the outline-color properties.",
+  "outline-color": "Sets the color of an outline.",
+  "outline-offset": "Offsets an outline, and draws it beyond the border edge.",
+  "outline-style": "Sets the style of an outline.",
+  "outline-width": "Sets the width of an outline.",
+  "overflow": "Specifies what happens if content overflows an element's box.",
+  "overflow-wrap": "Specifies whether or not the browser may break lines within words in order to prevent overflow.",
+  "overflow-x": "Specifies whether to clip the content, add a scroll bar, or display overflow content of a block-level element, when it overflows at the left and right edges.",
+  "overflow-y": "Specifies whether to clip the content, add a scroll bar, or display overflow content of a block-level element, when it overflows at the top and bottom edges.",
+  "page-break-after": "Sets the page-breaking behavior after an element.",
+  "page-break-before": "Sets the page-breaking behavior before an element.",
+  "page-break-inside": "Sets the page-breaking behavior inside an element.",
+  "perspective": "Gives a 3D-positioned element some perspective.",
+  "perspective-origin": "Defines at which position the user is looking at the 3D-positioned element.",
+  "quotes": "Sets the type of quotation marks for embedded quotations.",
+  "resize": "Defines if (and how) an element is resizable by the user.",
+  "tab-size": "Specifies the width of a tab character.",
+  "table-layout": "Defines the algorithm used to lay out table cells, rows, and columns.",
+  "text-align-last": "Specifies how the last line of a block or a line right before a forced line break is aligned when text-align is 'justify'.",
+  "text-decoration-color": "Specifies the color of the text-decoration.",
+  "text-decoration-line": "Specifies the type of line in a text-decoration.",
+  "text-decoration-style": "Specifies the style of the line in a text decoration.",
+  "text-indent": "Specifies the indentation of the first line in a text-block.",
+  "text-justify": "Specifies the justification method used when text-align is 'justify'.",
+  "text-overflow": "Specifies what should happen when text overflows the containing element.",
+  "text-shadow": "Adds shadow to text.",
+  "transform": "Applies a 2D or 3D transformation to an element.",
+  "transform-origin": "Allows you to change the position on transformed elements.",
+  "transform-style": "Specifies how nested elements are rendered in 3D space.",
+  "transition-delay": "Specifies when the transition effect will start.",
+  "unicode-bidi": "Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.",
+  "vertical-align": "Sets the vertical alignment of an element.",
+  "visibility": "Specifies whether or not an element is visible.",
+  "white-space": "Specifies how white-space inside an element is handled.",
+  "widows": "Sets the minimum number of lines that must be left at the top of a page when a page break occurs inside an element.",
+  "word-break": "Specifies how words should break when reaching the end of a line.",
+  "word-wrap": "Allows long words to be able to be broken and wrap onto the next line."
 }
