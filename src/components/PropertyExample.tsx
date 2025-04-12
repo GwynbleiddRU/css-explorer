@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { CssProperty } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
@@ -101,7 +102,7 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
       {activeTab === 'preview' && (
         <div className="p-4">
           <iframe
-            className="preview-iframe w-full min-h-[100px] border rounded"
+            className="preview-iframe w-full min-h-[200px] border rounded"
             srcDoc={`
               <!DOCTYPE html>
               <html lang="en">

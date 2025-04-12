@@ -16,10 +16,17 @@
     "exampleDescription": "Вот пример использования этого свойства:",
     "browserSupport": "Поддержка браузерами",
     "supportedPlatforms": "Поддерживаемые платформы",
-    "toggleExamples": "Показать примеры",
-    "toggleSupport": "Показать поддержку браузеров",
+    "toggleExamples": "Скрыть примеры",
+    "toggleSupport": "Скрыть поддержку браузеров",
+    "showHide": "Показать",
     "backToProperties": "Назад к свойствам",
-    "propertyNotFound": "Свойство не найдено"
+    "propertyNotFound": "Свойство не найдено",
+    "title": "Справочник CSS",
+    "examples": "Примеры",
+    "preview": "Предпросмотр",
+    "code": "Код",
+    "html": "HTML",
+    "css": "CSS"
   },
   "categories": {
     "layout": "Компоновка",

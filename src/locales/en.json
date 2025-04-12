@@ -16,10 +16,17 @@
     "exampleDescription": "Here's an example of how to use this property:",
     "browserSupport": "Browser Support",
     "supportedPlatforms": "Supported Platforms",
-    "toggleExamples": "Show Examples",
-    "toggleSupport": "Show Browser Support",
+    "toggleExamples": "Hide Examples",
+    "toggleSupport": "Hide Browser Support",
+    "showHide": "Show",
     "backToProperties": "Back to Properties",
-    "propertyNotFound": "Property not found"
+    "propertyNotFound": "Property not found",
+    "title": "CSS Reference",
+    "examples": "Examples",
+    "preview": "Preview",
+    "code": "Code",
+    "html": "HTML",
+    "css": "CSS"
   },
   "categories": {
     "layout": "Layout",

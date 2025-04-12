@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPropertyDetailsById } from '@/data/propertyDetailsData';
 import { PropertyDetails as PropertyDetailsType } from '@/types/propertyValues';
@@ -10,11 +10,21 @@ import { useTranslation } from 'react-i18next';
 import { propertyCategories } from '@/data/propertyData';
 import { CssProperty } from '@/types/properties';
 import PropertyExample from '@/components/PropertyExample';
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from '@/components/ui/table';
 
 const PropertyDetails = () => {
   const { propertyId } = useParams<{ propertyId: string }>();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
+  const [showExamples, setShowExamples] = useState(true);
+  const [showSupport, setShowSupport] = useState(true);
   
   // Find the property in propertyCategories
   const findPropertyInCategories = (): CssProperty | undefined => {
@@ -81,7 +91,7 @@ const PropertyDetails = () => {
       <div className="space-y-8">
         {/* CSS Syntax */}
         <section>
-          <h2 className="text-2xl font-semibold mb-4">CSS {t('general.syntax')}</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('general.syntax')}</h2>
           <div className="bg-muted p-4 rounded-md font-mono whitespace-pre-wrap">
             {propertyDetails?.syntax || property.syntax}
           </div>
@@ -92,44 +102,70 @@ const PropertyDetails = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4">{t('general.possibleValues')}</h2>
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left p-3 font-semibold">{t('general.value')}</th>
-                    <th className="text-left p-3 font-semibold">{t('general.description')}</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t('general.value')}</TableHead>
+                    <TableHead>{t('general.description')}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {propertyDetails.values.map((value, index) => (
-                    <tr key={index} className="border-b hover:bg-muted/50">
-                      <td className="p-3 font-mono">{value.value}</td>
-                      <td className="p-3">{value.description}</td>
-                    </tr>
+                    <TableRow key={index}>
+                      <TableCell className="font-mono">{value.value}</TableCell>
+                      <TableCell>{value.description}</TableCell>
+                    </TableRow>
                   ))}
-                </tbody>
-              </table>
+                </TableBody>
+              </Table>
             </div>
           </section>
         )}
 
         {/* Browser Support */}
         <section>
-          <h2 className="text-2xl font-semibold mb-4">{t('general.browserSupport')}</h2>
-          <div className="flex flex-wrap gap-4">
-            {property.browsers.map((browser, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <BrowserIcon browser={browser} />
-                <span className="mt-2 text-sm">{browser}</span>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-2xl font-semibold mb-4">
+            {t('general.browserSupport')}
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="ml-2" 
+              onClick={() => setShowSupport(!showSupport)}
+            >
+              {showSupport ? t('general.toggleSupport') : t('general.showHide')}
+            </Button>
+          </h2>
+          {showSupport && (
+            <div className="flex flex-wrap gap-4">
+              {property.browsers.map((browser, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <BrowserIcon browser={browser} />
+                  <span className="mt-2 text-sm">{browser}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Example */}
         <section>
-          <h2 className="text-2xl font-semibold mb-4">{t('general.example')}</h2>
-          <p className="mb-4">{t('general.exampleDescription')}</p>
-          <PropertyExample property={property} />
+          <h2 className="text-2xl font-semibold mb-4">
+            {t('general.example')}
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="ml-2" 
+              onClick={() => setShowExamples(!showExamples)}
+            >
+              {showExamples ? t('general.toggleExamples') : t('general.showHide')}
+            </Button>
+          </h2>
+          {showExamples && (
+            <>
+              <p className="mb-4">{t('general.exampleDescription')}</p>
+              <PropertyExample property={property} />
+            </>
+          )}
         </section>
       </div>
     </div>
