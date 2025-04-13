@@ -4,6 +4,7 @@ import { CssSelector } from '@/types/selectors';
 import { useTranslation } from 'react-i18next';
 import { Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { formatHtml, formatCss } from '@/utils/codeFormatters';
 
 interface SelectorExampleProps {
   selector: CssSelector;
@@ -19,13 +20,16 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const [originalCss, setOriginalCss] = useState('');
   
   useEffect(() => {
-    // Store original code for reset functionality
-    setOriginalHtml(selector.example.html);
-    setOriginalCss(selector.example.css);
+    // Format and store original code for reset functionality
+    const formattedHtml = formatHtml(selector.example.html);
+    const formattedCss = formatCss(selector.example.css);
+    
+    setOriginalHtml(formattedHtml);
+    setOriginalCss(formattedCss);
     
     // Set current code
-    setHtmlCode(selector.example.html);
-    setCssCode(selector.example.css);
+    setHtmlCode(formattedHtml);
+    setCssCode(formattedCss);
     setDisplayHtml(selector.example.html);
     setDisplayCss(selector.example.css);
   }, [selector.example]);
@@ -38,19 +42,19 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const resetCode = () => {
     setHtmlCode(originalHtml);
     setCssCode(originalCss);
-    setDisplayHtml(originalHtml);
-    setDisplayCss(originalCss);
+    setDisplayHtml(selector.example.html);
+    setDisplayCss(selector.example.css);
   };
 
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-        <div className="space-y-2">
+        <div className="space-y-2 flex flex-col h-full">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium">{t('general.preview')}</h3>
           </div>
           <iframe
-            className="preview-iframe w-full min-h-[200px] border rounded"
+            className="preview-iframe w-full flex-grow min-h-[200px] border rounded"
             srcDoc={`
               <!DOCTYPE html>
               <html lang="en">

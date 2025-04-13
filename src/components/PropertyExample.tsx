@@ -1,9 +1,10 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CssProperty } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
 import { Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { formatHtml, formatCss } from '@/utils/codeFormatters';
 
 interface PropertyExampleProps {
   property: CssProperty;
@@ -20,13 +21,16 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   
   // Initialize code from property.example
   useEffect(() => {
-    // Store original code for reset functionality
-    setOriginalHtml(property.example.html);
-    setOriginalCss(property.example.css);
+    // Format and store original code for reset functionality
+    const formattedHtml = formatHtml(property.example.html);
+    const formattedCss = formatCss(property.example.css);
+    
+    setOriginalHtml(formattedHtml);
+    setOriginalCss(formattedCss);
     
     // Set current code
-    setHtmlCode(property.example.html);
-    setCssCode(property.example.css);
+    setHtmlCode(formattedHtml);
+    setCssCode(formattedCss);
     setDisplayHtml(property.example.html);
     setDisplayCss(property.example.css);
   }, [property.example]);
@@ -39,20 +43,20 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   const resetCode = () => {
     setHtmlCode(originalHtml);
     setCssCode(originalCss);
-    setDisplayHtml(originalHtml);
-    setDisplayCss(originalCss);
+    setDisplayHtml(property.example.html);
+    setDisplayCss(property.example.css);
   };
 
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-        {/* Preview Section */}
-        <div className="space-y-2">
+        {/* Preview Section - Full height on desktop */}
+        <div className="space-y-2 flex flex-col h-full">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium">{t('general.preview')}</h3>
           </div>
           <iframe
-            className="preview-iframe w-full min-h-[200px] border rounded"
+            className="preview-iframe w-full flex-grow min-h-[200px] border rounded"
             srcDoc={`
               <!DOCTYPE html>
               <html lang="en">

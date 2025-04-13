@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
@@ -17,7 +16,6 @@ const Properties = () => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activePropertyId, setActivePropertyId] = useState<string | null>(null);
   const [visibilitySettings, setVisibilitySettings] = useState<VisibilitySettings>({
-    showExamples: false,
     showSupport: true
   });
 
@@ -39,7 +37,11 @@ const Properties = () => {
     const savedVisibility = localStorage.getItem('propertyVisibilitySettings');
     if (savedVisibility) {
       try {
-        setVisibilitySettings(JSON.parse(savedVisibility));
+        const saved = JSON.parse(savedVisibility);
+        // Only keep the showSupport setting
+        setVisibilitySettings({
+          showSupport: saved.showSupport ?? true
+        });
       } catch (e) {
         console.error('Error parsing saved visibility settings:', e);
       }
@@ -108,8 +110,8 @@ const Properties = () => {
       {isMobile ? (
         <div className="mt-6">
           <SectionVisibilityControls 
-            settings={{...visibilitySettings}}
-            onChange={(newSettings) => setVisibilitySettings({...newSettings})}
+            settings={visibilitySettings}
+            onChange={(newSettings) => setVisibilitySettings(newSettings)}
             supportLabel={t('general.browserSupport')}
           />
           

@@ -5,7 +5,6 @@ import { Label } from '@/components/ui/label';
 import { useTranslation } from 'react-i18next';
 
 export interface VisibilitySettings {
-  showExamples: boolean;
   showSupport: boolean;
 }
 
