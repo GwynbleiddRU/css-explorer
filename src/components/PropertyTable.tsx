@@ -14,7 +14,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;
@@ -31,6 +31,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
 }) => {
   const propertyRefs = useRef<Record<string, HTMLTableRowElement | null>>({});
   const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (activePropertyId && propertyRefs.current[activePropertyId]) {
@@ -78,6 +79,10 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
     </TableRow>
   );
 
+  const handleRowClick = (propertyId: string) => {
+    navigate(`/properties/${propertyId}`);
+  };
+
   return (
     <div className="w-full overflow-auto">
       <Table className="w-full border-collapse">
@@ -101,12 +106,13 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                   key={property.id}
                   id={property.id}
                   ref={el => propertyRefs.current[property.id] = el}
-                  className="transition-colors duration-300"
+                  className="transition-colors duration-300 cursor-pointer hover:bg-muted"
+                  onClick={() => handleRowClick(property.id)}
                 >
                   <TableCell className="align-top">
-                    <Link to={`/properties/${property.id}`} className="font-mono font-medium text-primary hover:underline">
+                    <span className="font-mono font-medium text-primary">
                       {property.name}
-                    </Link>
+                    </span>
                   </TableCell>
                   <TableCell className="align-top max-w-[260px] w-1/5">
                     <div className="font-mono text-sm break-words whitespace-pre-wrap">

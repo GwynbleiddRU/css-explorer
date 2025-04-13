@@ -74,12 +74,16 @@ const PropertyDetails = () => {
     }));
   };
 
+  const handleBackClick = () => {
+    navigate('/properties', { state: { fromPropertyDetails: true } });
+  };
+
   if (!property) {
     return (
       <div className="container mx-auto py-8 px-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">{t('general.propertyNotFound')}</h1>
-          <Button variant="outline" onClick={() => navigate('/properties')}>
+          <Button variant="outline" onClick={handleBackClick}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             {t('general.backToProperties')}
           </Button>
@@ -95,7 +99,7 @@ const PropertyDetails = () => {
       <Button 
         variant="outline" 
         className="mb-6" 
-        onClick={() => navigate('/properties')}
+        onClick={handleBackClick}
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         {t('general.backToProperties')}

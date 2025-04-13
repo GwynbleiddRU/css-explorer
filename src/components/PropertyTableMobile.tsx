@@ -6,7 +6,7 @@ import { PropertyCategory, CssProperty as Property } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface PropertyTableMobileProps {
   expandedCategories: Record<string, boolean>;
@@ -23,6 +23,7 @@ const PropertyTableMobile: React.FC<PropertyTableMobileProps> = ({
 }) => {
   const propertyRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const { t, i18n } = useTranslation(['translation', 'propertyDescriptions']);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (activePropertyId && propertyRefs.current[activePropertyId]) {
@@ -67,17 +68,20 @@ const PropertyTableMobile: React.FC<PropertyTableMobileProps> = ({
     </div>
   );
 
+  const handlePropertyClick = (propertyId: string) => {
+    navigate(`/properties/${propertyId}`);
+  };
+
   const renderProperty = (property: Property) => (
     <div 
       key={property.id}
       id={property.id}
       ref={el => propertyRefs.current[property.id] = el}
-      className="mb-6 p-4 border rounded-lg bg-card transition-colors duration-300"
+      className="mb-6 p-4 border rounded-lg bg-card transition-colors duration-300 cursor-pointer hover:bg-muted/50"
+      onClick={() => handlePropertyClick(property.id)}
     >
       <div className="font-mono font-medium text-primary text-lg mb-2">
-        <Link to={`/properties/${property.id}`} className="hover:underline">
-          {property.name}
-        </Link>
+        {property.name}
       </div>
       
       <div className="grid grid-cols-1 gap-3">

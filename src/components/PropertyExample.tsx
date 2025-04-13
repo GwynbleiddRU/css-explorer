@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { CssProperty } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
-import { Play, RotateCcw } from 'lucide-react';
+import { Play, RotateCcw, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { formatHtml, formatCss } from '@/utils/codeFormatters';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface PropertyExampleProps {
   property: CssProperty;
@@ -18,6 +19,8 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   const [displayCss, setDisplayCss] = useState('');
   const [originalHtml, setOriginalHtml] = useState('');
   const [originalCss, setOriginalCss] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [codeChanged, setCodeChanged] = useState(false);
   
   // Initialize code from property.example
   useEffect(() => {
@@ -33,11 +36,48 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
     setCssCode(formattedCss);
     setDisplayHtml(property.example.html);
     setDisplayCss(property.example.css);
+    setCodeChanged(false);
   }, [property.example]);
+
+  const validateCode = () => {
+    // Basic syntax validation
+    try {
+      // Check for unclosed HTML tags
+      const unclosedTagRegex = /<([a-z][a-z0-9]*)[^>]*(?<!\/|<\1)>(?![^<]*<\/\1>)/i;
+      if (unclosedTagRegex.test(htmlCode)) {
+        throw new Error(t('errors.unclosedHtmlTag'));
+      }
+
+      // Check for unclosed CSS braces
+      const openBraces = (cssCode.match(/{/g) || []).length;
+      const closeBraces = (cssCode.match(/}/g) || []).length;
+      if (openBraces !== closeBraces) {
+        throw new Error(t('errors.unclosedCssBraces'));
+      }
+
+      // Check for unterminated CSS rules
+      if (/[^;{}]\s*$/.test(cssCode.replace(/\/\*[\s\S]*?\*\//g, '').trim()) && cssCode.trim() !== '') {
+        throw new Error(t('errors.unterminatedCssRule'));
+      }
+
+      setError(null);
+      return true;
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError(t('errors.unknownError'));
+      }
+      return false;
+    }
+  };
   
   const compileCode = () => {
-    setDisplayHtml(htmlCode);
-    setDisplayCss(cssCode);
+    if (validateCode()) {
+      setDisplayHtml(htmlCode);
+      setDisplayCss(cssCode);
+      setCodeChanged(false);
+    }
   };
   
   const resetCode = () => {
@@ -45,6 +85,20 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
     setCssCode(originalCss);
     setDisplayHtml(property.example.html);
     setDisplayCss(property.example.css);
+    setError(null);
+    setCodeChanged(false);
+  };
+
+  const handleHtmlChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setHtmlCode(e.target.value);
+    setCodeChanged(true);
+    if (error) validateCode();
+  };
+
+  const handleCssChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCssCode(e.target.value);
+    setCodeChanged(true);
+    if (error) validateCode();
   };
 
   return (
@@ -94,7 +148,7 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
             <div className="relative bg-gray-900 rounded-b w-full">
               <textarea
                 value={htmlCode}
-                onChange={(e) => setHtmlCode(e.target.value)}
+                onChange={handleHtmlChange}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
                 spellCheck="false"
                 wrap="off"
@@ -115,13 +169,21 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
             <div className="relative bg-gray-900 rounded-b w-full">
               <textarea
                 value={cssCode}
-                onChange={(e) => setCssCode(e.target.value)}
+                onChange={handleCssChange}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
                 spellCheck="false"
                 wrap="off"
               />
             </div>
           </div>
+          
+          {/* Error message */}
+          {error && (
+            <Alert variant="destructive" className="py-2">
+              <AlertTriangle className="h-4 w-4 mr-2" />
+              <AlertDescription className="text-sm">{error}</AlertDescription>
+            </Alert>
+          )}
           
           {/* Control Buttons */}
           <div className="flex justify-end space-x-2">
@@ -138,6 +200,7 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
               onClick={compileCode} 
               size="sm" 
               className="flex items-center gap-2"
+              disabled={!codeChanged || !!error}
             >
               <Play className="h-4 w-4" />
               {t('general.run')}

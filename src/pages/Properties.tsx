@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
@@ -7,10 +8,15 @@ import PropertyTableMobile from '@/components/PropertyTableMobile';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLocation } from 'react-router-dom';
+
+// Store the scroll position when navigating away
+let savedScrollPosition = 0;
 
 const Properties = () => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
+  const location = useLocation();
   
   // State for tracking expanded categories
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
@@ -47,9 +53,16 @@ const Properties = () => {
       }
     }
     
-    // Scroll to top on page load
-    window.scrollTo(0, 0);
-  }, []);
+    // When navigating directly to this page, scroll to top
+    // When returning from PropertyDetails, restore the saved position
+    if (location.state?.fromPropertyDetails) {
+      window.setTimeout(() => {
+        window.scrollTo(0, savedScrollPosition || 0);
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.state]);
 
   // Save expanded state to localStorage whenever it changes
   useEffect(() => {
@@ -62,6 +75,19 @@ const Properties = () => {
   useEffect(() => {
     localStorage.setItem('propertyVisibilitySettings', JSON.stringify(visibilitySettings));
   }, [visibilitySettings]);
+
+  // Save the scroll position when navigating away
+  useEffect(() => {
+    const handleBeforeNavigate = () => {
+      savedScrollPosition = window.scrollY;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeNavigate);
+    return () => {
+      handleBeforeNavigate();
+      window.removeEventListener('beforeunload', handleBeforeNavigate);
+    };
+  }, []);
 
   const initializeDefaultExpanded = () => {
     const defaults: Record<string, boolean> = {};
