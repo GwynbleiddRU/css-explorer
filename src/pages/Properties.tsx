@@ -111,7 +111,7 @@ const Properties = () => {
         <div className="mt-6">
           <SectionVisibilityControls 
             settings={visibilitySettings}
-            onChange={(newSettings) => setVisibilitySettings(newSettings)}
+            onChange={setVisibilitySettings}
             supportLabel={t('general.browserSupport')}
           />
           

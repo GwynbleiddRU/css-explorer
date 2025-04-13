@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 export interface VisibilitySettings {
   showSupport: boolean;
+  showExamples?: boolean;
 }
 
 interface SectionVisibilityControlsProps {
@@ -34,6 +35,18 @@ const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({
         />
         <Label htmlFor="show-support">{supportLabel}</Label>
       </div>
+      
+      {settings.showExamples !== undefined && (
+        <div className="flex items-center space-x-2">
+          <Switch 
+            id="show-examples" 
+            checked={settings.showExamples}
+            onCheckedChange={(checked) => onChange({...settings, showExamples: checked})}
+            defaultChecked={settings.showExamples}
+          />
+          <Label htmlFor="show-examples">{t('general.examples')}</Label>
+        </div>
+      )}
     </div>
   );
 };

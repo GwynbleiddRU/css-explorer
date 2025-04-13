@@ -17,8 +17,8 @@ const Index = () => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activeSelectorId, setActiveSelectorId] = useState<string | null>(null);
   const [visibilitySettings, setVisibilitySettings] = useState<VisibilitySettings>({
-    showExamples: true,
-    showSupport: true
+    showSupport: true,
+    showExamples: true
   });
 
   // Initialize expanded categories from localStorage or defaults

@@ -40,19 +40,23 @@ export const formatHtml = (html: string): string => {
         buffer = '';
       }
       
-      result += '\n' + ' '.repeat(indentLevel * 2);
-      indentLevel++;
+      // Only add a newline if we're already past the first tag
+      if (result.length > 0) {
+        result += '\n' + ' '.repeat(indentLevel * 2);
+      }
+      
       buffer += char;
     } else if (char === '<' && formattedHtml[i + 1] === '/') {
       // Closing tag
       inTag = true;
       inContent = false;
-      indentLevel--;
       
       if (buffer.trim()) {
         result += buffer.trim();
         buffer = '';
       }
+      
+      indentLevel = Math.max(0, indentLevel - 1);
       
       // Only add a new line if the previous character wasn't a closing tag
       if (lastChar !== '>') {
@@ -66,14 +70,14 @@ export const formatHtml = (html: string): string => {
       
       const hasChildren = formattedHtml.indexOf('</', i) !== formattedHtml.indexOf('<', i);
       
-      // Self-closing or void elements
-      if (buffer.includes('/>') || !hasChildren) {
-        indentLevel--;
-      }
-      
       result += buffer;
       buffer = '';
       inContent = true;
+      
+      // If the tag has children, increase indent for the content
+      if (hasChildren && buffer.indexOf('/>') === -1) {
+        indentLevel = Math.max(0, indentLevel + 1);
+      }
       
       // If it's a void element or self-closing tag
       if (buffer.includes('/>') || !hasChildren) {
@@ -89,7 +93,10 @@ export const formatHtml = (html: string): string => {
   result += buffer;
   
   // Clean up any extra line breaks and spaces
-  result = result.replace(/^\s+/gm, match => ' '.repeat(match.length > 2 ? match.length - 2 : match.length));
+  result = result.replace(/^\s+/gm, match => {
+    const depth = Math.floor(match.length / 2) * 2;
+    return ' '.repeat(depth);
+  });
   
   return result.trim();
 };
