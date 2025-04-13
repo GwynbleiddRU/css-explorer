@@ -29,7 +29,10 @@
     "css": "CSS",
     "language": "Language",
     "english": "English",
-    "russian": "Russian"
+    "russian": "Russian",
+    "compile": "Compile",
+    "edit": "Edit",
+    "run": "Run"
   },
   "categories": {
     "layout": "Layout",

@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { propertyCategories } from '@/data/propertyData';
-import PropertyExample from './PropertyExample';
 import { PropertyCategory } from '@/types/properties';
 import { 
   Table,
@@ -98,47 +97,35 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
               {renderCategoryHeader(category)}
               
               {expandedCategories[category.id] && category.properties.map(property => (
-                <React.Fragment key={property.id}>
-                  <TableRow 
-                    id={property.id}
-                    ref={el => propertyRefs.current[property.id] = el}
-                    className="transition-colors duration-300"
-                  >
+                <TableRow 
+                  key={property.id}
+                  id={property.id}
+                  ref={el => propertyRefs.current[property.id] = el}
+                  className="transition-colors duration-300"
+                >
+                  <TableCell className="align-top">
+                    <Link to={`/properties/${property.id}`} className="font-mono font-medium text-primary hover:underline">
+                      {property.name}
+                    </Link>
+                  </TableCell>
+                  <TableCell className="align-top max-w-[260px] w-1/5">
+                    <div className="font-mono text-sm break-words whitespace-pre-wrap">
+                      {property.syntax}
+                    </div>
+                  </TableCell>
+                  <TableCell className="align-top">
+                    <p className="whitespace-pre-wrap">{getDescription(property.id, property.description)}</p>
+                  </TableCell>
+                  {visibilitySettings.showSupport && (
                     <TableCell className="align-top">
-                      <Link to={`/properties/${property.id}`} className="font-mono font-medium text-primary hover:underline">
-                        {property.name}
-                      </Link>
-                    </TableCell>
-                    <TableCell className="align-top max-w-[260px] w-1/5">
-                      <div className="font-mono text-sm break-words whitespace-pre-wrap">
-                        {property.syntax}
+                      <div className="flex flex-wrap gap-2">
+                        {property.browsers.map((browser, i) => (
+                          <BrowserIcon key={i} browser={browser} />
+                        ))}
                       </div>
                     </TableCell>
-                    <TableCell className="align-top">
-                      <p className="whitespace-pre-wrap">{getDescription(property.id, property.description)}</p>
-                    </TableCell>
-                    {visibilitySettings.showSupport && (
-                      <TableCell className="align-top">
-                        <div className="flex flex-wrap gap-2">
-                          {property.browsers.map((browser, i) => (
-                            <BrowserIcon key={i} browser={browser} />
-                          ))}
-                        </div>
-                      </TableCell>
-                    )}
-                  </TableRow>
-                  
-                  {visibilitySettings.showExamples && (
-                    <TableRow className="example-row">
-                      <TableCell colSpan={visibilitySettings.showSupport ? 4 : 3} className="px-4 pt-0 pb-4">
-                        <div className="mt-2">
-                          <h4 className="text-sm font-medium mb-2">{t('general.example')}</h4>
-                          <PropertyExample property={property} />
-                        </div>
-                      </TableCell>
-                    </TableRow>
                   )}
-                </React.Fragment>
+                </TableRow>
               ))}
             </React.Fragment>
           ))}

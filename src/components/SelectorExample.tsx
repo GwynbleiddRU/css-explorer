@@ -1,6 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { CssSelector } from '@/types/selectors';
 import { useTranslation } from 'react-i18next';
+import { Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface SelectorExampleProps {
   selector: CssSelector;
@@ -8,59 +10,79 @@ interface SelectorExampleProps {
 
 const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('preview');
-
+  const [htmlCode, setHtmlCode] = useState('');
+  const [cssCode, setCssCode] = useState('');
+  const [displayHtml, setDisplayHtml] = useState('');
+  const [displayCss, setDisplayCss] = useState('');
+  
+  useEffect(() => {
+    setHtmlCode(selector.example.html);
+    setCssCode(selector.example.css);
+    setDisplayHtml(selector.example.html);
+    setDisplayCss(selector.example.css);
+  }, [selector.example]);
+  
   const formattedHtml = useMemo(() => {
-    if (!selector.example.html) return '';
-    return selector.example.html
+    if (!htmlCode) return '';
+    
+    const formatted = htmlCode
       .replace(/<(div|p|h[1-6]|ul|ol|li|table|tr|td|section|article|header|footer|nav|form|fieldset)([^>]*)>/gi, '\n<$1$2>')
       .replace(/<(img|input|br|hr|span|a|strong|em|b|i|small|code)([^>]*?)\/?\s*>/gi, '<$1$2>')
       .split('\n')
       .map(line => line.trim())
       .filter(line => line.length > 0)
-      .join('\n')
-      .replace(/^/gm, '  ');
-  }, [selector.example.html]);
-
+      .join('\n');
+    
+    let result = '';
+    let indent = 0;
+    const lines = formatted.split('\n');
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      const isClosingTagLine = /<\/[^>]+>/.test(line) && !/<[^\/][^>]*>/.test(line);
+      
+      const selfContained = /<([a-z]+)[^>]*>.*?<\/\1>/i.test(line);
+      
+      if (isClosingTagLine && !selfContained) {
+        indent = Math.max(0, indent - 1);
+      }
+      
+      result += '  '.repeat(indent) + line + '\n';
+      
+      if (/<[^\/][^>]*>/.test(line) && !/<\/[^>]+>/.test(line) && !/<[^>]+\/>/.test(line)) {
+        indent++;
+      }
+    }
+    
+    return result.trim();
+  }, [htmlCode]);
+  
   const formattedCss = useMemo(() => {
-    if (!selector.example.css) return '';
-    return selector.example.css
+    if (!cssCode) return '';
+    
+    return cssCode
       .replace(/\s*{\s*/g, ' {\n  ')
       .replace(/;\s*/g, ';\n  ')
       .replace(/\s*}\s*/g, '\n}')
       .replace(/\n  \n/g, '\n')
       .replace(/\n  }/g, '\n}');
-  }, [selector.example.css]);
+  }, [cssCode]);
+  
+  const compileCode = () => {
+    setDisplayHtml(htmlCode);
+    setDisplayCss(cssCode);
+  };
 
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
-      <div className="flex border-b">
-        <button
-          onClick={() => setActiveTab('preview')}
-          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
-            activeTab === 'preview' 
-              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
-          }`}
-        >
-          {t('general.preview')}
-        </button>
-        <button
-          onClick={() => setActiveTab('code')}
-          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
-            activeTab === 'code' 
-              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
-          }`}
-        >
-          {t('general.code')}
-        </button>
-      </div>
-
-      {activeTab === 'preview' && (
-        <div className="p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div className="space-y-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-medium">{t('general.preview')}</h3>
+          </div>
           <iframe
-            className="preview-iframe w-full min-h-[100px] border rounded"
+            className="preview-iframe w-full min-h-[200px] border rounded"
             srcDoc={`
               <!DOCTYPE html>
               <html lang="en">
@@ -72,21 +94,18 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
                     background-color: white;
                     color: black;
                   }
-                  ${selector.example.css}
+                  ${displayCss}
                 </style>
               </head>
               <body>
-                ${selector.example.html}
+                ${displayHtml}
               </body>
               </html>
             `}
           />
         </div>
-      )}
-
-      {activeTab === 'code' && (
-        <div className="p-4 space-y-4 max-w-full">
-          {/* HTML */}
+        
+        <div className="space-y-4">
           <div className="code-editor-block w-full">
             <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
               <span className="font-medium">{t('general.html')}</span>
@@ -97,13 +116,14 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
               </div>
             </div>
             <div className="relative bg-gray-900 rounded-b w-full">
-              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
-                <code>{formattedHtml}</code>
-              </pre>
+              <textarea
+                value={htmlCode}
+                onChange={(e) => setHtmlCode(e.target.value)}
+                className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
             </div>
           </div>
-
-          {/* CSS */}
+          
           <div className="code-editor-block w-full">
             <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
               <span className="font-medium">{t('general.css')}</span>
@@ -114,13 +134,26 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
               </div>
             </div>
             <div className="relative bg-gray-900 rounded-b w-full">
-              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
-                <code>{formattedCss}</code>
-              </pre>
+              <textarea
+                value={cssCode}
+                onChange={(e) => setCssCode(e.target.value)}
+                className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
             </div>
           </div>
+          
+          <div className="flex justify-end">
+            <Button 
+              onClick={compileCode} 
+              size="sm" 
+              className="flex items-center gap-2"
+            >
+              <Play className="h-4 w-4" />
+              {t('general.run')}
+            </Button>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { propertyCategories } from '@/data/propertyData';
-import PropertyExample from './PropertyExample';
 import { PropertyCategory, CssProperty as Property } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
@@ -102,13 +101,6 @@ const PropertyTableMobile: React.FC<PropertyTableMobileProps> = ({
                 <BrowserIcon key={i} browser={browser} />
               ))}
             </div>
-          </div>
-        )}
-        
-        {visibilitySettings.showExamples && (
-          <div>
-            <div className="text-sm font-medium text-muted-foreground mb-1">{t('general.example')}</div>
-            <PropertyExample property={property} />
           </div>
         )}
       </div>

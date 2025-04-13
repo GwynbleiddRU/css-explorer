@@ -17,7 +17,7 @@ const Properties = () => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activePropertyId, setActivePropertyId] = useState<string | null>(null);
   const [visibilitySettings, setVisibilitySettings] = useState<VisibilitySettings>({
-    showExamples: true,
+    showExamples: false,
     showSupport: true
   });
 
@@ -105,16 +105,17 @@ const Properties = () => {
       {isMobile ? (
         <div className="mt-6">
           <SectionVisibilityControls 
-            settings={visibilitySettings}
-            onChange={setVisibilitySettings}
+            settings={{...visibilitySettings, showExamples: false}}
+            onChange={(newSettings) => setVisibilitySettings({...newSettings, showExamples: false})}
             supportLabel={t('general.browserSupport')}
+            hideExamplesToggle={true}
           />
           
           <PropertyTableMobile 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
             activePropertyId={activePropertyId}
-            visibilitySettings={visibilitySettings}
+            visibilitySettings={{...visibilitySettings, showExamples: false}}
           />
         </div>
       ) : (
@@ -129,16 +130,17 @@ const Properties = () => {
           
           <div className="lg:col-span-3">
             <SectionVisibilityControls 
-              settings={visibilitySettings}
-              onChange={setVisibilitySettings}
+              settings={{...visibilitySettings, showExamples: false}}
+              onChange={(newSettings) => setVisibilitySettings({...newSettings, showExamples: false})}
               supportLabel={t('general.browserSupport')}
+              hideExamplesToggle={true}
             />
             
             <PropertyTable 
               expandedCategories={expandedCategories}
               toggleCategory={toggleCategory}
               activePropertyId={activePropertyId}
-              visibilitySettings={visibilitySettings}
+              visibilitySettings={{...visibilitySettings, showExamples: false}}
             />
           </div>
         </div>

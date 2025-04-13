@@ -1,7 +1,9 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { CssProperty } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
+import { Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface PropertyExampleProps {
   property: CssProperty;
@@ -9,14 +11,25 @@ interface PropertyExampleProps {
 
 const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('preview');
+  const [htmlCode, setHtmlCode] = useState('');
+  const [cssCode, setCssCode] = useState('');
+  const [displayHtml, setDisplayHtml] = useState('');
+  const [displayCss, setDisplayCss] = useState('');
+  
+  // Initialize code from property.example
+  useEffect(() => {
+    setHtmlCode(property.example.html);
+    setCssCode(property.example.css);
+    setDisplayHtml(property.example.html);
+    setDisplayCss(property.example.css);
+  }, [property.example]);
   
   // Format HTML with smarter indentation
   const formattedHtml = useMemo(() => {
-    if (!property.example.html) return '';
+    if (!htmlCode) return '';
     
     // Use a more sophisticated approach with regex
-    const formatted = property.example.html
+    const formatted = htmlCode
       // Add newline for block-level elements
       .replace(/<(div|p|h[1-6]|ul|ol|li|table|tr|td|section|article|header|footer|nav|form|fieldset)([^>]*)>/gi, '\n<$1$2>')
       // Keep self-closing and inline elements on same line
@@ -57,50 +70,34 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
     }
     
     return result.trim();
-  }, [property.example.html]);
+  }, [htmlCode]);
   
   // Format CSS with indentation
   const formattedCss = useMemo(() => {
-    if (!property.example.css) return '';
+    if (!cssCode) return '';
     
-    return property.example.css
+    return cssCode
       .replace(/\s*{\s*/g, ' {\n  ') // Add newline and indent after opening brace
       .replace(/;\s*/g, ';\n  ')     // Add newline and indent after semicolons
       .replace(/\s*}\s*/g, '\n}\n')  // Add newlines around closing brace
       .replace(/}\n(\w)/g, '}\n\n$1') // Add extra newline between rules
       .replace(/\n  \n/g, '\n')       // Remove empty indented lines
       .replace(/\n  }/g, '\n}');      // Remove indent before closing brace
-  }, [property.example.css]);
+  }, [cssCode]);
+
+  const compileCode = () => {
+    setDisplayHtml(htmlCode);
+    setDisplayCss(cssCode);
+  };
 
   return (
     <div className="border rounded-md overflow-hidden bg-white dark:bg-gray-800">
-      {/* Custom Tab Header */}
-      <div className="flex border-b">
-        <button
-          onClick={() => setActiveTab('preview')}
-          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
-            activeTab === 'preview' 
-              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
-          }`}
-        >
-          {t('general.preview')}
-        </button>
-        <button
-          onClick={() => setActiveTab('code')}
-          className={`flex-1 py-2 px-4 text-center text-sm font-medium ${
-            activeTab === 'code' 
-              ? 'bg-white dark:bg-gray-700 border-b-2 border-primary' 
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
-          }`}
-        >
-          {t('general.code')}
-        </button>
-      </div>
-
-      {/* Tab Content */}
-      {activeTab === 'preview' && (
-        <div className="p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        {/* Preview Section */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-medium">{t('general.preview')}</h3>
+          </div>
           <iframe
             className="preview-iframe w-full min-h-[200px] border rounded"
             srcDoc={`
@@ -114,21 +111,20 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
                     background-color: white;
                     color: black;
                   }
-                  ${property.example.css}
+                  ${displayCss}
                 </style>
               </head>
               <body>
-                ${property.example.html}
+                ${displayHtml}
               </body>
               </html>
             `}
           />
         </div>
-      )}
-      
-      {activeTab === 'code' && (
-        <div className="p-4 space-y-4 max-w-full">
-          {/* HTML Code Block */}
+        
+        {/* Code Editor Section */}
+        <div className="space-y-4">
+          {/* HTML Editor */}
           <div className="code-editor-block w-full">
             <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
               <span className="font-medium">{t('general.html')}</span>
@@ -139,13 +135,15 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
               </div>
             </div>
             <div className="relative bg-gray-900 rounded-b w-full">
-              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
-                <code>{formattedHtml}</code>
-              </pre>
+              <textarea
+                value={htmlCode}
+                onChange={(e) => setHtmlCode(e.target.value)}
+                className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
             </div>
           </div>
           
-          {/* CSS Code Block */}
+          {/* CSS Editor */}
           <div className="code-editor-block w-full">
             <div className="flex items-center justify-between bg-gray-800 text-white px-3 py-1 rounded-t text-xs">
               <span className="font-medium">{t('general.css')}</span>
@@ -156,13 +154,27 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
               </div>
             </div>
             <div className="relative bg-gray-900 rounded-b w-full">
-              <pre className="text-gray-100 p-3 text-sm font-mono overflow-x-auto border border-gray-700 leading-relaxed max-w-full">
-                <code>{formattedCss}</code>
-              </pre>
+              <textarea
+                value={cssCode}
+                onChange={(e) => setCssCode(e.target.value)}
+                className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
             </div>
           </div>
+          
+          {/* Run Button */}
+          <div className="flex justify-end">
+            <Button 
+              onClick={compileCode} 
+              size="sm" 
+              className="flex items-center gap-2"
+            >
+              <Play className="h-4 w-4" />
+              {t('general.run')}
+            </Button>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
