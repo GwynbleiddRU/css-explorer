@@ -28,16 +28,6 @@ const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({
       
       <div className="flex items-center space-x-2">
         <Switch 
-          id="show-examples" 
-          checked={settings.showExamples}
-          onCheckedChange={(checked) => onChange({...settings, showExamples: checked})}
-          defaultChecked={settings.showExamples}
-        />
-        <Label htmlFor="show-examples">{t('general.examples')}</Label>
-      </div>
-      
-      <div className="flex items-center space-x-2">
-        <Switch 
           id="show-support" 
           checked={settings.showSupport}
           onCheckedChange={(checked) => onChange({...settings, showSupport: checked})}

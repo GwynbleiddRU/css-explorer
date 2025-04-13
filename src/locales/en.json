@@ -32,7 +32,8 @@
     "russian": "Russian",
     "compile": "Compile",
     "edit": "Edit",
-    "run": "Run"
+    "run": "Run",
+    "reset": "Reset"
   },
   "categories": {
     "layout": "Layout",

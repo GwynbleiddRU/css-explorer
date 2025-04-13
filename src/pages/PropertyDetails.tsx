@@ -43,6 +43,9 @@ const PropertyDetails = () => {
     if (propertyId && !property) {
       navigate('/properties');
     }
+    
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
   }, [propertyId, property, navigate]);
 
   // Get translated description or fall back to English

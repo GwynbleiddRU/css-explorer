@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { CssProperty } from '@/types/properties';
 import { useTranslation } from 'react-i18next';
-import { Play } from 'lucide-react';
+import { Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PropertyExampleProps {
@@ -15,79 +15,32 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
   const [cssCode, setCssCode] = useState('');
   const [displayHtml, setDisplayHtml] = useState('');
   const [displayCss, setDisplayCss] = useState('');
+  const [originalHtml, setOriginalHtml] = useState('');
+  const [originalCss, setOriginalCss] = useState('');
   
   // Initialize code from property.example
   useEffect(() => {
+    // Store original code for reset functionality
+    setOriginalHtml(property.example.html);
+    setOriginalCss(property.example.css);
+    
+    // Set current code
     setHtmlCode(property.example.html);
     setCssCode(property.example.css);
     setDisplayHtml(property.example.html);
     setDisplayCss(property.example.css);
   }, [property.example]);
   
-  // Format HTML with smarter indentation
-  const formattedHtml = useMemo(() => {
-    if (!htmlCode) return '';
-    
-    // Use a more sophisticated approach with regex
-    const formatted = htmlCode
-      // Add newline for block-level elements
-      .replace(/<(div|p|h[1-6]|ul|ol|li|table|tr|td|section|article|header|footer|nav|form|fieldset)([^>]*)>/gi, '\n<$1$2>')
-      // Keep self-closing and inline elements on same line
-      .replace(/<(img|input|br|hr|span|a|strong|em|b|i|small|code)([^>]*?)\/?\s*>/gi, '<$1$2>')
-      // Format the document
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .join('\n');
-    
-    // Apply indentation
-    let result = '';
-    let indent = 0;
-    const lines = formatted.split('\n');
-    
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      
-      // Check if line contains a closing tag but not an opening tag (pure closing tag line)
-      const isClosingTagLine = /<\/[^>]+>/.test(line) && !/<[^\/][^>]*>/.test(line);
-      
-      // Check if line contains both opening and closing of the same tag (self-contained)
-      const selfContained = /<([a-z]+)[^>]*>.*?<\/\1>/i.test(line);
-      
-      // Adjust indent before adding the line
-      if (isClosingTagLine && !selfContained) {
-        indent = Math.max(0, indent - 1);
-      }
-      
-      // Add the line with proper indentation
-      result += '  '.repeat(indent) + line + '\n';
-      
-      // Adjust indent for next line based on tags in current line
-      if (/<[^\/][^>]*>/.test(line) && !/<\/[^>]+>/.test(line) && !/<[^>]+\/>/.test(line)) {
-        // Line has opening tag but no closing tag
-        indent++;
-      }
-    }
-    
-    return result.trim();
-  }, [htmlCode]);
-  
-  // Format CSS with indentation
-  const formattedCss = useMemo(() => {
-    if (!cssCode) return '';
-    
-    return cssCode
-      .replace(/\s*{\s*/g, ' {\n  ') // Add newline and indent after opening brace
-      .replace(/;\s*/g, ';\n  ')     // Add newline and indent after semicolons
-      .replace(/\s*}\s*/g, '\n}\n')  // Add newlines around closing brace
-      .replace(/}\n(\w)/g, '}\n\n$1') // Add extra newline between rules
-      .replace(/\n  \n/g, '\n')       // Remove empty indented lines
-      .replace(/\n  }/g, '\n}');      // Remove indent before closing brace
-  }, [cssCode]);
-
   const compileCode = () => {
     setDisplayHtml(htmlCode);
     setDisplayCss(cssCode);
+  };
+  
+  const resetCode = () => {
+    setHtmlCode(originalHtml);
+    setCssCode(originalCss);
+    setDisplayHtml(originalHtml);
+    setDisplayCss(originalCss);
   };
 
   return (
@@ -139,6 +92,8 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
                 value={htmlCode}
                 onChange={(e) => setHtmlCode(e.target.value)}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+                spellCheck="false"
+                wrap="off"
               />
             </div>
           </div>
@@ -158,12 +113,23 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
                 value={cssCode}
                 onChange={(e) => setCssCode(e.target.value)}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+                spellCheck="false"
+                wrap="off"
               />
             </div>
           </div>
           
-          {/* Run Button */}
-          <div className="flex justify-end">
+          {/* Control Buttons */}
+          <div className="flex justify-end space-x-2">
+            <Button 
+              onClick={resetCode} 
+              size="sm" 
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              <RotateCcw className="h-4 w-4" />
+              {t('general.reset')}
+            </Button>
             <Button 
               onClick={compileCode} 
               size="sm" 

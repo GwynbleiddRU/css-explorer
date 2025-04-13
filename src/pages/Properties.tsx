@@ -44,6 +44,9 @@ const Properties = () => {
         console.error('Error parsing saved visibility settings:', e);
       }
     }
+    
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
   }, []);
 
   // Save expanded state to localStorage whenever it changes
@@ -105,17 +108,16 @@ const Properties = () => {
       {isMobile ? (
         <div className="mt-6">
           <SectionVisibilityControls 
-            settings={{...visibilitySettings, showExamples: false}}
-            onChange={(newSettings) => setVisibilitySettings({...newSettings, showExamples: false})}
+            settings={{...visibilitySettings}}
+            onChange={(newSettings) => setVisibilitySettings({...newSettings})}
             supportLabel={t('general.browserSupport')}
-            hideExamplesToggle={true}
           />
           
           <PropertyTableMobile 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
             activePropertyId={activePropertyId}
-            visibilitySettings={{...visibilitySettings, showExamples: false}}
+            visibilitySettings={visibilitySettings}
           />
         </div>
       ) : (
@@ -130,17 +132,16 @@ const Properties = () => {
           
           <div className="lg:col-span-3">
             <SectionVisibilityControls 
-              settings={{...visibilitySettings, showExamples: false}}
-              onChange={(newSettings) => setVisibilitySettings({...newSettings, showExamples: false})}
+              settings={visibilitySettings}
+              onChange={setVisibilitySettings}
               supportLabel={t('general.browserSupport')}
-              hideExamplesToggle={true}
             />
             
             <PropertyTable 
               expandedCategories={expandedCategories}
               toggleCategory={toggleCategory}
               activePropertyId={activePropertyId}
-              visibilitySettings={{...visibilitySettings, showExamples: false}}
+              visibilitySettings={visibilitySettings}
             />
           </div>
         </div>

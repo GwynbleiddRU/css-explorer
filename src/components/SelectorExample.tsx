@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { CssSelector } from '@/types/selectors';
 import { useTranslation } from 'react-i18next';
-import { Play } from 'lucide-react';
+import { Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface SelectorExampleProps {
@@ -14,64 +15,31 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
   const [cssCode, setCssCode] = useState('');
   const [displayHtml, setDisplayHtml] = useState('');
   const [displayCss, setDisplayCss] = useState('');
+  const [originalHtml, setOriginalHtml] = useState('');
+  const [originalCss, setOriginalCss] = useState('');
   
   useEffect(() => {
+    // Store original code for reset functionality
+    setOriginalHtml(selector.example.html);
+    setOriginalCss(selector.example.css);
+    
+    // Set current code
     setHtmlCode(selector.example.html);
     setCssCode(selector.example.css);
     setDisplayHtml(selector.example.html);
     setDisplayCss(selector.example.css);
   }, [selector.example]);
   
-  const formattedHtml = useMemo(() => {
-    if (!htmlCode) return '';
-    
-    const formatted = htmlCode
-      .replace(/<(div|p|h[1-6]|ul|ol|li|table|tr|td|section|article|header|footer|nav|form|fieldset)([^>]*)>/gi, '\n<$1$2>')
-      .replace(/<(img|input|br|hr|span|a|strong|em|b|i|small|code)([^>]*?)\/?\s*>/gi, '<$1$2>')
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .join('\n');
-    
-    let result = '';
-    let indent = 0;
-    const lines = formatted.split('\n');
-    
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      
-      const isClosingTagLine = /<\/[^>]+>/.test(line) && !/<[^\/][^>]*>/.test(line);
-      
-      const selfContained = /<([a-z]+)[^>]*>.*?<\/\1>/i.test(line);
-      
-      if (isClosingTagLine && !selfContained) {
-        indent = Math.max(0, indent - 1);
-      }
-      
-      result += '  '.repeat(indent) + line + '\n';
-      
-      if (/<[^\/][^>]*>/.test(line) && !/<\/[^>]+>/.test(line) && !/<[^>]+\/>/.test(line)) {
-        indent++;
-      }
-    }
-    
-    return result.trim();
-  }, [htmlCode]);
-  
-  const formattedCss = useMemo(() => {
-    if (!cssCode) return '';
-    
-    return cssCode
-      .replace(/\s*{\s*/g, ' {\n  ')
-      .replace(/;\s*/g, ';\n  ')
-      .replace(/\s*}\s*/g, '\n}')
-      .replace(/\n  \n/g, '\n')
-      .replace(/\n  }/g, '\n}');
-  }, [cssCode]);
-  
   const compileCode = () => {
     setDisplayHtml(htmlCode);
     setDisplayCss(cssCode);
+  };
+  
+  const resetCode = () => {
+    setHtmlCode(originalHtml);
+    setCssCode(originalCss);
+    setDisplayHtml(originalHtml);
+    setDisplayCss(originalCss);
   };
 
   return (
@@ -120,6 +88,8 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
                 value={htmlCode}
                 onChange={(e) => setHtmlCode(e.target.value)}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+                spellCheck="false"
+                wrap="off"
               />
             </div>
           </div>
@@ -138,11 +108,22 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
                 value={cssCode}
                 onChange={(e) => setCssCode(e.target.value)}
                 className="text-gray-100 p-3 text-sm font-mono w-full h-[120px] bg-transparent border border-gray-700 leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+                spellCheck="false"
+                wrap="off"
               />
             </div>
           </div>
           
-          <div className="flex justify-end">
+          <div className="flex justify-end space-x-2">
+            <Button 
+              onClick={resetCode} 
+              size="sm" 
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              <RotateCcw className="h-4 w-4" />
+              {t('general.reset')}
+            </Button>
             <Button 
               onClick={compileCode} 
               size="sm" 
