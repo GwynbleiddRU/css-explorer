@@ -6,6 +6,7 @@ import { Play, RotateCcw, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { formatHtml, formatCss } from '@/utils/codeFormatters';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useToast } from '@/hooks/use-toast';
 
 interface PropertyExampleProps {
   property: CssProperty;
@@ -45,19 +46,19 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
       // Check for unclosed HTML tags
       const unclosedTagRegex = /<([a-z][a-z0-9]*)[^>]*(?<!\/|<\1)>(?![^<]*<\/\1>)/i;
       if (unclosedTagRegex.test(htmlCode)) {
-        throw new Error(t('errors.unclosedHtmlTag'));
+        throw new Error(t('errors.unclosedHtmlTag', { defaultValue: 'Unclosed HTML tag detected' }));
       }
 
       // Check for unclosed CSS braces
       const openBraces = (cssCode.match(/{/g) || []).length;
       const closeBraces = (cssCode.match(/}/g) || []).length;
       if (openBraces !== closeBraces) {
-        throw new Error(t('errors.unclosedCssBraces'));
+        throw new Error(t('errors.unclosedCssBraces', { defaultValue: 'Unclosed CSS braces detected' }));
       }
 
       // Check for unterminated CSS rules
       if (/[^;{}]\s*$/.test(cssCode.replace(/\/\*[\s\S]*?\*\//g, '').trim()) && cssCode.trim() !== '') {
-        throw new Error(t('errors.unterminatedCssRule'));
+        throw new Error(t('errors.unterminatedCssRule', { defaultValue: 'Unterminated CSS rule detected' }));
       }
 
       setError(null);
@@ -66,7 +67,7 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
       if (e instanceof Error) {
         setError(e.message);
       } else {
-        setError(t('errors.unknownError'));
+        setError(t('errors.unknownError', { defaultValue: 'An unknown error occurred' }));
       }
       return false;
     }
@@ -86,19 +87,17 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
     setDisplayHtml(property.example.html);
     setDisplayCss(property.example.css);
     setError(null);
-    setCodeChanged(false);
+    setCodeChanged(true); // Enable the run button after reset
   };
 
   const handleHtmlChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setHtmlCode(e.target.value);
-    setCodeChanged(true);
-    if (error) validateCode();
+    setCodeChanged(true); // Enable the run button when code changes
   };
 
   const handleCssChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCssCode(e.target.value);
-    setCodeChanged(true);
-    if (error) validateCode();
+    setCodeChanged(true); // Enable the run button when code changes
   };
 
   return (
@@ -177,14 +176,6 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
             </div>
           </div>
           
-          {/* Error message */}
-          {error && (
-            <Alert variant="destructive" className="py-2">
-              <AlertTriangle className="h-4 w-4 mr-2" />
-              <AlertDescription className="text-sm">{error}</AlertDescription>
-            </Alert>
-          )}
-          
           {/* Control Buttons */}
           <div className="flex justify-end space-x-2">
             <Button 
@@ -200,12 +191,22 @@ const PropertyExample: React.FC<PropertyExampleProps> = ({ property }) => {
               onClick={compileCode} 
               size="sm" 
               className="flex items-center gap-2"
-              disabled={!codeChanged || !!error}
+              disabled={!codeChanged}
             >
               <Play className="h-4 w-4" />
               {t('general.run')}
             </Button>
           </div>
+          
+          {/* Error message - Moved to bottom with better alignment */}
+          {error && (
+            <Alert variant="destructive" className="py-2 mt-2">
+              <div className="flex items-center">
+                <AlertTriangle className="h-4 w-4 mr-2 flex-shrink-0" />
+                <AlertDescription className="text-sm">{error}</AlertDescription>
+              </div>
+            </Alert>
+          )}
         </div>
       </div>
     </div>

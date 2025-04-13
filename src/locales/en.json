@@ -56,5 +56,11 @@
      "searchSelectors": "Search CSS Selectors...",
      "searchProperties": "Search CSS Properties...",
      "noResults": "No results found"
+   },
+   "errors": {
+     "unclosedHtmlTag": "Unclosed HTML tag detected. Please check your HTML syntax.",
+     "unclosedCssBraces": "Unclosed CSS braces detected. Make sure all opening braces { have matching closing braces }.",
+     "unterminatedCssRule": "Unterminated CSS rule detected. Make sure all CSS declarations end with a semicolon ;",
+     "unknownError": "An unknown error occurred while validating your code."
    }
 }
