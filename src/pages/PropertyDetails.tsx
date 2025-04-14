@@ -117,8 +117,8 @@ const PropertyDetails = () => {
         {/* CSS Syntax */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">{t('general.syntax')}</h2>
-          <div className="bg-muted p-4 rounded-md font-mono whitespace-pre-wrap">
-            {propertyDetails?.syntax || property.syntax}
+          <div className="bg-muted p-4 rounded-md font-mono whitespace-pre-wrap overflow-hidden">
+            <div className="overflow-hidden text-overflow-ellipsis break-all">{propertyDetails?.syntax || property.syntax}</div>
           </div>
         </section>
 
