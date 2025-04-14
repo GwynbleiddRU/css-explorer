@@ -87,8 +87,8 @@ const PropertyTableMobile: React.FC<PropertyTableMobileProps> = ({
       <div className="grid grid-cols-1 gap-3">
         <div>
           <div className="text-sm font-medium text-muted-foreground mb-1">{t('general.syntax')}</div>
-          <div className="font-mono text-sm p-2 bg-muted/50 rounded-md whitespace-pre-wrap">
-            {property.syntax}
+          <div className="font-mono text-sm p-2 bg-muted/50 rounded-md whitespace-pre-wrap overflow-hidden">
+            <div className="overflow-hidden text-overflow-ellipsis break-all">{property.syntax}</div>
           </div>
         </div>
         
