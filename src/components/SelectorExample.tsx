@@ -84,12 +84,17 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
       setError(null);
       return true;
     } catch (e) {
+      if (e instanceof Error && e.message.includes('regular expression')) {
+        setError(null);
+        return true;
+      } else {
       setError(
         e instanceof Error
           ? e.message
           : t('errors.unknownError', { defaultValue: 'An unknown error occurred' })
       );
       return false;
+      }
     }
   };
   
