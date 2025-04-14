@@ -6,6 +6,9 @@ import { Play, RotateCcw, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { formatHtml, formatCss } from '@/utils/codeFormatters';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import postcss from 'postcss';
+import safeParser from 'postcss-safe-parser';
+import { HtmlValidate } from 'html-validate';
 
 interface SelectorExampleProps {
   selector: CssSelector;
@@ -37,47 +40,68 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
     setDisplayCss(selector.example.css);
     setCodeChanged(false);
   }, [selector.example]);
-  
-  const validateCode = () => {
-    // Basic syntax validation
-    try {
-      // Check for unclosed HTML tags
-      const unclosedTagRegex = /<([a-z][a-z0-9]*)[^>]*(?<!\/|<\1)>(?![^<]*<\/\1>)/i;
-      if (unclosedTagRegex.test(htmlCode)) {
-        throw new Error(t('errors.unclosedHtmlTag', { defaultValue: 'Unclosed HTML tag detected' }));
-      }
 
-      // Check for unclosed CSS braces
-      const openBraces = (cssCode.match(/{/g) || []).length;
-      const closeBraces = (cssCode.match(/}/g) || []).length;
+  const htmlvalidate = new HtmlValidate();
+  
+  const validateCode = async () => {
+    try {
+      const report = htmlvalidate.validateString(htmlCode);
+      if (!(await report).valid) {
+        const msg = (await report).results[0]?.messages[0];
+        throw new Error(
+          t('errors.invalidHtml', {
+            defaultValue: `Invalid HTML: ${msg?.message ?? 'Unknown HTML error'} (line ${msg?.line}, col ${msg?.column})`
+          })
+        );
+      }
+  
+      // --- Stricter CSS checks before postcss-safe-parser ---
+      const cssWithoutComments = cssCode.replace(/\/\*[\s\S]*?\*\//g, '').trim();
+  
+      const openBraces = (cssWithoutComments.match(/{/g) || []).length;
+      const closeBraces = (cssWithoutComments.match(/}/g) || []).length;
       if (openBraces !== closeBraces) {
         throw new Error(t('errors.unclosedCssBraces', { defaultValue: 'Unclosed CSS braces detected' }));
       }
-
-      // Check for unterminated CSS rules
-      if (/[^;{}]\s*$/.test(cssCode.replace(/\/\*[\s\S]*?\*\//g, '').trim()) && cssCode.trim() !== '') {
-        throw new Error(t('errors.unterminatedCssRule', { defaultValue: 'Unterminated CSS rule detected' }));
+  
+      // Check for unterminated rules
+      const rules = cssWithoutComments.split('}').filter(Boolean);
+      for (const rule of rules) {
+        const body = rule.split('{')[1];
+        if (body && !body.trim().endsWith(';')) {
+          throw new Error(t('errors.unterminatedCssRule', { defaultValue: 'Unterminated CSS rule detected' }));
+        }
       }
-
+  
+      // Safe parse via PostCSS
+      try {
+        await postcss().process(cssCode, { parser: safeParser });
+      } catch (err: any) {
+        const message = err?.reason || err?.message || '';
+        throw new Error(message);
+      }
+  
       setError(null);
       return true;
     } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError(t('errors.unknownError', { defaultValue: 'An unknown error occurred' }));
-      }
+      setError(
+        e instanceof Error
+          ? e.message
+          : t('errors.unknownError', { defaultValue: 'An unknown error occurred' })
+      );
       return false;
     }
   };
   
-  const compileCode = () => {
-    if (validateCode()) {
+  const compileCode = async () => {
+    const isValid = await validateCode();
+    if (isValid) {
       setDisplayHtml(htmlCode);
       setDisplayCss(cssCode);
       setCodeChanged(false);
     }
   };
+  
   
   const resetCode = () => {
     setHtmlCode(originalHtml);
@@ -191,17 +215,17 @@ const SelectorExample: React.FC<SelectorExampleProps> = ({ selector }) => {
               {t('general.run')}
             </Button>
           </div>
-          
-          {/* Error message - Moved to bottom with better alignment */}
-          {error && (
-            <Alert variant="destructive" className="py-2 mt-2">
+        </div>
+        {error && (
+          <div className="col-span-full">
+            <Alert variant="destructive" className="py-2 w-full">
               <div className="flex items-center">
                 <AlertTriangle className="h-4 w-4 mr-2 flex-shrink-0" />
                 <AlertDescription className="text-sm">{error}</AlertDescription>
               </div>
             </Alert>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
