@@ -8,6 +8,7 @@ import SelectorTableMobile from '@/components/SelectorTableMobile';
 import TableOfContents from '@/components/TableOfContents';
 import { selectorCategories } from '@/data/selectorData';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
+import { ChevronUp } from 'lucide-react';
 
 const Selectors = () => {
   const { t } = useTranslation();
@@ -116,7 +117,7 @@ const Selectors = () => {
       </div>
       
       <div ref={searchBarRef}>
-        <SearchBar onSelect={handleSelect} />
+        <SearchBar onSelectSelector={handleSelect} />
       </div>
       
       {isMobile ? (
@@ -130,7 +131,7 @@ const Selectors = () => {
           <SelectorTableMobile 
             expandedCategories={expandedCategories}
             toggleCategory={toggleCategory}
-            activeId={activeId}
+            activeSelectorId={activeId}
             visibilitySettings={visibilitySettings}
           />
         </div>
@@ -138,9 +139,10 @@ const Selectors = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
           <div className="lg:col-span-1">
             <TableOfContents 
+              items={selectorCategories}
               expandedCategories={expandedCategories} 
               toggleCategory={toggleCategory}
-              onSelect={handleSelect}
+              onSelectItem={handleSelect}
             />
           </div>
           
@@ -154,7 +156,7 @@ const Selectors = () => {
             <SelectorTable 
               expandedCategories={expandedCategories}
               toggleCategory={toggleCategory}
-              activeId={activeId}
+              activeSelectorId={activeId}
               visibilitySettings={visibilitySettings}
             />
           </div>
@@ -167,10 +169,7 @@ const Selectors = () => {
           className="fixed bottom-6 right-6 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 transition-all z-50"
           aria-label={t('general.scrollToTop')}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevrons-up">
-            <path d="m17 11-5-5-5 5"/>
-            <path d="m17 18-5-5-5 5"/>
-          </svg>
+          <ChevronUp className="h-5 w-5" />
         </button>
       )}
     </div>
