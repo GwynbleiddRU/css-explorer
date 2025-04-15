@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
@@ -46,21 +47,45 @@ const Properties = () => {
         console.error('Error parsing saved visibility settings:', e);
       }
     }
-    
+  }, []);
+
+  useEffect(() => {
     if (location.state?.fromPropertyDetails) {
       if (location.state.scrollToProperty) {
-        const element = document.getElementById(location.state.scrollToProperty);
-        if (element) {
-          window.setTimeout(() => {
-            window.scrollTo(0, location.state.scrollPosition || 0);
-            element.scrollIntoView({ block: 'center' });
-          }, 100);
+        // Set this property as active to ensure it gets highlighted
+        setActivePropertyId(location.state.scrollToProperty);
+        
+        // Find the category for this property
+        const category = propertyCategories.find(cat => 
+          cat.properties.some(prop => prop.id === location.state.scrollToProperty)
+        );
+        
+        // Make sure the category is expanded
+        if (category && !expandedCategories[category.id]) {
+          setExpandedCategories(prev => ({
+            ...prev,
+            [category.id]: true
+          }));
         }
+        
+        // Use a slight delay to ensure DOM is updated before scrolling
+        setTimeout(() => {
+          // First restore the previous scroll position
+          if (location.state.scrollPosition) {
+            window.scrollTo(0, location.state.scrollPosition);
+          }
+          
+          // Then scroll to the element itself
+          const element = document.getElementById(location.state.scrollToProperty);
+          if (element) {
+            element.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        }, 100);
       }
     } else {
       window.scrollTo(0, 0);
     }
-  }, [location.state]);
+  }, [location.state, expandedCategories]);
 
   useEffect(() => {
     if (Object.keys(expandedCategories).length > 0) {

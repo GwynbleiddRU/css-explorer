@@ -106,7 +106,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({
                   key={property.id}
                   id={property.id}
                   ref={el => propertyRefs.current[property.id] = el}
-                  className="transition-colors duration-300 cursor-pointer hover:bg-muted"
+                  className={`transition-colors duration-300 cursor-pointer hover:bg-muted ${activePropertyId === property.id ? 'bg-secondary/30' : ''}`}
                   onClick={() => handleRowClick(property.id)}
                 >
                   <TableCell className="align-top">

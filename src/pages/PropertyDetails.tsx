@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPropertyDetailsById } from '@/data/propertyDetailsData';
@@ -24,7 +25,6 @@ const PropertyDetails = () => {
   const { t, i18n } = useTranslation(['translation', 'propertyDescriptions', 'propertyValues']);
   const [showExamples, setShowExamples] = useState(true);
   const [showSupport, setShowSupport] = useState(true);
-  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
 
   const findPropertyInCategories = (): CssProperty | undefined => {
     for (const category of propertyCategories) {
@@ -70,12 +70,12 @@ const PropertyDetails = () => {
   };
 
   const handleBackClick = () => {
-    const scrollPosition = savedScrollPosition;
+    const currentScrollPosition = window.scrollY;
     navigate('/properties', { 
       state: { 
         fromPropertyDetails: true,
         scrollToProperty: propertyId,
-        scrollPosition: scrollPosition 
+        scrollPosition: currentScrollPosition 
       } 
     });
   };
