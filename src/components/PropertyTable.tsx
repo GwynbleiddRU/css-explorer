@@ -14,7 +14,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import BrowserIcon from './BrowserIcon';
 import { VisibilitySettings } from './SectionVisibilityControls';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface PropertyTableProps {
   expandedCategories: Record<string, boolean>;

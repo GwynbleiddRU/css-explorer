@@ -8,7 +8,7 @@ import PropertyTableMobile from '@/components/PropertyTableMobile';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 let savedScrollPosition = 0;
 
@@ -16,6 +16,7 @@ const Properties = () => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
   const location = useLocation();
+  const navigate = useNavigate();
   
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activePropertyId, setActivePropertyId] = useState<string | null>(null);
@@ -80,12 +81,15 @@ const Properties = () => {
           if (element) {
             element.scrollIntoView({ block: 'center', behavior: 'smooth' });
           }
+          
+          // Clear the navigation state to prevent unintended navigation
+          navigate(location.pathname, { replace: true, state: {} });
         }, 100);
       }
     } else {
       window.scrollTo(0, 0);
     }
-  }, [location.state, expandedCategories]);
+  }, [location.state, expandedCategories, navigate, location.pathname]);
 
   useEffect(() => {
     if (Object.keys(expandedCategories).length > 0) {
