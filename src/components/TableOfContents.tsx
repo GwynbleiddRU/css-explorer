@@ -53,7 +53,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
             className="text-muted-foreground hover:text-foreground"
             onClick={handleCloseAll}
           >
-            <X className="h-4 w-4 mr-1" />
+            <X className="h-4 w-4 mr-.5" />
             {t('general.closeAll')}
           </Button>
         )}
