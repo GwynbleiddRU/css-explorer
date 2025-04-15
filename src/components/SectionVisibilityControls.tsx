@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -19,10 +20,10 @@ const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({ s
   
   useEffect(() => {
     // Initialize with support disabled by default
-    onChange((prev) => ({
-      ...prev,
+    onChange({
+      ...settings,
       showSupport: false
-    }));
+    });
   }, []);
 
   return (
