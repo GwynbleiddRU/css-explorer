@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
@@ -9,6 +8,7 @@ import SectionVisibilityControls, { VisibilitySettings } from '@/components/Sect
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ChevronUp } from 'lucide-react';
 
 let savedScrollPosition = 0;
 
@@ -25,6 +25,7 @@ const Properties = () => {
     showSupport: true
   });
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [initialScrollPerformed, setInitialScrollPerformed] = useState(false);
 
   useEffect(() => {
     const savedState = localStorage.getItem('expandedPropertyCategories');
@@ -53,7 +54,7 @@ const Properties = () => {
   }, []);
 
   useEffect(() => {
-    if (location.state?.fromPropertyDetails) {
+    if (!initialScrollPerformed && location.state?.fromPropertyDetails) {
       if (location.state.scrollToProperty) {
         // Set this property as active to ensure it gets highlighted
         setActivePropertyId(location.state.scrollToProperty);
@@ -70,6 +71,9 @@ const Properties = () => {
             [category.id]: true
           }));
         }
+        
+        // Prevent other scroll operations until this one is complete
+        setInitialScrollPerformed(true);
         
         // Use a slight delay to ensure DOM is updated before scrolling
         setTimeout(() => {
@@ -97,10 +101,12 @@ const Properties = () => {
         // Clear the navigation state if no specific property to scroll to
         navigate(location.pathname, { replace: true, state: {} });
       }
-    } else {
+    } else if (!location.state?.fromPropertyDetails && !initialScrollPerformed) {
+      // Only scroll to top if not coming from property details and initial scroll not yet performed
       window.scrollTo(0, 0);
+      setInitialScrollPerformed(true);
     }
-  }, [location.state, expandedCategories, navigate, location.pathname]);
+  }, [location.state, expandedCategories, navigate, location.pathname, initialScrollPerformed]);
 
   useEffect(() => {
     if (Object.keys(expandedCategories).length > 0) {
@@ -124,7 +130,6 @@ const Properties = () => {
     };
   }, []);
 
-  // Check if search bar is visible and control scroll button visibility
   useEffect(() => {
     const handleScroll = () => {
       if (searchBarRef.current) {
@@ -232,10 +237,7 @@ const Properties = () => {
           className="fixed bottom-6 right-6 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 transition-all z-50"
           aria-label={t('general.scrollToTop')}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevrons-up">
-            <path d="m17 11-5-5-5 5"/>
-            <path d="m17 18-5-5-5 5"/>
-          </svg>
+          <ChevronUp className="h-5 w-5" />
         </button>
       )}
     </div>
