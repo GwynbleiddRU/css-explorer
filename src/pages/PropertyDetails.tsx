@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPropertyDetailsById } from '@/data/propertyDetailsData';
@@ -25,8 +24,8 @@ const PropertyDetails = () => {
   const { t, i18n } = useTranslation(['translation', 'propertyDescriptions', 'propertyValues']);
   const [showExamples, setShowExamples] = useState(true);
   const [showSupport, setShowSupport] = useState(true);
-  
-  // Find the property in propertyCategories
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+
   const findPropertyInCategories = (): CssProperty | undefined => {
     for (const category of propertyCategories) {
       const property = category.properties.find(p => p.id === propertyId);
@@ -39,16 +38,13 @@ const PropertyDetails = () => {
   const propertyDetails = propertyId ? getPropertyDetailsById(propertyId) : undefined;
   
   useEffect(() => {
-    // If property not found, redirect to properties page
     if (propertyId && !property) {
       navigate('/properties');
     }
     
-    // Scroll to top on page load
     window.scrollTo(0, 0);
   }, [propertyId, property, navigate]);
 
-  // Get translated description or fall back to English
   const getDescription = (description: string) => {
     const translatedDescription = t(`${propertyId}`, {
       ns: 'propertyDescriptions',
@@ -58,7 +54,6 @@ const PropertyDetails = () => {
     return translatedDescription || description;
   };
 
-  // Get all possible values for this property from the translation files
   const getPossibleValues = (): {value: string, description: string}[] => {
     if (!propertyId) return [];
     
@@ -75,7 +70,14 @@ const PropertyDetails = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/properties', { state: { fromPropertyDetails: true } });
+    const scrollPosition = savedScrollPosition;
+    navigate('/properties', { 
+      state: { 
+        fromPropertyDetails: true,
+        scrollToProperty: propertyId,
+        scrollPosition: scrollPosition 
+      } 
+    });
   };
 
   if (!property) {
@@ -114,7 +116,6 @@ const PropertyDetails = () => {
       </p>
 
       <div className="space-y-8">
-        {/* CSS Syntax */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">{t('general.syntax')}</h2>
           <div className="bg-muted p-4 rounded-md font-mono whitespace-pre-wrap overflow-hidden">
@@ -122,7 +123,6 @@ const PropertyDetails = () => {
           </div>
         </section>
 
-        {/* Possible Values */}
         {possibleValues.length > 0 && (
           <section>
             <h2 className="text-2xl font-semibold mb-4">{t('general.possibleValues')}</h2>
@@ -147,7 +147,6 @@ const PropertyDetails = () => {
           </section>
         )}
 
-        {/* Browser Support */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">
             {t('general.browserSupport')}
@@ -172,7 +171,6 @@ const PropertyDetails = () => {
           )}
         </section>
 
-        {/* Example */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">
             {t('general.example')}

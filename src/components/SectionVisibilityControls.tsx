@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { useTranslation } from 'react-i18next';
@@ -15,13 +14,17 @@ interface SectionVisibilityControlsProps {
   supportLabel: string;
 }
 
-const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({
-  settings,
-  onChange,
-  supportLabel
-}) => {
+const SectionVisibilityControls: React.FC<SectionVisibilityControlsProps> = ({ settings, onChange, supportLabel }) => {
   const { t } = useTranslation();
   
+  useEffect(() => {
+    // Initialize with support disabled by default
+    onChange((prev) => ({
+      ...prev,
+      showSupport: false
+    }));
+  }, []);
+
   return (
     <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-6 mb-6 bg-muted/40 p-4 rounded-md">
       <h3 className="text-sm font-medium mr-4">{t('general.showHide')}:</h3>

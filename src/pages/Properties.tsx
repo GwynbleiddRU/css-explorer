@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { propertyCategories } from '@/data/propertyData';
 import PropertySearchBar from '@/components/PropertySearchBar';
@@ -10,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useLocation } from 'react-router-dom';
 
-// Store the scroll position when navigating away
 let savedScrollPosition = 0;
 
 const Properties = () => {
@@ -18,14 +16,12 @@ const Properties = () => {
   const isMobile = useIsMobile();
   const location = useLocation();
   
-  // State for tracking expanded categories
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [activePropertyId, setActivePropertyId] = useState<string | null>(null);
   const [visibilitySettings, setVisibilitySettings] = useState<VisibilitySettings>({
     showSupport: true
   });
 
-  // Initialize expanded categories from localStorage or defaults
   useEffect(() => {
     const savedState = localStorage.getItem('expandedPropertyCategories');
     if (savedState) {
@@ -39,12 +35,10 @@ const Properties = () => {
       initializeDefaultExpanded();
     }
 
-    // Load visibility settings
     const savedVisibility = localStorage.getItem('propertyVisibilitySettings');
     if (savedVisibility) {
       try {
         const saved = JSON.parse(savedVisibility);
-        // Only keep the showSupport setting
         setVisibilitySettings({
           showSupport: saved.showSupport ?? true
         });
@@ -53,30 +47,31 @@ const Properties = () => {
       }
     }
     
-    // When navigating directly to this page, scroll to top
-    // When returning from PropertyDetails, restore the saved position
     if (location.state?.fromPropertyDetails) {
-      window.setTimeout(() => {
-        window.scrollTo(0, savedScrollPosition || 0);
-      }, 100);
+      if (location.state.scrollToProperty) {
+        const element = document.getElementById(location.state.scrollToProperty);
+        if (element) {
+          window.setTimeout(() => {
+            window.scrollTo(0, location.state.scrollPosition || 0);
+            element.scrollIntoView({ block: 'center' });
+          }, 100);
+        }
+      }
     } else {
       window.scrollTo(0, 0);
     }
   }, [location.state]);
 
-  // Save expanded state to localStorage whenever it changes
   useEffect(() => {
     if (Object.keys(expandedCategories).length > 0) {
       localStorage.setItem('expandedPropertyCategories', JSON.stringify(expandedCategories));
     }
   }, [expandedCategories]);
 
-  // Save visibility settings
   useEffect(() => {
     localStorage.setItem('propertyVisibilitySettings', JSON.stringify(visibilitySettings));
   }, [visibilitySettings]);
 
-  // Save the scroll position when navigating away
   useEffect(() => {
     const handleBeforeNavigate = () => {
       savedScrollPosition = window.scrollY;
@@ -91,7 +86,6 @@ const Properties = () => {
 
   const initializeDefaultExpanded = () => {
     const defaults: Record<string, boolean> = {};
-    // Expand the first category by default (usually layout)
     propertyCategories.forEach((category, index) => {
       defaults[category.id] = index === 0;
     });
@@ -108,12 +102,10 @@ const Properties = () => {
   const handleSelectProperty = (propertyId: string) => {
     setActivePropertyId(propertyId);
     
-    // Find the category that contains this property
     const category = propertyCategories.find(cat => 
       cat.properties.some(prop => prop.id === propertyId)
     );
     
-    // Ensure the category is expanded
     if (category && !expandedCategories[category.id]) {
       setExpandedCategories(prev => ({
         ...prev,

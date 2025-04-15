@@ -1,7 +1,7 @@
-
 import React from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Button } from './ui/button';
 
 export interface TOCItem {
   id: string;
@@ -32,9 +32,32 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
 }) => {
   const { t } = useTranslation();
   
+  const hasExpandedCategories = Object.values(expandedCategories).some(value => value);
+
+  const handleCloseAll = () => {
+    Object.keys(expandedCategories).forEach(categoryId => {
+      if (expandedCategories[categoryId]) {
+        toggleCategory(categoryId);
+      }
+    });
+  };
+  
   return (
     <div className="table-of-contents bg-card mb-8">
-      <h2 className="text-xl font-bold mb-4">{title || t('general.tableOfContents')}</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold">{title || t('general.tableOfContents')}</h2>
+        {hasExpandedCategories && (
+          <Button 
+            variant="ghost" 
+            size="sm"
+            className="text-muted-foreground hover:text-foreground"
+            onClick={handleCloseAll}
+          >
+            <X className="h-4 w-4 mr-1" />
+            {t('general.closeAll')}
+          </Button>
+        )}
+      </div>
       <div className="space-y-2">
         {items.map(category => (
           <div key={category.id} className="space-y-1">
