@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -9,6 +8,7 @@ import TableOfContents from '@/components/TableOfContents';
 import { selectorCategories } from '@/data/selectorData';
 import SectionVisibilityControls, { VisibilitySettings } from '@/components/SectionVisibilityControls';
 import { ChevronUp } from 'lucide-react';
+import { TOCItem } from '@/components/TableOfContents';
 
 const Selectors = () => {
   const { t } = useTranslation();
@@ -22,6 +22,17 @@ const Selectors = () => {
   });
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Transform selector categories to TOCItem format
+  const tocItems: TOCItem[] = selectorCategories.map(category => ({
+    id: category.id,
+    name: category.name,
+    children: category.selectors.map(selector => ({
+      id: selector.id,
+      name: selector.name,
+      parameters: selector.parameters
+    }))
+  }));
+  
   useEffect(() => {
     const savedState = localStorage.getItem('expandedSelectorCategories');
     if (savedState) {
@@ -139,7 +150,7 @@ const Selectors = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
           <div className="lg:col-span-1">
             <TableOfContents 
-              items={selectorCategories}
+              items={tocItems}
               expandedCategories={expandedCategories} 
               toggleCategory={toggleCategory}
               onSelectItem={handleSelect}
