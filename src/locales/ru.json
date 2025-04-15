@@ -2,12 +2,12 @@
   "general": {
     "properties": "Свойства",
     "selectors": "Селекторы",
-    "property": "свойство",
-    "selector": "селектор",
+    "property": "Свойство",
+    "selector": "Селектор",
     "description": "Справочник CSS",
     "cssProperties": "Свойства CSS",
     "cssSelectors": "Селекторы CSS",
-    "syntax": "синтаксис",
+    "syntax": "Синтаксис",
     "parameters": "Параметры",
     "value": "Значение",
     "possibleValues": "Возможные значения",
@@ -33,7 +33,7 @@
     "edit": "Редактировать",
     "run": "Запустить",
     "reset": "Сбросить",
-    "closeAll": "Закрыть все"
+    "closeAll": "Закрыть"
   },
   "categories": {
     "layout": "Позиционирование",

@@ -21,7 +21,7 @@
     "showHide": "Show",
     "backToProperties": "Back to Properties",
     "propertyNotFound": "Property not found",
-    "title": "CSS Reference",
+    "title": "CSS Cheatsheet",
     "examples": "Examples",
     "preview": "Preview",
     "code": "Code",
@@ -33,7 +33,8 @@
     "compile": "Compile",
     "edit": "Edit",
     "run": "Run",
-    "reset": "Reset"
+    "reset": "Reset",
+    "closeAll": "Close all"
   },
   "categories": {
     "layout": "Layout",
