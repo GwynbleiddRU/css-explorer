@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Properties from "./pages/Properties";
 import PropertyDetails from "./pages/PropertyDetails";
+import Selectors from "./pages/Selectors";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
@@ -36,7 +37,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/properties" replace />} />
               <Route path="/properties" element={<Properties />} />
               <Route path="/properties/:propertyId" element={<PropertyDetails />} />
-              <Route path="/selectors" element={<Index />} />
+              <Route path="/selectors" element={<Selectors />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>
