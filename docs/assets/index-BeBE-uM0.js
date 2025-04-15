@@ -160,7 +160,7 @@ Error generating stack: `+o.message+`
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function Em(){return Em=Object.assign?Object.assign.bind():function(t){for(var e=1;e<arguments.length;e++){var r=arguments[e];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(t[n]=r[n])}return t},Em.apply(this,arguments)}function ML(t,e){if(t==null)return{};var r={},n=Object.keys(t),i,o;for(o=0;o<n.length;o++)i=n[o],!(e.indexOf(i)>=0)&&(r[i]=t[i]);return r}function BL(t){return!!(t.metaKey||t.altKey||t.ctrlKey||t.shiftKey)}function zL(t,e){return t.button===0&&(!e||e==="_self")&&!BL(t)}const qL=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","viewTransition"],UL="6";try{window.__reactRouterVersion=UL}catch{}const VL="startTransition",ww=SE[VL];function HL(t){let{basename:e,children:r,future:n,window:i}=t,o=w.useRef();o.current==null&&(o.current=GF({window:i,v5Compat:!0}));let s=o.current,[a,l]=w.useState({action:s.action,location:s.location}),{v7_startTransition:c}=n||{},u=w.useCallback(d=>{c&&ww?ww(()=>l(d)):l(d)},[l,c]);return w.useLayoutEffect(()=>s.listen(u),[s,u]),w.createElement(LL,{basename:e,children:r,location:a.location,navigationType:a.action,navigator:s,future:n})}const GL=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",WL=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,ya=w.forwardRef(function(e,r){let{onClick:n,relative:i,reloadDocument:o,replace:s,state:a,target:l,to:c,preventScrollReset:u,viewTransition:d}=e,f=ML(e,qL),{basename:h}=w.useContext(Ii),g,p=!1;if(typeof c=="string"&&WL.test(c)&&(g=c,GL))try{let x=new URL(window.location.href),E=c.startsWith("//")?new URL(x.protocol+c):new URL(c),C=Oy(E.pathname,h);E.origin===x.origin&&C!=null?c=C+E.search+E.hash:p=!0}catch{}let b=vL(c,{relative:i}),m=KL(c,{replace:s,state:a,target:l,preventScrollReset:u,relative:i,viewTransition:d});function y(x){n&&n(x),x.defaultPrevented||m(x)}return w.createElement("a",Em({},f,{href:g||b,onClick:p||o?n:y,ref:r,target:l}))});var xw;(function(t){t.UseScrollRestoration="useScrollRestoration",t.UseSubmit="useSubmit",t.UseSubmitFetcher="useSubmitFetcher",t.UseFetcher="useFetcher",t.useViewTransitionState="useViewTransitionState"})(xw||(xw={}));var Ew;(function(t){t.UseFetcher="useFetcher",t.UseFetchers="useFetchers",t.UseScrollRestoration="useScrollRestoration"})(Ew||(Ew={}));function KL(t,e){let{target:r,replace:n,state:i,preventScrollReset:o,relative:s,viewTransition:a}=e===void 0?{}:e,l=tc(),c=Fi(),u=sk(t,{relative:s});return w.useCallback(d=>{if(zL(d,r)){d.preventDefault();let f=n!==void 0?n:gd(c)===gd(u);l(t,{replace:f,state:i,preventScrollReset:o,relative:s,viewTransition:a})}},[c,l,u,n,i,r,t,o,s,a])}const yo=[{id:"layout",name:"Layout",properties:[{id:"display",name:"display",syntax:"display: none|block|inline|inline-block|flex|grid|...",example:{html:'<div class="box">This is a flex container</div>',css:".box { display: flex; justify-content: center; border: 1px solid #ccc; padding: 20px; }"},description:"Specifies how an element is displayed on the page.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"position",name:"position",syntax:"position: static|relative|absolute|fixed|sticky",example:{html:'<div class="container"><div class="positioned">Positioned element</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; top: 30px; left: 30px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the positioning method for an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"float",name:"float",syntax:"float: none|left|right|initial|inherit",example:{html:'<div class="container"><div class="floated">Floated element</div><p>Text flows around the floated element.</p></div>',css:".container { border: 1px solid #ccc; overflow: auto; padding: 10px; } .floated { float: left; width: 100px; height: 50px; margin-right: 10px; background: #e0ffe0; padding: 5px; }"},description:"Specifies how an element should float.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"clear",name:"clear",syntax:"clear: none|left|right|both|inherit",example:{html:'<div style="float: left; width: 100px; height: 50px; background: #e0e0ff;">Floated div</div><div class="cleared">This div is cleared</div>',css:".cleared { clear: both; background: #ffe0e0; padding: 5px; }"},description:"Specifies which sides of an element where other floating elements are not allowed.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"z-index",name:"z-index",syntax:"z-index: auto|number|inherit",example:{html:'<div class="container"><div class="box box1">Z-index: 1</div><div class="box box2">Z-index: 2</div></div>',css:".container { position: relative; height: 100px; } .box { position: absolute; width: 100px; height: 100px; padding: 5px; } .box1 { background: rgba(255,0,0,0.7); left: 20px; top: 20px; z-index: 1; } .box2 { background: rgba(0,0,255,0.7); left: 50px; top: 50px; z-index: 2; }"},description:"Specifies the stack order of an element (which element should be placed in front of, or behind, the others).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"top",name:"top",syntax:"top: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Top: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; top: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the top position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"right",name:"right",syntax:"right: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Right: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; right: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the right position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"bottom",name:"bottom",syntax:"bottom: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Bottom: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; bottom: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the bottom position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"left",name:"left",syntax:"left: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Left: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; left: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the left position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"}]},{id:"box-model",name:"Box Model",properties:[{id:"width",name:"width",syntax:"width: auto|value|initial|inherit",example:{html:'<div class="box">Fixed width box</div>',css:".box { width: 200px; background: #f0f0f0; padding: 10px; }"},description:"Sets the width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"height",name:"height",syntax:"height: auto|value|initial|inherit",example:{html:'<div class="box">Fixed height box</div>',css:".box { height: 100px; background: #f0f0f0; padding: 10px; }"},description:"Sets the height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"min-width",name:"min-width",syntax:"min-width: length|%|initial|inherit",example:{html:'<div class="box">Box with minimum width</div>',css:".box { min-width: 200px; background: #f0f0f0; padding: 10px; }"},description:"Sets the minimum width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"max-width",name:"max-width",syntax:"max-width: none|length|%|initial|inherit",example:{html:'<div class="box">Box with maximum width</div>',css:".box { max-width: 300px; background: #f0f0f0; padding: 10px; }"},description:"Sets the maximum width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"min-height",name:"min-height",syntax:"min-height: length|%|initial|inherit",example:{html:'<div class="box">Box with minimum height</div>',css:".box { min-height: 100px; background: #f0f0f0; padding: 10px; }"},description:"Sets the minimum height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"max-height",name:"max-height",syntax:"max-height: none|length|%|initial|inherit",example:{html:'<div class="box">Box with maximum height</div>',css:".box { max-height: 150px; overflow: auto; background: #f0f0f0; padding: 10px; }"},description:"Sets the maximum height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin",name:"margin",syntax:"margin: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the margin area on all four sides of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-top",name:"margin-top",syntax:"margin-top: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with top margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-top: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the top margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-right",name:"margin-right",syntax:"margin-right: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with right margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-right: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the right margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-bottom",name:"margin-bottom",syntax:"margin-bottom: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with bottom margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-bottom: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the bottom margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-left",name:"margin-left",syntax:"margin-left: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with left margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-left: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the left margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding",name:"padding",syntax:"padding: length|%|inherit",example:{html:'<div class="box">Box with padding</div>',css:".box { padding: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the padding area on all four sides of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-top",name:"padding-top",syntax:"padding-top: length|%|inherit",example:{html:'<div class="box">Box with top padding</div>',css:".box { padding-top: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the top padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-right",name:"padding-right",syntax:"padding-right: length|%|inherit",example:{html:'<div class="box">Box with right padding</div>',css:".box { padding-right: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the right padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-bottom",name:"padding-bottom",syntax:"padding-bottom: length|%|inherit",example:{html:'<div class="box">Box with bottom padding</div>',css:".box { padding-bottom: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the bottom padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-left",name:"padding-left",syntax:"padding-left: length|%|inherit",example:{html:'<div class="box">Box with left padding</div>',css:".box { padding-left: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the left padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"box-sizing",name:"box-sizing",syntax:"box-sizing: content-box|border-box|initial|inherit",example:{html:'<div class="box content-box">Content-box</div><div class="box border-box">Border-box</div>',css:".box { width: 150px; height: 80px; padding: 20px; border: 5px solid #888; margin: 10px; } .content-box { background: #ffecb3; box-sizing: content-box; } .border-box { background: #b3e5fc; box-sizing: border-box; }"},description:"Defines how the width and height of an element are calculated: should they include padding and borders, or not.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"overflow",name:"overflow",syntax:"overflow: visible|hidden|scroll|auto|initial|inherit",example:{html:`<div class="overflow-container">
+ */function Em(){return Em=Object.assign?Object.assign.bind():function(t){for(var e=1;e<arguments.length;e++){var r=arguments[e];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(t[n]=r[n])}return t},Em.apply(this,arguments)}function ML(t,e){if(t==null)return{};var r={},n=Object.keys(t),i,o;for(o=0;o<n.length;o++)i=n[o],!(e.indexOf(i)>=0)&&(r[i]=t[i]);return r}function BL(t){return!!(t.metaKey||t.altKey||t.ctrlKey||t.shiftKey)}function zL(t,e){return t.button===0&&(!e||e==="_self")&&!BL(t)}const qL=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","viewTransition"],UL="6";try{window.__reactRouterVersion=UL}catch{}const VL="startTransition",ww=SE[VL];function HL(t){let{basename:e,children:r,future:n,window:i}=t,o=w.useRef();o.current==null&&(o.current=GF({window:i,v5Compat:!0}));let s=o.current,[a,l]=w.useState({action:s.action,location:s.location}),{v7_startTransition:c}=n||{},u=w.useCallback(d=>{c&&ww?ww(()=>l(d)):l(d)},[l,c]);return w.useLayoutEffect(()=>s.listen(u),[s,u]),w.createElement(LL,{basename:e,children:r,location:a.location,navigationType:a.action,navigator:s,future:n})}const GL=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",WL=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,ya=w.forwardRef(function(e,r){let{onClick:n,relative:i,reloadDocument:o,replace:s,state:a,target:l,to:c,preventScrollReset:u,viewTransition:d}=e,f=ML(e,qL),{basename:h}=w.useContext(Ii),g,p=!1;if(typeof c=="string"&&WL.test(c)&&(g=c,GL))try{let x=new URL(window.location.href),E=c.startsWith("//")?new URL(x.protocol+c):new URL(c),C=Oy(E.pathname,h);E.origin===x.origin&&C!=null?c=C+E.search+E.hash:p=!0}catch{}let b=vL(c,{relative:i}),m=KL(c,{replace:s,state:a,target:l,preventScrollReset:u,relative:i,viewTransition:d});function y(x){n&&n(x),x.defaultPrevented||m(x)}return w.createElement("a",Em({},f,{href:g||b,onClick:p||o?n:y,ref:r,target:l}))});var xw;(function(t){t.UseScrollRestoration="useScrollRestoration",t.UseSubmit="useSubmit",t.UseSubmitFetcher="useSubmitFetcher",t.UseFetcher="useFetcher",t.useViewTransitionState="useViewTransitionState"})(xw||(xw={}));var Ew;(function(t){t.UseFetcher="useFetcher",t.UseFetchers="useFetchers",t.UseScrollRestoration="useScrollRestoration"})(Ew||(Ew={}));function KL(t,e){let{target:r,replace:n,state:i,preventScrollReset:o,relative:s,viewTransition:a}=e===void 0?{}:e,l=tc(),c=Fi(),u=sk(t,{relative:s});return w.useCallback(d=>{if(zL(d,r)){d.preventDefault();let f=n!==void 0?n:gd(c)===gd(u);l(t,{replace:f,state:i,preventScrollReset:o,relative:s,viewTransition:a})}},[c,l,u,n,i,r,t,o,s,a])}const yo=[{id:"layout",name:"Layout",properties:[{id:"display",name:"display",syntax:"display: none|block|inline|inline-block|flex|grid|...",example:{html:'<div class="box">This is a flex container</div>',css:".box { display: flex; justify-content: center; border: 1px solid #ccc; padding: 20px; }"},description:"Specifies how an element is displayed on the page.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"position",name:"position",syntax:"position: static|relative|absolute|fixed|sticky",example:{html:'<div class="container"><div class="positioned">Positioned element</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; top: 30px; left: 30px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the positioning method for an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"top",name:"top",syntax:"top: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Top: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; top: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the top position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"right",name:"right",syntax:"right: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Right: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; right: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the right position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"bottom",name:"bottom",syntax:"bottom: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Bottom: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; bottom: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the bottom position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"left",name:"left",syntax:"left: auto|length|%|inherit",example:{html:'<div class="container"><div class="positioned">Left: 20px</div></div>',css:".container { position: relative; height: 100px; border: 1px solid #ccc; } .positioned { position: absolute; left: 20px; background: #e0e0ff; padding: 5px; }"},description:"Specifies the left position of a positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"z-index",name:"z-index",syntax:"z-index: auto|number|inherit",example:{html:'<div class="container"><div class="box box1">Z-index: 1</div><div class="box box2">Z-index: 2</div></div>',css:".container { position: relative; height: 100px; } .box { position: absolute; width: 100px; height: 100px; padding: 5px; } .box1 { background: rgba(255,0,0,0.7); left: 20px; top: 20px; z-index: 1; } .box2 { background: rgba(0,0,255,0.7); left: 50px; top: 50px; z-index: 2; }"},description:"Specifies the stack order of an element (which element should be placed in front of, or behind, the others).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"float",name:"float",syntax:"float: none|left|right|initial|inherit",example:{html:'<div class="container"><div class="floated">Floated element</div><p>Text flows around the floated element.</p></div>',css:".container { border: 1px solid #ccc; overflow: auto; padding: 10px; } .floated { float: left; width: 100px; height: 50px; margin-right: 10px; background: #e0ffe0; padding: 5px; }"},description:"Specifies how an element should float.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"},{id:"clear",name:"clear",syntax:"clear: none|left|right|both|inherit",example:{html:'<div style="float: left; width: 100px; height: 50px; background: #e0e0ff;">Floated div</div><div class="cleared">This div is cleared</div>',css:".cleared { clear: both; background: #ffe0e0; padding: 5px; }"},description:"Specifies which sides of an element where other floating elements are not allowed.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"layout"}]},{id:"box-model",name:"Box Model",properties:[{id:"box-sizing",name:"box-sizing",syntax:"box-sizing: content-box|border-box|initial|inherit",example:{html:'<div class="box content-box">Content-box</div><div class="box border-box">Border-box</div>',css:".box { width: 150px; height: 80px; padding: 20px; border: 5px solid #888; margin: 10px; } .content-box { background: #ffecb3; box-sizing: content-box; } .border-box { background: #b3e5fc; box-sizing: border-box; }"},description:"Defines how the width and height of an element are calculated: should they include padding and borders, or not.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"width",name:"width",syntax:"width: auto|value|initial|inherit",example:{html:'<div class="box">Fixed width box</div>',css:".box { width: 200px; background: #f0f0f0; padding: 10px; }"},description:"Sets the width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"height",name:"height",syntax:"height: auto|value|initial|inherit",example:{html:'<div class="box">Fixed height box</div>',css:".box { height: 100px; background: #f0f0f0; padding: 10px; }"},description:"Sets the height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"min-width",name:"min-width",syntax:"min-width: length|%|initial|inherit",example:{html:'<div class="box">Box with minimum width</div>',css:".box { min-width: 200px; background: #f0f0f0; padding: 10px; }"},description:"Sets the minimum width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"max-width",name:"max-width",syntax:"max-width: none|length|%|initial|inherit",example:{html:'<div class="box">Box with maximum width</div>',css:".box { max-width: 300px; background: #f0f0f0; padding: 10px; }"},description:"Sets the maximum width of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"min-height",name:"min-height",syntax:"min-height: length|%|initial|inherit",example:{html:'<div class="box">Box with minimum height</div>',css:".box { min-height: 100px; background: #f0f0f0; padding: 10px; }"},description:"Sets the minimum height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"max-height",name:"max-height",syntax:"max-height: none|length|%|initial|inherit",example:{html:'<div class="box">Box with maximum height</div>',css:".box { max-height: 150px; overflow: auto; background: #f0f0f0; padding: 10px; }"},description:"Sets the maximum height of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin",name:"margin",syntax:"margin: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the margin area on all four sides of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-top",name:"margin-top",syntax:"margin-top: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with top margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-top: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the top margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-right",name:"margin-right",syntax:"margin-right: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with right margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-right: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the right margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-bottom",name:"margin-bottom",syntax:"margin-bottom: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with bottom margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-bottom: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the bottom margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"margin-left",name:"margin-left",syntax:"margin-left: length|auto|%|inherit",example:{html:'<div class="outer"><div class="box">Box with left margin</div></div>',css:".outer { background: #f8f8f8; padding: 5px; } .box { margin-left: 20px; background: #e0e0ff; padding: 10px; }"},description:"Sets the left margin of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding",name:"padding",syntax:"padding: length|%|inherit",example:{html:'<div class="box">Box with padding</div>',css:".box { padding: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the padding area on all four sides of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-top",name:"padding-top",syntax:"padding-top: length|%|inherit",example:{html:'<div class="box">Box with top padding</div>',css:".box { padding-top: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the top padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-right",name:"padding-right",syntax:"padding-right: length|%|inherit",example:{html:'<div class="box">Box with right padding</div>',css:".box { padding-right: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the right padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-bottom",name:"padding-bottom",syntax:"padding-bottom: length|%|inherit",example:{html:'<div class="box">Box with bottom padding</div>',css:".box { padding-bottom: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the bottom padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"padding-left",name:"padding-left",syntax:"padding-left: length|%|inherit",example:{html:'<div class="box">Box with left padding</div>',css:".box { padding-left: 20px; background: #e0ffe0; border: 1px solid #ccc; }"},description:"Sets the left padding of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"overflow",name:"overflow",syntax:"overflow: visible|hidden|scroll|auto|initial|inherit",example:{html:`<div class="overflow-container">
   <p>This content is too big for its container, so we can see how overflow works. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>`,css:".overflow-container { width: 150px; height: 100px; border: 1px solid #000; overflow: scroll; }"},description:"Specifies what happens if content overflows an element's box.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"box-model"},{id:"overflow-x",name:"overflow-x",syntax:"overflow-x: visible|hidden|scroll|auto|initial|inherit",example:{html:`<div class="overflow-x-demo">
   <div class="long-content">This is a very long text content that will overflow horizontally and demonstrate the overflow-x property.</div>
@@ -176,11 +176,85 @@ Error generating stack: `+o.message+`
 
 h1, p {
   font-family: 'CustomFont', sans-serif;
-}`},description:"Specifies a custom font to be used for text display, allowing web developers to use fonts that aren't installed on the user's computer.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-family",name:"font-family",syntax:"font-family: family-name|generic-family|initial|inherit",example:{html:'<p class="serif">Serif font</p><p class="sans-serif">Sans-serif font</p>',css:".serif { font-family: 'Times New Roman', Times, serif; } .sans-serif { font-family: Arial, Helvetica, sans-serif; }"},description:"Specifies the font family for text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-size",name:"font-size",syntax:"font-size: medium|xx-small|x-small|small|large|x-large|xx-large|smaller|larger|length|initial|inherit",example:{html:'<p class="small">Small text</p><p class="large">Large text</p>',css:".small { font-size: 12px; } .large { font-size: 24px; }"},description:"Specifies the size of the font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-weight",name:"font-weight",syntax:"font-weight: normal|bold|bolder|lighter|number|initial|inherit",example:{html:'<p class="normal">Normal weight</p><p class="bold">Bold weight</p><p class="custom">Custom weight (600)</p>',css:".normal { font-weight: normal; } .bold { font-weight: bold; } .custom { font-weight: 600; }"},description:"Specifies the weight of a font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-style",name:"font-style",syntax:"font-style: normal|italic|oblique|initial|inherit",example:{html:'<p class="normal">Normal style</p><p class="italic">Italic style</p>',css:".normal { font-style: normal; } .italic { font-style: italic; }"},description:"Specifies the font style for text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-variant",name:"font-variant",syntax:"font-variant: normal|small-caps|initial|inherit",example:{html:'<p class="normal">Normal text</p><p class="small-caps">Small caps text</p>',css:".normal { font-variant: normal; } .small-caps { font-variant: small-caps; }"},description:"Specifies whether or not a text should be displayed in a small-caps font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"color",name:"color",syntax:"color: color|initial|inherit",example:{html:'<p class="red">Red text</p><p class="blue">Blue text</p>',css:".red { color: #ff0000; } .blue { color: #0000ff; }"},description:"Sets the color of text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"line-height",name:"line-height",syntax:"line-height: normal|number|length|%|initial|inherit",example:{html:'<p class="normal">This paragraph has normal line height. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p class="large">This paragraph has increased line height. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',css:".normal { line-height: normal; } .large { line-height: 2; }"},description:"Sets the line height.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-align",name:"text-align",syntax:"text-align: left|right|center|justify|initial|inherit",example:{html:'<p class="left">Left aligned text</p><p class="center">Center aligned text</p><p class="right">Right aligned text</p>',css:".left { text-align: left; } .center { text-align: center; } .right { text-align: right; }"},description:"Specifies the horizontal alignment of text in an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-transform",name:"text-transform",syntax:"text-transform: none|capitalize|uppercase|lowercase|initial|inherit",example:{html:'<p class="uppercase">Uppercase text</p><p class="lowercase">Lowercase Text</p><p class="capitalize">capitalized text</p>',css:".uppercase { text-transform: uppercase; } .lowercase { text-transform: lowercase; } .capitalize { text-transform: capitalize; }"},description:"Controls the capitalization of text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration",name:"text-decoration",syntax:"text-decoration: text-decoration-line text-decoration-color text-decoration-style|initial|inherit",example:{html:'<p class="underline">Underlined text</p><p class="line-through">Line-through text</p><p class="overline">Overlined text</p>',css:".underline { text-decoration: underline; } .line-through { text-decoration: line-through; } .overline { text-decoration: overline; }"},description:"Specifies the decoration added to text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"letter-spacing",name:"letter-spacing",syntax:"letter-spacing: normal|length|initial|inherit",example:{html:'<p class="normal">Normal letter spacing</p><p class="spaced">Increased letter spacing</p>',css:".normal { letter-spacing: normal; } .spaced { letter-spacing: 3px; }"},description:"Increases or decreases the space between characters in a text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-spacing",name:"word-spacing",syntax:"word-spacing: normal|length|initial|inherit",example:{html:'<p class="normal">Normal word spacing</p><p class="spaced">Increased word spacing</p>',css:".normal { word-spacing: normal; } .spaced { word-spacing: 10px; }"},description:"Increases or decreases the white space between words.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"direction",name:"direction",syntax:"direction: ltr|rtl|initial|inherit",example:{html:'<div class="rtl-text">This text will flow from right to left.</div>',css:".rtl-text { direction: rtl; }"},description:"Specifies the text direction/writing direction within a block-level element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font",name:"font",syntax:"font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit",example:{html:'<p class="font-example">This text has multiple font properties set at once.</p>',css:".font-example { font: italic bold 16px/1.5 Arial, sans-serif; }"},description:"A shorthand property for setting all the font properties in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-size-adjust",name:"font-size-adjust",syntax:"font-size-adjust: none|number|initial|inherit",example:{html:'<p class="adjusted">This text has an adjusted font size to maintain readability.</p>',css:".adjusted { font-family: Arial, sans-serif; font-size-adjust: 0.5; }"},description:"Preserves the readability of text when font fallback occurs by adjusting the font-size based on the height of lowercase letters.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-stretch",name:"font-stretch",syntax:"font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit",example:{html:`<p class="normal-text">Normal text</p>
+}`},description:"Specifies a custom font to be used for text display, allowing web developers to use fonts that aren't installed on the user's computer.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font",name:"font",syntax:"font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit",example:{html:'<p class="font-example">This text has multiple font properties set at once.</p>',css:".font-example { font: italic bold 16px/1.5 Arial, sans-serif; }"},description:"A shorthand property for setting all the font properties in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-family",name:"font-family",syntax:"font-family: family-name|generic-family|initial|inherit",example:{html:'<p class="serif">Serif font</p><p class="sans-serif">Sans-serif font</p>',css:".serif { font-family: 'Times New Roman', Times, serif; } .sans-serif { font-family: Arial, Helvetica, sans-serif; }"},description:"Specifies the font family for text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-size",name:"font-size",syntax:"font-size: medium|xx-small|x-small|small|large|x-large|xx-large|smaller|larger|length|initial|inherit",example:{html:'<p class="small">Small text</p><p class="large">Large text</p>',css:".small { font-size: 12px; } .large { font-size: 24px; }"},description:"Specifies the size of the font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-size-adjust",name:"font-size-adjust",syntax:"font-size-adjust: none|number|initial|inherit",example:{html:'<p class="adjusted">This text has an adjusted font size to maintain readability.</p>',css:".adjusted { font-family: Arial, sans-serif; font-size-adjust: 0.5; }"},description:"Preserves the readability of text when font fallback occurs by adjusting the font-size based on the height of lowercase letters.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-stretch",name:"font-stretch",syntax:"font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit",example:{html:`<p class="normal-text">Normal text</p>
 <p class="expanded-text">Expanded text</p>
 <p class="condensed-text">Condensed text</p>`,css:`.normal-text { font-stretch: normal; }
 .expanded-text { font-stretch: expanded; }
-.condensed-text { font-stretch: condensed; }`},description:"Selects a normal, condensed, or expanded face from a font family.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"hanging-punctuation",name:"hanging-punctuation",syntax:"hanging-punctuation: none|first|last|force-end|allow-end|initial|inherit",example:{html:'<p class="hanging-example">"This paragraph has hanging punctuation, which means the quotation mark hangs outside the text block."</p>',css:".hanging-example { width: 300px; padding: 10px; background: #f0f0f0; hanging-punctuation: first; }"},description:"Specifies whether a punctuation mark may be placed outside the line box at the start or end of a full line of text.",browsers:["Safari"],category:"typography"},{id:"hyphens",name:"hyphens",syntax:"hyphens: none|manual|auto|initial|inherit",example:{html:'<p class="hyphenated">This is a demonstration of hyphenation in a long paragraph with a very supercalifragilisticexpialidocious word that might need to be hyphenated when it reaches the end of a line.</p>',css:".hyphenated { width: 200px; border: 1px solid #ccc; padding: 10px; hyphens: auto; text-align: justify; }"},description:"Controls whether hyphenation is used when text wraps across multiple lines.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"list-style",name:"list-style",syntax:"list-style: list-style-type list-style-position list-style-image|initial|inherit",example:{html:`<ul class="custom-list">
+.condensed-text { font-stretch: condensed; }`},description:"Selects a normal, condensed, or expanded face from a font family.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-style",name:"font-style",syntax:"font-style: normal|italic|oblique|initial|inherit",example:{html:'<p class="normal">Normal style</p><p class="italic">Italic style</p>',css:".normal { font-style: normal; } .italic { font-style: italic; }"},description:"Specifies the font style for text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-variant",name:"font-variant",syntax:"font-variant: normal|small-caps|initial|inherit",example:{html:'<p class="normal">Normal text</p><p class="small-caps">Small caps text</p>',css:".normal { font-variant: normal; } .small-caps { font-variant: small-caps; }"},description:"Specifies whether or not a text should be displayed in a small-caps font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"font-weight",name:"font-weight",syntax:"font-weight: normal|bold|bolder|lighter|number|initial|inherit",example:{html:'<p class="normal">Normal weight</p><p class="bold">Bold weight</p><p class="custom">Custom weight (600)</p>',css:".normal { font-weight: normal; } .bold { font-weight: bold; } .custom { font-weight: 600; }"},description:"Specifies the weight of a font.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"color",name:"color",syntax:"color: color|initial|inherit",example:{html:'<p class="red">Red text</p><p class="blue">Blue text</p>',css:".red { color: #ff0000; } .blue { color: #0000ff; }"},description:"Sets the color of text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"line-height",name:"line-height",syntax:"line-height: normal|number|length|%|initial|inherit",example:{html:'<p class="normal">This paragraph has normal line height. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p class="large">This paragraph has increased line height. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',css:".normal { line-height: normal; } .large { line-height: 2; }"},description:"Sets the line height.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-align",name:"text-align",syntax:"text-align: left|right|center|justify|initial|inherit",example:{html:'<p class="left">Left aligned text</p><p class="center">Center aligned text</p><p class="right">Right aligned text</p>',css:".left { text-align: left; } .center { text-align: center; } .right { text-align: right; }"},description:"Specifies the horizontal alignment of text in an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-align-last",name:"text-align-last",syntax:"text-align-last: auto|left|right|center|justify|start|end|initial|inherit",example:{html:'<p class="justify-last">This paragraph has justified text with the last line aligned to the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',css:".justify-last { text-align: justify; text-align-last: right; width: 300px; }"},description:"Specifies how the last line of a block or a line right before a forced line break is aligned.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-justify",name:"text-justify",syntax:"text-justify: auto|inter-word|inter-character|none|initial|inherit",example:{html:`<p class="justify-word">This paragraph has text justified with focus on spacing between words. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p class="justify-char">This paragraph has text justified with focus on spacing between characters. Lorem ipsum dolor sit amet, consectetur.</p>`,css:`.justify-word, .justify-char { width: 300px; text-align: justify; }
+.justify-word { text-justify: inter-word; }
+.justify-char { text-justify: inter-character; }`},description:"Specifies the justification method to use when text-align is set to 'justify'.",browsers:["Edge","Firefox"],category:"typography"},{id:"text-decoration",name:"text-decoration",syntax:"text-decoration: text-decoration-line text-decoration-color text-decoration-style|initial|inherit",example:{html:'<p class="underline">Underlined text</p><p class="line-through">Line-through text</p><p class="overline">Overlined text</p>',css:".underline { text-decoration: underline; } .line-through { text-decoration: line-through; } .overline { text-decoration: overline; }"},description:"Specifies the decoration added to text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-color",name:"text-decoration-color",syntax:"text-decoration-color: color|initial|inherit",example:{html:'<p class="colored-underline">This text has a custom underline color</p>',css:".colored-underline { text-decoration-line: underline; text-decoration-color: red; }"},description:"Specifies the color of the text-decoration (underlines, overlines, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-line",name:"text-decoration-line",syntax:"text-decoration-line: none|underline|overline|line-through|initial|inherit",example:{html:`<p class="no-decoration">No decoration</p>
+<p class="underline">Underlined text</p>
+<p class="overline">Overlined text</p>
+<p class="line-through">Line-through text</p>
+<p class="combined">Combined decorations</p>`,css:`.no-decoration { text-decoration-line: none; }
+.underline { text-decoration-line: underline; }
+.overline { text-decoration-line: overline; }
+.line-through { text-decoration-line: line-through; }
+.combined { text-decoration-line: underline overline; }`},description:"Specifies the type of line in a text-decoration (underline, overline, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-style",name:"text-decoration-style",syntax:"text-decoration-style: solid|double|dotted|dashed|wavy|initial|inherit",example:{html:`<p class="solid">Solid underline</p>
+<p class="dotted">Dotted underline</p>
+<p class="dashed">Dashed underline</p>
+<p class="wavy">Wavy underline</p>
+<p class="double">Double underline</p>`,css:`p { text-decoration-line: underline; }
+.solid { text-decoration-style: solid; }
+.dotted { text-decoration-style: dotted; }
+.dashed { text-decoration-style: dashed; }
+.wavy { text-decoration-style: wavy; }
+.double { text-decoration-style: double; }`},description:"Specifies the style of the line in a text decoration (solid, wavy, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-indent",name:"text-indent",syntax:"text-indent: length|%|initial|inherit",example:{html:'<p class="indented">This paragraph has its first line indented, which is common in print typography to mark the beginning of a new paragraph.</p>',css:".indented { text-indent: 30px; width: 300px; }"},description:"Specifies the indentation of the first line in a text block.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-overflow",name:"text-overflow",syntax:"text-overflow: clip|ellipsis|string|initial|inherit",example:{html:`<div class="overflow-ellipsis">This text is too long to fit in the box and will be truncated with an ellipsis.</div>
+<div class="overflow-clip">This text is too long to fit in the box and will be clipped without any special indicator.</div>`,css:`.overflow-ellipsis, .overflow-clip { width: 200px; white-space: nowrap; overflow: hidden; border: 1px solid #ccc; padding: 5px; margin: 10px 0; }
+.overflow-ellipsis { text-overflow: ellipsis; }
+.overflow-clip { text-overflow: clip; }`},description:"Specifies what should happen when text overflows the containing element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-shadow",name:"text-shadow",syntax:"text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit",example:{html:`<h2 class="shadow-demo">Text with shadow</h2>
+<p class="multiple-shadows">Multiple text shadows</p>`,css:`.shadow-demo { text-shadow: 2px 2px 4px #666; }
+.multiple-shadows { text-shadow: 1px 1px 2px red, 0 0 5px blue, -1px -1px 0 green; font-size: 20px; }`},description:"Adds shadow to text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-transform",name:"text-transform",syntax:"text-transform: none|capitalize|uppercase|lowercase|initial|inherit",example:{html:'<p class="uppercase">Uppercase text</p><p class="lowercase">Lowercase Text</p><p class="capitalize">capitalized text</p>',css:".uppercase { text-transform: uppercase; } .lowercase { text-transform: lowercase; } .capitalize { text-transform: capitalize; }"},description:"Controls the capitalization of text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"letter-spacing",name:"letter-spacing",syntax:"letter-spacing: normal|length|initial|inherit",example:{html:'<p class="normal">Normal letter spacing</p><p class="spaced">Increased letter spacing</p>',css:".normal { letter-spacing: normal; } .spaced { letter-spacing: 3px; }"},description:"Increases or decreases the space between characters in a text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-spacing",name:"word-spacing",syntax:"word-spacing: normal|length|initial|inherit",example:{html:'<p class="normal">Normal word spacing</p><p class="spaced">Increased word spacing</p>',css:".normal { word-spacing: normal; } .spaced { word-spacing: 10px; }"},description:"Increases or decreases the white space between words.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"white-space",name:"white-space",syntax:"white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit",example:{html:`<div class="normal">White-space normal: This    text   has    extra   spaces   and
+   line breaks.</div>
+<div class="nowrap">White-space nowrap: This text will not wrap to a new line until a break tag is used.</div>
+<div class="pre">White-space pre: This    text   preserves   spaces   and
+   line breaks.</div>
+<div class="pre-line">White-space pre-line: This    text   collapses   spaces   but
+   preserves line breaks.</div>
+<div class="pre-wrap">White-space pre-wrap: This    text   preserves   spaces   and
+   wraps to the next line when needed.</div>`,css:`div { width: 200px; border: 1px solid #ddd; margin: 10px; padding: 5px; }
+.normal { white-space: normal; }
+.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pre { white-space: pre; }
+.pre-line { white-space: pre-line; }
+.pre-wrap { white-space: pre-wrap; }`},description:"Specifies how white-space inside an element is handled.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-break",name:"word-break",syntax:"word-break: normal|break-all|keep-all|break-word|initial|inherit",example:{html:`<div class="normal-break">Word break normal: pneumonoultramicroscopicsilicovolcanoconiosis</div>
+<div class="break-all">Word break break-all: pneumonoultramicroscopicsilicovolcanoconiosis</div>
+<div class="keep-all">Word break keep-all: 这是一些中文文本，测试保持单词断行。</div>`,css:`div { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+.normal-break { word-break: normal; }
+.break-all { word-break: break-all; }
+.keep-all { word-break: keep-all; }`},description:"Specifies how words should break when reaching the end of a line.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-wrap",name:"word-wrap",syntax:"word-wrap: normal|break-word|initial|inherit",example:{html:`<div class="normal-wrap">Word wrap normal: pneumonoultramicroscopicsilicovolcanoconiosis</div>
+<div class="break-word">Word wrap break-word: pneumonoultramicroscopicsilicovolcanoconiosis</div>`,css:`div { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+.normal-wrap { word-wrap: normal; }
+.break-word { word-wrap: break-word; }`},description:"Allows long words to be able to be broken and wrap onto the next line. This is an alias of the overflow-wrap property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"overflow-wrap",name:"overflow-wrap",syntax:"overflow-wrap: normal|break-word|anywhere|initial|inherit",example:{html:`<div class="normal-wrap">This contains a verylongwordthatwillnotbreakinnormalcircumstances.</div>
+<div class="break-word">This contains a verylongwordthatwillbreakwhenoverflowing.</div>`,css:`.normal-wrap, .break-word { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+.normal-wrap { overflow-wrap: normal; }
+.break-word { overflow-wrap: break-word; }`},description:"Specifies whether the browser should insert line breaks within unbreakable words to prevent text from overflowing its container.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"hyphens",name:"hyphens",syntax:"hyphens: none|manual|auto|initial|inherit",example:{html:'<p class="hyphenated">This is a demonstration of hyphenation in a long paragraph with a very supercalifragilisticexpialidocious word that might need to be hyphenated when it reaches the end of a line.</p>',css:".hyphenated { width: 200px; border: 1px solid #ccc; padding: 10px; hyphens: auto; text-align: justify; }"},description:"Controls whether hyphenation is used when text wraps across multiple lines.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"hanging-punctuation",name:"hanging-punctuation",syntax:"hanging-punctuation: none|first|last|force-end|allow-end|initial|inherit",example:{html:'<p class="hanging-example">"This paragraph has hanging punctuation, which means the quotation mark hangs outside the text block."</p>',css:".hanging-example { width: 300px; padding: 10px; background: #f0f0f0; hanging-punctuation: first; }"},description:"Specifies whether a punctuation mark may be placed outside the line box at the start or end of a full line of text.",browsers:["Safari"],category:"typography"},{id:"direction",name:"direction",syntax:"direction: ltr|rtl|initial|inherit",example:{html:'<div class="rtl-text">This text will flow from right to left.</div>',css:".rtl-text { direction: rtl; }"},description:"Specifies the text direction/writing direction within a block-level element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"unicode-bidi",name:"unicode-bidi",syntax:"unicode-bidi: normal|embed|isolate|bidi-override|isolate-override|plaintext|initial|inherit",example:{html:`<div class="bidi-normal">This is English text followed by Arabic: مرحبا بالعالم</div>
+<div class="bidi-override">This text will display characters in reverse order</div>`,css:`.bidi-normal { unicode-bidi: normal; direction: ltr; }
+.bidi-override { unicode-bidi: bidi-override; direction: rtl; }`},description:"Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"vertical-align",name:"vertical-align",syntax:"vertical-align: baseline|length|%|sub|super|top|text-top|middle|bottom|text-bottom|initial|inherit",example:{html:`<div class="align-examples">
+  <span class="baseline">baseline</span>
+  <span class="sub">sub</span>
+  <span class="super">super</span>
+  <span class="top">top</span>
+  <span class="middle">middle</span>
+  <span class="bottom">bottom</span>
+  <span class="text-top">text-top</span>
+  <span class="text-bottom">text-bottom</span>
+  <span class="px-value">+10px</span>
+</div>`,css:`.align-examples { line-height: 3; background: #f0f0f0; padding: 10px; }
+.align-examples span { display: inline-block; background: #ddd; margin: 0 5px; }
+.baseline { vertical-align: baseline; }
+.sub { vertical-align: sub; }
+.super { vertical-align: super; }
+.top { vertical-align: top; }
+.middle { vertical-align: middle; }
+.bottom { vertical-align: bottom; }
+.text-top { vertical-align: text-top; }
+.text-bottom { vertical-align: text-bottom; }
+.px-value { vertical-align: 10px; }`},description:"Sets the vertical alignment of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"quotes",name:"quotes",syntax:"quotes: none|[string string]+|initial|inherit",example:{html:`<div class="custom-quotes">
+  <q>This text uses custom quotation marks</q>
+</div>`,css:`.custom-quotes { quotes: '«' '»' '‹' '›'; }
+.custom-quotes q { display: block; }`},description:"Sets the type of quotation marks for embedded quotations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"tab-size",name:"tab-size",syntax:"tab-size: number|length|initial|inherit",example:{html:'<pre class="custom-tabs">This	is	a	text	with	tabs</pre>',css:".custom-tabs { tab-size: 8; background: #f5f5f5; padding: 10px; }"},description:"Specifies the width of a tab character.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"list-style",name:"list-style",syntax:"list-style: list-style-type list-style-position list-style-image|initial|inherit",example:{html:`<ul class="custom-list">
   <li>First item</li>
   <li>Second item</li>
   <li>Third item</li>
@@ -207,85 +281,7 @@ h1, p {
 </ol>`,css:`.disc-list { list-style-type: disc; }
 .circle-list { list-style-type: circle; }
 .square-list { list-style-type: square; }
-.roman-list { list-style-type: upper-roman; }`},description:"Specifies the type of list-item marker.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"overflow-wrap",name:"overflow-wrap",syntax:"overflow-wrap: normal|break-word|anywhere|initial|inherit",example:{html:`<div class="normal-wrap">This contains a verylongwordthatwillnotbreakinnormalcircumstances.</div>
-<div class="break-word">This contains a verylongwordthatwillbreakwhenoverflowing.</div>`,css:`.normal-wrap, .break-word { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
-.normal-wrap { overflow-wrap: normal; }
-.break-word { overflow-wrap: break-word; }`},description:"Specifies whether the browser should insert line breaks within unbreakable words to prevent text from overflowing its container.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"quotes",name:"quotes",syntax:"quotes: none|[string string]+|initial|inherit",example:{html:`<div class="custom-quotes">
-  <q>This text uses custom quotation marks</q>
-</div>`,css:`.custom-quotes { quotes: '«' '»' '‹' '›'; }
-.custom-quotes q { display: block; }`},description:"Sets the type of quotation marks for embedded quotations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"tab-size",name:"tab-size",syntax:"tab-size: number|length|initial|inherit",example:{html:'<pre class="custom-tabs">This	is	a	text	with	tabs</pre>',css:".custom-tabs { tab-size: 8; background: #f5f5f5; padding: 10px; }"},description:"Specifies the width of a tab character.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-align-last",name:"text-align-last",syntax:"text-align-last: auto|left|right|center|justify|start|end|initial|inherit",example:{html:'<p class="justify-last">This paragraph has justified text with the last line aligned to the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',css:".justify-last { text-align: justify; text-align-last: right; width: 300px; }"},description:"Specifies how the last line of a block or a line right before a forced line break is aligned.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-color",name:"text-decoration-color",syntax:"text-decoration-color: color|initial|inherit",example:{html:'<p class="colored-underline">This text has a custom underline color</p>',css:".colored-underline { text-decoration-line: underline; text-decoration-color: red; }"},description:"Specifies the color of the text-decoration (underlines, overlines, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-line",name:"text-decoration-line",syntax:"text-decoration-line: none|underline|overline|line-through|initial|inherit",example:{html:`<p class="no-decoration">No decoration</p>
-<p class="underline">Underlined text</p>
-<p class="overline">Overlined text</p>
-<p class="line-through">Line-through text</p>
-<p class="combined">Combined decorations</p>`,css:`.no-decoration { text-decoration-line: none; }
-.underline { text-decoration-line: underline; }
-.overline { text-decoration-line: overline; }
-.line-through { text-decoration-line: line-through; }
-.combined { text-decoration-line: underline overline; }`},description:"Specifies the type of line in a text-decoration (underline, overline, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-decoration-style",name:"text-decoration-style",syntax:"text-decoration-style: solid|double|dotted|dashed|wavy|initial|inherit",example:{html:`<p class="solid">Solid underline</p>
-<p class="dotted">Dotted underline</p>
-<p class="dashed">Dashed underline</p>
-<p class="wavy">Wavy underline</p>
-<p class="double">Double underline</p>`,css:`p { text-decoration-line: underline; }
-.solid { text-decoration-style: solid; }
-.dotted { text-decoration-style: dotted; }
-.dashed { text-decoration-style: dashed; }
-.wavy { text-decoration-style: wavy; }
-.double { text-decoration-style: double; }`},description:"Specifies the style of the line in a text decoration (solid, wavy, etc.).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-indent",name:"text-indent",syntax:"text-indent: length|%|initial|inherit",example:{html:'<p class="indented">This paragraph has its first line indented, which is common in print typography to mark the beginning of a new paragraph.</p>',css:".indented { text-indent: 30px; width: 300px; }"},description:"Specifies the indentation of the first line in a text block.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-justify",name:"text-justify",syntax:"text-justify: auto|inter-word|inter-character|none|initial|inherit",example:{html:`<p class="justify-word">This paragraph has text justified with focus on spacing between words. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-<p class="justify-char">This paragraph has text justified with focus on spacing between characters. Lorem ipsum dolor sit amet, consectetur.</p>`,css:`.justify-word, .justify-char { width: 300px; text-align: justify; }
-.justify-word { text-justify: inter-word; }
-.justify-char { text-justify: inter-character; }`},description:"Specifies the justification method to use when text-align is set to 'justify'.",browsers:["Edge","Firefox"],category:"typography"},{id:"text-overflow",name:"text-overflow",syntax:"text-overflow: clip|ellipsis|string|initial|inherit",example:{html:`<div class="overflow-ellipsis">This text is too long to fit in the box and will be truncated with an ellipsis.</div>
-<div class="overflow-clip">This text is too long to fit in the box and will be clipped without any special indicator.</div>`,css:`.overflow-ellipsis, .overflow-clip { width: 200px; white-space: nowrap; overflow: hidden; border: 1px solid #ccc; padding: 5px; margin: 10px 0; }
-.overflow-ellipsis { text-overflow: ellipsis; }
-.overflow-clip { text-overflow: clip; }`},description:"Specifies what should happen when text overflows the containing element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"text-shadow",name:"text-shadow",syntax:"text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit",example:{html:`<h2 class="shadow-demo">Text with shadow</h2>
-<p class="multiple-shadows">Multiple text shadows</p>`,css:`.shadow-demo { text-shadow: 2px 2px 4px #666; }
-.multiple-shadows { text-shadow: 1px 1px 2px red, 0 0 5px blue, -1px -1px 0 green; font-size: 20px; }`},description:"Adds shadow to text.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"transition-delay",name:"transition-delay",syntax:"transition-delay: time|initial|inherit",example:{html:`<div class="instant">No delay</div>
-<div class="delayed">1 second delay</div>`,css:`.instant, .delayed { width: 100px; height: 50px; background: purple; color: white; margin: 10px; transition-property: width; transition-duration: 1s; }
-.instant { transition-delay: 0s; }
-.delayed { transition-delay: 1s; }
-.instant:hover, .delayed:hover { width: 300px; }`},description:"Specifies when the transition effect will start.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"unicode-bidi",name:"unicode-bidi",syntax:"unicode-bidi: normal|embed|isolate|bidi-override|isolate-override|plaintext|initial|inherit",example:{html:`<div class="bidi-normal">This is English text followed by Arabic: مرحبا بالعالم</div>
-<div class="bidi-override">This text will display characters in reverse order</div>`,css:`.bidi-normal { unicode-bidi: normal; direction: ltr; }
-.bidi-override { unicode-bidi: bidi-override; direction: rtl; }`},description:"Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"vertical-align",name:"vertical-align",syntax:"vertical-align: baseline|length|%|sub|super|top|text-top|middle|bottom|text-bottom|initial|inherit",example:{html:`<div class="align-examples">
-  <span class="baseline">baseline</span>
-  <span class="sub">sub</span>
-  <span class="super">super</span>
-  <span class="top">top</span>
-  <span class="middle">middle</span>
-  <span class="bottom">bottom</span>
-  <span class="text-top">text-top</span>
-  <span class="text-bottom">text-bottom</span>
-  <span class="px-value">+10px</span>
-</div>`,css:`.align-examples { line-height: 3; background: #f0f0f0; padding: 10px; }
-.align-examples span { display: inline-block; background: #ddd; margin: 0 5px; }
-.baseline { vertical-align: baseline; }
-.sub { vertical-align: sub; }
-.super { vertical-align: super; }
-.top { vertical-align: top; }
-.middle { vertical-align: middle; }
-.bottom { vertical-align: bottom; }
-.text-top { vertical-align: text-top; }
-.text-bottom { vertical-align: text-bottom; }
-.px-value { vertical-align: 10px; }`},description:"Sets the vertical alignment of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"white-space",name:"white-space",syntax:"white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit",example:{html:`<div class="normal">White-space normal: This    text   has    extra   spaces   and
-   line breaks.</div>
-<div class="nowrap">White-space nowrap: This text will not wrap to a new line until a break tag is used.</div>
-<div class="pre">White-space pre: This    text   preserves   spaces   and
-   line breaks.</div>
-<div class="pre-line">White-space pre-line: This    text   collapses   spaces   but
-   preserves line breaks.</div>
-<div class="pre-wrap">White-space pre-wrap: This    text   preserves   spaces   and
-   wraps to the next line when needed.</div>`,css:`div { width: 200px; border: 1px solid #ddd; margin: 10px; padding: 5px; }
-.normal { white-space: normal; }
-.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.pre { white-space: pre; }
-.pre-line { white-space: pre-line; }
-.pre-wrap { white-space: pre-wrap; }`},description:"Specifies how white-space inside an element is handled.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-break",name:"word-break",syntax:"word-break: normal|break-all|keep-all|break-word|initial|inherit",example:{html:`<div class="normal-break">Word break normal: pneumonoultramicroscopicsilicovolcanoconiosis</div>
-<div class="break-all">Word break break-all: pneumonoultramicroscopicsilicovolcanoconiosis</div>
-<div class="keep-all">Word break keep-all: 这是一些中文文本，测试保持单词断行。</div>`,css:`div { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
-.normal-break { word-break: normal; }
-.break-all { word-break: break-all; }
-.keep-all { word-break: keep-all; }`},description:"Specifies how words should break when reaching the end of a line.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"},{id:"word-wrap",name:"word-wrap",syntax:"word-wrap: normal|break-word|initial|inherit",example:{html:`<div class="normal-wrap">Word wrap normal: pneumonoultramicroscopicsilicovolcanoconiosis</div>
-<div class="break-word">Word wrap break-word: pneumonoultramicroscopicsilicovolcanoconiosis</div>`,css:`div { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }
-.normal-wrap { word-wrap: normal; }
-.break-word { word-wrap: break-word; }`},description:"Allows long words to be able to be broken and wrap onto the next line. This is an alias of the overflow-wrap property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"}]},{id:"background",name:"Background",properties:[{id:"background",name:"background",syntax:"background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit",example:{html:'<div class="box">Element with background shorthand</div>',css:".box { background: #e0e0ff url('https://picsum.photos/id/237/200/200') no-repeat center center; padding: 30px; height: 100px; }"},description:"A shorthand property for setting all background properties in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-color",name:"background-color",syntax:"background-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with background color</div>',css:".box { background-color: #e0e0ff; padding: 20px; }"},description:"Sets the background color of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-image",name:"background-image",syntax:"background-image: url|none|initial|inherit",example:{html:'<div class="box">Element with background image</div>',css:".box { background-image: linear-gradient(to right, #f0f0f0, #e0e0ff); height: 100px; padding: 20px; }"},description:"Sets one or more background images for an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-repeat",name:"background-repeat",syntax:"background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit",example:{html:'<div class="box">Background repeat demo</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: repeat-x; padding: 20px; height: 100px; }"},description:"Sets how a background image will be repeated.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-position",name:"background-position",syntax:"background-position: value",example:{html:'<div class="box">Background position demo</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: no-repeat; background-position: center; height: 100px; border: 1px solid #ccc; }"},description:"Sets the starting position of a background image.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-size",name:"background-size",syntax:"background-size: auto|length|cover|contain|initial|inherit",example:{html:'<div class="box">Background size: cover</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: no-repeat; background-size: cover; height: 100px; padding: 20px; }"},description:"Specifies the size of the background images.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-attachment",name:"background-attachment",syntax:"background-attachment: scroll|fixed|local|initial|inherit",example:{html:`<div class="box">
+.roman-list { list-style-type: upper-roman; }`},description:"Specifies the type of list-item marker.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"typography"}]},{id:"background",name:"Background",properties:[{id:"background",name:"background",syntax:"background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit",example:{html:'<div class="box">Element with background shorthand</div>',css:".box { background: #e0e0ff url('https://picsum.photos/id/237/200/200') no-repeat center center; padding: 30px; height: 100px; }"},description:"A shorthand property for setting all background properties in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-color",name:"background-color",syntax:"background-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with background color</div>',css:".box { background-color: #e0e0ff; padding: 20px; }"},description:"Sets the background color of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-image",name:"background-image",syntax:"background-image: url|none|initial|inherit",example:{html:'<div class="box">Element with background image</div>',css:".box { background-image: linear-gradient(to right, #f0f0f0, #e0e0ff); height: 100px; padding: 20px; }"},description:"Sets one or more background images for an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-repeat",name:"background-repeat",syntax:"background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit",example:{html:'<div class="box">Background repeat demo</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: repeat-x; padding: 20px; height: 100px; }"},description:"Sets how a background image will be repeated.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-position",name:"background-position",syntax:"background-position: value",example:{html:'<div class="box">Background position demo</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: no-repeat; background-position: center; height: 100px; border: 1px solid #ccc; }"},description:"Sets the starting position of a background image.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-size",name:"background-size",syntax:"background-size: auto|length|cover|contain|initial|inherit",example:{html:'<div class="box">Background size: cover</div>',css:".box { background-image: url('https://picsum.photos/id/237/200/200'); background-repeat: no-repeat; background-size: cover; height: 100px; padding: 20px; }"},description:"Specifies the size of the background images.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"background"},{id:"background-attachment",name:"background-attachment",syntax:"background-attachment: scroll|fixed|local|initial|inherit",example:{html:`<div class="box">
   <p>Scroll down to see the fixed background...</p>
   <div style="height: 100px;"></div>
   <p>The background stays in place!</p>
@@ -364,17 +360,21 @@ h1, p {
   <div class="box solid">Solid</div>
   <div class="box dashed">Dashed</div>
   <div class="box dotted">Dotted</div>
-</div>`,css:".boxes { display: flex; gap: 10px; } .box { border-width: 3px; padding: 10px; } .solid { border-style: solid; } .dashed { border-style: dashed; } .dotted { border-style: dotted; }"},description:"Sets the style of an element's four borders.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-color",name:"border-color",syntax:"border-color: color|transparent|initial|inherit",example:{html:'<div class="box">Border with custom color</div>',css:".box { border-style: solid; border-width: 3px; border-color: #ff5252; padding: 20px; }"},description:"Sets the color of an element's four borders.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-radius",name:"border-radius",syntax:"border-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded corners</div>',css:".box { border-radius: 10px; border: 1px solid #ccc; padding: 20px; }"},description:"Defines the radius of the element's corners.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom",name:"border-bottom",syntax:"border-bottom: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with bottom border</div>',css:`.box {
+</div>`,css:".boxes { display: flex; gap: 10px; } .box { border-width: 3px; padding: 10px; } .solid { border-style: solid; } .dashed { border-style: dashed; } .dotted { border-style: dotted; }"},description:"Sets the style of an element's four borders.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-color",name:"border-color",syntax:"border-color: color|transparent|initial|inherit",example:{html:'<div class="box">Border with custom color</div>',css:".box { border-style: solid; border-width: 3px; border-color: #ff5252; padding: 20px; }"},description:"Sets the color of an element's four borders.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-radius",name:"border-radius",syntax:"border-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded corners</div>',css:".box { border-radius: 10px; border: 1px solid #ccc; padding: 20px; }"},description:"Defines the radius of the element's corners.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-left-radius",name:"border-top-left-radius",syntax:"border-top-left-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded top-left corner</div>',css:`.box {
+  width: 200px;
+  height: 100px;
+  background-color: #3498db;
+  border-top-left-radius: 30px; /* Rounds only the top-left corner */
+  color: white;
   padding: 20px;
-  background-color: #f5f5f5;
-  border-bottom: 3px solid #3498db; /* Shorthand for width, style, color */
-}`},description:"Shorthand property that sets the border-bottom-width, border-bottom-style, and border-bottom-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-color",name:"border-bottom-color",syntax:"border-bottom-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored bottom border</div>',css:`.box {
+}`},description:"Defines the radius of the top-left corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-right-radius",name:"border-top-right-radius",syntax:"border-top-right-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded top-right corner</div>',css:`.box {
+  width: 200px;
+  height: 100px;
+  background-color: #3498db;
+  border-top-right-radius: 30px; /* Rounds only the top-right corner */
+  color: white;
   padding: 20px;
-  background-color: #f5f5f5;
-  border-bottom-width: 5px;
-  border-bottom-style: solid;
-  border-bottom-color: #e74c3c; /* Sets only the bottom border color */
-}`},description:"Sets the color of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-left-radius",name:"border-bottom-left-radius",syntax:"border-bottom-left-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded bottom-left corner</div>',css:`.box {
+}`},description:"Defines the radius of the top-right corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-left-radius",name:"border-bottom-left-radius",syntax:"border-bottom-left-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded bottom-left corner</div>',css:`.box {
   width: 200px;
   height: 100px;
   background-color: #3498db;
@@ -388,30 +388,123 @@ h1, p {
   border-bottom-right-radius: 30px; /* Rounds only the bottom-right corner */
   color: white;
   padding: 20px;
-}`},description:"Defines the radius of the bottom-right corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-style",name:"border-bottom-style",syntax:"border-bottom-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
+}`},description:"Defines the radius of the bottom-right corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top",name:"border-top",syntax:"border-top: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with top border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top: 5px solid #3498db; /* Shorthand for width, style, color */
+}`},description:"Shorthand property that sets the border-top-width, border-top-style, and border-top-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-width",name:"border-top-width",syntax:"border-top-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
   width: 200px;
   height: 50px;
   margin: 10px;
   padding: 10px;
   background-color: #f5f5f5;
-  border-bottom-width: 5px;
+  border-top-style: solid;
+}
+
+.thin {
+  border-top-width: thin; /* Browser-defined thin */
+}
+
+.medium {
+  border-top-width: medium; /* Browser-defined medium (default) */
+}
+
+.thick {
+  border-top-width: thick; /* Browser-defined thick */
+}
+
+.custom {
+  border-top-width: 10px; /* Custom width */
+}`},description:"Sets the width of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-style",name:"border-top-style",syntax:"border-top-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-top-width: 5px;
 }
 
 .solid {
-  border-bottom-style: solid; /* Solid line */
+  border-top-style: solid; /* Solid line */
 }
 
 .dashed {
-  border-bottom-style: dashed; /* Dashed line */
+  border-top-style: dashed; /* Dashed line */
 }
 
 .dotted {
-  border-bottom-style: dotted; /* Dotted line */
+  border-top-style: dotted; /* Dotted line */
 }
 
 .double {
-  border-bottom-style: double; /* Double line */
-}`},description:"Sets the style of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-width",name:"border-bottom-width",syntax:"border-bottom-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
+  border-top-style: double; /* Double line */
+}`},description:"Sets the style of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-color",name:"border-top-color",syntax:"border-top-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored top border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top-width: 5px;
+  border-top-style: solid;
+  border-top-color: #e74c3c; /* Sets only the top border color */
+}`},description:"Sets the color of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right",name:"border-right",syntax:"border-right: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with right border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right: 5px solid #3498db; /* Shorthand for width, style, color */
+}`},description:"Shorthand property that sets the border-right-width, border-right-style, and border-right-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-width",name:"border-right-width",syntax:"border-right-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-right-style: solid;
+}
+
+.thin {
+  border-right-width: thin; /* Browser-defined thin */
+}
+
+.medium {
+  border-right-width: medium; /* Browser-defined medium (default) */
+}
+
+.thick {
+  border-right-width: thick; /* Browser-defined thick */
+}
+
+.custom {
+  border-right-width: 10px; /* Custom width */
+}`},description:"Sets the width of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-style",name:"border-right-style",syntax:"border-right-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-right-width: 5px;
+}
+
+.solid {
+  border-right-style: solid; /* Solid line */
+}
+
+.dashed {
+  border-right-style: dashed; /* Dashed line */
+}
+
+.dotted {
+  border-right-style: dotted; /* Dotted line */
+}
+
+.double {
+  border-right-style: double; /* Double line */
+}`},description:"Sets the style of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-color",name:"border-right-color",syntax:"border-right-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored right border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right-width: 5px;
+  border-right-style: solid;
+  border-right-color: #e74c3c; /* Sets only the right border color */
+}`},description:"Sets the color of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom",name:"border-bottom",syntax:"border-bottom: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with bottom border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-bottom: 3px solid #3498db; /* Shorthand for width, style, color */
+}`},description:"Shorthand property that sets the border-bottom-width, border-bottom-style, and border-bottom-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-width",name:"border-bottom-width",syntax:"border-bottom-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
   width: 200px;
   height: 50px;
   margin: 10px;
@@ -434,7 +527,92 @@ h1, p {
 
 .custom {
   border-bottom-width: 10px; /* Custom width */
-}`},description:"Sets the width of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image",name:"border-image",syntax:"border-image: source slice width outset repeat|initial|inherit",example:{html:'<div class="box">Element with border image</div>',css:`.box {
+}`},description:"Sets the width of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-style",name:"border-bottom-style",syntax:"border-bottom-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom-width: 5px;
+}
+
+.solid {
+  border-bottom-style: solid; /* Solid line */
+}
+
+.dashed {
+  border-bottom-style: dashed; /* Dashed line */
+}
+
+.dotted {
+  border-bottom-style: dotted; /* Dotted line */
+}
+
+.double {
+  border-bottom-style: double; /* Double line */
+}`},description:"Sets the style of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-bottom-color",name:"border-bottom-color",syntax:"border-bottom-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored bottom border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  border-bottom-color: #e74c3c; /* Sets only the bottom border color */
+}`},description:"Sets the color of the bottom border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left",name:"border-left",syntax:"border-left: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with left border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-left: 5px solid #3498db; /* Shorthand for width, style, color */
+}`},description:"Shorthand property that sets the border-left-width, border-left-style, and border-left-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-width",name:"border-left-width",syntax:"border-left-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-left-style: solid;
+}
+
+.thin {
+  border-left-width: thin; /* Browser-defined thin */
+}
+
+.medium {
+  border-left-width: medium; /* Browser-defined medium (default) */
+}
+
+.thick {
+  border-left-width: thick; /* Browser-defined thick */
+}
+
+.custom {
+  border-left-width: 10px; /* Custom width */
+}`},description:"Sets the width of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-style",name:"border-left-style",syntax:"border-left-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-left-width: 5px;
+}
+
+.solid {
+  border-left-style: solid; /* Solid line */
+}
+
+.dashed {
+  border-left-style: dashed; /* Dashed line */
+}
+
+.dotted {
+  border-left-style: dotted; /* Dotted line */
+}
+
+.double {
+  border-left-style: double; /* Double line */
+}`},description:"Sets the style of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-color",name:"border-left-color",syntax:"border-left-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored left border</div>',css:`.box {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-left-color: #e74c3c; /* Sets only the left border color */
+}`},description:"Sets the color of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image",name:"border-image",syntax:"border-image: source slice width outset repeat|initial|inherit",example:{html:'<div class="box">Element with border image</div>',css:`.box {
   width: 200px;
   height: 100px;
   border-width: 20px;
@@ -444,7 +622,63 @@ h1, p {
   padding: 20px;
   background-color: #f5f5f5;
   text-align: center;
-}`},description:"Shorthand property that specifies how an image should be used as the border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-outset",name:"border-image-outset",syntax:"border-image-outset: length|number|initial|inherit",example:{html:'<div class="box">Element with border image outset</div>',css:`.box {
+}`},description:"Shorthand property that specifies how an image should be used as the border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-source",name:"border-image-source",syntax:"border-image-source: none|url()|initial|inherit",example:{html:'<div class="box">Element with image border</div>',css:`.box {
+  width: 200px;
+  height: 100px;
+  border-width: 20px;
+  border-style: solid;
+  border-image-source: url('https://picsum.photos/id/237/200/300'); /* Specifies image for border */
+  border-image-slice: 30;
+  border-image-repeat: round;
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}`},description:"Specifies the source image to be used for the border instead of the standard border style.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-slice",name:"border-image-slice",syntax:"border-image-slice: number|%|fill|initial|inherit",example:{html:'<div class="slice-low">Slice: 10</div><div class="slice-high">Slice: 30</div><div class="slice-fill">With Fill</div>',css:`div {
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-width: 20px;
+  border-style: solid;
+  border-image-source: url('https://picsum.photos/id/237/200/300');
+  border-image-repeat: round;
+  padding: 10px;
+  text-align: center;
+}
+
+.slice-low {
+  border-image-slice: 10; /* Divides image into 9 regions with small corners */
+}
+
+.slice-high {
+  border-image-slice: 30; /* Divides image into 9 regions with large corners */
+}
+
+.slice-fill {
+  border-image-slice: 30 fill; /* Also fills the middle with the center part of image */
+}`},description:"Specifies how to slice the border image, dividing it into nine regions (four corners, four edges, and middle).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-width",name:"border-image-width",syntax:"border-image-width: number|%|auto|initial|inherit",example:{html:'<div class="auto">Auto</div><div class="custom">Custom (35px)</div><div class="percentage">50%</div>',css:`div {
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-width: 20px;
+  border-style: solid;
+  border-image-source: url('https://picsum.photos/id/237/200/300');
+  border-image-slice: 30;
+  border-image-repeat: round;
+  padding: 10px;
+  text-align: center;
+}
+
+.auto {
+  border-image-width: auto; /* Use border-width values */
+}
+
+.custom {
+  border-image-width: 35px; /* Specific width */
+}
+
+.percentage {
+  border-image-width: 50%; /* Percentage of border box */
+}`},description:"Specifies the width of the border image, which may differ from the width of the element's border.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-outset",name:"border-image-outset",syntax:"border-image-outset: length|number|initial|inherit",example:{html:'<div class="box">Element with border image outset</div>',css:`.box {
   width: 200px;
   height: 100px;
   border-width: 20px;
@@ -478,255 +712,17 @@ h1, p {
 
 .round {
   border-image-repeat: round; /* Tiles the image, scaling to fit whole number */
-}`},description:"Specifies how the border image should be scaled, repeated, or rounded to fit the size of the border.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-slice",name:"border-image-slice",syntax:"border-image-slice: number|%|fill|initial|inherit",example:{html:'<div class="slice-low">Slice: 10</div><div class="slice-high">Slice: 30</div><div class="slice-fill">With Fill</div>',css:`div {
-  width: 200px;
-  height: 100px;
-  margin: 20px;
-  border-width: 20px;
-  border-style: solid;
-  border-image-source: url('https://picsum.photos/id/237/200/300');
-  border-image-repeat: round;
-  padding: 10px;
-  text-align: center;
-}
-
-.slice-low {
-  border-image-slice: 10; /* Divides image into 9 regions with small corners */
-}
-
-.slice-high {
-  border-image-slice: 30; /* Divides image into 9 regions with large corners */
-}
-
-.slice-fill {
-  border-image-slice: 30 fill; /* Also fills the middle with the center part of image */
-}`},description:"Specifies how to slice the border image, dividing it into nine regions (four corners, four edges, and middle).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-source",name:"border-image-source",syntax:"border-image-source: none|url()|initial|inherit",example:{html:'<div class="box">Element with image border</div>',css:`.box {
-  width: 200px;
-  height: 100px;
-  border-width: 20px;
-  border-style: solid;
-  border-image-source: url('https://picsum.photos/id/237/200/300'); /* Specifies image for border */
-  border-image-slice: 30;
-  border-image-repeat: round;
-  padding: 20px;
-  background-color: #f5f5f5;
-  text-align: center;
-}`},description:"Specifies the source image to be used for the border instead of the standard border style.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-image-width",name:"border-image-width",syntax:"border-image-width: number|%|auto|initial|inherit",example:{html:'<div class="auto">Auto</div><div class="custom">Custom (35px)</div><div class="percentage">50%</div>',css:`div {
-  width: 200px;
-  height: 100px;
-  margin: 20px;
-  border-width: 20px;
-  border-style: solid;
-  border-image-source: url('https://picsum.photos/id/237/200/300');
-  border-image-slice: 30;
-  border-image-repeat: round;
-  padding: 10px;
-  text-align: center;
-}
-
-.auto {
-  border-image-width: auto; /* Use border-width values */
-}
-
-.custom {
-  border-image-width: 35px; /* Specific width */
-}
-
-.percentage {
-  border-image-width: 50%; /* Percentage of border box */
-}`},description:"Specifies the width of the border image, which may differ from the width of the element's border.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left",name:"border-left",syntax:"border-left: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with left border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-left: 5px solid #3498db; /* Shorthand for width, style, color */
-}`},description:"Shorthand property that sets the border-left-width, border-left-style, and border-left-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-color",name:"border-left-color",syntax:"border-left-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored left border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-left-width: 5px;
-  border-left-style: solid;
-  border-left-color: #e74c3c; /* Sets only the left border color */
-}`},description:"Sets the color of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-style",name:"border-left-style",syntax:"border-left-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-left-width: 5px;
-}
-
-.solid {
-  border-left-style: solid; /* Solid line */
-}
-
-.dashed {
-  border-left-style: dashed; /* Dashed line */
-}
-
-.dotted {
-  border-left-style: dotted; /* Dotted line */
-}
-
-.double {
-  border-left-style: double; /* Double line */
-}`},description:"Sets the style of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-left-width",name:"border-left-width",syntax:"border-left-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-left-style: solid;
-}
-
-.thin {
-  border-left-width: thin; /* Browser-defined thin */
-}
-
-.medium {
-  border-left-width: medium; /* Browser-defined medium (default) */
-}
-
-.thick {
-  border-left-width: thick; /* Browser-defined thick */
-}
-
-.custom {
-  border-left-width: 10px; /* Custom width */
-}`},description:"Sets the width of the left border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right",name:"border-right",syntax:"border-right: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with right border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-right: 5px solid #3498db; /* Shorthand for width, style, color */
-}`},description:"Shorthand property that sets the border-right-width, border-right-style, and border-right-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-color",name:"border-right-color",syntax:"border-right-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored right border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-right-width: 5px;
-  border-right-style: solid;
-  border-right-color: #e74c3c; /* Sets only the right border color */
-}`},description:"Sets the color of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-style",name:"border-right-style",syntax:"border-right-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-right-width: 5px;
-}
-
-.solid {
-  border-right-style: solid; /* Solid line */
-}
-
-.dashed {
-  border-right-style: dashed; /* Dashed line */
-}
-
-.dotted {
-  border-right-style: dotted; /* Dotted line */
-}
-
-.double {
-  border-right-style: double; /* Double line */
-}`},description:"Sets the style of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-right-width",name:"border-right-width",syntax:"border-right-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-right-style: solid;
-}
-
-.thin {
-  border-right-width: thin; /* Browser-defined thin */
-}
-
-.medium {
-  border-right-width: medium; /* Browser-defined medium (default) */
-}
-
-.thick {
-  border-right-width: thick; /* Browser-defined thick */
-}
-
-.custom {
-  border-right-width: 10px; /* Custom width */
-}`},description:"Sets the width of the right border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top",name:"border-top",syntax:"border-top: border-width border-style border-color|initial|inherit",example:{html:'<div class="box">Element with top border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-top: 5px solid #3498db; /* Shorthand for width, style, color */
-}`},description:"Shorthand property that sets the border-top-width, border-top-style, and border-top-color in one declaration.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-color",name:"border-top-color",syntax:"border-top-color: color|transparent|initial|inherit",example:{html:'<div class="box">Element with colored top border</div>',css:`.box {
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-top-width: 5px;
-  border-top-style: solid;
-  border-top-color: #e74c3c; /* Sets only the top border color */
-}`},description:"Sets the color of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-left-radius",name:"border-top-left-radius",syntax:"border-top-left-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded top-left corner</div>',css:`.box {
-  width: 200px;
-  height: 100px;
-  background-color: #3498db;
-  border-top-left-radius: 30px; /* Rounds only the top-left corner */
-  color: white;
-  padding: 20px;
-}`},description:"Defines the radius of the top-left corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-right-radius",name:"border-top-right-radius",syntax:"border-top-right-radius: length|% [length|%]|initial|inherit",example:{html:'<div class="box">Element with rounded top-right corner</div>',css:`.box {
-  width: 200px;
-  height: 100px;
-  background-color: #3498db;
-  border-top-right-radius: 30px; /* Rounds only the top-right corner */
-  color: white;
-  padding: 20px;
-}`},description:"Defines the radius of the top-right corner of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-style",name:"border-top-style",syntax:"border-top-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:'<div class="solid">Solid</div><div class="dashed">Dashed</div><div class="dotted">Dotted</div><div class="double">Double</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-top-width: 5px;
-}
-
-.solid {
-  border-top-style: solid; /* Solid line */
-}
-
-.dashed {
-  border-top-style: dashed; /* Dashed line */
-}
-
-.dotted {
-  border-top-style: dotted; /* Dotted line */
-}
-
-.double {
-  border-top-style: double; /* Double line */
-}`},description:"Sets the style of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"border-top-width",name:"border-top-width",syntax:"border-top-width: medium|thin|thick|length|initial|inherit",example:{html:'<div class="thin">Thin</div><div class="medium">Medium</div><div class="thick">Thick</div><div class="custom">Custom (10px)</div>',css:`div {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-top-style: solid;
-}
-
-.thin {
-  border-top-width: thin; /* Browser-defined thin */
-}
-
-.medium {
-  border-top-width: medium; /* Browser-defined medium (default) */
-}
-
-.thick {
-  border-top-width: thick; /* Browser-defined thick */
-}
-
-.custom {
-  border-top-width: 10px; /* Custom width */
-}`},description:"Sets the width of the top border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline",name:"outline",syntax:"outline: outline-width outline-style outline-color|initial|inherit",example:{html:'<div class="outlined">Element with a dotted red outline</div>',css:".outlined { padding: 10px; margin: 20px; outline: 2px dotted red; }"},description:"A shorthand property for setting outline-width, outline-style, and outline-color in one declaration. An outline is a line that is drawn around elements, outside the borders, to make the element stand out.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-color",name:"outline-color",syntax:"outline-color: color|invert|initial|inherit",example:{html:'<input class="custom-outline" type="text" placeholder="Click me to see the outline color">',css:".custom-outline { padding: 5px; outline-width: 2px; outline-style: solid; outline-color: #ff6b6b; }"},description:"Sets the color of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-offset",name:"outline-offset",syntax:"outline-offset: length|initial|inherit",example:{html:'<div class="offset-outline">Element with offset outline</div>',css:".offset-outline { padding: 10px; margin: 20px; outline: 2px dashed blue; outline-offset: 5px; background: #f0f0f0; }"},description:"Adds space between an outline and the edge or border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-style",name:"outline-style",syntax:"outline-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:`<div class="solid-outline">Solid outline</div>
-<div class="dashed-outline">Dashed outline</div>
-<div class="dotted-outline">Dotted outline</div>`,css:`.solid-outline, .dashed-outline, .dotted-outline { margin: 10px; padding: 10px; outline-width: 2px; outline-color: blue; }
-.solid-outline { outline-style: solid; }
-.dashed-outline { outline-style: dashed; }
-.dotted-outline { outline-style: dotted; }`},description:"Sets the style of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-width",name:"outline-width",syntax:"outline-width: medium|thin|thick|length|initial|inherit",example:{html:`<div class="thin-outline">Thin outline</div>
+}`},description:"Specifies how the border image should be scaled, repeated, or rounded to fit the size of the border.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline",name:"outline",syntax:"outline: outline-width outline-style outline-color|initial|inherit",example:{html:'<div class="outlined">Element with a dotted red outline</div>',css:".outlined { padding: 10px; margin: 20px; outline: 2px dotted red; }"},description:"A shorthand property for setting outline-width, outline-style, and outline-color in one declaration. An outline is a line that is drawn around elements, outside the borders, to make the element stand out.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-width",name:"outline-width",syntax:"outline-width: medium|thin|thick|length|initial|inherit",example:{html:`<div class="thin-outline">Thin outline</div>
 <div class="medium-outline">Medium outline</div>
 <div class="thick-outline">Thick outline</div>`,css:`.thin-outline, .medium-outline, .thick-outline { margin: 10px; padding: 10px; outline-style: solid; outline-color: green; }
 .thin-outline { outline-width: thin; }
 .medium-outline { outline-width: medium; }
-.thick-outline { outline-width: thick; }`},description:"Sets the width of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"}]},{id:"tables",name:"Tables",properties:[{id:"caption-side",name:"caption-side",syntax:"caption-side: top|bottom|initial|inherit",example:{html:'<table class="top-caption"><caption>Top Caption</caption><tr><td>Cell 1</td><td>Cell 2</td></tr><tr><td>Cell 3</td><td>Cell 4</td></tr></table><table class="bottom-caption"><caption>Bottom Caption</caption><tr><td>Cell 1</td><td>Cell 2</td></tr><tr><td>Cell 3</td><td>Cell 4</td></tr></table>',css:`table {
+.thick-outline { outline-width: thick; }`},description:"Sets the width of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-style",name:"outline-style",syntax:"outline-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",example:{html:`<div class="solid-outline">Solid outline</div>
+<div class="dashed-outline">Dashed outline</div>
+<div class="dotted-outline">Dotted outline</div>`,css:`.solid-outline, .dashed-outline, .dotted-outline { margin: 10px; padding: 10px; outline-width: 2px; outline-color: blue; }
+.solid-outline { outline-style: solid; }
+.dashed-outline { outline-style: dashed; }
+.dotted-outline { outline-style: dotted; }`},description:"Sets the style of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-color",name:"outline-color",syntax:"outline-color: color|invert|initial|inherit",example:{html:'<input class="custom-outline" type="text" placeholder="Click me to see the outline color">',css:".custom-outline { padding: 5px; outline-width: 2px; outline-style: solid; outline-color: #ff6b6b; }"},description:"Sets the color of an outline.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"},{id:"outline-offset",name:"outline-offset",syntax:"outline-offset: length|initial|inherit",example:{html:'<div class="offset-outline">Element with offset outline</div>',css:".offset-outline { padding: 10px; margin: 20px; outline: 2px dashed blue; outline-offset: 5px; background: #f0f0f0; }"},description:"Adds space between an outline and the edge or border of an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"border"}]},{id:"tables",name:"Tables",properties:[{id:"caption-side",name:"caption-side",syntax:"caption-side: top|bottom|initial|inherit",example:{html:'<table class="top-caption"><caption>Top Caption</caption><tr><td>Cell 1</td><td>Cell 2</td></tr><tr><td>Cell 3</td><td>Cell 4</td></tr></table><table class="bottom-caption"><caption>Bottom Caption</caption><tr><td>Cell 1</td><td>Cell 2</td></tr><tr><td>Cell 3</td><td>Cell 4</td></tr></table>',css:`table {
   width: 200px;
   margin: 20px;
   border-collapse: collapse;
@@ -1022,7 +1018,12 @@ caption {
   <div class="item">2</div>
   <div class="item">3</div>
   <div class="item">4</div>
-</div>`,css:".container { display: grid; grid-template-columns: 100px 100px; grid-template-rows: 50px 50px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; display: flex; justify-content: center; align-items: center; }"},description:"Specifies the type of box used for an HTML element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-template-columns",name:"grid-template-columns",syntax:"grid-template-columns: none|auto|max-content|min-content|length|%|initial|inherit",example:{html:`<div class="container">
+</div>`,css:".container { display: grid; grid-template-columns: 100px 100px; grid-template-rows: 50px 50px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; display: flex; justify-content: center; align-items: center; }"},description:"Specifies the type of box used for an HTML element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-template",name:"grid-template",syntax:"grid-template: none|grid-template-rows / grid-template-columns|initial|inherit",example:{html:`<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+</div>`,css:".container { display: grid; grid-template: 100px 100px / 100px 100px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"},description:"A shorthand property for the grid-template-rows, grid-template-columns and grid-template-areas properties.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-template-columns",name:"grid-template-columns",syntax:"grid-template-columns: none|auto|max-content|min-content|length|%|initial|inherit",example:{html:`<div class="container">
   <div class="item">1</div>
   <div class="item">2</div>
   <div class="item">3</div>
@@ -1035,12 +1036,7 @@ caption {
   <div class="menu">Menu</div>
   <div class="content">Content</div>
   <div class="footer">Footer</div>
-</div>`,css:".container { display: grid; grid-template-columns: 100px auto; grid-template-rows: auto auto auto; grid-template-areas: 'header header' 'menu content' 'footer footer'; gap: 10px; background-color: #f0f0f0; padding: 10px; } .header { grid-area: header; background-color: #ff5252; color: white; padding: 10px; } .menu { grid-area: menu; background-color: #7c4dff; color: white; padding: 10px; } .content { grid-area: content; background-color: #40c4ff; color: white; padding: 10px; } .footer { grid-area: footer; background-color: #69f0ae; color: white; padding: 10px; }"},description:"Specifies how to display columns and rows, using named grid items.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-template",name:"grid-template",syntax:"grid-template: none|grid-template-rows / grid-template-columns|initial|inherit",example:{html:`<div class="container">
-  <div class="item">1</div>
-  <div class="item">2</div>
-  <div class="item">3</div>
-  <div class="item">4</div>
-</div>`,css:".container { display: grid; grid-template: 100px 100px / 100px 100px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"},description:"A shorthand property for the grid-template-rows, grid-template-columns and grid-template-areas properties.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-column-gap",name:"column-gap",syntax:"column-gap: length|%|normal|initial|inherit",example:{html:`<div class="container">
+</div>`,css:".container { display: grid; grid-template-columns: 100px auto; grid-template-rows: auto auto auto; grid-template-areas: 'header header' 'menu content' 'footer footer'; gap: 10px; background-color: #f0f0f0; padding: 10px; } .header { grid-area: header; background-color: #ff5252; color: white; padding: 10px; } .menu { grid-area: menu; background-color: #7c4dff; color: white; padding: 10px; } .content { grid-area: content; background-color: #40c4ff; color: white; padding: 10px; } .footer { grid-area: footer; background-color: #69f0ae; color: white; padding: 10px; }"},description:"Specifies how to display columns and rows, using named grid items.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"},{id:"grid-column-gap",name:"column-gap",syntax:"column-gap: length|%|normal|initial|inherit",example:{html:`<div class="container">
   <div class="item">1</div>
   <div class="item">2</div>
   <div class="item">3</div>
@@ -1050,7 +1046,38 @@ caption {
   <div class="item">2</div>
   <div class="item">3</div>
   <div class="item">4</div>
-</div>`,css:".container { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: 10px; row-gap: 20px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"},description:"Specifies the gap between the rows in a grid layout.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"}]},{id:"transforms",name:"Transforms",properties:[{id:"backface-visibility",name:"backface-visibility",syntax:"backface-visibility: visible|hidden|initial|inherit",example:{html:'<div class="card-container"><div class="card"><div class="front">Front</div><div class="back">Back</div></div></div>',css:`.card-container {
+</div>`,css:".container { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: 10px; row-gap: 20px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"},description:"Specifies the gap between the rows in a grid layout.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"grid"}]},{id:"transforms",name:"Transforms",properties:[{id:"transform",name:"transform",syntax:"transform: none|transform-functions|initial|inherit",example:{html:`<div class="original">Original</div>
+<div class="rotated">Rotated</div>
+<div class="scaled">Scaled</div>
+<div class="skewed">Skewed</div>
+<div class="translated">Translated</div>
+<div class="multiple">Multiple transforms</div>`,css:`.original, .rotated, .scaled, .skewed, .translated, .multiple { width: 100px; height: 50px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; margin: 20px; }
+.rotated { transform: rotate(45deg); }
+.scaled { transform: scale(1.5); }
+.skewed { transform: skew(15deg, 15deg); }
+.translated { transform: translateX(30px); }
+.multiple { transform: rotate(25deg) scale(0.8) translateX(20px); }`},description:"Applies a 2D or 3D transformation to an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"transform-style",name:"transform-style",syntax:"transform-style: flat|preserve-3d|initial|inherit",example:{html:`<div class="scene">
+  <div class="cube preserve-3d">
+    <div class="face front">Front</div>
+    <div class="face back">Back</div>
+  </div>
+</div>`,css:`.scene { width: 100px; height: 100px; perspective: 400px; margin: 50px; }
+.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateY(45deg); }
+.face { width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center; background: rgba(0, 123, 255, 0.7); }
+.front { transform: translateZ(50px); }
+.back { transform: translateZ(-50px); }`},description:"Specifies how nested elements are rendered in 3D space.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"transform-origin",name:"transform-origin",syntax:"transform-origin: x-axis y-axis z-axis|initial|inherit",example:{html:`<div class="demo-container">
+  <div class="center-origin">Default origin</div>
+  <div class="corner-origin">Top-left origin</div>
+</div>`,css:`.demo-container { display: flex; gap: 20px; }
+.center-origin, .corner-origin { width: 100px; height: 100px; background: orange; transition: transform 1s; }
+.center-origin:hover { transform: rotate(45deg); transform-origin: center; /* Default */ }
+.corner-origin:hover { transform: rotate(45deg); transform-origin: top left; }`},description:"Specifies the position of the origin for an element's transformations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"perspective",name:"perspective",syntax:"perspective: none|length|initial|inherit",example:{html:`<div class="perspective-container">
+  <div class="box">3D Transformed Box</div>
+</div>`,css:`.perspective-container { perspective: 500px; }
+.box { width: 100px; height: 100px; background: blue; transform: rotateY(45deg); }`},description:"Specifies the perspective from which 3D-positioned elements are viewed, giving an element a 3D space by affecting the distance between the Z plane and the user.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"perspective-origin",name:"perspective-origin",syntax:"perspective-origin: x-position y-position|initial|inherit",example:{html:`<div class="container">
+  <div class="cube">3D Cube with shifted perspective</div>
+</div>`,css:`.container { perspective: 400px; perspective-origin: left center; width: 200px; height: 200px; }
+.cube { width: 100px; height: 100px; background: red; transform: rotateY(45deg); }`},description:"Defines the position at which the viewer is looking at the 3D positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"backface-visibility",name:"backface-visibility",syntax:"backface-visibility: visible|hidden|initial|inherit",example:{html:'<div class="card-container"><div class="card"><div class="front">Front</div><div class="back">Back</div></div></div>',css:`.card-container {
   width: 200px;
   height: 300px;
   perspective: 1000px;
@@ -1088,38 +1115,16 @@ caption {
   background-color: #e74c3c;
   color: white;
   transform: rotateY(180deg);
-}`},description:"Defines whether the back face of an element should be visible when facing the user, commonly used in card flip animations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"perspective",name:"perspective",syntax:"perspective: none|length|initial|inherit",example:{html:`<div class="perspective-container">
-  <div class="box">3D Transformed Box</div>
-</div>`,css:`.perspective-container { perspective: 500px; }
-.box { width: 100px; height: 100px; background: blue; transform: rotateY(45deg); }`},description:"Specifies the perspective from which 3D-positioned elements are viewed, giving an element a 3D space by affecting the distance between the Z plane and the user.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"perspective-origin",name:"perspective-origin",syntax:"perspective-origin: x-position y-position|initial|inherit",example:{html:`<div class="container">
-  <div class="cube">3D Cube with shifted perspective</div>
-</div>`,css:`.container { perspective: 400px; perspective-origin: left center; width: 200px; height: 200px; }
-.cube { width: 100px; height: 100px; background: red; transform: rotateY(45deg); }`},description:"Defines the position at which the viewer is looking at the 3D positioned element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"transform",name:"transform",syntax:"transform: none|transform-functions|initial|inherit",example:{html:`<div class="original">Original</div>
-<div class="rotated">Rotated</div>
-<div class="scaled">Scaled</div>
-<div class="skewed">Skewed</div>
-<div class="translated">Translated</div>
-<div class="multiple">Multiple transforms</div>`,css:`.original, .rotated, .scaled, .skewed, .translated, .multiple { width: 100px; height: 50px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; margin: 20px; }
-.rotated { transform: rotate(45deg); }
-.scaled { transform: scale(1.5); }
-.skewed { transform: skew(15deg, 15deg); }
-.translated { transform: translateX(30px); }
-.multiple { transform: rotate(25deg) scale(0.8) translateX(20px); }`},description:"Applies a 2D or 3D transformation to an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"transform-origin",name:"transform-origin",syntax:"transform-origin: x-axis y-axis z-axis|initial|inherit",example:{html:`<div class="demo-container">
-  <div class="center-origin">Default origin</div>
-  <div class="corner-origin">Top-left origin</div>
-</div>`,css:`.demo-container { display: flex; gap: 20px; }
-.center-origin, .corner-origin { width: 100px; height: 100px; background: orange; transition: transform 1s; }
-.center-origin:hover { transform: rotate(45deg); transform-origin: center; /* Default */ }
-.corner-origin:hover { transform: rotate(45deg); transform-origin: top left; }`},description:"Specifies the position of the origin for an element's transformations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"},{id:"transform-style",name:"transform-style",syntax:"transform-style: flat|preserve-3d|initial|inherit",example:{html:`<div class="scene">
-  <div class="cube preserve-3d">
-    <div class="face front">Front</div>
-    <div class="face back">Back</div>
-  </div>
-</div>`,css:`.scene { width: 100px; height: 100px; perspective: 400px; margin: 50px; }
-.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateY(45deg); }
-.face { width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center; background: rgba(0, 123, 255, 0.7); }
-.front { transform: translateZ(50px); }
-.back { transform: translateZ(-50px); }`},description:"Specifies how nested elements are rendered in 3D space.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"}]},{id:"visual-effects",name:"Visual effects",properties:[{id:"clip",name:"clip",syntax:"clip: auto|rect(top, right, bottom, left)|initial|inherit",example:{html:'<div class="container"><img src="https://picsum.photos/id/237/200/300" class="clipped" alt="Clipped image"></div>',css:`.container {
+}`},description:"Defines whether the back face of an element should be visible when facing the user, commonly used in card flip animations.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transforms"}]},{id:"visual-effects",name:"Visual effects",properties:[{id:"visibility",name:"visibility",syntax:"visibility: visible|hidden|collapse|initial|inherit",example:{html:`<div class="visible">This element is visible (default)</div>
+<div class="hidden">This element is hidden but still takes up space</div>
+<div class="after-hidden">This element comes after the hidden one</div>`,css:`.visible, .hidden, .after-hidden { padding: 10px; margin: 5px; background: #e0e0e0; }
+.hidden { visibility: hidden; }
+.after-hidden { background: #b5e0b5; }`},description:"Specifies whether or not an element is visible. Hidden elements still take up space in the layout.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"opacity",name:"opacity",syntax:"opacity: number|initial|inherit",example:{html:`<div class="opaque">100% opacity (default)</div>
+<div class="semi-transparent">50% opacity</div>
+<div class="transparent">20% opacity</div>`,css:`.opaque, .semi-transparent, .transparent { padding: 10px; background: blue; color: white; margin: 5px; }
+.opaque { opacity: 1; }
+.semi-transparent { opacity: 0.5; }
+.transparent { opacity: 0.2; }`},description:"Sets the opacity level for an element (transparency).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"filter",name:"filter",syntax:"filter: none|blur()|brightness()|contrast()|drop-shadow()|grayscale()|hue-rotate()|invert()|opacity()|saturate()|sepia()",example:{html:'<img class="filtered-image" src="https://picsum.photos/id/237/200/300" alt="A filtered image">',css:".filtered-image { filter: grayscale(80%) brightness(120%); }"},description:"Applies graphical effects like blur or color shifting to an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"clip",name:"clip",syntax:"clip: auto|rect(top, right, bottom, left)|initial|inherit",example:{html:'<div class="container"><img src="https://picsum.photos/id/237/200/300" class="clipped" alt="Clipped image"></div>',css:`.container {
   position: relative;
   height: 200px;
   width: 200px;
@@ -1131,16 +1136,7 @@ caption {
   width: 300px;
   height: 300px;
   clip: rect(50px, 150px, 150px, 50px); /* Clips image (top, right, bottom, left) */
-}`},description:"Defines which part of an absolutely positioned element is visible. Note: Deprecated in favor of clip-path.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"filter",name:"filter",syntax:"filter: none|blur()|brightness()|contrast()|drop-shadow()|grayscale()|hue-rotate()|invert()|opacity()|saturate()|sepia()",example:{html:'<img class="filtered-image" src="https://picsum.photos/id/237/200/300" alt="A filtered image">',css:".filtered-image { filter: grayscale(80%) brightness(120%); }"},description:"Applies graphical effects like blur or color shifting to an element.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"opacity",name:"opacity",syntax:"opacity: number|initial|inherit",example:{html:`<div class="opaque">100% opacity (default)</div>
-<div class="semi-transparent">50% opacity</div>
-<div class="transparent">20% opacity</div>`,css:`.opaque, .semi-transparent, .transparent { padding: 10px; background: blue; color: white; margin: 5px; }
-.opaque { opacity: 1; }
-.semi-transparent { opacity: 0.5; }
-.transparent { opacity: 0.2; }`},description:"Sets the opacity level for an element (transparency).",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"},{id:"visibility",name:"visibility",syntax:"visibility: visible|hidden|collapse|initial|inherit",example:{html:`<div class="visible">This element is visible (default)</div>
-<div class="hidden">This element is hidden but still takes up space</div>
-<div class="after-hidden">This element comes after the hidden one</div>`,css:`.visible, .hidden, .after-hidden { padding: 10px; margin: 5px; background: #e0e0e0; }
-.hidden { visibility: hidden; }
-.after-hidden { background: #b5e0b5; }`},description:"Specifies whether or not an element is visible. Hidden elements still take up space in the layout.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"}]},{id:"animations",name:"Animations",properties:[{id:"animation",name:"animation",syntax:"animation: name duration timing-function delay iteration-count direction fill-mode play-state",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation: slide 2s ease-in-out infinite alternate; }"},description:"A shorthand property for all the animation properties, except the animation-play-state property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-name",name:"animation-name",syntax:"animation-name: keyframename|none|initial|inherit",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation-name: slide; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: alternate; }"},description:"Specifies a name for the @keyframes animation.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-duration",name:"animation-duration",syntax:"animation-duration: time|initial|inherit",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation-name: slide; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: alternate; }"},description:"Specifies how many seconds or milliseconds an animation takes to complete one cycle.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"keyframes",name:"@keyframes",syntax:"@keyframes animationname { keyframes-selector { css-styles; } }",example:{html:'<div class="box"></div>',css:"@keyframes colorchange { 0% { background-color: #3f51b5; } 50% { background-color: #ff5252; } 100% { background-color: #69f0ae; } } .box { width: 100px; height: 100px; animation: colorchange 3s infinite; }"},description:"Specifies the animation code for a CSS animation.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-delay",name:"animation-delay",syntax:"animation-delay: time|initial|inherit",example:{html:'<div class="box">Hover me</div>',css:`.box {
+}`},description:"Defines which part of an absolutely positioned element is visible. Note: Deprecated in favor of clip-path.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"visual-effects"}]},{id:"animations",name:"Animations",properties:[{id:"keyframes",name:"@keyframes",syntax:"@keyframes animationname { keyframes-selector { css-styles; } }",example:{html:'<div class="box"></div>',css:"@keyframes colorchange { 0% { background-color: #3f51b5; } 50% { background-color: #ff5252; } 100% { background-color: #69f0ae; } } .box { width: 100px; height: 100px; animation: colorchange 3s infinite; }"},description:"Specifies the animation code for a CSS animation.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation",name:"animation",syntax:"animation: name duration timing-function delay iteration-count direction fill-mode play-state",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation: slide 2s ease-in-out infinite alternate; }"},description:"A shorthand property for all the animation properties, except the animation-play-state property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-name",name:"animation-name",syntax:"animation-name: keyframename|none|initial|inherit",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation-name: slide; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: alternate; }"},description:"Specifies a name for the @keyframes animation.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-duration",name:"animation-duration",syntax:"animation-duration: time|initial|inherit",example:{html:'<div class="box"></div>',css:"@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation-name: slide; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: alternate; }"},description:"Specifies how many seconds or milliseconds an animation takes to complete one cycle.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"},{id:"animation-delay",name:"animation-delay",syntax:"animation-delay: time|initial|inherit",example:{html:'<div class="box">Hover me</div>',css:`.box {
   width: 100px;
   height: 100px;
   background-color: #3498db;
@@ -1260,7 +1256,11 @@ caption {
 @keyframes rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}`},description:"Controls whether an animation is running or paused, allowing developers to pause animations on demand.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"}]},{id:"transitions",name:"Transitions",properties:[{id:"transition",name:"transition",syntax:"transition: property duration timing-function delay|initial|inherit",example:{html:'<button class="btn">Hover Me</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition: background-color 0.3s ease; } .btn:hover { background-color: #5c6bc0; }"},description:"A shorthand property for setting the four transition properties into a single property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-property",name:"transition-property",syntax:"transition-property: none|all|property|initial|inherit",example:{html:'<button class="btn">Hover Me</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition-property: background-color; transition-duration: 0.3s; } .btn:hover { background-color: #5c6bc0; }"},description:"Specifies the name of the CSS property the transition effect is for.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-duration",name:"transition-duration",syntax:"transition-duration: time|initial|inherit",example:{html:'<button class="btn fast">Fast</button> <button class="btn slow">Slow</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition-property: background-color; } .fast { transition-duration: 0.2s; } .slow { transition-duration: 1s; } .btn:hover { background-color: #5c6bc0; }"},description:"Specifies how many seconds or milliseconds a transition effect takes to complete.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-timing-function",name:"transition-timing-function",syntax:"transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps()|cubic-bezier()|initial|inherit",example:{html:`<div class="container">
+}`},description:"Controls whether an animation is running or paused, allowing developers to pause animations on demand.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"animations"}]},{id:"transitions",name:"Transitions",properties:[{id:"transition",name:"transition",syntax:"transition: property duration timing-function delay|initial|inherit",example:{html:'<button class="btn">Hover Me</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition: background-color 0.3s ease; } .btn:hover { background-color: #5c6bc0; }"},description:"A shorthand property for setting the four transition properties into a single property.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-property",name:"transition-property",syntax:"transition-property: none|all|property|initial|inherit",example:{html:'<button class="btn">Hover Me</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition-property: background-color; transition-duration: 0.3s; } .btn:hover { background-color: #5c6bc0; }"},description:"Specifies the name of the CSS property the transition effect is for.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-duration",name:"transition-duration",syntax:"transition-duration: time|initial|inherit",example:{html:'<button class="btn fast">Fast</button> <button class="btn slow">Slow</button>',css:".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition-property: background-color; } .fast { transition-duration: 0.2s; } .slow { transition-duration: 1s; } .btn:hover { background-color: #5c6bc0; }"},description:"Specifies how many seconds or milliseconds a transition effect takes to complete.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-delay",name:"transition-delay",syntax:"transition-delay: time|initial|inherit",example:{html:`<div class="instant">No delay</div>
+<div class="delayed">1 second delay</div>`,css:`.instant, .delayed { width: 100px; height: 50px; background: purple; color: white; margin: 10px; transition-property: width; transition-duration: 1s; }
+.instant { transition-delay: 0s; }
+.delayed { transition-delay: 1s; }
+.instant:hover, .delayed:hover { width: 300px; }`},description:"Specifies when the transition effect will start.",browsers:["Chrome","Edge","Firefox","Safari","Opera"],category:"transitions"},{id:"transition-timing-function",name:"transition-timing-function",syntax:"transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps()|cubic-bezier()|initial|inherit",example:{html:`<div class="container">
   <div class="box linear">linear</div>
   <div class="box ease">ease</div>
   <div class="box ease-in">ease-in</div>

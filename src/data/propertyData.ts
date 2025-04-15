@@ -31,42 +31,6 @@ export const propertyCategories: PropertyCategory[] = [
         category: "layout"
       },
       {
-        id: "float",
-        name: "float",
-        syntax: "float: none|left|right|initial|inherit",
-        example: {
-          html: "<div class=\"container\"><div class=\"floated\">Floated element</div><p>Text flows around the floated element.</p></div>",
-          css: ".container { border: 1px solid #ccc; overflow: auto; padding: 10px; } .floated { float: left; width: 100px; height: 50px; margin-right: 10px; background: #e0ffe0; padding: 5px; }"
-        },
-        description: "Specifies how an element should float.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "layout"
-      },
-      {
-        id: "clear",
-        name: "clear",
-        syntax: "clear: none|left|right|both|inherit",
-        example: {
-          html: "<div style=\"float: left; width: 100px; height: 50px; background: #e0e0ff;\">Floated div</div><div class=\"cleared\">This div is cleared</div>",
-          css: ".cleared { clear: both; background: #ffe0e0; padding: 5px; }"
-        },
-        description: "Specifies which sides of an element where other floating elements are not allowed.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "layout"
-      },
-      {
-        id: "z-index",
-        name: "z-index",
-        syntax: "z-index: auto|number|inherit",
-        example: {
-          html: "<div class=\"container\"><div class=\"box box1\">Z-index: 1</div><div class=\"box box2\">Z-index: 2</div></div>",
-          css: ".container { position: relative; height: 100px; } .box { position: absolute; width: 100px; height: 100px; padding: 5px; } .box1 { background: rgba(255,0,0,0.7); left: 20px; top: 20px; z-index: 1; } .box2 { background: rgba(0,0,255,0.7); left: 50px; top: 50px; z-index: 2; }"
-        },
-        description: "Specifies the stack order of an element (which element should be placed in front of, or behind, the others).",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "layout"
-      },
-      {
         id: "top",
         name: "top",
         syntax: "top: auto|length|%|inherit",
@@ -113,6 +77,42 @@ export const propertyCategories: PropertyCategory[] = [
         description: "Specifies the left position of a positioned element.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "layout"
+      },
+      {
+        id: "z-index",
+        name: "z-index",
+        syntax: "z-index: auto|number|inherit",
+        example: {
+          html: "<div class=\"container\"><div class=\"box box1\">Z-index: 1</div><div class=\"box box2\">Z-index: 2</div></div>",
+          css: ".container { position: relative; height: 100px; } .box { position: absolute; width: 100px; height: 100px; padding: 5px; } .box1 { background: rgba(255,0,0,0.7); left: 20px; top: 20px; z-index: 1; } .box2 { background: rgba(0,0,255,0.7); left: 50px; top: 50px; z-index: 2; }"
+        },
+        description: "Specifies the stack order of an element (which element should be placed in front of, or behind, the others).",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "layout"
+      },
+      {
+        id: "float",
+        name: "float",
+        syntax: "float: none|left|right|initial|inherit",
+        example: {
+          html: "<div class=\"container\"><div class=\"floated\">Floated element</div><p>Text flows around the floated element.</p></div>",
+          css: ".container { border: 1px solid #ccc; overflow: auto; padding: 10px; } .floated { float: left; width: 100px; height: 50px; margin-right: 10px; background: #e0ffe0; padding: 5px; }"
+        },
+        description: "Specifies how an element should float.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "layout"
+      },
+      {
+        id: "clear",
+        name: "clear",
+        syntax: "clear: none|left|right|both|inherit",
+        example: {
+          html: "<div style=\"float: left; width: 100px; height: 50px; background: #e0e0ff;\">Floated div</div><div class=\"cleared\">This div is cleared</div>",
+          css: ".cleared { clear: both; background: #ffe0e0; padding: 5px; }"
+        },
+        description: "Specifies which sides of an element where other floating elements are not allowed.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "layout"
       }
     ]
   },
@@ -120,6 +120,18 @@ export const propertyCategories: PropertyCategory[] = [
     id: "box-model",
     name: "Box Model",
     properties: [
+      {
+        id: "box-sizing",
+        name: "box-sizing",
+        syntax: "box-sizing: content-box|border-box|initial|inherit",
+        example: {
+          html: "<div class=\"box content-box\">Content-box</div><div class=\"box border-box\">Border-box</div>",
+          css: ".box { width: 150px; height: 80px; padding: 20px; border: 5px solid #888; margin: 10px; } .content-box { background: #ffecb3; box-sizing: content-box; } .border-box { background: #b3e5fc; box-sizing: border-box; }"
+        },
+        description: "Defines how the width and height of an element are calculated: should they include padding and borders, or not.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "box-model"
+      },
       {
         id: "width",
         name: "width",
@@ -313,18 +325,6 @@ export const propertyCategories: PropertyCategory[] = [
         category: "box-model"
       },
       {
-        id: "box-sizing",
-        name: "box-sizing",
-        syntax: "box-sizing: content-box|border-box|initial|inherit",
-        example: {
-          html: "<div class=\"box content-box\">Content-box</div><div class=\"box border-box\">Border-box</div>",
-          css: ".box { width: 150px; height: 80px; padding: 20px; border: 5px solid #888; margin: 10px; } .content-box { background: #ffecb3; box-sizing: content-box; } .border-box { background: #b3e5fc; box-sizing: border-box; }"
-        },
-        description: "Defines how the width and height of an element are calculated: should they include padding and borders, or not.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "box-model"
-      },
-      {
         id: "overflow",
         name: "overflow",
         syntax: "overflow: visible|hidden|scroll|auto|initial|inherit",
@@ -379,6 +379,18 @@ export const propertyCategories: PropertyCategory[] = [
         category: "typography"
       },
       {
+        id: "font",
+        name: "font",
+        syntax: "font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit",
+        example: {
+          html: "<p class=\"font-example\">This text has multiple font properties set at once.</p>",
+          css: ".font-example { font: italic bold 16px/1.5 Arial, sans-serif; }"
+        },
+        description: "A shorthand property for setting all the font properties in one declaration.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
         id: "font-family",
         name: "font-family",
         syntax: "font-family: family-name|generic-family|initial|inherit",
@@ -403,14 +415,26 @@ export const propertyCategories: PropertyCategory[] = [
         category: "typography"
       },
       {
-        id: "font-weight",
-        name: "font-weight",
-        syntax: "font-weight: normal|bold|bolder|lighter|number|initial|inherit",
+        id: "font-size-adjust",
+        name: "font-size-adjust",
+        syntax: "font-size-adjust: none|number|initial|inherit",
         example: {
-          html: "<p class=\"normal\">Normal weight</p><p class=\"bold\">Bold weight</p><p class=\"custom\">Custom weight (600)</p>",
-          css: ".normal { font-weight: normal; } .bold { font-weight: bold; } .custom { font-weight: 600; }"
+          html: "<p class=\"adjusted\">This text has an adjusted font size to maintain readability.</p>",
+          css: ".adjusted { font-family: Arial, sans-serif; font-size-adjust: 0.5; }"
         },
-        description: "Specifies the weight of a font.",
+        description: "Preserves the readability of text when font fallback occurs by adjusting the font-size based on the height of lowercase letters.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "font-stretch",
+        name: "font-stretch",
+        syntax: "font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit",
+        example: {
+          html: "<p class=\"normal-text\">Normal text</p>\n<p class=\"expanded-text\">Expanded text</p>\n<p class=\"condensed-text\">Condensed text</p>",
+          css: ".normal-text { font-stretch: normal; }\n.expanded-text { font-stretch: expanded; }\n.condensed-text { font-stretch: condensed; }"
+        },
+        description: "Selects a normal, condensed, or expanded face from a font family.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       },
@@ -435,6 +459,18 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".normal { font-variant: normal; } .small-caps { font-variant: small-caps; }"
         },
         description: "Specifies whether or not a text should be displayed in a small-caps font.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "font-weight",
+        name: "font-weight",
+        syntax: "font-weight: normal|bold|bolder|lighter|number|initial|inherit",
+        example: {
+          html: "<p class=\"normal\">Normal weight</p><p class=\"bold\">Bold weight</p><p class=\"custom\">Custom weight (600)</p>",
+          css: ".normal { font-weight: normal; } .bold { font-weight: bold; } .custom { font-weight: 600; }"
+        },
+        description: "Specifies the weight of a font.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       },
@@ -475,15 +511,27 @@ export const propertyCategories: PropertyCategory[] = [
         category: "typography"
       },
       {
-        id: "text-transform",
-        name: "text-transform",
-        syntax: "text-transform: none|capitalize|uppercase|lowercase|initial|inherit",
+        id: "text-align-last",
+        name: "text-align-last",
+        syntax: "text-align-last: auto|left|right|center|justify|start|end|initial|inherit",
         example: {
-          html: "<p class=\"uppercase\">Uppercase text</p><p class=\"lowercase\">Lowercase Text</p><p class=\"capitalize\">capitalized text</p>",
-          css: ".uppercase { text-transform: uppercase; } .lowercase { text-transform: lowercase; } .capitalize { text-transform: capitalize; }"
+          html: "<p class=\"justify-last\">This paragraph has justified text with the last line aligned to the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
+          css: ".justify-last { text-align: justify; text-align-last: right; width: 300px; }"
         },
-        description: "Controls the capitalization of text.",
+        description: "Specifies how the last line of a block or a line right before a forced line break is aligned.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "text-justify",
+        name: "text-justify",
+        syntax: "text-justify: auto|inter-word|inter-character|none|initial|inherit",
+        example: {
+          html: "<p class=\"justify-word\">This paragraph has text justified with focus on spacing between words. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n<p class=\"justify-char\">This paragraph has text justified with focus on spacing between characters. Lorem ipsum dolor sit amet, consectetur.</p>",
+          css: ".justify-word, .justify-char { width: 300px; text-align: justify; }\n.justify-word { text-justify: inter-word; }\n.justify-char { text-justify: inter-character; }"
+        },
+        description: "Specifies the justification method to use when text-align is set to 'justify'.",
+        browsers: ["Edge", "Firefox"],
         category: "typography"
       },
       {
@@ -495,198 +543,6 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".underline { text-decoration: underline; } .line-through { text-decoration: line-through; } .overline { text-decoration: overline; }"
         },
         description: "Specifies the decoration added to text.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "letter-spacing",
-        name: "letter-spacing",
-        syntax: "letter-spacing: normal|length|initial|inherit",
-        example: {
-          html: "<p class=\"normal\">Normal letter spacing</p><p class=\"spaced\">Increased letter spacing</p>",
-          css: ".normal { letter-spacing: normal; } .spaced { letter-spacing: 3px; }"
-        },
-        description: "Increases or decreases the space between characters in a text.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "word-spacing",
-        name: "word-spacing",
-        syntax: "word-spacing: normal|length|initial|inherit",
-        example: {
-          html: "<p class=\"normal\">Normal word spacing</p><p class=\"spaced\">Increased word spacing</p>",
-          css: ".normal { word-spacing: normal; } .spaced { word-spacing: 10px; }"
-        },
-        description: "Increases or decreases the white space between words.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "direction",
-        name: "direction",
-        syntax: "direction: ltr|rtl|initial|inherit",
-        example: {
-          html: "<div class=\"rtl-text\">This text will flow from right to left.</div>",
-          css: ".rtl-text { direction: rtl; }"
-        },
-        description: "Specifies the text direction/writing direction within a block-level element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "font",
-        name: "font",
-        syntax: "font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit",
-        example: {
-          html: "<p class=\"font-example\">This text has multiple font properties set at once.</p>",
-          css: ".font-example { font: italic bold 16px/1.5 Arial, sans-serif; }"
-        },
-        description: "A shorthand property for setting all the font properties in one declaration.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "font-size-adjust",
-        name: "font-size-adjust",
-        syntax: "font-size-adjust: none|number|initial|inherit",
-        example: {
-          html: "<p class=\"adjusted\">This text has an adjusted font size to maintain readability.</p>",
-          css: ".adjusted { font-family: Arial, sans-serif; font-size-adjust: 0.5; }"
-        },
-        description: "Preserves the readability of text when font fallback occurs by adjusting the font-size based on the height of lowercase letters.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "font-stretch",
-        name: "font-stretch",
-        syntax: "font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit",
-        example: {
-          html: "<p class=\"normal-text\">Normal text</p>\n<p class=\"expanded-text\">Expanded text</p>\n<p class=\"condensed-text\">Condensed text</p>",
-          css: ".normal-text { font-stretch: normal; }\n.expanded-text { font-stretch: expanded; }\n.condensed-text { font-stretch: condensed; }"
-        },
-        description: "Selects a normal, condensed, or expanded face from a font family.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "hanging-punctuation",
-        name: "hanging-punctuation",
-        syntax: "hanging-punctuation: none|first|last|force-end|allow-end|initial|inherit",
-        example: {
-          html: "<p class=\"hanging-example\">\"This paragraph has hanging punctuation, which means the quotation mark hangs outside the text block.\"</p>",
-          css: ".hanging-example { width: 300px; padding: 10px; background: #f0f0f0; hanging-punctuation: first; }"
-        },
-        description: "Specifies whether a punctuation mark may be placed outside the line box at the start or end of a full line of text.",
-        browsers: ["Safari"],
-        category: "typography"
-      },
-      {
-        id: "hyphens",
-        name: "hyphens",
-        syntax: "hyphens: none|manual|auto|initial|inherit",
-        example: {
-          html: "<p class=\"hyphenated\">This is a demonstration of hyphenation in a long paragraph with a very supercalifragilisticexpialidocious word that might need to be hyphenated when it reaches the end of a line.</p>",
-          css: ".hyphenated { width: 200px; border: 1px solid #ccc; padding: 10px; hyphens: auto; text-align: justify; }"
-        },
-        description: "Controls whether hyphenation is used when text wraps across multiple lines.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "list-style",
-        name: "list-style",
-        syntax: "list-style: list-style-type list-style-position list-style-image|initial|inherit",
-        example: {
-          html: "<ul class=\"custom-list\">\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item</li>\n</ul>",
-          css: ".custom-list { list-style: square inside; }"
-        },
-        description: "A shorthand property for setting list-style-type, list-style-position, and list-style-image.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "list-style-image",
-        name: "list-style-image",
-        syntax: "list-style-image: none|url()|initial|inherit",
-        example: {
-          html: "<ul class=\"image-bullets\">\n  <li>Item with custom bullet</li>\n  <li>Another item with custom bullet</li>\n</ul>",
-          css: ".image-bullets { list-style-image: url('https://picsum.photos/id/237/20/20'); }"
-        },
-        description: "Specifies an image as the list item marker.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "list-style-position",
-        name: "list-style-position",
-        syntax: "list-style-position: inside|outside|initial|inherit",
-        example: {
-          html: "<ul class=\"outside-list\">\n  <li>This list has items with markers outside the content flow</li>\n</ul>\n<ul class=\"inside-list\">\n  <li>This list has items with markers inside the content flow</li>\n</ul>",
-          css: ".outside-list { list-style-position: outside; background: #eee; padding: 10px 40px; }\n.inside-list { list-style-position: inside; background: #ddd; padding: 10px; }"
-        },
-        description: "Specifies the position of the list-item markers (bullet points).",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "list-style-type",
-        name: "list-style-type",
-        syntax: "list-style-type: disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha|upper-alpha|none|initial|inherit",
-        example: {
-          html: "<ul class=\"disc-list\">\n  <li>Disc bullet (default)</li>\n</ul>\n<ul class=\"circle-list\">\n  <li>Circle bullet</li>\n</ul>\n<ul class=\"square-list\">\n  <li>Square bullet</li>\n</ul>\n<ol class=\"roman-list\">\n  <li>Upper Roman numeral</li>\n</ol>",
-          css: ".disc-list { list-style-type: disc; }\n.circle-list { list-style-type: circle; }\n.square-list { list-style-type: square; }\n.roman-list { list-style-type: upper-roman; }"
-        },
-        description: "Specifies the type of list-item marker.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "overflow-wrap",
-        name: "overflow-wrap",
-        syntax: "overflow-wrap: normal|break-word|anywhere|initial|inherit",
-        example: {
-          html: "<div class=\"normal-wrap\">This contains a verylongwordthatwillnotbreakinnormalcircumstances.</div>\n<div class=\"break-word\">This contains a verylongwordthatwillbreakwhenoverflowing.</div>",
-          css: ".normal-wrap, .break-word { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }\n.normal-wrap { overflow-wrap: normal; }\n.break-word { overflow-wrap: break-word; }"
-        },
-        description: "Specifies whether the browser should insert line breaks within unbreakable words to prevent text from overflowing its container.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "quotes",
-        name: "quotes",
-        syntax: "quotes: none|[string string]+|initial|inherit",
-        example: {
-          html: "<div class=\"custom-quotes\">\n  <q>This text uses custom quotation marks</q>\n</div>",
-          css: ".custom-quotes { quotes: '«' '»' '‹' '›'; }\n.custom-quotes q { display: block; }"
-        },
-        description: "Sets the type of quotation marks for embedded quotations.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "tab-size",
-        name: "tab-size",
-        syntax: "tab-size: number|length|initial|inherit",
-        example: {
-          html: "<pre class=\"custom-tabs\">This\tis\ta\ttext\twith\ttabs</pre>",
-          css: ".custom-tabs { tab-size: 8; background: #f5f5f5; padding: 10px; }"
-        },
-        description: "Specifies the width of a tab character.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "typography"
-      },
-      {
-        id: "text-align-last",
-        name: "text-align-last",
-        syntax: "text-align-last: auto|left|right|center|justify|start|end|initial|inherit",
-        example: {
-          html: "<p class=\"justify-last\">This paragraph has justified text with the last line aligned to the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
-          css: ".justify-last { text-align: justify; text-align-last: right; width: 300px; }"
-        },
-        description: "Specifies how the last line of a block or a line right before a forced line break is aligned.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       },
@@ -739,18 +595,6 @@ export const propertyCategories: PropertyCategory[] = [
         category: "typography"
       },
       {
-        id: "text-justify",
-        name: "text-justify",
-        syntax: "text-justify: auto|inter-word|inter-character|none|initial|inherit",
-        example: {
-          html: "<p class=\"justify-word\">This paragraph has text justified with focus on spacing between words. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n<p class=\"justify-char\">This paragraph has text justified with focus on spacing between characters. Lorem ipsum dolor sit amet, consectetur.</p>",
-          css: ".justify-word, .justify-char { width: 300px; text-align: justify; }\n.justify-word { text-justify: inter-word; }\n.justify-char { text-justify: inter-character; }"
-        },
-        description: "Specifies the justification method to use when text-align is set to 'justify'.",
-        browsers: ["Edge", "Firefox"],
-        category: "typography"
-      },
-      {
         id: "text-overflow",
         name: "text-overflow",
         syntax: "text-overflow: clip|ellipsis|string|initial|inherit",
@@ -775,38 +619,38 @@ export const propertyCategories: PropertyCategory[] = [
         category: "typography"
       },
       {
-        id: "transition-delay",
-        name: "transition-delay",
-        syntax: "transition-delay: time|initial|inherit",
+        id: "text-transform",
+        name: "text-transform",
+        syntax: "text-transform: none|capitalize|uppercase|lowercase|initial|inherit",
         example: {
-          html: "<div class=\"instant\">No delay</div>\n<div class=\"delayed\">1 second delay</div>",
-          css: ".instant, .delayed { width: 100px; height: 50px; background: purple; color: white; margin: 10px; transition-property: width; transition-duration: 1s; }\n.instant { transition-delay: 0s; }\n.delayed { transition-delay: 1s; }\n.instant:hover, .delayed:hover { width: 300px; }"
+          html: "<p class=\"uppercase\">Uppercase text</p><p class=\"lowercase\">Lowercase Text</p><p class=\"capitalize\">capitalized text</p>",
+          css: ".uppercase { text-transform: uppercase; } .lowercase { text-transform: lowercase; } .capitalize { text-transform: capitalize; }"
         },
-        description: "Specifies when the transition effect will start.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "transitions"
-      },
-      {
-        id: "unicode-bidi",
-        name: "unicode-bidi",
-        syntax: "unicode-bidi: normal|embed|isolate|bidi-override|isolate-override|plaintext|initial|inherit",
-        example: {
-          html: "<div class=\"bidi-normal\">This is English text followed by Arabic: مرحبا بالعالم</div>\n<div class=\"bidi-override\">This text will display characters in reverse order</div>",
-          css: ".bidi-normal { unicode-bidi: normal; direction: ltr; }\n.bidi-override { unicode-bidi: bidi-override; direction: rtl; }"
-        },
-        description: "Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.",
+        description: "Controls the capitalization of text.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       },
       {
-        id: "vertical-align",
-        name: "vertical-align",
-        syntax: "vertical-align: baseline|length|%|sub|super|top|text-top|middle|bottom|text-bottom|initial|inherit",
+        id: "letter-spacing",
+        name: "letter-spacing",
+        syntax: "letter-spacing: normal|length|initial|inherit",
         example: {
-          html: "<div class=\"align-examples\">\n  <span class=\"baseline\">baseline</span>\n  <span class=\"sub\">sub</span>\n  <span class=\"super\">super</span>\n  <span class=\"top\">top</span>\n  <span class=\"middle\">middle</span>\n  <span class=\"bottom\">bottom</span>\n  <span class=\"text-top\">text-top</span>\n  <span class=\"text-bottom\">text-bottom</span>\n  <span class=\"px-value\">+10px</span>\n</div>",
-          css: ".align-examples { line-height: 3; background: #f0f0f0; padding: 10px; }\n.align-examples span { display: inline-block; background: #ddd; margin: 0 5px; }\n.baseline { vertical-align: baseline; }\n.sub { vertical-align: sub; }\n.super { vertical-align: super; }\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }\n.text-top { vertical-align: text-top; }\n.text-bottom { vertical-align: text-bottom; }\n.px-value { vertical-align: 10px; }"
+          html: "<p class=\"normal\">Normal letter spacing</p><p class=\"spaced\">Increased letter spacing</p>",
+          css: ".normal { letter-spacing: normal; } .spaced { letter-spacing: 3px; }"
         },
-        description: "Sets the vertical alignment of an element.",
+        description: "Increases or decreases the space between characters in a text.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "word-spacing",
+        name: "word-spacing",
+        syntax: "word-spacing: normal|length|initial|inherit",
+        example: {
+          html: "<p class=\"normal\">Normal word spacing</p><p class=\"spaced\">Increased word spacing</p>",
+          css: ".normal { word-spacing: normal; } .spaced { word-spacing: 10px; }"
+        },
+        description: "Increases or decreases the white space between words.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       },
@@ -843,6 +687,150 @@ export const propertyCategories: PropertyCategory[] = [
           css: "div { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }\n.normal-wrap { word-wrap: normal; }\n.break-word { word-wrap: break-word; }"
         },
         description: "Allows long words to be able to be broken and wrap onto the next line. This is an alias of the overflow-wrap property.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "overflow-wrap",
+        name: "overflow-wrap",
+        syntax: "overflow-wrap: normal|break-word|anywhere|initial|inherit",
+        example: {
+          html: "<div class=\"normal-wrap\">This contains a verylongwordthatwillnotbreakinnormalcircumstances.</div>\n<div class=\"break-word\">This contains a verylongwordthatwillbreakwhenoverflowing.</div>",
+          css: ".normal-wrap, .break-word { width: 150px; margin: 10px; padding: 10px; border: 1px solid #ccc; }\n.normal-wrap { overflow-wrap: normal; }\n.break-word { overflow-wrap: break-word; }"
+        },
+        description: "Specifies whether the browser should insert line breaks within unbreakable words to prevent text from overflowing its container.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "hyphens",
+        name: "hyphens",
+        syntax: "hyphens: none|manual|auto|initial|inherit",
+        example: {
+          html: "<p class=\"hyphenated\">This is a demonstration of hyphenation in a long paragraph with a very supercalifragilisticexpialidocious word that might need to be hyphenated when it reaches the end of a line.</p>",
+          css: ".hyphenated { width: 200px; border: 1px solid #ccc; padding: 10px; hyphens: auto; text-align: justify; }"
+        },
+        description: "Controls whether hyphenation is used when text wraps across multiple lines.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "hanging-punctuation",
+        name: "hanging-punctuation",
+        syntax: "hanging-punctuation: none|first|last|force-end|allow-end|initial|inherit",
+        example: {
+          html: "<p class=\"hanging-example\">\"This paragraph has hanging punctuation, which means the quotation mark hangs outside the text block.\"</p>",
+          css: ".hanging-example { width: 300px; padding: 10px; background: #f0f0f0; hanging-punctuation: first; }"
+        },
+        description: "Specifies whether a punctuation mark may be placed outside the line box at the start or end of a full line of text.",
+        browsers: ["Safari"],
+        category: "typography"
+      },
+      {
+        id: "direction",
+        name: "direction",
+        syntax: "direction: ltr|rtl|initial|inherit",
+        example: {
+          html: "<div class=\"rtl-text\">This text will flow from right to left.</div>",
+          css: ".rtl-text { direction: rtl; }"
+        },
+        description: "Specifies the text direction/writing direction within a block-level element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "unicode-bidi",
+        name: "unicode-bidi",
+        syntax: "unicode-bidi: normal|embed|isolate|bidi-override|isolate-override|plaintext|initial|inherit",
+        example: {
+          html: "<div class=\"bidi-normal\">This is English text followed by Arabic: مرحبا بالعالم</div>\n<div class=\"bidi-override\">This text will display characters in reverse order</div>",
+          css: ".bidi-normal { unicode-bidi: normal; direction: ltr; }\n.bidi-override { unicode-bidi: bidi-override; direction: rtl; }"
+        },
+        description: "Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "vertical-align",
+        name: "vertical-align",
+        syntax: "vertical-align: baseline|length|%|sub|super|top|text-top|middle|bottom|text-bottom|initial|inherit",
+        example: {
+          html: "<div class=\"align-examples\">\n  <span class=\"baseline\">baseline</span>\n  <span class=\"sub\">sub</span>\n  <span class=\"super\">super</span>\n  <span class=\"top\">top</span>\n  <span class=\"middle\">middle</span>\n  <span class=\"bottom\">bottom</span>\n  <span class=\"text-top\">text-top</span>\n  <span class=\"text-bottom\">text-bottom</span>\n  <span class=\"px-value\">+10px</span>\n</div>",
+          css: ".align-examples { line-height: 3; background: #f0f0f0; padding: 10px; }\n.align-examples span { display: inline-block; background: #ddd; margin: 0 5px; }\n.baseline { vertical-align: baseline; }\n.sub { vertical-align: sub; }\n.super { vertical-align: super; }\n.top { vertical-align: top; }\n.middle { vertical-align: middle; }\n.bottom { vertical-align: bottom; }\n.text-top { vertical-align: text-top; }\n.text-bottom { vertical-align: text-bottom; }\n.px-value { vertical-align: 10px; }"
+        },
+        description: "Sets the vertical alignment of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "quotes",
+        name: "quotes",
+        syntax: "quotes: none|[string string]+|initial|inherit",
+        example: {
+          html: "<div class=\"custom-quotes\">\n  <q>This text uses custom quotation marks</q>\n</div>",
+          css: ".custom-quotes { quotes: '«' '»' '‹' '›'; }\n.custom-quotes q { display: block; }"
+        },
+        description: "Sets the type of quotation marks for embedded quotations.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "tab-size",
+        name: "tab-size",
+        syntax: "tab-size: number|length|initial|inherit",
+        example: {
+          html: "<pre class=\"custom-tabs\">This\tis\ta\ttext\twith\ttabs</pre>",
+          css: ".custom-tabs { tab-size: 8; background: #f5f5f5; padding: 10px; }"
+        },
+        description: "Specifies the width of a tab character.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "list-style",
+        name: "list-style",
+        syntax: "list-style: list-style-type list-style-position list-style-image|initial|inherit",
+        example: {
+          html: "<ul class=\"custom-list\">\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item</li>\n</ul>",
+          css: ".custom-list { list-style: square inside; }"
+        },
+        description: "A shorthand property for setting list-style-type, list-style-position, and list-style-image.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "list-style-image",
+        name: "list-style-image",
+        syntax: "list-style-image: none|url()|initial|inherit",
+        example: {
+          html: "<ul class=\"image-bullets\">\n  <li>Item with custom bullet</li>\n  <li>Another item with custom bullet</li>\n</ul>",
+          css: ".image-bullets { list-style-image: url('https://picsum.photos/id/237/20/20'); }"
+        },
+        description: "Specifies an image as the list item marker.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "list-style-position",
+        name: "list-style-position",
+        syntax: "list-style-position: inside|outside|initial|inherit",
+        example: {
+          html: "<ul class=\"outside-list\">\n  <li>This list has items with markers outside the content flow</li>\n</ul>\n<ul class=\"inside-list\">\n  <li>This list has items with markers inside the content flow</li>\n</ul>",
+          css: ".outside-list { list-style-position: outside; background: #eee; padding: 10px 40px; }\n.inside-list { list-style-position: inside; background: #ddd; padding: 10px; }"
+        },
+        description: "Specifies the position of the list-item markers (bullet points).",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "typography"
+      },
+      {
+        id: "list-style-type",
+        name: "list-style-type",
+        syntax: "list-style-type: disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha|upper-alpha|none|initial|inherit",
+        example: {
+          html: "<ul class=\"disc-list\">\n  <li>Disc bullet (default)</li>\n</ul>\n<ul class=\"circle-list\">\n  <li>Circle bullet</li>\n</ul>\n<ul class=\"square-list\">\n  <li>Square bullet</li>\n</ul>\n<ol class=\"roman-list\">\n  <li>Upper Roman numeral</li>\n</ol>",
+          css: ".disc-list { list-style-type: disc; }\n.circle-list { list-style-type: circle; }\n.square-list { list-style-type: square; }\n.roman-list { list-style-type: upper-roman; }"
+        },
+        description: "Specifies the type of list-item marker.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "typography"
       }
@@ -1039,26 +1027,26 @@ export const propertyCategories: PropertyCategory[] = [
         category: "border"
       },
       {
-        id: "border-bottom",
-        name: "border-bottom",
-        syntax: "border-bottom: border-width border-style border-color|initial|inherit",
+        id: "border-top-left-radius",
+        name: "border-top-left-radius",
+        syntax: "border-top-left-radius: length|% [length|%]|initial|inherit",
         example: {
-          html: "<div class=\"box\">Element with bottom border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-bottom: 3px solid #3498db; /* Shorthand for width, style, color */\n}"
+          html: "<div class=\"box\">Element with rounded top-left corner</div>",
+          css: ".box {\n  width: 200px;\n  height: 100px;\n  background-color: #3498db;\n  border-top-left-radius: 30px; /* Rounds only the top-left corner */\n  color: white;\n  padding: 20px;\n}"
         },
-        description: "Shorthand property that sets the border-bottom-width, border-bottom-style, and border-bottom-color in one declaration.",
+        description: "Defines the radius of the top-left corner of an element.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       },
       {
-        id: "border-bottom-color",
-        name: "border-bottom-color",
-        syntax: "border-bottom-color: color|transparent|initial|inherit",
+        id: "border-top-right-radius",
+        name: "border-top-right-radius",
+        syntax: "border-top-right-radius: length|% [length|%]|initial|inherit",
         example: {
-          html: "<div class=\"box\">Element with colored bottom border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-bottom-width: 5px;\n  border-bottom-style: solid;\n  border-bottom-color: #e74c3c; /* Sets only the bottom border color */\n}"
+          html: "<div class=\"box\">Element with rounded top-right corner</div>",
+          css: ".box {\n  width: 200px;\n  height: 100px;\n  background-color: #3498db;\n  border-top-right-radius: 30px; /* Rounds only the top-right corner */\n  color: white;\n  padding: 20px;\n}"
         },
-        description: "Sets the color of the bottom border of an element.",
+        description: "Defines the radius of the top-right corner of an element.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       },
@@ -1087,14 +1075,110 @@ export const propertyCategories: PropertyCategory[] = [
         category: "border"
       },
       {
-        id: "border-bottom-style",
-        name: "border-bottom-style",
-        syntax: "border-bottom-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
+        id: "border-top",
+        name: "border-top",
+        syntax: "border-top: border-width border-style border-color|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with top border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-top: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
+        },
+        description: "Shorthand property that sets the border-top-width, border-top-style, and border-top-color in one declaration.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-top-width",
+        name: "border-top-width",
+        syntax: "border-top-width: medium|thin|thick|length|initial|inherit",
+        example: {
+          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-top-style: solid;\n}\n\n.thin {\n  border-top-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-top-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-top-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-top-width: 10px; /* Custom width */\n}"
+        },
+        description: "Sets the width of the top border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-top-style",
+        name: "border-top-style",
+        syntax: "border-top-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
         example: {
           html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-bottom-width: 5px;\n}\n\n.solid {\n  border-bottom-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-bottom-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-bottom-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-bottom-style: double; /* Double line */\n}"
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-top-width: 5px;\n}\n\n.solid {\n  border-top-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-top-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-top-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-top-style: double; /* Double line */\n}"
         },
-        description: "Sets the style of the bottom border of an element.",
+        description: "Sets the style of the top border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-top-color",
+        name: "border-top-color",
+        syntax: "border-top-color: color|transparent|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with colored top border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-top-width: 5px;\n  border-top-style: solid;\n  border-top-color: #e74c3c; /* Sets only the top border color */\n}"
+        },
+        description: "Sets the color of the top border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-right",
+        name: "border-right",
+        syntax: "border-right: border-width border-style border-color|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with right border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-right: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
+        },
+        description: "Shorthand property that sets the border-right-width, border-right-style, and border-right-color in one declaration.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-right-width",
+        name: "border-right-width",
+        syntax: "border-right-width: medium|thin|thick|length|initial|inherit",
+        example: {
+          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-right-style: solid;\n}\n\n.thin {\n  border-right-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-right-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-right-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-right-width: 10px; /* Custom width */\n}"
+        },
+        description: "Sets the width of the right border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-right-style",
+        name: "border-right-style",
+        syntax: "border-right-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
+        example: {
+          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-right-width: 5px;\n}\n\n.solid {\n  border-right-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-right-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-right-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-right-style: double; /* Double line */\n}"
+        },
+        description: "Sets the style of the right border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-right-color",
+        name: "border-right-color",
+        syntax: "border-right-color: color|transparent|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with colored right border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-right-width: 5px;\n  border-right-style: solid;\n  border-right-color: #e74c3c; /* Sets only the right border color */\n}"
+        },
+        description: "Sets the color of the right border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-bottom",
+        name: "border-bottom",
+        syntax: "border-bottom: border-width border-style border-color|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with bottom border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-bottom: 3px solid #3498db; /* Shorthand for width, style, color */\n}"
+        },
+        description: "Shorthand property that sets the border-bottom-width, border-bottom-style, and border-bottom-color in one declaration.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       },
@@ -1111,6 +1195,78 @@ export const propertyCategories: PropertyCategory[] = [
         category: "border"
       },
       {
+        id: "border-bottom-style",
+        name: "border-bottom-style",
+        syntax: "border-bottom-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
+        example: {
+          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-bottom-width: 5px;\n}\n\n.solid {\n  border-bottom-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-bottom-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-bottom-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-bottom-style: double; /* Double line */\n}"
+        },
+        description: "Sets the style of the bottom border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-bottom-color",
+        name: "border-bottom-color",
+        syntax: "border-bottom-color: color|transparent|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with colored bottom border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-bottom-width: 5px;\n  border-bottom-style: solid;\n  border-bottom-color: #e74c3c; /* Sets only the bottom border color */\n}"
+        },
+        description: "Sets the color of the bottom border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-left",
+        name: "border-left",
+        syntax: "border-left: border-width border-style border-color|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with left border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-left: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
+        },
+        description: "Shorthand property that sets the border-left-width, border-left-style, and border-left-color in one declaration.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-left-width",
+        name: "border-left-width",
+        syntax: "border-left-width: medium|thin|thick|length|initial|inherit",
+        example: {
+          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-left-style: solid;\n}\n\n.thin {\n  border-left-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-left-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-left-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-left-width: 10px; /* Custom width */\n}"
+        },
+        description: "Sets the width of the left border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-left-style",
+        name: "border-left-style",
+        syntax: "border-left-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
+        example: {
+          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
+          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-left-width: 5px;\n}\n\n.solid {\n  border-left-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-left-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-left-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-left-style: double; /* Double line */\n}"
+        },
+        description: "Sets the style of the left border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-left-color",
+        name: "border-left-color",
+        syntax: "border-left-color: color|transparent|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with colored left border</div>",
+          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-left-width: 5px;\n  border-left-style: solid;\n  border-left-color: #e74c3c; /* Sets only the left border color */\n}"
+        },
+        description: "Sets the color of the left border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
         id: "border-image",
         name: "border-image",
         syntax: "border-image: source slice width outset repeat|initial|inherit",
@@ -1119,6 +1275,42 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".box {\n  width: 200px;\n  height: 100px;\n  border-width: 20px;\n  border-style: solid;\n  /* Shorthand for all border-image properties */\n  border-image: url('https://picsum.photos/id/237/200/300') 30 / 20px round;\n  padding: 20px;\n  background-color: #f5f5f5;\n  text-align: center;\n}"
         },
         description: "Shorthand property that specifies how an image should be used as the border of an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-image-source",
+        name: "border-image-source",
+        syntax: "border-image-source: none|url()|initial|inherit",
+        example: {
+          html: "<div class=\"box\">Element with image border</div>",
+          css: ".box {\n  width: 200px;\n  height: 100px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300'); /* Specifies image for border */\n  border-image-slice: 30;\n  border-image-repeat: round;\n  padding: 20px;\n  background-color: #f5f5f5;\n  text-align: center;\n}"
+        },
+        description: "Specifies the source image to be used for the border instead of the standard border style.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-image-slice",
+        name: "border-image-slice",
+        syntax: "border-image-slice: number|%|fill|initial|inherit",
+        example: {
+          html: "<div class=\"slice-low\">Slice: 10</div><div class=\"slice-high\">Slice: 30</div><div class=\"slice-fill\">With Fill</div>",
+          css: "div {\n  width: 200px;\n  height: 100px;\n  margin: 20px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300');\n  border-image-repeat: round;\n  padding: 10px;\n  text-align: center;\n}\n\n.slice-low {\n  border-image-slice: 10; /* Divides image into 9 regions with small corners */\n}\n\n.slice-high {\n  border-image-slice: 30; /* Divides image into 9 regions with large corners */\n}\n\n.slice-fill {\n  border-image-slice: 30 fill; /* Also fills the middle with the center part of image */\n}"
+        },
+        description: "Specifies how to slice the border image, dividing it into nine regions (four corners, four edges, and middle).",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "border-image-width",
+        name: "border-image-width",
+        syntax: "border-image-width: number|%|auto|initial|inherit",
+        example: {
+          html: "<div class=\"auto\">Auto</div><div class=\"custom\">Custom (35px)</div><div class=\"percentage\">50%</div>",
+          css: "div {\n  width: 200px;\n  height: 100px;\n  margin: 20px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300');\n  border-image-slice: 30;\n  border-image-repeat: round;\n  padding: 10px;\n  text-align: center;\n}\n\n.auto {\n  border-image-width: auto; /* Use border-width values */\n}\n\n.custom {\n  border-image-width: 35px; /* Specific width */\n}\n\n.percentage {\n  border-image-width: 50%; /* Percentage of border box */\n}"
+        },
+        description: "Specifies the width of the border image, which may differ from the width of the element's border.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       },
@@ -1147,210 +1339,6 @@ export const propertyCategories: PropertyCategory[] = [
         category: "border"
       },
       {
-        id: "border-image-slice",
-        name: "border-image-slice",
-        syntax: "border-image-slice: number|%|fill|initial|inherit",
-        example: {
-          html: "<div class=\"slice-low\">Slice: 10</div><div class=\"slice-high\">Slice: 30</div><div class=\"slice-fill\">With Fill</div>",
-          css: "div {\n  width: 200px;\n  height: 100px;\n  margin: 20px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300');\n  border-image-repeat: round;\n  padding: 10px;\n  text-align: center;\n}\n\n.slice-low {\n  border-image-slice: 10; /* Divides image into 9 regions with small corners */\n}\n\n.slice-high {\n  border-image-slice: 30; /* Divides image into 9 regions with large corners */\n}\n\n.slice-fill {\n  border-image-slice: 30 fill; /* Also fills the middle with the center part of image */\n}"
-        },
-        description: "Specifies how to slice the border image, dividing it into nine regions (four corners, four edges, and middle).",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-image-source",
-        name: "border-image-source",
-        syntax: "border-image-source: none|url()|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with image border</div>",
-          css: ".box {\n  width: 200px;\n  height: 100px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300'); /* Specifies image for border */\n  border-image-slice: 30;\n  border-image-repeat: round;\n  padding: 20px;\n  background-color: #f5f5f5;\n  text-align: center;\n}"
-        },
-        description: "Specifies the source image to be used for the border instead of the standard border style.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-image-width",
-        name: "border-image-width",
-        syntax: "border-image-width: number|%|auto|initial|inherit",
-        example: {
-          html: "<div class=\"auto\">Auto</div><div class=\"custom\">Custom (35px)</div><div class=\"percentage\">50%</div>",
-          css: "div {\n  width: 200px;\n  height: 100px;\n  margin: 20px;\n  border-width: 20px;\n  border-style: solid;\n  border-image-source: url('https://picsum.photos/id/237/200/300');\n  border-image-slice: 30;\n  border-image-repeat: round;\n  padding: 10px;\n  text-align: center;\n}\n\n.auto {\n  border-image-width: auto; /* Use border-width values */\n}\n\n.custom {\n  border-image-width: 35px; /* Specific width */\n}\n\n.percentage {\n  border-image-width: 50%; /* Percentage of border box */\n}"
-        },
-        description: "Specifies the width of the border image, which may differ from the width of the element's border.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-left",
-        name: "border-left",
-        syntax: "border-left: border-width border-style border-color|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with left border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-left: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
-        },
-        description: "Shorthand property that sets the border-left-width, border-left-style, and border-left-color in one declaration.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-left-color",
-        name: "border-left-color",
-        syntax: "border-left-color: color|transparent|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with colored left border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-left-width: 5px;\n  border-left-style: solid;\n  border-left-color: #e74c3c; /* Sets only the left border color */\n}"
-        },
-        description: "Sets the color of the left border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-left-style",
-        name: "border-left-style",
-        syntax: "border-left-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
-        example: {
-          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-left-width: 5px;\n}\n\n.solid {\n  border-left-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-left-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-left-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-left-style: double; /* Double line */\n}"
-        },
-        description: "Sets the style of the left border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-left-width",
-        name: "border-left-width",
-        syntax: "border-left-width: medium|thin|thick|length|initial|inherit",
-        example: {
-          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-left-style: solid;\n}\n\n.thin {\n  border-left-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-left-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-left-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-left-width: 10px; /* Custom width */\n}"
-        },
-        description: "Sets the width of the left border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-right",
-        name: "border-right",
-        syntax: "border-right: border-width border-style border-color|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with right border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-right: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
-        },
-        description: "Shorthand property that sets the border-right-width, border-right-style, and border-right-color in one declaration.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-right-color",
-        name: "border-right-color",
-        syntax: "border-right-color: color|transparent|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with colored right border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-right-width: 5px;\n  border-right-style: solid;\n  border-right-color: #e74c3c; /* Sets only the right border color */\n}"
-        },
-        description: "Sets the color of the right border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-right-style",
-        name: "border-right-style",
-        syntax: "border-right-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
-        example: {
-          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-right-width: 5px;\n}\n\n.solid {\n  border-right-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-right-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-right-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-right-style: double; /* Double line */\n}"
-        },
-        description: "Sets the style of the right border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-right-width",
-        name: "border-right-width",
-        syntax: "border-right-width: medium|thin|thick|length|initial|inherit",
-        example: {
-          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-right-style: solid;\n}\n\n.thin {\n  border-right-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-right-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-right-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-right-width: 10px; /* Custom width */\n}"
-        },
-        description: "Sets the width of the right border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top",
-        name: "border-top",
-        syntax: "border-top: border-width border-style border-color|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with top border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-top: 5px solid #3498db; /* Shorthand for width, style, color */\n}"
-        },
-        description: "Shorthand property that sets the border-top-width, border-top-style, and border-top-color in one declaration.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top-color",
-        name: "border-top-color",
-        syntax: "border-top-color: color|transparent|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with colored top border</div>",
-          css: ".box {\n  padding: 20px;\n  background-color: #f5f5f5;\n  border-top-width: 5px;\n  border-top-style: solid;\n  border-top-color: #e74c3c; /* Sets only the top border color */\n}"
-        },
-        description: "Sets the color of the top border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top-left-radius",
-        name: "border-top-left-radius",
-        syntax: "border-top-left-radius: length|% [length|%]|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with rounded top-left corner</div>",
-          css: ".box {\n  width: 200px;\n  height: 100px;\n  background-color: #3498db;\n  border-top-left-radius: 30px; /* Rounds only the top-left corner */\n  color: white;\n  padding: 20px;\n}"
-        },
-        description: "Defines the radius of the top-left corner of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top-right-radius",
-        name: "border-top-right-radius",
-        syntax: "border-top-right-radius: length|% [length|%]|initial|inherit",
-        example: {
-          html: "<div class=\"box\">Element with rounded top-right corner</div>",
-          css: ".box {\n  width: 200px;\n  height: 100px;\n  background-color: #3498db;\n  border-top-right-radius: 30px; /* Rounds only the top-right corner */\n  color: white;\n  padding: 20px;\n}"
-        },
-        description: "Defines the radius of the top-right corner of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top-style",
-        name: "border-top-style",
-        syntax: "border-top-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
-        example: {
-          html: "<div class=\"solid\">Solid</div><div class=\"dashed\">Dashed</div><div class=\"dotted\">Dotted</div><div class=\"double\">Double</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-top-width: 5px;\n}\n\n.solid {\n  border-top-style: solid; /* Solid line */\n}\n\n.dashed {\n  border-top-style: dashed; /* Dashed line */\n}\n\n.dotted {\n  border-top-style: dotted; /* Dotted line */\n}\n\n.double {\n  border-top-style: double; /* Double line */\n}"
-        },
-        description: "Sets the style of the top border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "border-top-width",
-        name: "border-top-width",
-        syntax: "border-top-width: medium|thin|thick|length|initial|inherit",
-        example: {
-          html: "<div class=\"thin\">Thin</div><div class=\"medium\">Medium</div><div class=\"thick\">Thick</div><div class=\"custom\">Custom (10px)</div>",
-          css: "div {\n  width: 200px;\n  height: 50px;\n  margin: 10px;\n  padding: 10px;\n  background-color: #f5f5f5;\n  border-top-style: solid;\n}\n\n.thin {\n  border-top-width: thin; /* Browser-defined thin */\n}\n\n.medium {\n  border-top-width: medium; /* Browser-defined medium (default) */\n}\n\n.thick {\n  border-top-width: thick; /* Browser-defined thick */\n}\n\n.custom {\n  border-top-width: 10px; /* Custom width */\n}"
-        },
-        description: "Sets the width of the top border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
         id: "outline",
         name: "outline",
         syntax: "outline: outline-width outline-style outline-color|initial|inherit",
@@ -1359,6 +1347,30 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".outlined { padding: 10px; margin: 20px; outline: 2px dotted red; }"
         },
         description: "A shorthand property for setting outline-width, outline-style, and outline-color in one declaration. An outline is a line that is drawn around elements, outside the borders, to make the element stand out.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "outline-width",
+        name: "outline-width",
+        syntax: "outline-width: medium|thin|thick|length|initial|inherit",
+        example: {
+          html: "<div class=\"thin-outline\">Thin outline</div>\n<div class=\"medium-outline\">Medium outline</div>\n<div class=\"thick-outline\">Thick outline</div>",
+          css: ".thin-outline, .medium-outline, .thick-outline { margin: 10px; padding: 10px; outline-style: solid; outline-color: green; }\n.thin-outline { outline-width: thin; }\n.medium-outline { outline-width: medium; }\n.thick-outline { outline-width: thick; }"
+        },
+        description: "Sets the width of an outline.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "border"
+      },
+      {
+        id: "outline-style",
+        name: "outline-style",
+        syntax: "outline-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
+        example: {
+          html: "<div class=\"solid-outline\">Solid outline</div>\n<div class=\"dashed-outline\">Dashed outline</div>\n<div class=\"dotted-outline\">Dotted outline</div>",
+          css: ".solid-outline, .dashed-outline, .dotted-outline { margin: 10px; padding: 10px; outline-width: 2px; outline-color: blue; }\n.solid-outline { outline-style: solid; }\n.dashed-outline { outline-style: dashed; }\n.dotted-outline { outline-style: dotted; }"
+        },
+        description: "Sets the style of an outline.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       },
@@ -1383,30 +1395,6 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".offset-outline { padding: 10px; margin: 20px; outline: 2px dashed blue; outline-offset: 5px; background: #f0f0f0; }"
         },
         description: "Adds space between an outline and the edge or border of an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "outline-style",
-        name: "outline-style",
-        syntax: "outline-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit",
-        example: {
-          html: "<div class=\"solid-outline\">Solid outline</div>\n<div class=\"dashed-outline\">Dashed outline</div>\n<div class=\"dotted-outline\">Dotted outline</div>",
-          css: ".solid-outline, .dashed-outline, .dotted-outline { margin: 10px; padding: 10px; outline-width: 2px; outline-color: blue; }\n.solid-outline { outline-style: solid; }\n.dashed-outline { outline-style: dashed; }\n.dotted-outline { outline-style: dotted; }"
-        },
-        description: "Sets the style of an outline.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "border"
-      },
-      {
-        id: "outline-width",
-        name: "outline-width",
-        syntax: "outline-width: medium|thin|thick|length|initial|inherit",
-        example: {
-          html: "<div class=\"thin-outline\">Thin outline</div>\n<div class=\"medium-outline\">Medium outline</div>\n<div class=\"thick-outline\">Thick outline</div>",
-          css: ".thin-outline, .medium-outline, .thick-outline { margin: 10px; padding: 10px; outline-style: solid; outline-color: green; }\n.thin-outline { outline-width: thin; }\n.medium-outline { outline-width: medium; }\n.thick-outline { outline-width: thick; }"
-        },
-        description: "Sets the width of an outline.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "border"
       }
@@ -1777,6 +1765,18 @@ export const propertyCategories: PropertyCategory[] = [
         category: "grid"
       },
       {
+        id: "grid-template",
+        name: "grid-template",
+        syntax: "grid-template: none|grid-template-rows / grid-template-columns|initial|inherit",
+        example: {
+          html: "<div class=\"container\">\n  <div class=\"item\">1</div>\n  <div class=\"item\">2</div>\n  <div class=\"item\">3</div>\n  <div class=\"item\">4</div>\n</div>",
+          css: ".container { display: grid; grid-template: 100px 100px / 100px 100px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"
+        },
+        description: "A shorthand property for the grid-template-rows, grid-template-columns and grid-template-areas properties.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "grid"
+      },
+      {
         id: "grid-template-columns",
         name: "grid-template-columns",
         syntax: "grid-template-columns: none|auto|max-content|min-content|length|%|initial|inherit",
@@ -1813,18 +1813,6 @@ export const propertyCategories: PropertyCategory[] = [
         category: "grid"
       },
       {
-        id: "grid-template",
-        name: "grid-template",
-        syntax: "grid-template: none|grid-template-rows / grid-template-columns|initial|inherit",
-        example: {
-          html: "<div class=\"container\">\n  <div class=\"item\">1</div>\n  <div class=\"item\">2</div>\n  <div class=\"item\">3</div>\n  <div class=\"item\">4</div>\n</div>",
-          css: ".container { display: grid; grid-template: 100px 100px / 100px 100px; gap: 10px; background-color: #f0f0f0; padding: 10px; } .item { background-color: #3f51b5; color: white; padding: 10px; }"
-        },
-        description: "A shorthand property for the grid-template-rows, grid-template-columns and grid-template-areas properties.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "grid"
-      },
-      {
         id: "grid-column-gap",
         name: "column-gap",
         syntax: "column-gap: length|%|normal|initial|inherit",
@@ -1855,14 +1843,38 @@ export const propertyCategories: PropertyCategory[] = [
     name: "Transforms",
     properties: [
       {
-        id: "backface-visibility",
-        name: "backface-visibility",
-        syntax: "backface-visibility: visible|hidden|initial|inherit",
+        id: "transform",
+        name: "transform",
+        syntax: "transform: none|transform-functions|initial|inherit",
         example: {
-          html: "<div class=\"card-container\"><div class=\"card\"><div class=\"front\">Front</div><div class=\"back\">Back</div></div></div>",
-          css: ".card-container {\n  width: 200px;\n  height: 300px;\n  perspective: 1000px;\n}\n\n.card {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  transform-style: preserve-3d;\n  transition: transform 1s;\n}\n\n.card:hover {\n  transform: rotateY(180deg);\n}\n\n.front, .back {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  backface-visibility: hidden; /* Hides element when not facing the user */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 24px;\n}\n\n.front {\n  background-color: #3498db;\n  color: white;\n}\n\n.back {\n  background-color: #e74c3c;\n  color: white;\n  transform: rotateY(180deg);\n}"
+          html: "<div class=\"original\">Original</div>\n<div class=\"rotated\">Rotated</div>\n<div class=\"scaled\">Scaled</div>\n<div class=\"skewed\">Skewed</div>\n<div class=\"translated\">Translated</div>\n<div class=\"multiple\">Multiple transforms</div>",
+          css: ".original, .rotated, .scaled, .skewed, .translated, .multiple { width: 100px; height: 50px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; margin: 20px; }\n.rotated { transform: rotate(45deg); }\n.scaled { transform: scale(1.5); }\n.skewed { transform: skew(15deg, 15deg); }\n.translated { transform: translateX(30px); }\n.multiple { transform: rotate(25deg) scale(0.8) translateX(20px); }"
         },
-        description: "Defines whether the back face of an element should be visible when facing the user, commonly used in card flip animations.",
+        description: "Applies a 2D or 3D transformation to an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "transforms"
+      },
+      {
+        id: "transform-style",
+        name: "transform-style",
+        syntax: "transform-style: flat|preserve-3d|initial|inherit",
+        example: {
+          html: "<div class=\"scene\">\n  <div class=\"cube preserve-3d\">\n    <div class=\"face front\">Front</div>\n    <div class=\"face back\">Back</div>\n  </div>\n</div>",
+          css: ".scene { width: 100px; height: 100px; perspective: 400px; margin: 50px; }\n.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateY(45deg); }\n.face { width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center; background: rgba(0, 123, 255, 0.7); }\n.front { transform: translateZ(50px); }\n.back { transform: translateZ(-50px); }"
+        },
+        description: "Specifies how nested elements are rendered in 3D space.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "transforms"
+      },
+      {
+        id: "transform-origin",
+        name: "transform-origin",
+        syntax: "transform-origin: x-axis y-axis z-axis|initial|inherit",
+        example: {
+          html: "<div class=\"demo-container\">\n  <div class=\"center-origin\">Default origin</div>\n  <div class=\"corner-origin\">Top-left origin</div>\n</div>",
+          css: ".demo-container { display: flex; gap: 20px; }\n.center-origin, .corner-origin { width: 100px; height: 100px; background: orange; transition: transform 1s; }\n.center-origin:hover { transform: rotate(45deg); transform-origin: center; /* Default */ }\n.corner-origin:hover { transform: rotate(45deg); transform-origin: top left; }"
+        },
+        description: "Specifies the position of the origin for an element's transformations.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "transforms"
       },
@@ -1891,38 +1903,14 @@ export const propertyCategories: PropertyCategory[] = [
         category: "transforms"
       },
       {
-        id: "transform",
-        name: "transform",
-        syntax: "transform: none|transform-functions|initial|inherit",
+        id: "backface-visibility",
+        name: "backface-visibility",
+        syntax: "backface-visibility: visible|hidden|initial|inherit",
         example: {
-          html: "<div class=\"original\">Original</div>\n<div class=\"rotated\">Rotated</div>\n<div class=\"scaled\">Scaled</div>\n<div class=\"skewed\">Skewed</div>\n<div class=\"translated\">Translated</div>\n<div class=\"multiple\">Multiple transforms</div>",
-          css: ".original, .rotated, .scaled, .skewed, .translated, .multiple { width: 100px; height: 50px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; margin: 20px; }\n.rotated { transform: rotate(45deg); }\n.scaled { transform: scale(1.5); }\n.skewed { transform: skew(15deg, 15deg); }\n.translated { transform: translateX(30px); }\n.multiple { transform: rotate(25deg) scale(0.8) translateX(20px); }"
+          html: "<div class=\"card-container\"><div class=\"card\"><div class=\"front\">Front</div><div class=\"back\">Back</div></div></div>",
+          css: ".card-container {\n  width: 200px;\n  height: 300px;\n  perspective: 1000px;\n}\n\n.card {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  transform-style: preserve-3d;\n  transition: transform 1s;\n}\n\n.card:hover {\n  transform: rotateY(180deg);\n}\n\n.front, .back {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  backface-visibility: hidden; /* Hides element when not facing the user */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 24px;\n}\n\n.front {\n  background-color: #3498db;\n  color: white;\n}\n\n.back {\n  background-color: #e74c3c;\n  color: white;\n  transform: rotateY(180deg);\n}"
         },
-        description: "Applies a 2D or 3D transformation to an element.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "transforms"
-      },
-      {
-        id: "transform-origin",
-        name: "transform-origin",
-        syntax: "transform-origin: x-axis y-axis z-axis|initial|inherit",
-        example: {
-          html: "<div class=\"demo-container\">\n  <div class=\"center-origin\">Default origin</div>\n  <div class=\"corner-origin\">Top-left origin</div>\n</div>",
-          css: ".demo-container { display: flex; gap: 20px; }\n.center-origin, .corner-origin { width: 100px; height: 100px; background: orange; transition: transform 1s; }\n.center-origin:hover { transform: rotate(45deg); transform-origin: center; /* Default */ }\n.corner-origin:hover { transform: rotate(45deg); transform-origin: top left; }"
-        },
-        description: "Specifies the position of the origin for an element's transformations.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "transforms"
-      },
-      {
-        id: "transform-style",
-        name: "transform-style",
-        syntax: "transform-style: flat|preserve-3d|initial|inherit",
-        example: {
-          html: "<div class=\"scene\">\n  <div class=\"cube preserve-3d\">\n    <div class=\"face front\">Front</div>\n    <div class=\"face back\">Back</div>\n  </div>\n</div>",
-          css: ".scene { width: 100px; height: 100px; perspective: 400px; margin: 50px; }\n.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateY(45deg); }\n.face { width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center; background: rgba(0, 123, 255, 0.7); }\n.front { transform: translateZ(50px); }\n.back { transform: translateZ(-50px); }"
-        },
-        description: "Specifies how nested elements are rendered in 3D space.",
+        description: "Defines whether the back face of an element should be visible when facing the user, commonly used in card flip animations.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "transforms"
       },
@@ -1933,26 +1921,14 @@ export const propertyCategories: PropertyCategory[] = [
     name: "Visual effects",
     properties: [
       {
-        id: "clip",
-        name: "clip",
-        syntax: "clip: auto|rect(top, right, bottom, left)|initial|inherit",
+        id: "visibility",
+        name: "visibility",
+        syntax: "visibility: visible|hidden|collapse|initial|inherit",
         example: {
-          html: "<div class=\"container\"><img src=\"https://picsum.photos/id/237/200/300\" class=\"clipped\" alt=\"Clipped image\"></div>",
-          css: ".container {\n  position: relative;\n  height: 200px;\n  width: 200px;\n  border: 2px dashed #3498db;\n}\n\n.clipped {\n  position: absolute;\n  width: 300px;\n  height: 300px;\n  clip: rect(50px, 150px, 150px, 50px); /* Clips image (top, right, bottom, left) */\n}"
+          html: "<div class=\"visible\">This element is visible (default)</div>\n<div class=\"hidden\">This element is hidden but still takes up space</div>\n<div class=\"after-hidden\">This element comes after the hidden one</div>",
+          css: ".visible, .hidden, .after-hidden { padding: 10px; margin: 5px; background: #e0e0e0; }\n.hidden { visibility: hidden; }\n.after-hidden { background: #b5e0b5; }"
         },
-        description: "Defines which part of an absolutely positioned element is visible. Note: Deprecated in favor of clip-path.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "visual-effects"
-      },
-      {
-        id: "filter",
-        name: "filter",
-        syntax: "filter: none|blur()|brightness()|contrast()|drop-shadow()|grayscale()|hue-rotate()|invert()|opacity()|saturate()|sepia()",
-        example: {
-          html: "<img class=\"filtered-image\" src=\"https://picsum.photos/id/237/200/300\" alt=\"A filtered image\">",
-          css: ".filtered-image { filter: grayscale(80%) brightness(120%); }"
-        },
-        description: "Applies graphical effects like blur or color shifting to an element.",
+        description: "Specifies whether or not an element is visible. Hidden elements still take up space in the layout.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "visual-effects"
       },
@@ -1969,14 +1945,26 @@ export const propertyCategories: PropertyCategory[] = [
         category: "visual-effects"
       },
       {
-        id: "visibility",
-        name: "visibility",
-        syntax: "visibility: visible|hidden|collapse|initial|inherit",
+        id: "filter",
+        name: "filter",
+        syntax: "filter: none|blur()|brightness()|contrast()|drop-shadow()|grayscale()|hue-rotate()|invert()|opacity()|saturate()|sepia()",
         example: {
-          html: "<div class=\"visible\">This element is visible (default)</div>\n<div class=\"hidden\">This element is hidden but still takes up space</div>\n<div class=\"after-hidden\">This element comes after the hidden one</div>",
-          css: ".visible, .hidden, .after-hidden { padding: 10px; margin: 5px; background: #e0e0e0; }\n.hidden { visibility: hidden; }\n.after-hidden { background: #b5e0b5; }"
+          html: "<img class=\"filtered-image\" src=\"https://picsum.photos/id/237/200/300\" alt=\"A filtered image\">",
+          css: ".filtered-image { filter: grayscale(80%) brightness(120%); }"
         },
-        description: "Specifies whether or not an element is visible. Hidden elements still take up space in the layout.",
+        description: "Applies graphical effects like blur or color shifting to an element.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "visual-effects"
+      },
+      {
+        id: "clip",
+        name: "clip",
+        syntax: "clip: auto|rect(top, right, bottom, left)|initial|inherit",
+        example: {
+          html: "<div class=\"container\"><img src=\"https://picsum.photos/id/237/200/300\" class=\"clipped\" alt=\"Clipped image\"></div>",
+          css: ".container {\n  position: relative;\n  height: 200px;\n  width: 200px;\n  border: 2px dashed #3498db;\n}\n\n.clipped {\n  position: absolute;\n  width: 300px;\n  height: 300px;\n  clip: rect(50px, 150px, 150px, 50px); /* Clips image (top, right, bottom, left) */\n}"
+        },
+        description: "Defines which part of an absolutely positioned element is visible. Note: Deprecated in favor of clip-path.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "visual-effects"
       },
@@ -1986,6 +1974,18 @@ export const propertyCategories: PropertyCategory[] = [
     id: "animations",
     name: "Animations",
     properties: [
+      {
+        id: "keyframes",
+        name: "@keyframes",
+        syntax: "@keyframes animationname { keyframes-selector { css-styles; } }",
+        example: {
+          html: "<div class=\"box\"></div>",
+          css: "@keyframes colorchange { 0% { background-color: #3f51b5; } 50% { background-color: #ff5252; } 100% { background-color: #69f0ae; } } .box { width: 100px; height: 100px; animation: colorchange 3s infinite; }"
+        },
+        description: "Specifies the animation code for a CSS animation.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "animations"
+      },
       {
         id: "animation",
         name: "animation",
@@ -2019,18 +2019,6 @@ export const propertyCategories: PropertyCategory[] = [
           css: "@keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(200px); } } .box { width: 50px; height: 50px; background-color: #3f51b5; animation-name: slide; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: alternate; }"
         },
         description: "Specifies how many seconds or milliseconds an animation takes to complete one cycle.",
-        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
-        category: "animations"
-      },
-      {
-        id: "keyframes",
-        name: "@keyframes",
-        syntax: "@keyframes animationname { keyframes-selector { css-styles; } }",
-        example: {
-          html: "<div class=\"box\"></div>",
-          css: "@keyframes colorchange { 0% { background-color: #3f51b5; } 50% { background-color: #ff5252; } 100% { background-color: #69f0ae; } } .box { width: 100px; height: 100px; animation: colorchange 3s infinite; }"
-        },
-        description: "Specifies the animation code for a CSS animation.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "animations"
       },
@@ -2133,6 +2121,18 @@ export const propertyCategories: PropertyCategory[] = [
           css: ".btn { background-color: #3f51b5; color: white; padding: 10px 20px; border: none; border-radius: 4px; transition-property: background-color; } .fast { transition-duration: 0.2s; } .slow { transition-duration: 1s; } .btn:hover { background-color: #5c6bc0; }"
         },
         description: "Specifies how many seconds or milliseconds a transition effect takes to complete.",
+        browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
+        category: "transitions"
+      },
+      {
+        id: "transition-delay",
+        name: "transition-delay",
+        syntax: "transition-delay: time|initial|inherit",
+        example: {
+          html: "<div class=\"instant\">No delay</div>\n<div class=\"delayed\">1 second delay</div>",
+          css: ".instant, .delayed { width: 100px; height: 50px; background: purple; color: white; margin: 10px; transition-property: width; transition-duration: 1s; }\n.instant { transition-delay: 0s; }\n.delayed { transition-delay: 1s; }\n.instant:hover, .delayed:hover { width: 300px; }"
+        },
+        description: "Specifies when the transition effect will start.",
         browsers: ["Chrome", "Edge", "Firefox", "Safari", "Opera"],
         category: "transitions"
       },
