@@ -46,7 +46,7 @@
     "borders": "Borders",
     "backgrounds": "Backgrounds",
     "positioning": "Positioning",
-    "transitions": "Transitions and Animations",
+    "transitions": "Transitions",
     "basic": "Basic Selectors",
     "combinators": "Combinators",
     "pseudo-classes": "Pseudo-classes",
